@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+/*고정부분*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.menu {
+	widht:100%;
+	height: 80px;
+}
+
+.menu .navbar {
+	margin:0;
+	width: 100%;
+	margin-left: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.menu .right {
+	font-size: 15px;
+	color: #ccc;
+}
+
+/*고정부분END*/
+
+.content {
+	margin:0;
+	padding:0;
+	width: 100%;
+	height: 100%;
+	background: #eee;
+}
+
+.select {
+	width: 100%;
+	height: 50px;
+	background: #ddd;
+	padding-left: 40px;
+	padding-top: 10px;
+	margin: 0;
+}
+
+.select .form-control {
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	margin-left: 10px;	
+	font-size: 12px;
+}
+
+
+
+.content .list {
+	margin: 0;
+	padding: 0;
+}
+
+.list .listheader {
+	font-size: 14px;
+	font-weight: bold;
+	width: 100%;
+	line-height: 60px;
+	background: white;
+	text-align: center;
+}
+
+.list .listcount {
+	width: 100%;
+	line-height: 40px;
+	background: #fff;
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+.list .listcontent {
+	width: 100%;
+}
+
+.list .pageCount {
+	width: 100%;
+	backround: #fff;
+}
+
+.list .pageCount ul{
+	padding-top: 12px;
+	justify-content: center;
+}
+
+
+.modal-header {
+	position: relative;
+}
+
+.modal-header h3{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+.modal-body .idpw {
+	width: 300px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.modal-body .autologin{
+	margin-left: 85px;
+}
+
+.modal-body label {
+	font-size: 12px;
+}
+
+.modal-body #findpw {
+	color: #222;
+	margin-left: 145px;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.modal-body .emailLogin {
+	width: 300px;
+	text-align: center;
+	margin-left: 18%;
+	margin-top: 20px;
+}
+
+.modal-body .adduserMent {
+	display: inline-block;
+	font-size: 12px;
+	margin-left: 26%;
+}
