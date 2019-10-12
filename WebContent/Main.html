@@ -37,7 +37,33 @@
 		</nav>
 	</div>
 	<!-- Menu bar end -->
-	<div class="content">
+	<div class="row select">
+		<form method="post" action="#">
+			<select class="form-control" name="selectTrade">
+				<option value="">거래유형</option>
+				<option value="monthlyRent">월세</option>
+				<option value="trade">매매</option>
+			</select>
+			<select class="form-control" name="selectPrice">
+				<option value="">가격</option>			
+			</select>
+			<select class="form-control" name="selectPrice">
+				<option value="">전용면적</option>			
+			</select>
+			<select class="form-control" name="selectPrice">
+				<option value="">상세검색</option>			
+			</select>
+		</form>
+	</div>
+	<div class="row content">
+		<!-- kakao map api 적용 div -->
+		<div id="map" class="col-md-9 map">KAKAO MAP</div>
+			
+		<!-- 매물 리스트 출력 부분 -->
+		<div class="col-md-3 list">
+			LIST
+			
+		</div>
 	</div>
 
 
