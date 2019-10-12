@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/*title 스타일 지정*/
+.interest_title {
+	font-size: 25px;
+	padding-top: 20px;
+	text-align: center;
+	
+}
+.interest_title p {
+	text-align: center;
+	font-size: 13px;
+	color: #8c8c8c;
+}
+/*tab 스타일 지정*/
+.interest_tab {
+	width: 1200px;
+	margin: auto;
+	text-decoration: none;	
+}
+
+.button_delete {
+	position: relative;
+}
