@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/*------------- 복사해서 사용하세요  --------------------*/
 
 html, body {
 	margin: 0;
@@ -28,10 +29,6 @@ html, body {
 	font-size: 15px;
 }
 
-.navbar-link:hover {
-	text-decoration: none;
-}
-
 .content {
 	height: 100%;
 	width: 100%;
@@ -44,51 +41,46 @@ html, body {
 	background: #333;
 }
 
-/* 로그인 모달CSS*/
-
-.modal-header {
-	position: relative;
+.modal-dialog.mymodal-size {
+	width: 400px;
+	height: 360px;
 }
 
-.modal-header h3{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.mymodal-content {
+	width: 100%;
+	height: 100%;
 }
 
-
-.modal-body .idpw {
-	width: 300px;
-	margin: auto;
-	margin-top: 20px;
-}
-
-.modal-body .autologin{
-	margin-left: 85px;
-}
-
-.modal-body label {
-	font-size: 12px;
-}
-
-.modal-body #findpw {
-	color: #222;
-	margin-left: 145px;
-	text-decoration: none;
-	font-size: 12px;
-}
-
-.modal-body .emailLogin {
-	width: 300px;
+.loginmodal-title {
 	text-align: center;
-	margin-left: 18%;
 	margin-top: 20px;
 }
 
-.modal-body .adduserMent {
-	display: inline-block;
-	font-size: 12px;
-	margin-left: 26%;
+.modal form {
+	margin-top: 20px;
 }
-/* 로그인 모달CSS END*/
+
+.modal .input-container {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.modal .input-info {
+	width: 270px;
+	display: inline-block;
+}
+
+.modal .forgot-pw input {
+	margin-left: 50px;
+}
+
+.modal .forgot-pw span {
+	margin-left: 90px;
+}
+.loginbtn {
+	margin-top: 30px;
+	display: inline-block;
+	width: 270px;
+}
+
+/*------------- 복사해서 사용하세요 END --------------------*/

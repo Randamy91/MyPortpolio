@@ -13,34 +13,112 @@
 
 </head>
 <body>
-<!-- 페이지 고정 -->
+<!--------------------------- 복사하여 사용 하세요 ---------------------------->
+<!-- 상단 메뉴 바 -->
 <nav class="navbar menu_navbar bg-white">
 	<!--<div class="navbar-header menu_header">-->
 	<a class="navbar-brand logo" href="Main.html" >
 	<img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
 	</a>
-	<p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link">상가</a></p>
-	<p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link">상권분석</a></p>
-	<p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link">회원가입</a></p>
-	<p class="navbar-text navbar-right"><a href="#" class="navbar-link">로그인</a></p>
+	<p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a></p>
+	<p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a></p>
+	<p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a></p>
+	<p class="navbar-text navbar-right"><a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a></p>
 </nav>
 
-<div class="content">
-	<div class="container">
-		
-	</div>
+<!-- 상단 메뉴 바  -->
+
+
+<!--  로그인 Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog mymodal-size">
+    <div class="modal-content mymodal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+        <form action="#" method="post">
+        	<div class="input-container">
+		        <input type="text" class="form-control input-info" id="email" name="email" placeholder="이메일"/>
+		    </div>
+		    <div class="input-container">
+		        <input type="password" class="form-control input-info" id="password" name="password" placeholder="패스워드"/>
+		    </div>
+		    <div class="forgot-pw">
+		    	<input type="checkbox"/>&nbsp;자동 로그인
+		    	<span>
+		    		<a href="#" style="text-decoration:none">비밀번호 찾기</a>
+		    	</span>
+		    </div>
+		    <div class="input-container">
+		    	<input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
+		    </div>
+        </form>
+      </div>  
+    </div>
+  </div>
 </div>
 
 
-<!-- 페이지 고정 END -->
+
+<!-- 컨텐츠 -->
+<div class="content">
+	<div class="select-menu">
+		
+	</div>
+	<div class="container main-content">
+		<div class="row main-content">
+			<div id="map" class="col-md-9 map">
+			</div>
+			<div class="col-md-3 list">
+				<div class="listheader" style="border-bottom: 1px solid red;">매물
+				리스트</div>
+			<div class="listcount">
+				<span>검색결과</span> <span class="maemulCount" style="color: red;"></span>
+				<span>개</span>
+			</div>
+			<div class="listcontent">
+				<!-- pagenation 구현 -->
+			</div>
+			<div class="pageCount">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 컨텐츠  END -->
 
 
+<!--------------------------- 복사하여 사용 하세요  END---------------------------->
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script>
+	<script>
+		//매물개수
+		var maemulCount = 0;
+		$(".maemulCount").html(maemulCount);
 
+		//KAKAO api javascript 
+		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		var options = { //지도를 생성할 때 필요한 기본 옵션
+			center : new kakao.maps.LatLng(37.497972, 127.027720), //지도의 중심좌표.
+			level : 5
+		//지도의 레벨(확대, 축소 정도)
+		};
+
+		var map = new kakao.maps.Map(container, options);
+		//KAKAO API javaxcript END
+	</script>
 </body>
 </html>
