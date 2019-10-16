@@ -8,71 +8,39 @@
 <title>세모 - 상가 매물 중개 사이트</title>
 
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/Main.css" />
 
 
 </head>
 <body>
-<!-- 고정 부분  -->	
-<!-- Menu bar -->
-	<div class="row menu">
-		<nav class="navbar navbar-expand-sm bg-white">
-			<div class="col-md-1">
-				<a	class="nav-link" href="index.html">
-					<img src="img/main_logo.jpg" width="80px" height="50px"/>
-				</a>
-			</div>
-			<div class="col-md-9">
-				<ul class="nav">				
-					<li class="nav-item"><a class="nav-link" href="#">상가</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">상권분석</a></li>
-				</ul>
-			</div>
-			<div class="col-md-2">
-				<ul class="nav right">
-					<li><a class="nav-link" data-toggle="modal" href="#myModal">로그인</a></li>
-					<li><a class="nav-link" href="#">회원가입</a></li>
-				</ul>
-			</div>
-		</nav>
+<!-- 페이지 고정 -->
+<nav class="navbar menu_navbar bg-white">
+	<!--<div class="navbar-header menu_header">-->
+	<a class="navbar-brand logo" href="Main.html" >
+	<img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
+	</a>
+	<p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link">상가</a></p>
+	<p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link">상권분석</a></p>
+	<p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link">회원가입</a></p>
+	<p class="navbar-text navbar-right"><a href="#" class="navbar-link">로그인</a></p>
+</nav>
+
+<div class="content">
+	<div class="container">
+		
 	</div>
-	<!-- Menu bar end -->
-	<div class="row select">
-		<form method="post" action="#">
-			<select class="form-control" name="selectTrade">
-				<option value="">거래유형</option>
-				<option value="monthlyRent">월세</option>
-				<option value="trade">매매</option>
-			</select>
-			<select class="form-control" name="selectPrice">
-				<option value="">가격</option>			
-			</select>
-			<select class="form-control" name="selectPrice">
-				<option value="">전용면적</option>			
-			</select>
-			<select class="form-control" name="selectPrice">
-				<option value="">상세검색</option>			
-			</select>
-		</form>
-	</div>
-	<div class="row content">
-		<!-- kakao map api 적용 div -->
-		<div id="map" class="col-md-9 map">KAKAO MAP</div>
-			
-		<!-- 매물 리스트 출력 부분 -->
-		<div class="col-md-3 list">
-			LIST
-			
-		</div>
-	</div>
+</div>
+
+
+<!-- 페이지 고정 END -->
+
+
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script>
-
-
 
 </body>
 </html>
