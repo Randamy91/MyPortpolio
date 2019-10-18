@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+/* content
+-----------------------------------------*/
+.grayContent{
+	background-color: #eee;
+	height: 400px;
+}
+
+.content{
+	text-align: center;
+}
+
+.content h3{
+	font-weight: bolder;
+}
+
+/* content > box
+-----------------------------------------*/
+.box1{
+	text-align: center;
+	background-color: #fff;
+	width: 300px; height: 350px;
+	display: inline-block;
+	margin: 75px 20px 75px 330px;
+}
+
+.box2{
+	text-align: center;
+	background-color: #fff;
+	width: 300px; height: 350px;
+	display: inline-block;
+	margin: 75px 330px 75px 20px;
+}
+
+/* content > box > image
+-----------------------------------------*/
+.content img{
+	margin: 50px 75px 50px 75px;
+}
+
+/* content > box > button
+-----------------------------------------*/
+.btn-default{
+	background-color: #eee;
+	position: relative;
+	margin: auto;
+}
+
+/* footer
+-----------------------------------------*/
+.whitefooter{
+	text-align: center;
+	background-color: #fff;
+	height: 100px;
+
+}
