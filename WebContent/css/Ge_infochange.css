@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+input[type="checkbox"] {
+    display:none;
+}
+
+
+input[type="checkbox"] + label span {
+
+
+    display: inline-block;
+
+
+    width: 24px;
+
+
+    height: 24px;
+
+
+    margin: -2px 10px 0 0;
+
+
+    vertical-align: middle;
+
+
+    background: url(../img/checkbox.svg) left top no-repeat;
+
+
+    cursor: pointer;
+
+
+    background-size: cover;
+
+
+}
+
+
+
+
+
+input[type="checkbox"]:checked + label span {
+
+
+    background:url(../img/checkbox.svg)  -26px top no-repeat;
+
+
+     background-size: cover;
+
+
+}
+  .exit a , .yak a {
+ 	text-decoration: none;
+ 	color: black;
+ }
+  
+ 
+ .table-1 {
+ 	margin-bottom: 0px;
+ }
+ .first-list {
+ 	padding-bottom: 0px;
+ }
+ .table-2 {
+ 	margin-bottom: 0px;
+ }
+ .second-list {
+ 	padding-bottom: 0px;
+ }
+ th {
+ 	width: 130px;
+ 	height: 100px;
+ 	text-align: center;
+ 	font-weight: normal; 
+ 	font-size: 12px;
+ }
+ th span {
+ 	line-height: 100px;
+ }
+ .table-2 th {
+ 	width: 130px;
+ }
+
+ td > input {
+ 	position: relative;
+ 	top: 27px;
+ }
+ .PhoneNumber {
+ 	position: relative; 
+ 	top: 27px;
+ }
+ 
+ 
+ .text-center {
+ 	margin-bottom: 80px;
+ }
+
+ .first-title {
+ 	margin-top: 20px;
+ 	margin-bottom: 15px;
+ 	margin-left: 18px;
+ }
+ .second-title {
+ 	margin-top: 20px;
+ 	margin-bottom: 15px;
+ 	margin-left: 18px;	
+ }
+ .sign {
+ 	margin-top: 20px;
+ }
+ .text-info {
+ 	margin-top: 10px;
+ }
+ td .form-control {
+ 	width: 250px;
+ }
+ .page-title {
+    margin-top: 60px;
+ }
+
