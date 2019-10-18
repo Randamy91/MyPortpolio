@@ -1,14 +1,170 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>세모- 상가 중개사이트</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+    <title>일반회원 가입</title>
+
+    <!-- 부트스트랩 -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/Joinus_general01.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/Main.css" />
+    <link rel="stylesheet" type="text/css" href="css/Login.css" />
+
+    <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
+    <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!--------------------------- 복사하여 사용 하세요 ---------------------------->
+<!-- 상단 메뉴 바 -->
+<nav class="navbar menu_navbar bg-white">
+  <!--<div class="navbar-header menu_header">-->
+  <a class="navbar-brand logo" href="Main.html" >
+  <img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
+  </a>
+  <p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a></p>
+  <p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a></p>
+  <p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a></p>
+  <p class="navbar-text navbar-right"><a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a></p>
+</nav>
+
+<!-- 상단 메뉴 바  -->
 
 
-</body>
+<!--  로그인 Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog mymodal-size">
+    <div class="modal-content mymodal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+        <form action="#" method="post">
+          <div class="input-container">
+            <input type="text" class="form-control input-info" id="email" name="email" placeholder="이메일"/>
+        </div>
+        <div class="input-container">
+            <input type="password" class="form-control input-info" id="password" name="password" placeholder="패스워드"/>
+        </div>
+        <div class="forgot-pw">
+          <input type="checkbox"/>&nbsp;자동 로그인
+          <span>
+            <a href="#" style="text-decoration:none">비밀번호 찾기</a>
+          </span>
+        </div>
+        <div class="input-container">
+          <input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
+        </div>
+        </form>
+      </div>  
+    </div>
+  </div>
+</div>
+
+
+      <div class="row content">
+        <div class="col-md-2 grayContent"></div>
+        <!-- content 박스 세개 중 첫번째 -->
+        
+        <div class="col-md-8 grayContent">
+          <h5>일반회원 가입</h5>
+          <p>세모에 오신것을 환영합니다.</p>
+          
+          <div>
+            <ul class="gallery">
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                <span class="text">약관동의</span>
+              </li>
+              
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                <span class="text">정보입력</span>
+              </li>
+        
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                <span class="text">가입완료</span>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="policy_all">
+            <input type="checkbox" name="agree" id="agree_all" />
+            <label for="agree_y">아래 약관에 모두 동의합니다.</label>
+
+            <br/>
+
+            <input type="checkbox" name="agree" id="agree" />
+            <label for="agree_y">세모 서비스 이용약관(필수)</label>
+
+            <div class="policy">
+              <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin">
+              </iframe>
+            </div>    
+
+            <br/>
+
+            <input type="checkbox" name="agree" id="agree" />
+            <label for="agree_y">개인정보 수집 및 이용에 대한 동의(필수)</label>
+
+            <br/>
+
+            <div class="policy">
+              <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/userPrivacyPolicy.html?v=637063192662958639#begin">
+              </iframe>
+            </div>  
+
+            <br/>
+
+            <input type="checkbox" name="agree" id="agree" />
+            <label for="agree_y">위치 기반 서비스 약관(필수)</label>
+
+            <br/>
+
+            <div class="policy">
+              <iframe width="100%" height="118px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin">
+              </iframe>
+            </div>
+
+            <div class="box on">
+              <input class="btn btn-blue sg-btn-lg" name="checkBtn" type="button" value="다음" onclick="printResult()" />
+            </div>
+          </div>
+
+        </div>
+        <!-- content 박스 세개 중 두번째 : 여기에 내용이 있음 -->
+
+        <div class="col-md-2 grayContent"></div>
+        <!-- content 박스 세개 중 세번째 -->
+    
+      </div>
+      <!-- row menu 끝부분 -->
+
+      <div class="row footer">
+        <div class="col-md-12 whitefooter">
+          <h1> Footer </h1>
+        </div>
+      </div>
+   
+
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script>
+      $("#agree_all").click(function() {
+        $("input[name=agree]:checkbox").prop("checked", "checked");
+      });
+
+    </script>
+  
+    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
 </html>

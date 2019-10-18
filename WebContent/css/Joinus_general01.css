@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/* content
+-----------------------------------------*/
+.grayContent{
+	background-color: #eee;
+	min-height: 1000px;
+	text-align: center;
+}
+
+
+/* content > circle
+-----------------------------------------*/
+.circle{
+	border-radius: 100px;
+}
+ul {
+	list-style: none;
+}
+
+.gallery{
+	height: 250px;
+}
+
+.gallery li{
+	width: 33%;
+	float: left;
+}
+
+.cover01 {
+	display: block;
+	width: auto;
+}
+
+.content img{
+	margin: 30px 75px 30px 75px;
+}
+
+
+/* content > policy
+-----------------------------------------*/
+.policy{
+	background-color: #fff;
+}
+
+
+/* content > box > button
+-----------------------------------------*/
+.btn-blue{
+	background-color: #00ccff;
+	height: 150px
+	width: 250px;
+	margin: 50px
+}
+
+/* footer
+-----------------------------------------*/
+
+.whitefooter{
+	text-align: center;
+	background-color: #fff;
+	height: 100px;
+
+}
