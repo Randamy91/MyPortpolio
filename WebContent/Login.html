@@ -33,7 +33,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog mymodal-size">
     <div class="modal-content mymodal-content">
-      <div class="modal-body">
+      <div class="modal-body mymodal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
         <form action="#" method="post">
@@ -53,6 +53,7 @@
 		    	<input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
 		    </div>
         </form>
+        <span class="adduser">아직 세모의 회원이 아니신가요?<a href="Joinus_select">회원가입</a></span>
       </div>  
     </div>
   </div>
@@ -62,7 +63,41 @@
 
 <!-- 컨텐츠 -->
 <div class="content">
+	<div class="container content-container">
+		<div class="content-top">
+			<h2>로그인</h2>
+			<p>세모에 오신것을 환영합니다.</p>
+		</div>
+		<div class="content-body">
+			<div class="loginDiv">
+				<div class="emailLogin">
+					<span>이메일 로그인</span>
+				</div>
+				<form action="#" method="post">
+		        	<div class="input-login">
+				        <input type="text" class="form-control input-info" id="email" name="email" placeholder="이메일"/>
+				    </div>
+				    <div class="input-login">
+				        <input type="password" class="form-control input-info" id="password" name="password" placeholder="패스워드"/>
+				    </div>
+				    <div class="forgot-pw">
+				    	<input type="checkbox"/>&nbsp;자동 로그인
+				    	<span>
+				    		<a href="#" style="text-decoration:none">비밀번호 찾기</a>
+				    	</span>
+				    </div>
+				    <div class="input-container">
+				    	<input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
+				    </div>
+        		</form>
+        		<button type="button" class="btn btn-primary">일반 회원가입</button>
+        		<button type="button" class="btn btn-primary">중개사 회원가입</button>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 <!-- 컨텐츠  END -->
 <!-- Footer -->
 <div class="footer">
@@ -74,8 +109,6 @@
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script>
-
+	
 </body>
 </html>

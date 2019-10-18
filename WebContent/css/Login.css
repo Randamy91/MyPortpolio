@@ -6,7 +6,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 100%;
+	
 }
 
 .logo {
@@ -30,7 +30,7 @@ html, body {
 }
 
 .content {
-	height: 100%;
+	height: 800px;
 	width: 100%;
 	background: #eee;
 }
@@ -77,6 +77,11 @@ html, body {
 .modal .forgot-pw span {
 	margin-left: 90px;
 }
+
+.mymodal-body .adduser {
+	margin-left: 55px;
+}
+
 .loginbtn {
 	margin-top: 30px;
 	display: inline-block;
@@ -84,3 +89,40 @@ html, body {
 }
 
 /*------------- 복사해서 사용하세요 END --------------------*/
+
+.content-container {
+	width: 1200px;
+	position:relative;
+}
+
+.content-top {
+	min-height: 150px;
+}
+
+.content-top h2 {
+	margin-top: 60px;
+	text-align: center;
+}
+
+.content-top p {
+	color: #555;
+	text-align: center;
+}
+
+.loginDiv {
+	width : 500px;
+	height : 500px;
+	background: white;
+	position: absolute;
+	border: 1px;
+	border-style: solid;
+	border-color: #ddd;
+	left: 50%;
+	margin-left: -250px;
+}
+
+.loginDiv .input-info {
+	width: 300px;
+}
+
+
