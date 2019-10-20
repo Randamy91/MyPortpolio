@@ -89,81 +89,26 @@ html, body {
 }
 
 /*------------- 복사해서 사용하세요 END --------------------*/
-.content-container {
-	width: 1200px;
-	position:relative;
-}
 
-.content-top {
-	min-height: 150px;
+.content-container {
+	position: relative;
 }
 
 .content-top h2 {
-	margin-top: 60px;
 	text-align: center;
+	margin-top: 60px;
 }
 
 .content-top p {
+	text-align: center;
 	color: #777;
-	text-align: center;
 }
 
-.loginDiv {
-	width : 400px;
-	height : 380px;
-	background: white;
-	position: absolute;
-	border: 1px;
-	border-style: solid;
-	border-color: #ddd;
-	left: 50%;
-	margin-left: -200px;
-}
-
-.emailLogin {
-	margin-top:30px;
-	text-align: center;
-	color: #aaa;
-}
-
-.loginDiv .input-login1 {
-	margin-top: 30px;	
-}
-
-.loginDiv .input-login2 {
-	margin-top:15px;
-}
-
-.loginDiv .input-info {
-	width: 300px;
-	margin-left: 49px;
-}
-
-.forgot-pw1 {
-	margin-left: 49px;
-}
-
-.forgot-pw1 span {
-	margin-left: 120px;
-}
-
-.input-container1 {
-	margin-top: 30px;
-	margin-left: 49px;
-}
-
-.loginbutton {
-	width: 300px;
-}
-
-.adduserBtn {
-	margin-top: 30px;
-	margin-left: 49px;
-}
-.adduserBtn button {
-	width: 130px;
-	margin-left: 12px;	
-	border-color:#337ab7
+.content-body {
+	background: #fff;
+	padding: 90px;
+	margin-top: 60px;
+	border: 1px solid #ddd
 }
 
 

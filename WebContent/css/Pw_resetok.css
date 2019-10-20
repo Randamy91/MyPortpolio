@@ -30,14 +30,14 @@ html, body {
 }
 
 .content {
-	height: 750px;
+	height:750px;
 	width: 100%;
 	background: #eee;
 }
 
 .footer {
 	width: 100%;
-	height: 320px;
+	height: 300px;
 	background: #333;
 }
 
@@ -89,84 +89,50 @@ html, body {
 }
 
 /*------------- 복사해서 사용하세요 END --------------------*/
-.content-container {
-	width: 1200px;
-	position:relative;
-}
 
-.content-top {
-	min-height: 150px;
+
+
+.content-container {
+	position: relative;
+	
 }
 
 .content-top h2 {
-	margin-top: 60px;
 	text-align: center;
+	margin-top: 60px;
 }
 
 .content-top p {
+	text-align: center;
 	color: #777;
-	text-align: center;
 }
 
-.loginDiv {
-	width : 400px;
-	height : 380px;
-	background: white;
+.content-body {
+	width:100%;
+	height: 300px;
+	background: #fff;
+	padding: 30px;
+	margin-top: 60px;
+	border: 1px solid #ddd;
+	text-align: center;	
+	display:table;
+}
+
+.content-body span {
+	display:table-cell;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.gologin {
+	width: 200px;
+	height: 50px;
 	position: absolute;
-	border: 1px;
-	border-style: solid;
-	border-color: #ddd;
 	left: 50%;
-	margin-left: -200px;
+	margin-left: -100px;
+	margin-top: 80px;
 }
-
-.emailLogin {
-	margin-top:30px;
-	text-align: center;
-	color: #aaa;
-}
-
-.loginDiv .input-login1 {
-	margin-top: 30px;	
-}
-
-.loginDiv .input-login2 {
-	margin-top:15px;
-}
-
-.loginDiv .input-info {
-	width: 300px;
-	margin-left: 49px;
-}
-
-.forgot-pw1 {
-	margin-left: 49px;
-}
-
-.forgot-pw1 span {
-	margin-left: 120px;
-}
-
-.input-container1 {
-	margin-top: 30px;
-	margin-left: 49px;
-}
-
-.loginbutton {
-	width: 300px;
-}
-
-.adduserBtn {
-	margin-top: 30px;
-	margin-left: 49px;
-}
-.adduserBtn button {
-	width: 130px;
-	margin-left: 12px;	
-	border-color:#337ab7
-}
-
-
 
 
 

@@ -77,11 +77,17 @@ html, body {
 .modal .forgot-pw span {
 	margin-left: 90px;
 }
+
+.mymodal-body .adduser {
+	margin-left: 55px;
+}
+
 .loginbtn {
 	margin-top: 30px;
 	display: inline-block;
 	width: 270px;
 }
+
 
 /*------------- 복사해서 사용하세요 END --------------------*/
 
