@@ -2,9 +2,12 @@
 
 /* content
 -----------------------------------------*/
+.title01 {
+	margin-top : 60px;
+}
 .grayContent{
 	background-color: #eee;
-	min-height: 1000px;
+	min-height: 1045px;
 	text-align: center;
 }
 
@@ -44,6 +47,48 @@ ul {
 }
 
 
+
+/* content > checkbox
+-----------------------------------------*/
+
+
+/* content > personal_info
+-----------------------------------------*/
+.personal_info{
+	background-color: #eee;
+	text-align : left;
+}
+
+th {
+	width : 200px;
+	height: 70px;
+}
+
+#user_name{
+	width: 400px;
+}
+
+#user_email{
+	width: 183px;
+}
+
+#email{
+	width: 183px;
+	height: 30px;
+}
+
+#user_pw{
+	width: 400px;
+}
+
+#user_pwconfirm{
+	width: 400px;
+}
+
+#user_hp{
+	width: 400px;
+}
+
 /* content > box > button
 -----------------------------------------*/
 .btn-blue{
@@ -53,12 +98,22 @@ ul {
 	margin: 50px
 }
 
+/* content > box1
+-----------------------------------------*/
+.box1{
+	text-align: center;
+	background-color: #fff;
+	width: 500px; height: 350px;
+	display: inline-block;
+	margin: auto;
+}
+
+.box1 img{
+	width: 300px;
+	height: 250px;
+}
+/* content > box > button
 /* footer
 -----------------------------------------*/
 
-.whitefooter{
-	text-align: center;
-	background-color: #fff;
-	height: 100px;
 
-}

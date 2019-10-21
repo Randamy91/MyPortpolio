@@ -9,7 +9,7 @@
 
     <!-- 부트스트랩 -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/Joinus_general01.css" rel="stylesheet">
+    <link href="css/Joinus_general.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/Main.css" />
     <link rel="stylesheet" type="text/css" href="css/Login.css" />
 
@@ -66,14 +66,14 @@
     </div>
   </div>
 </div>
-
-
+  
+  
       <div class="row content">
         <div class="col-md-2 grayContent"></div>
         <!-- content 박스 세개 중 첫번째 -->
         
-        <div class="col-md-8 grayContent">
-          <h5>일반회원 가입</h5>
+        <div class="col-md-8 grayContent" id="result01" style = "display: block;">
+          <h2 class="title01">일반회원 가입</h2>
           <p>세모에 오신것을 환영합니다.</p>
           
           <div>
@@ -95,14 +95,14 @@
             </ul>
           </div>
   
-          <div class="policy_all">
+          <form action="#" class="policy_all" method ="post" >
             <input type="checkbox" name="agree" id="agree_all" />
-            <label for="agree_y">아래 약관에 모두 동의합니다.</label>
+            <label for="check_box">아래 약관에 모두 동의합니다.</label>
 
             <br/>
 
             <input type="checkbox" name="agree" id="agree" />
-            <label for="agree_y">세모 서비스 이용약관(필수)</label>
+            <label for="check_box">세모 서비스 이용약관(필수)</label>
 
             <div class="policy">
               <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin">
@@ -112,7 +112,7 @@
             <br/>
 
             <input type="checkbox" name="agree" id="agree" />
-            <label for="agree_y">개인정보 수집 및 이용에 대한 동의(필수)</label>
+            <label for="check_box">개인정보 수집 및 이용에 대한 동의(필수)</label>
 
             <br/>
 
@@ -124,7 +124,7 @@
             <br/>
 
             <input type="checkbox" name="agree" id="agree" />
-            <label for="agree_y">위치 기반 서비스 약관(필수)</label>
+            <label for="check_box">위치 기반 서비스 약관(필수)</label>
 
             <br/>
 
@@ -134,12 +134,142 @@
             </div>
 
             <div class="box on">
-              <input class="btn btn-blue sg-btn-lg" name="checkBtn" type="button" value="다음" onclick="printResult()" />
+              <input class="btn btn-blue sg-btn-lg" name="checkBtn" type="button" value="다음" onclick="page01()" />
             </div>
-          </div>
+          </form>
 
         </div>
-        <!-- content 박스 세개 중 두번째 : 여기에 내용이 있음 -->
+        <!-- content 박스 세개 중 두번째 - 1 : 여기에 내용이 있음 -->
+
+         <div class="col-md-8 grayContent" id="result02" style = "display: none;">
+          <h2 class="title01">일반회원 가입</h2>
+          <p>세모에 오신것을 환영합니다.</p>
+
+          <div>
+            <ul class="gallery">
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                <span class="text">약관동의</span>
+              </li>
+              
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                <span class="text">정보입력</span>
+              </li>
+        
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                <span class="text">가입완료</span>
+              </li>
+            </ul>
+          </div>
+  
+          <form action ="#" class="personal_info" method ="post">
+            <table>
+                <div> 개인정보 입력 </div>
+      
+              <tbody>
+                <tr>
+                  <th>
+                    <label for="user_name">이름</label>
+                  </th>
+                  <td> 
+                    <input type="text" name="user_name" id="user_name" maxlength="20" placeholder="이름을 입력해주세요">
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label for="user_email">이메일</label>
+                  </th>
+                  <td>
+                    <input type="text" name="user_email" id="user_email" maxlength="20" placeholder="이메일을 입력해주세요">
+                    &nbsp;@&nbsp;
+                    <select name="email" id="email">
+                      <option>----- 선택하세요 -----</option>
+                      <option value="naver">naver.com</option>
+                      <option value="gmail">gmail.com</option>
+                      <option value="daum">daum.net</option>
+                    </select>
+
+                    <br/>
+
+                    <input type="checkbox" name="agree" id="agree_y" value="Y" />
+                    <label for="agree_y">직접입력</label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label for="user_pw">비밀번호</label>
+                  </th>
+                  <td>  
+                    <input type="password" name="user_pw" id="user_pw" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                  </td>  
+                </tr>
+                <tr>
+                  <th>    
+                    <label for="user_pwconfirm">비밀번호 확인</label>
+                  </th>
+                  <td>  
+                    <input type="password" name="user_pwconfirm" id="user_pwconfirm" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                  </td>  
+                </tr>
+                <tr>
+                  <th>  
+                    <label for="user_hp">휴대폰 번호</label>
+                  </th>
+                  <td>
+                    <input type="text" name="user_hp" id="user_hp" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
+                  </td>    
+               </tr>  
+              </tbody>
+            </table>
+
+          </form>
+
+              <div class="general02_btn">
+                <input class="btn btn-blue sg-btn-lg" name="checkBtn" type="button" value="입력완료" onclick="page02()" />
+              </div>
+
+          </div>
+          <!-- content 박스 세개 중 두번째 -2 : 여기에 내용이 있음 -->
+
+
+          <div class="col-md-8 grayContent" id="result03" style = "display: none;">
+          <h2 class="title01">일반회원 가입</h2>
+          <p>세모에 오신것을 환영합니다.</p>
+
+          <div>
+            <ul class="gallery">
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                <span class="text">약관동의</span>
+              </li>
+              
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                <span class="text">정보입력</span>
+              </li>
+        
+              <li class="cover01">
+                <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                <span class="text">가입완료</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="box1">
+            <h6>회원가입이 완료되었습니다.</h6>
+            <img src="img/noname1.png"/>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-blue" onclick="location.href='main.html'">바로가기</button>
+          </div>
+        
+        </div>
+        <!-- content 박스 세개 중 두번째 -3: 여기에 내용이 있음 -->
+
+        
 
         <div class="col-md-2 grayContent"></div>
         <!-- content 박스 세개 중 세번째 -->
@@ -149,22 +279,54 @@
 
       <div class="row footer">
         <div class="col-md-12 whitefooter">
-          <h1> Footer </h1>
+          <h1></h1>
         </div>
       </div>
    
-
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
     <script>
-      $("#agree_all").click(function() {
+
+       $("#agree_all").click(function() {
         $("input[name=agree]:checkbox").prop("checked", "checked");
       });
+     
+      
+     function page01(){
+      var rst = document.getElementById("result01");
+      if(rst.style.display=='block'){
+        rst.style.display = 'none';
+      }
+
+      var rst = document.getElementById("result02");
+      if(rst.style.display=='none'){
+        rst.style.display = 'block';
+      }
+     }
+
+     function page02(){
+      var rst = document.getElementById("result02");
+      if(rst.style.display=='block'){
+        rst.style.display = 'none';
+      }
+
+      var rst = document.getElementById("result03");
+      if(rst.style.display=='none'){
+        rst.style.display = 'block';
+      }
+     }
+
+
+    
 
     </script>
+
+
   
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
+
+
 </html>
