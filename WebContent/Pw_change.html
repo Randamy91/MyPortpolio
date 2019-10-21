@@ -27,7 +27,7 @@
 				style="text-decoration: none">상권분석</a>
 		</p>
 		<p class="navbar-text navbar-right">
-			<a href="Joinus_select" class="navbar-link"
+			<a href="Joinus_select.html" class="navbar-link"
 				style="text-decoration: none">회원가입</a>
 		</p>
 		<p class="navbar-text navbar-right">
@@ -96,7 +96,7 @@
 								이메일
 							</th>
 							<td class="td">
-								<input type="text" class="form-control email1"/>
+								<input type="text" class="form-control email1" name="email"/>
 								<span class="alertEmail1"></span>
 							</td>
 						</tr>
@@ -105,7 +105,7 @@
 								<span>이메일 확인</span>
 							</th>
 							<td class="td">
-								<input type="text" class="form-control email2"/>
+								<input type="text" class="form-control email2" name="email2"/>
 								<span class="alertEmail2"></span>
 							</td>
 						</tr>
@@ -129,12 +129,13 @@
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 	<script>
 	$(function(){
-		
+	
+	<!--유효성 검사 -->	
 		var email1 = $('.email1');
 		var email2 = $('.email2');
 		var alertEmail1 = $('.alertEmail1');
 		var alertEmail2 = $('.alertEmail2');
-		//이메일 형식 유효성 검사
+		
 		email1.focusout(function(){
 			
 			var email = email1.val();
