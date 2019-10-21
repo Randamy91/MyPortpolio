@@ -5,10 +5,493 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>세모- 상가 중개사이트</title>
+<title>세모- 매물 등록</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/Maemul_register.css" />
+ <link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />
+
 </head>
 <body>
+	<!-- 상단 메뉴 바 -->
+	<nav class="navbar menu_navbar bg-white">
+		<!--<div class="navbar-header menu_header">-->
+		<a class="navbar-brand logo" href="Main.html"> <img alt="Brand"
+			src="img/main_logo.jpg" width="65px" height="40px">
+		</a>
+		<p class="navbar-text navbar-left">
+			<a href="Main.html" class="navbar-link" style="text-decoration: none">상가</a>
+		</p>
+		<p class="navbar-text navbar-left">
+			<a href="Bigdata.html" class="navbar-link"
+				style="text-decoration: none">상권분석</a>
+		</p>
+		<p class="navbar-text navbar-right">
+			<a href="Joinus_select.html" class="navbar-link"
+				style="text-decoration: none">회원가입</a>
+		</p>
+		<p class="navbar-text navbar-right">
+			<a href="#myModal" data-toggle="modal" class="navbar-link"
+				style="text-decoration: none">로그인</a>
+		</p>
+	</nav>
 
+	<!-- 상단 메뉴 바  -->
+
+
+	<!--  로그인 Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog mymodal-size">
+			<div class="modal-content mymodal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+					<form action="#" method="post">
+						<div class="input-container">
+							<input type="text" class="form-control input-info" id="email"
+								name="email" placeholder="이메일" />
+						</div>
+						<div class="input-container">
+							<input type="password" class="form-control input-info"
+								id="password" name="password" placeholder="패스워드" />
+						</div>
+						<div class="forgot-pw">
+							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
+								style="text-decoration: none">비밀번호 찾기</a>
+							</span>
+						</div>
+						<div class="input-container">
+							<input type="submit" class="btn btn-primary loginbtn"
+								data-dismiss="modal" value="이메일 로그인" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--page title-->
+	<div class="content">
+		<div class="container">
+			<h1 class="text-center">상가 매물등록</h1>
+			<p class="text-muted">▶등록된 매물은 60일간 노출되며, 매물 관리 규정에 위배되거나 신고된 매물은
+				비공개 혹은 삭제 처리됩니다.</p>
+			<!--//page title-->
+			<!--main section 시작-->
+			<div class="main_section">
+				<form id="registerform" name="registerform" action="#" target="post"
+					role="form">
+					<!--위치정보-->
+					<table class="info_article_one">
+						<caption class="text-center">위치 정보</caption>
+						<tbody>
+							<tr>
+								<th>주소</th>
+								<td>
+									<div class="address_info">
+										<div class="button">
+											<input type="text" name="sample5_address" id="sample5_address"> <input
+												class="btn btn-primary" type="button"
+												onclick="sample5_execDaumPostcode()" value="주소 검색">
+										</div>
+										<div class="detailed_form">
+											<textarea class="form-control"
+												style="width: 400px; height: 130px; margin-top: 20px;"
+												placeholder="상세주소를 입력하세요."></textarea>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="map_box">
+										<div id="map"
+											style="width: 400px; height: 200px; display: none; position: absolute; left: 1060px;"></div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<!--//위치정보-->
+					<!--건물 정보-->
+					<table class="info_article_two">
+						<caption class="text-center">건물 정보</caption>
+						<tbody>
+							<tr>
+								<th>건물 정보</th>
+								<td>
+									<div class="maumul_info">
+										<!--공개여부 버튼-->
+										<div class="toggle-radio">
+											<input type="radio" name="rdo" id="yes" checked><input
+												type="radio" name="rdo" id="no">
+											<div class="switch">
+												<label for="yes">공개</label> <label for="no">비공개</label> <span></span>
+											</div>
+										</div>
+										<!--공개여부 버튼 끝-->
+										<td rowspan="3">
+											<div class="maumul_photobox" style="position: relative;"></div>
+										</td>
+										<tr>
+											<th>건물명</th>
+											<td><input type="text" class="form-control"
+												name="maumul_name" placeholder="건물명을 입력하세요."
+												maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 400px;">
+											</td>
+										</tr>
+										<tr>
+											<th>사진</th>
+                     						 <td><input type="file" accept="image/jpg"></td>
+										</tr>
+									</div>
+									</td>
+							</tr>
+						</tbody>
+					</table>
+					<!--//건물 정보-->
+					<!--거래 정보-->
+					<table class="info_article_three">
+						<caption class="text-center">거래 정보</caption>
+						<tbody>
+							<tr>
+								<th>종류 선택</th>
+								<td>
+									<div class="deal_info">
+										<button id="button_rent" type="button" class="btn btn-primary">월세 추가</button>
+										<button id="button_buy" type="button" class="btn btn-primary">매매 추가</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!--//거래 정보-->
+					<!--기본 정보-->
+					<table class="info_article_four">
+						<caption class="text-center">기본 정보</caption>
+						<tbody>
+							<tr>
+								<th>해당 층수</th>
+								<td>
+									<div class="number_floors" style="display: inline-block;">
+										<select class="form-control" id="numberfloors" name="numberfloors" style="width: 110px;">
+											<option value="1">지하3층</option>
+											<option value="1">지하2층</option>
+											<option value="1">지하1층</option>
+											<option value="1">1층</option>
+											<option value="2">2층</option>
+											<option value="3">3층</option>
+											<option value="4">4층</option>
+											<option value="5">5층</option>
+											<option value="6">6층</option>
+											<option value="7">7층</option>
+											<option value="8">8층</option>
+											<option value="9">9층</option>
+											<option value="10">10층</option>
+											<option value="11">11층</option>
+											<option value="12">12층</option>
+											<option value="13">13층</option>
+											<option value="14">14층</option>
+											<option value="15">15층</option>
+											<option value="16">16층</option>
+											<option value="17">17층</option>
+											<option value="18">18층</option>
+											<option value="19">19층</option>
+											<option value="20">20층</option>
+											<option value="21">21층</option>
+											<option value="22">22층</option>
+											<option value="23">23층</option>
+											<option value="24">24층</option>
+											<option value="25">25층</option>
+											<option value="26">26층</option>
+											<option value="27">27층</option>
+											<option value="28">28층</option>
+											<option value="29">29층</option>
+											<option value="30">30층</option>
+										</select>
+									</div>
+							<div class="form-check" style="display: inline;">
+ 				 				<input type="checkbox" class="form-check-input" name="select_check" id="select_check" checked>
+ 							 <label class="form-check-label" for="select_check">복층(연층)</label>
+								</div>				
+						<div class="form-check"  style="display: inline; margin-right:20px;">
+ 					 		<input type="checkbox" class="form-check-input" name="select_check" id="select_check2" checked>
+ 							 <label class="form-check-label" for="select_check2">건물 전체</label>
+							</div>
+							</td>
+							<th>계약면적</th>
+								<td>	
+								    <div class="maemul_size" style="display: inline-flex;">
+									<input type="text" class="form-control" id="maemulsize" name="maemulsize" style="width: 88px;"><span style="padding-top: 10px;">평</span></div>
+									<div class="maemul_size" style="display: inline-flex;">
+									<input type="text" class="form-control" id="maemulsize2" name="maemulsize2" style="margin-left: 20px; width: 88px;"><span style="padding-top: 10px">m</span></div>
+							    </td>
+							    <tr>
+								<th>건물 층수</th>
+								<td>
+									<div class="maemul_floors" style="width: 110px;">
+										<select class="form-control" id="maemulfloors" name="maemulfloors">
+											<option value="1">1층</option>
+											<option value="2">2층</option>
+											<option value="3">3층</option>
+											<option value="4">4층</option>
+											<option value="5">5층</option>
+											<option value="6">6층</option>
+											<option value="7">7층</option>
+											<option value="8">8층</option>
+											<option value="9">9층</option>
+											<option value="10">10층</option>
+											<option value="11">11층</option>
+											<option value="12">12층</option>
+											<option value="13">13층</option>
+											<option value="14">14층</option>
+											<option value="15">15층</option>
+											<option value="16">16층</option>
+											<option value="17">17층</option>
+											<option value="18">18층</option>
+											<option value="19">19층</option>
+											<option value="20">20층</option>
+											<option value="21">21층</option>
+											<option value="22">22층</option>
+											<option value="23">23층</option>
+											<option value="24">24층</option>
+											<option value="25">25층</option>
+											<option value="26">26층</option>
+											<option value="27">27층</option>
+											<option value="28">28층</option>
+											<option value="29">29층</option>
+											<option value="30">30층</option>
+										</select>
+									</div>
+										<th>전용 면적</th>
+								<td>	
+								    <div class="maemul_size2" style="display: inline-flex;">
+									<input type="text" class="form-control" id="maemulsize1" name="maemulsize1"><span style="padding-top: 10px;">평</span></div>
+									<div class="maemul_size2" style="display: inline-flex;">
+									<input type="text" class="form-control" id="maemulsize3" name="maemulsize1" ><span style="padding-top: 10px">m</span></div>
+							    </td>
+							</tr>
+							<tr>
+								<th>난방 종류</th>
+								<td>
+									<div class="heat_info" style="width: 110px;">
+										<select class="form-control" id="heatform" name="heatform">
+											<option value="난방">개별난방</option>
+											<option value="난방">지역난방</option>
+											<option value="난방">중앙난방</option>
+											<option value="난방">개별냉난방</option>
+											<option value="난방">지역냉난방</option>
+											<option value="난방">중앙냉난방</option>
+											<option value="난방">없음</option>
+										</select>
+									</div>
+								</td>
+									<th>화장실</th>
+									<td>
+										<div class="toilet_form" style="width: 140px;">
+											<select class="form-control" id="toiletform" name="toiletform">
+											<option value="화장실">외부/남녀구분</option>
+											<option value="화장실">외부/남녀혼용</option>
+											<option value="화장실">내부/남녀구분</option>
+											<option value="화장실">내부/남녀혼용</option>
+											<option value="화장실">없음</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>준공년도</th>
+								<td>
+									<div class="year_form" style="display: inline-block; margin: 20px; width: 110px;">
+											<select class="form-control" id="yearform" name="yearform">
+											<option value="연도">정보없음</option>
+											<option value="연도">1970년도</option>
+											<option value="연도">1980년도</option>
+											<option value="연도">1990년도</option>
+											<option value="연도">2000년</option>
+											<option value="연도">2001년</option>
+											<option value="연도">2002년</option>
+											<option value="연도">2003년</option>
+											<option value="연도">2004년</option>
+											<option value="연도">2005년</option>
+											<option value="연도">2006년</option>
+											<option value="연도">2007년</option>
+											<option value="연도">2008년</option>
+											<option value="연도">2009년</option>
+											<option value="연도">2010년</option>
+											<option value="연도">2011년</option>
+											<option value="연도">2012년</option>
+											<option value="연도">2013년</option>
+											<option value="연도">2014년</option>
+											<option value="연도">2015년</option>
+											<option value="연도">2016년</option>
+											<option value="연도">2017년</option>
+											<option value="연도">2018년</option>
+											<option value="연도">2019년</option>
+										</select>
+										</div>			
+											<div class="month_form" style="display: inline-block; width: 110px;" >
+											<select class="form-control" id="monthform" name="monthform">
+											<option value="월">정보없음</option>
+											<option value="월">1월</option>
+											<option value="월">2월</option>
+											<option value="월">3월</option>
+											<option value="월">4월</option>
+											<option value="월">5월</option>
+											<option value="월">6월</option>
+											<option value="월">7월</option>
+											<option value="월">8월</option>
+											<option value="월">9월</option>
+											<option value="월">10월</option>
+											<option value="월">11월</option>
+											<option value="월">12월</option>
+										</select>
+									</div>
+									</td>	
+							    </tr>
+							    <tr>
+							    	<th>입주가능일</th>
+							    	<td>
+							    		<div class="movein_day">
+								<label class="now_btn">
+									 <input type="radio" name="nowbtn" id="nowbtn" value="option1">즉시 입주
+									</label>
+								<label class="with_btn">
+									  <input type="radio" name="withbtn" id="withbtn" value="option2" checked="checked">협의 가능
+									</label>
+									        <input type="text" id="datepicker" readonly />
+									        <a href="#" id="show-cal"><img src="img/calendar.png" height="20"></a>
+							    		</div>
+							    	</td>
+							    </tr>
+						</tbody>
+					</table>
+					<!--//기본정보-->
+					<!--추가 정보-->
+					 <table>
+						<caption class="text-center">추가 정보</caption>
+							   <tbody>
+							     	<tr>
+							    	   <th>권리금</th>
+							    		<td></td>
+							    		<th>관리비</th>
+							    		<td></td>
+							    		<th>주차</th>
+							    		<td></td>
+							    		<th>엘리베이터</th>
+							    		<td></td>
+							    		</tr>
+							    	</tbody>
+							    </table>
+					<!--//추가정보-->
+					<!--상세설명-->
+					<table>
+						<caption class="text-center">상세설명</caption>
+						<tbody>
+							<tr>
+								<th>제목</th>
+								<td></td>
+								<th>상세설명</th>
+								<td></td>
+								<th>비공개 메모</th>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<!--//상세설명-->
+					<!--사진 등록-->
+					<table>
+						<caption class="text-center">사진 등록</caption>
+							<tbody>
+								<tr>
+									<th>일반 사진</th>
+									<td></td>
+								</tr>
+							</tbody>
+					</table>
+					<!--//사진 등록-->
+				</form>
+			</div>
+			<!--//main section-->
+
+		</div>
+		<!-- Footer -->
+<div class="footer"></div>
+		<!-- Footer END -->
+	</div>
+<!--datepicker 시작-->
+ <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="plugins/datepicker/datepicker.min.js"></script>
+    <script src="plugins/datepicker/i18n/datepicker.ko-KR.js"></script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({
+                autoHide: true,         // 날짜 선택 후 자동 숨김 (true/false)
+                format: 'yyyy-mm-dd',   // 날짜 형식
+                language: 'ko-KR',      // 언어
+                weekStart: 0,           // 시작요일(0=일요일~6=토요일)
+                trigger: '#show-cal'    // 클릭시 달력을 표시할 요소의 id
+            });
+        });
+    </script>
+<!--//datepicker-->
+
+	<!-- 카카오 map -->
+		<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95f002774aca91da5371858ef1ee4891&libraries=services"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+			level : 5
+		// 지도의 확대 레벨
+		};
+
+		//지도를 미리 생성
+		var map = new daum.maps.Map(mapContainer, mapOption);
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//마커를 미리 생성
+		var marker = new daum.maps.Marker({
+			position : new daum.maps.LatLng(37.537187, 127.005476),
+			map : map
+		});
+
+		function sample5_execDaumPostcode() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					var addr = data.address; // 최종 주소 변수
+
+					// 주소 정보를 해당 필드에 넣는다.
+					document.getElementById("sample5_address").value = addr;
+					// 주소로 상세 정보를 검색
+					geocoder.addressSearch(data.address, function(results,
+							status) {
+						// 정상적으로 검색이 완료됐으면
+						if (status === daum.maps.services.Status.OK) {
+
+							var result = results[0]; //첫번째 결과의 값을 활용
+
+							// 해당 주소에 대한 좌표를 받아서
+							var coords = new daum.maps.LatLng(result.y,
+									result.x);
+							// 지도를 보여준다.
+							mapContainer.style.display = "block";
+							map.relayout();
+							// 지도 중심을 변경한다.
+							map.setCenter(coords);
+							// 마커를 결과값으로 받은 위치로 옮긴다.
+							marker.setPosition(coords)
+						}
+					});
+				}
+			}).open();
+		}
+	</script>
+	<!--//카카오 map-->
 
 </body>
 </html>
