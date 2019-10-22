@@ -8,7 +8,7 @@
 <title>세모- 매물 등록</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/Maemul_register.css" />
- <link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />
+<!-- <link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />-->
 
 </head>
 <body>
@@ -269,7 +269,7 @@
 								    <div class="maemul_size2" style="display: inline-flex;">
 									<input type="text" class="form-control" id="maemulsize1" name="maemulsize1"><span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size2" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize3" name="maemulsize1" ><span style="padding-top: 10px">m</span></div>
+									<input type="text" class="form-control" id="maemulsize3" name="maemulsize3" ><span style="padding-top: 10px">m</span></div>
 							    </td>
 							</tr>
 							<tr>
@@ -360,8 +360,8 @@
 								<label class="with_btn">
 									  <input type="radio" name="withbtn" id="withbtn" value="option2" checked="checked">협의 가능
 									</label>
-									        <input type="text" id="datepicker" readonly />
-									        <a href="#" id="show-cal"><img src="img/calendar.png" height="20"></a>
+									    <!--     <input type="text" id="datepicker" readonly />
+									        <a href="#" id="show-cal"><img src="img/calendar.png" height="20"></a> -->
 							    		</div>
 							    	</td>
 							    </tr>
@@ -391,12 +391,27 @@
 						<tbody>
 							<tr>
 								<th>제목</th>
-								<td></td>
+								<td>
+									<input type="text" class="form-control"	name="explain_name" id="explain_name" placeholder="제목을 입력하세요."
+									maxlength="20글자 이하로 입력하세요." data-val-length-max="20" style="width: 800px; margin: 20px;">
+								</td>
+								<tr>
 								<th>상세설명</th>
-								<td></td>
-								<th>비공개 메모</th>
-								<td></td>
+								<td>
+									<div class="detailed_explain">
+											<textarea class="form-control" style="width: 800px; height: 300px; margin: 20px;"
+											placeholder="상세설명을 입력하세요."></textarea>
+										</div>
+								</td>
 							</tr>
+							<tr>
+								<th>비공개 메모</th>
+								<td>
+									<input type="text" class="form-control"	name="notopen_memo" id="notopen_memo" placeholder="등록자만 확인할 수 있는 메모 영역입니다."
+									maxlength="30글자 이하로 입력하세요." data-val-length-max="30" style="width: 800px; margin: 20px;">
+								</td>
+							</tr>
+						
 						</tbody>
 					</table>
 					<!--//상세설명-->
@@ -422,75 +437,48 @@
 	</div>
 <!--datepicker 시작-->
  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="plugins/datepicker/datepicker.min.js"></script>
-    <script src="plugins/datepicker/i18n/datepicker.ko-KR.js"></script>
+   <!--  <script src="plugins/datepicker/datepicker.min.js"></script>
+    <script src="plugins/datepicker/i18n/datepicker.ko-KR.js"></script> -->
     <script>
         $(function() {
-            $("#datepicker").datepicker({
+           /* $("#datepicker").datepicker({
                 autoHide: true,         // 날짜 선택 후 자동 숨김 (true/false)
                 format: 'yyyy-mm-dd',   // 날짜 형식
                 language: 'ko-KR',      // 언어
                 weekStart: 0,           // 시작요일(0=일요일~6=토요일)
                 trigger: '#show-cal'    // 클릭시 달력을 표시할 요소의 id
+            }); */
+            /**평수 자동변환 로직*/
+            $("#maemulsize").keyup(function(){
+
+                // 2. #out 공간에 #data의 내용이 출력된다.
+
+                
+                $("#maemulsize2").val($("#maemulsize").val() * 3.3);
+
+                // #out의 위치에 text로 데이터를 받는다.(setter)
+
+                // 들어가는 데이터는 #data의 값(.val())이다. (getter)
+
+                // 메서드 괄호 안에 아무것도 없으면 getter, 파라미터가 있으면 setter이다.
+
+             });
+            $("#maemulsize1").keyup(function(){
+            	$("#maemulsize3").val($("#maemulsize1").val() * 3.3);	
             });
+            $("#maemulsize2").keyup(function(){
+            	$("#maemulsize").val($("#maemulsize2").val()  );	
+            });
+            $("#maemulsize3").keyup(function(){
+            	$("#maemulsize1").val($("#maemulsize3").val() );	
+            });
+            /**평수 자동변환 로직 끝*/
         });
     </script>
 <!--//datepicker-->
 
 	<!-- 카카오 map -->
-		<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95f002774aca91da5371858ef1ee4891&libraries=services"></script>
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-		mapOption = {
-			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-			level : 5
-		// 지도의 확대 레벨
-		};
-
-		//지도를 미리 생성
-		var map = new daum.maps.Map(mapContainer, mapOption);
-		//주소-좌표 변환 객체를 생성
-		var geocoder = new daum.maps.services.Geocoder();
-		//마커를 미리 생성
-		var marker = new daum.maps.Marker({
-			position : new daum.maps.LatLng(37.537187, 127.005476),
-			map : map
-		});
-
-		function sample5_execDaumPostcode() {
-			new daum.Postcode({
-				oncomplete : function(data) {
-					var addr = data.address; // 최종 주소 변수
-
-					// 주소 정보를 해당 필드에 넣는다.
-					document.getElementById("sample5_address").value = addr;
-					// 주소로 상세 정보를 검색
-					geocoder.addressSearch(data.address, function(results,
-							status) {
-						// 정상적으로 검색이 완료됐으면
-						if (status === daum.maps.services.Status.OK) {
-
-							var result = results[0]; //첫번째 결과의 값을 활용
-
-							// 해당 주소에 대한 좌표를 받아서
-							var coords = new daum.maps.LatLng(result.y,
-									result.x);
-							// 지도를 보여준다.
-							mapContainer.style.display = "block";
-							map.relayout();
-							// 지도 중심을 변경한다.
-							map.setCenter(coords);
-							// 마커를 결과값으로 받은 위치로 옮긴다.
-							marker.setPosition(coords)
-						}
-					});
-				}
-			}).open();
-		}
-	</script>
+	
 	<!--//카카오 map-->
 
 </body>
