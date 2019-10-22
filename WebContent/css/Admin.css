@@ -30,7 +30,7 @@ html, body {
 }
 
 .content {
-	height: 750px;
+	height: 1200px;
 	width: 100%;
 	background: #eee;
 }
@@ -106,11 +106,21 @@ html, body {
 
 .content-body {
 	background: #fff;
+	heigth: 800px;
 	padding: 90px;
 	margin-top: 60px;
 	border: 1px solid #ddd
 }
 
+.paginavi {
+	display: block;
+	text-align: center;
+}
+
+.paginavi > li > a {
+	float: none;
+	margin-left: -5px;
+}
 
 
 
