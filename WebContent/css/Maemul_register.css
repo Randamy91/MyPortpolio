@@ -85,6 +85,10 @@ html, body {
   display: inline-block;
   width: 270px;
 }
+/**영역 지정*/
+.container {
+	padding-bottom: 120px;
+}
 
 /*title 스타일 지정*/
 .content h1 {
@@ -139,6 +143,7 @@ html, body {
   height: 200px;
   border: none;
   background-color: #EAEAEA;
+  
   
 }
 /**두번째 article-건물정보*/
@@ -271,7 +276,42 @@ html, body {
     margin-left: 20px;
   }
 
+.movein_day {
+	margin: 15px 20px;
+}
+
+/**약관 체크 박스 스타일 지정*/
+input[type="checkbox"] {
+    display:none;
+}
+
+input[type="checkbox"] + label span {
+
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 2px 10px 0 0;
+    vertical-align: middle;
+    background: url(../img/checkbox.svg) left top no-repeat;
+    cursor: pointer;
+    background-size: cover;
+}
+
+
+input[type="checkbox"]:checked + label span {
+
+    background:url(../img/checkbox.svg)  -26px top no-repeat;
+    background-size: cover;
+}
+
 /**datepicker 글꼴 설정*/
 .datepicker-container { font-family: '나눔고딕' }
 
 input, img {vertical-align: middle;}
+
+/**매물등록 버튼*/
+
+.register_btn {
+	text-align: center;
+	margin-top: 120px;
+}

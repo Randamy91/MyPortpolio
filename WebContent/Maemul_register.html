@@ -8,7 +8,8 @@
 <title>세모- 매물 등록</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/Maemul_register.css" />
-<!-- <link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />-->
+<link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />
+<link rel="stylesheet" href="plugins/sweetalert/sweetalert2.min.css" />
 
 </head>
 <body>
@@ -92,7 +93,7 @@
 								<td>
 									<div class="address_info">
 										<div class="button">
-											<input type="text" name="sample5_address" id="sample5_address"> <input
+											<input type="text" name="sample5_address" id="sample5_address" readonly> <input
 												class="btn btn-primary" type="button"
 												onclick="sample5_execDaumPostcode()" value="주소 검색">
 										</div>
@@ -106,7 +107,7 @@
 								<td>
 									<div class="map_box">
 										<div id="map"
-											style="width: 400px; height: 200px; display: none; position: absolute; left: 1060px;"></div>
+											style="width: 400px; height: 200px; display: none; position: absolute;"></div>
 									</div>
 								</td>
 							</tr>
@@ -145,8 +146,8 @@
 											<th>사진</th>
                      						 <td><input type="file" accept="image/jpg"></td>
 										</tr>
-									</div>
-									</td>
+									</div>	
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -159,8 +160,8 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">
-										<button id="button_rent" type="button" class="btn btn-primary">월세 추가</button>
-										<button id="button_buy" type="button" class="btn btn-primary">매매 추가</button>
+										<input type="button" id="button_rent" name="button_rent" class="btn btn-primary" value="월세추가">
+										<input type="button" id="button_buy" name="button_buy" class="btn btn-primary" value="매매추가">
 									</div>
 								</td>
 							</tr>
@@ -306,29 +307,29 @@
 									<div class="year_form" style="display: inline-block; margin: 20px; width: 110px;">
 											<select class="form-control" id="yearform" name="yearform">
 											<option value="연도">정보없음</option>
-											<option value="연도">1970년도</option>
-											<option value="연도">1980년도</option>
-											<option value="연도">1990년도</option>
-											<option value="연도">2000년</option>
-											<option value="연도">2001년</option>
-											<option value="연도">2002년</option>
-											<option value="연도">2003년</option>
-											<option value="연도">2004년</option>
-											<option value="연도">2005년</option>
-											<option value="연도">2006년</option>
-											<option value="연도">2007년</option>
-											<option value="연도">2008년</option>
-											<option value="연도">2009년</option>
-											<option value="연도">2010년</option>
-											<option value="연도">2011년</option>
-											<option value="연도">2012년</option>
-											<option value="연도">2013년</option>
-											<option value="연도">2014년</option>
-											<option value="연도">2015년</option>
+											<option value="연도">2019년도</option>
+											<option value="연도">2018년도</option>
+											<option value="연도">2017년도</option>
 											<option value="연도">2016년</option>
-											<option value="연도">2017년</option>
-											<option value="연도">2018년</option>
-											<option value="연도">2019년</option>
+											<option value="연도">2015년</option>
+											<option value="연도">2014년</option>
+											<option value="연도">2013년</option>
+											<option value="연도">2012년</option>
+											<option value="연도">2011년</option>
+											<option value="연도">2010년</option>
+											<option value="연도">2009년</option>
+											<option value="연도">2008년</option>
+											<option value="연도">2007년</option>
+											<option value="연도">2006년</option>
+											<option value="연도">2005년</option>
+											<option value="연도">2004년</option>
+											<option value="연도">2003년</option>
+											<option value="연도">2002년</option>
+											<option value="연도">2001년</option>
+											<option value="연도">2000년</option>
+											<option value="연도">1990년도</option>
+											<option value="연도">1980년도</option>
+											<option value="연도">1970년도</option>
 										</select>
 										</div>			
 											<div class="month_form" style="display: inline-block; width: 110px;" >
@@ -352,16 +353,12 @@
 							    </tr>
 							    <tr>
 							    	<th>입주가능일</th>
-							    	<td>
-							    		<div class="movein_day">
-								<label class="now_btn">
-									 <input type="radio" name="nowbtn" id="nowbtn" value="option1">즉시 입주
-									</label>
-								<label class="with_btn">
-									  <input type="radio" name="withbtn" id="withbtn" value="option2" checked="checked">협의 가능
-									</label>
-									    <!--     <input type="text" id="datepicker" readonly />
-									        <a href="#" id="show-cal"><img src="img/calendar.png" height="20"></a> -->
+							    	<td colspan="3">
+							   <div class="movein_day">
+									 <input type="button" name="nowbtn" id="nowbtn" value="즉시입주" class="btn btn-default">
+									  <input type="button" name="withbtn" id="withbtn" value="협의가능" class="btn btn-default" checked="checked">
+									   <input type="text" id="datepicker" readonly />
+									        <a href="#" id="show-cal"><img src="img/calendar.png" height="20"></a> 
 							    		</div>
 							    	</td>
 							    </tr>
@@ -374,13 +371,38 @@
 							   <tbody>
 							     	<tr>
 							    	   <th>권리금</th>
-							    		<td></td>
+							    		<td>
+							    		<div class="foregift_btn" style="margin : 15px 20px;">
+							    		 <input type="button" name="foregiftbtn" id="foregiftbtn" value="있음" class="btn btn-default">
+							    		  <input type="button" name="foregiftbtn1" id="foregiftbtn1" value="없음" class="btn btn-default">
+							    		</div>
+							    		</td>
+							    		<tr>
 							    		<th>관리비</th>
-							    		<td></td>
+							    		<td>
+							    		<div class="manage_btn" style="margin : 15px 20px;">
+							    		 <input type="button" name="managebtn" id="managebtn" value="있음" class="btn btn-default">
+							    		  <input type="button" name="manage1" id="manage1" value="없음" class="btn btn-default">
+							    		</div>
+							    		</td>
+							    		</tr>
+							    		<tr>
 							    		<th>주차</th>
-							    		<td></td>
+							    		<td>
+							    		<div class="park_btn" style="margin : 15px 20px;">
+							    		 <input type="button" name="parkbtn" id="parkbtn" value="가능" class="btn btn-default">
+							    		  <input type="button" name="parkbtn1" id="parkbtn1" value="불가능" class="btn btn-default">
+							    		</div>
+							    		</td>
+							    		</tr>
+							    		<tr>
 							    		<th>엘리베이터</th>
-							    		<td></td>
+							    		<td>
+							    		<div class="eleva_btn" style="margin : 15px 20px;">
+							    		 <input type="button" name="elevabtn" id="elevabtn" value="있음" class="btn btn-default">
+							    		  <input type="button" name="elevabtn1" id="elevabtn1" value="없음" class="btn btn-default">
+							    		</div>
+							    		</td>
 							    		</tr>
 							    	</tbody>
 							    </table>
@@ -421,11 +443,21 @@
 							<tbody>
 								<tr>
 									<th>일반 사진</th>
-									<td></td>
+									 <td><input type="file" accept="image/jpg"></td>
 								</tr>
 							</tbody>
 					</table>
 					<!--//사진 등록-->
+					<div>
+						<input type="checkbox" name="agree" id="check_box" value="check" />
+						<label for="check_box" style="font-weight: normal;"><span></span><strong>[필수]</strong>
+						매물정책 관리 정책을 준수하지 않을 경우 광고 종료 또는 삭제 될 수 있는 것에 동의합니다.</label>
+					</div>
+					<!-- (완료버튼) -->
+					<div class="register_btn">
+							<input type="button" id="button_cancel" name="button_cancel" class="btn btn-danger btn-lg" value="취소">
+							<input type="button" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록">
+						</div>
 				</form>
 			</div>
 			<!--//main section-->
@@ -435,19 +467,24 @@
 <div class="footer"></div>
 		<!-- Footer END -->
 	</div>
-<!--datepicker 시작-->
+
  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-   <!--  <script src="plugins/datepicker/datepicker.min.js"></script>
-    <script src="plugins/datepicker/i18n/datepicker.ko-KR.js"></script> -->
+    <script src="plugins/datepicker/datepicker.min.js"></script>
+    <script src="plugins/datepicker/datepicker.ko-KR.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95f002774aca91da5371858ef1ee4891&libraries=services"></script>
+    <script src="plugins/sweetalert/sweetalert2.all.min.js"></script>
     <script>
+    <!--datepicker 시작-->
         $(function() {
-           /* $("#datepicker").datepicker({
+           $("#datepicker").datepicker({
                 autoHide: true,         // 날짜 선택 후 자동 숨김 (true/false)
                 format: 'yyyy-mm-dd',   // 날짜 형식
                 language: 'ko-KR',      // 언어
                 weekStart: 0,           // 시작요일(0=일요일~6=토요일)
                 trigger: '#show-cal'    // 클릭시 달력을 표시할 요소의 id
-            }); */
+            });
+           /**datepicker 끝*/
             /**평수 자동변환 로직*/
             $("#maemulsize").keyup(function(){
 
@@ -467,19 +504,96 @@
             	$("#maemulsize3").val($("#maemulsize1").val() * 3.3);	
             });
             $("#maemulsize2").keyup(function(){
-            	$("#maemulsize").val($("#maemulsize2").val()  );	
+            	$("#maemulsize").val($("#maemulsize2").val() / 3.3 );	
             });
             $("#maemulsize3").keyup(function(){
-            	$("#maemulsize1").val($("#maemulsize3").val() );	
+            	$("#maemulsize1").val($("#maemulsize3").val() / 3.3);	
             });
             /**평수 자동변환 로직 끝*/
         });
     </script>
-<!--//datepicker-->
 
+<!--//datepicker 시작-->
 	<!-- 카카오 map -->
-	
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+			level : 5
+		// 지도의 확대 레벨
+		};
+
+		//지도를 미리 생성
+		var map = new daum.maps.Map(mapContainer, mapOption);
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//마커를 미리 생성
+		var marker = new daum.maps.Marker({
+			position : new daum.maps.LatLng(37.537187, 127.005476),
+			map : map
+		});
+
+		function sample5_execDaumPostcode() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					var addr = data.address; // 최종 주소 변수
+
+					// 주소 정보를 해당 필드에 넣는다.
+					document.getElementById("sample5_address").value = addr;
+					// 주소로 상세 정보를 검색
+					geocoder.addressSearch(data.address, function(results,
+							status) {
+						// 정상적으로 검색이 완료됐으면
+						if (status === daum.maps.services.Status.OK) {
+
+							var result = results[0]; //첫번째 결과의 값을 활용
+
+							// 해당 주소에 대한 좌표를 받아서
+							var coords = new daum.maps.LatLng(result.y,
+									result.x);
+							// 지도를 보여준다.
+							mapContainer.style.display = "block";
+							map.relayout();
+							// 지도 중심을 변경한다.
+							map.setCenter(coords);
+							// 마커를 결과값으로 받은 위치로 옮긴다.
+							marker.setPosition(coords)
+						}
+					});
+				}
+			}).open();
+		}
+	</script>
 	<!--//카카오 map-->
+	<!-- 완료버튼  -->
+	<script>
+         $("#button_fini").click(function() {
+        	    // 확인, 취소버튼에 따른 후속 처리 구현
+        	    swal({
+        	        title: '확인',                // 제목
+        	        text: "매물등록을 하시겠습니까>",  // 내용
+        	        type: 'warning',              // 종류
+        	        confirmButtonText: 'Yes',     // 확인버튼 표시 문구
+        	        showCancelButton: 'No',       // 취소버튼 표시 여부
+        	        cancelButtonText: 'No',       // 취소버튼 표시 문구
+        	    }).then(function(result) {        // 버튼이 눌러졌을 경우의 콜백 연결
+        	        if (result.value) {           // 확인 버튼이 눌러진 경우
+        	            location.href = 'Main.html';
+        	        } else if (result.dismiss === 'cancel') {   // 취소버튼이 눌러진 경우
+        	            swal('취소', '취소되었습니다.', 'error');
+        	        }
+        	    });
+        	});
+</script>
+<!-- 취소버튼  -->
+<script>
+        $(function(){
+     		$('#button_cancel').click(function(){
+     			location.href = 'Main.html';
+     		});
+     	});
+</script>
+	
 
 </body>
 </html>
