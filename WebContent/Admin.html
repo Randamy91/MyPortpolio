@@ -87,14 +87,14 @@
 				<p>관리자 페이지 입니다.</p>
 			</div>
 			<div class="content-body">
-				<ul class="nav nav-tabs nav-justified">
-					<li role="presentation" class="active"><a href="#first">일반
+				<ul class="nav nav-tabs nav-justified" role="tablist">
+					<li role="presentation" class="active"><a href="#first" role="tab" data-toggle="tab" aria-controls="general">일반
 							회원 정보</a></li>
-					<li role="presentation"><a href="#second">중개사 회원 정보</a></li>
+					<li role="presentation"><a href="#second" role="tab" data-toggle="tab" aria-controls="company">중개사 회원 정보</a></li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane fade active in" id="first">
-						<table class="table" id="table">
+					<div role="tabpanel" class="tab-pane fade active in" id="first">
+						<table class="table" id="table1">
 							<tr>
 								<th>번호</th>
 								<th>이름</th>
@@ -112,14 +112,50 @@
 								<td>2019-10-22</td>
 							</tr>
 						</table>
+					
+					<div class="input-group searchBox">
+						<form method="post" action="#">
+							<div class="input-group">
+							  <input type="text" class="form-control search" placeholder="검색 키워드를 입력하세요!" name="search">
+							  <span class="input-group-btn">
+							    <button class="btn btn-primary" type="submit">찾기</button>
+							  </span>
+							</div>
+						</form>
 					</div>
-				<div class="tab-pane fade" id="second">
-					    <p>
-					        두번째 탭포커스 위치할 내용입니다.<br/>
-					        data-togge="tab"을 지정해주셔야 탭버튼으로 인식을 합니다.
-					    </p>
 				</div>
+				<div role="tabpanel" class="tab-pane fade" id="second">
+					<table class="table" id="table2">
+							<tr>
+								<th>번호</th>
+								<th>중개사무소명</th>
+								<th>대표자</th>
+								<th>연락처</th>
+								<th>가입일</th>
+								<th>최근로그인</th>
+							</tr>
+							<tr>
+								<th>0001</th>
+								<td><a href="#" style="text-decoration:none">이젠부동산</a></td>
+								<td>장상윤</td>
+								<td>010-4685-7666</td>
+								<td>2019-10-22</td>
+								<td>2019-10-22</td>
+							</tr>
+						</table>
+						<div class="input-group searchBox">
+						<form method="post" action="#">
+							<div class="input-group">
+							  <input type="text" class="form-control search2" placeholder="검색 키워드를 입력하세요!" name="search">
+							  <span class="input-group-btn">
+							    <button class="btn btn-primary" type="submit">찾기</button>
+							  </span>
+							</div>
+						</form>
+					</div>   
+					</div>
 				</div>
+				
 				<div class="paginavi">
 					<nav>
 						<ul class="pagination adminPagi">
@@ -132,8 +168,7 @@
 							</a></li>
 						</ul>
 					</nav>
-				</div>
-				
+				</div>	
 			</div>
 		</div>
 	</div>

@@ -122,6 +122,27 @@ html, body {
 	margin-left: -5px;
 }
 
+.tab-content {
+	text-align: center;
+}
+
+#table1 th, #table2 th {
+	text-align: center;
+}
+
+.searchBox {
+	width: 100%;
+}
+
+.content-body .searchBox .search {
+	width:200px;
+	float: right;
+}
+
+#second .searchBox .search2 {
+	width:200px;
+	float: right;
+}
 
 
 
