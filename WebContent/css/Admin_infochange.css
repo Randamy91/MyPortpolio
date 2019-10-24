@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+  .exit a , .yak a {
+ 	text-decoration: none;
+ 	color: black;
+ }
+  
+ 
+ .table-1 {
+ 	margin-bottom: 0px;
+ }
+ .first-list {
+ 	padding-bottom: 0px;
+ }
+ .table-2 {
+ 	margin-bottom: 0px;
+ }
+ .second-list {
+ 	padding-bottom: 0px;
+ }
+ th {
+ 	width: 130px;
+ 	height: 100px;
+ 	text-align: center;
+ 	font-weight: normal; 
+ 	font-size: 12px;
+ }
+ th span {
+ 	line-height: 100px;
+ }
+ .table-2 th {
+ 	width: 130px;
+ }
+
+ td > input {
+ 	position: relative;
+ 	top: 27px;
+ }
+
+ td > label {
+  position: relative;
+    top: 27px;
+    display: inline-block;
+    width: 200px;  
+    left: 30px;
+ }
+ .public_image {
+    width: 300px;
+ }
+ label span {
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+ }
+ .PhoneNumber {
+ 	position: relative; 
+ 	top: 27px;
+ }
+ 
+ 
+ .text-center {
+ 	margin-bottom: 80px;
+ }
+
+ .first-title {
+ 	margin-top: 20px;
+ 	margin-bottom: 15px;
+ 	margin-left: 18px;
+ }
+ .second-title {
+ 	margin-top: 20px;
+ 	margin-bottom: 15px;
+ 	margin-left: 18px;	
+ }
+ .sign {
+ 	margin-top: 20px;
+ }
+ .text-info {
+ 	margin-top: 10px;
+ }
+ td .form-control {
+ 	width: 250px;
+ }
+ .page-title {
+    margin-top: 60px;
+ }
+ td .coe_image {
+    width: 250px; height: 350px;
+ }
+#kakaomap {
+    position: relative;
+    top: 13px;
+}
+.coe_Telephone {
+    position: relative;
+    top: 27px;
+}
+
+#position {
+    position: relative;
+    top: 33px;
+}
+.set_email {
+    position: relative;
+    top: 27px;
+}
