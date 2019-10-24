@@ -22,53 +22,73 @@
   </head>
 
   <body>
+  
     <!--------------------------- 복사하여 사용 하세요 ---------------------------->
-<!-- 상단 메뉴 바 -->
-<nav class="navbar menu_navbar bg-white">
-  <!--<div class="navbar-header menu_header">-->
-  <a class="navbar-brand logo" href="Main.html" >
-  <img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
-  </a>
-  <p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a></p>
-  <p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a></p>
-  <p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a></p>
-  <p class="navbar-text navbar-right"><a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a></p>
-</nav>
+    <!-- 상단 메뉴 바 -->
+    <nav class="navbar menu_navbar bg-white">
+    <!--<div class="navbar-header menu_header">-->
+    <a class="navbar-brand logo" href="Main.html"> <img alt="Brand"
+      src="img/main_logo.jpg" width="65px" height="40px">
+    </a>
+    <p class="navbar-text navbar-left">
+      <a href="Main.html" class="navbar-link" style="text-decoration: none">상가</a>
+    </p>
+    <p class="navbar-text navbar-left">
+      <a href="Bigdata.html" class="navbar-link"
+        style="text-decoration: none">상권분석</a>
+    </p>
+    <p class="navbar-text navbar-right">
+      <a href="Joinus_select" class="navbar-link"
+        style="text-decoration: none">회원가입</a>
+    </p>
+    <p class="navbar-text navbar-right">
+      <a href="#myModal" data-toggle="modal" class="navbar-link"
+        style="text-decoration: none">로그인</a>
+    </p>
+  </nav>
 
-<!-- 상단 메뉴 바  -->
+  <!-- 상단 메뉴 바  -->
 
-
-<!--  로그인 Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog mymodal-size">
-    <div class="modal-content mymodal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-        <form action="#" method="post">
-          <div class="input-container">
-            <input type="text" class="form-control input-info" id="email" name="email" placeholder="이메일"/>
+  <!--  로그인 Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog mymodal-size">
+      <div class="modal-content mymodal-content">
+        <div class="modal-body mymodal-body">
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+          <form action="#" method="post">
+            <div class="input-container">
+              <input type="text" class="form-control input-info" id="email"
+                name="email" placeholder="이메일" />
+            </div>
+            <div class="input-container">
+              <input type="password" class="form-control input-info"
+                id="password" name="password" placeholder="패스워드" />
+            </div>
+            <div class="forgot-pw">
+              <input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
+                style="text-decoration: none">비밀번호 찾기</a>
+              </span>
+            </div>
+            <div class="input-container">
+              <input type="submit" class="btn btn-primary loginbtn"
+                data-dismiss="modal" value="이메일 로그인" />
+            </div>
+          </form>
+          <span class="adduser">아직 세모의 회원이 아니신가요?<a
+            href="Joinus_select">회원가입</a></span>
         </div>
-        <div class="input-container">
-            <input type="password" class="form-control input-info" id="password" name="password" placeholder="패스워드"/>
-        </div>
-        <div class="forgot-pw">
-          <input type="checkbox"/>&nbsp;자동 로그인
-          <span>
-            <a href="#" style="text-decoration:none">비밀번호 찾기</a>
-          </span>
-        </div>
-        <div class="input-container">
-          <input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
-        </div>
-        </form>
-      </div>  
+      </div>
     </div>
   </div>
-</div>
+
   
-  
-      <div class="row content">
+  <!-- 컨텐츠 -->
+      <div class="content">
         <div class="col-md-2 grayContent"></div>
         <!-- content 박스 세개 중 첫번째 -->
         
@@ -95,8 +115,8 @@
             </ul>
           </div>
   
-          <form action="#" class="policy_all" method ="post" >
-            <input type="checkbox" name="agree" id="agree_all" />
+          <form action="#" class="policy_all" method ="post" name="filter">
+            <input type="checkbox" name="agree01" id="agree_all" onClick="agreeCheck()">    
             <label for="check_box">아래 약관에 모두 동의합니다.</label>
 
             <br/>
@@ -134,9 +154,10 @@
             </div>
 
             <div class="box on">
-              <input class="btn btn-blue sg-btn-lg" name="checkBtn" type="button" value="다음" onclick="page01()" />
+              <input type="button" name="checkButton" value="다음" class="btn btn-blue sg-btn-lg" onclick="page01()" disabled>
             </div>
           </form>
+
 
         </div>
         <!-- content 박스 세개 중 두번째 - 1 : 여기에 내용이 있음 -->
@@ -164,17 +185,18 @@
             </ul>
           </div>
   
-          <form action ="#" class="personal_info" method ="post">
+          <form action ="#" class="personal_info" role="form" method ="post">
             <table>
                 <div> 개인정보 입력 </div>
-      
+        
               <tbody>
                 <tr>
                   <th>
                     <label for="user_name">이름</label>
                   </th>
                   <td> 
-                    <input type="text" name="user_name" id="user_name" maxlength="20" placeholder="이름을 입력해주세요">
+                    <input type="text" name="user_name" id="user_name"
+                    class="form-control" maxlength="20" placeholder="이름을 입력해주세요">
                   </td>
                 </tr>
                 <tr>
@@ -182,9 +204,9 @@
                     <label for="user_email">이메일</label>
                   </th>
                   <td>
-                    <input type="text" name="user_email" id="user_email" maxlength="20" placeholder="이메일을 입력해주세요">
+                    <input type="text" name="user_email" id="user_email" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style = "display: inline-block;" >
                     &nbsp;@&nbsp;
-                    <select name="email" id="email">
+                    <select class="form-control" name="email" id="email" style = "display: inline-block;">
                       <option>----- 선택하세요 -----</option>
                       <option value="naver">naver.com</option>
                       <option value="gmail">gmail.com</option>
@@ -202,7 +224,7 @@
                     <label for="user_pw">비밀번호</label>
                   </th>
                   <td>  
-                    <input type="password" name="user_pw" id="user_pw" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" name="user_pw" id="user_pw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
                   </td>  
                 </tr>
                 <tr>
@@ -210,7 +232,7 @@
                     <label for="user_pwconfirm">비밀번호 확인</label>
                   </th>
                   <td>  
-                    <input type="password" name="user_pwconfirm" id="user_pwconfirm" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                    <input type="password" name="user_pwconfirm" id="user_pwconfirm" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
                   </td>  
                 </tr>
                 <tr>
@@ -218,7 +240,7 @@
                     <label for="user_hp">휴대폰 번호</label>
                   </th>
                   <td>
-                    <input type="text" name="user_hp" id="user_hp" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
+                    <input type="text" name="user_hp" id="user_hp" class="form-control" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
                   </td>    
                </tr>  
               </tbody>
@@ -272,25 +294,41 @@
         
 
         <div class="col-md-2 grayContent"></div>
-        <!-- content 박스 세개 중 세번째 -->
-    
+        <!-- content 박스 세개 중 세번째 --> 
       </div>
-      <!-- row menu 끝부분 -->
+      <!-- content 끝부분 -->
 
-      <div class="row footer">
-        <div class="col-md-12 whitefooter">
-          <h1></h1>
-        </div>
-      </div>
-   
+      <!-- Footer -->
+      <div class="footer">
+      
+      <!-- Footer END -->
+    </div> 
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <script>
-
-       $("#agree_all").click(function() {
-        $("input[name=agree]:checkbox").prop("checked", "checked");
-      });
+    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+     var selectAll = document.querySelector("#agree_all");
+      selectAll.addEventListener('click', function(){
+          var objs = document.querySelectorAll("#agree");
+          for (var i = 0; i < objs.length; i++) {
+            objs[i].checked = selectAll.checked;
+          };
+      }, false);
+       
+      var objs = document.querySelectorAll("#agree");
+      for(var i=0; i<objs.length ; i++){
+        objs[i].addEventListener('click', function(){
+          var selectAll = document.querySelector("#agree_all");
+          for (var j = 0; j < objs.length; j++) {
+            if (objs[j].checked === false) {
+              selectAll.checked = false;
+              return;
+            };
+          };
+          selectAll.checked = true;                                   
+      }, false);
+      } 
      
       
      function page01(){
@@ -316,17 +354,16 @@
         rst.style.display = 'block';
       }
      }
-
-
     
-
+     function agreeCheck(){
+      var actionButton = document.getElementById("filter")
+      if(document.filter.agree01.checked){
+        document.filter.checkButton.disabled=false
+      }else{
+        document.filter.checkButton.disabled=true
+      }
+     }
     </script>
 
-
-  
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
-
-
 </html>

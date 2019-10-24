@@ -7,7 +7,7 @@
 }
 .grayContent{
 	background-color: #eee;
-	min-height: 1045px;
+	height: 1040px;
 	text-align: center;
 }
 
@@ -60,7 +60,7 @@ ul {
 }
 
 th {
-	width : 200px;
+	width : 250px;
 	height: 70px;
 }
 
@@ -69,12 +69,12 @@ th {
 }
 
 #user_email{
-	width: 183px;
+	width: 184px;
 }
 
 #email{
-	width: 183px;
-	height: 30px;
+	width: 184px;
+	height: 35px;
 }
 
 #user_pw{
@@ -113,7 +113,20 @@ th {
 	height: 250px;
 }
 /* content > box > button
+-----------------------------------------*/
+
+
+/* 마감처리
+-----------------------------------------*/
+
 /* footer
 -----------------------------------------*/
+.footer {
+	width: 100%;
+	height: 320px;
+	background: #333;
+	
+}
+
 
 
