@@ -1,381 +1,345 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-    <title>일반회원 가입</title>
-
-    <!-- 부트스트랩 -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/Joinus_general.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/Main.css" />
-
-    <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
-    <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    
-  
-    <!--------------------------- 복사하여 사용 하세요 ---------------------------->
-    <!-- 상단 메뉴 바 -->
-    <nav class="navbar menu_navbar bg-white">
-    <!--<div class="navbar-header menu_header">-->
-    <a class="navbar-brand logo" href="Main.html"> <img alt="Brand"
-      src="img/main_logo.jpg" width="65px" height="40px">
-    </a>
-    <p class="navbar-text navbar-left">
-      <a href="Main.html" class="navbar-link" style="text-decoration: none">상가</a>
-    </p>
-    <p class="navbar-text navbar-left">
-      <a href="Bigdata.html" class="navbar-link"
-        style="text-decoration: none">상권분석</a>
-    </p>
-    <p class="navbar-text navbar-right">
-      <a href="Joinus_select" class="navbar-link"
-        style="text-decoration: none">회원가입</a>
-    </p>
-    <p class="navbar-text navbar-right">
-      <a href="#myModal" data-toggle="modal" class="navbar-link"
-        style="text-decoration: none">로그인</a>
-    </p>
-  </nav>
-
-  <!-- 상단 메뉴 바  -->
-
-  <!--  로그인 Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog mymodal-size">
-      <div class="modal-content mymodal-content">
-        <div class="modal-body mymodal-body">
-          <button type="button" class="close" data-dismiss="modal"
-            aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-          <form action="#" method="post">
-            <div class="input-container">
-              <input type="text" class="form-control input-info" id="email"
-                name="email" placeholder="이메일" />
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>세모- 상가 중개사이트</title>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/Joinus_general.css">
+    </head>
+    <style type="text/css">
+        .logo {
+            margin-left: 30px;
+        }
+        .menu_navbar {
+            width: 100%;
+            padding-right: 40px;
+            margin-bottom: 0;
+            line-height: 45px;
+        }
+        .navbar-text {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .navbar-right {
+            font-size: 15px;
+        }
+        .content {
+            height: 100%;
+            width: 100%;
+            background: #eee;
+        }
+        .footer {
+            width: 100%;
+            height: 320px;
+            background: #333;
+        }
+        .modal-dialog.mymodal-size {
+            width: 400px;
+            height: 360px;
+        }
+        .mymodal-content {
+            width: 100%;
+            height: 100%;
+        }
+        .loginmodal-title {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .modal form {
+            margin-top: 20px;
+        }
+        .modal .input-container {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .modal .input-info {
+            width: 270px;
+            display: inline-block;
+        }
+        .modal .forgot-pw input {
+            margin-left: 50px;
+        }
+        .modal .forgot-pw span {
+            margin-left: 90px;
+        }
+        .loginbtn {
+            margin-top: 30px;
+            display: inline-block;
+            width: 270px;
+        }
+    </style>
+    <body>
+        <!-- 상단 메뉴 바 -->
+        <nav
+            class="navbar menu_navbar bg-white">
+            <!--<div class="navbar-header menu_header">-->
+            <a class="navbar-brand logo" href="Main.html">
+                <img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
+            </a>
+            <p class="navbar-text navbar-left">
+                <a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a>
+            </p>
+            <p class="navbar-text navbar-left">
+                <a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a>
+            </p>
+            <p class="navbar-text navbar-right">
+                <a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a>
+            </p>
+            <p class="navbar-text navbar-right">
+                <a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a>
+            </p>
+        </nav>
+        <!--  로그인 Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog mymodal-size">
+                <div class="modal-content mymodal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+                        <form action="#" method="post">
+                            <div class="input-container">
+                                <input type="text" class="form-control input-info" id="email" name="email" placeholder="이메일"/>
+                            </div>
+                            <div class="input-container">
+                                <input type="password" class="form-control input-info" id="password" name="password" placeholder="패스워드"/>
+                            </div>
+                            <div class="forgot-pw">
+                                <input type="checkbox"/>&nbsp;자동 로그인
+                                <span>
+                                    <a href="#" style="text-decoration:none">비밀번호 찾기</a>
+                                </span>
+                            </div>
+                            <div class="input-container">
+                                <input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="input-container">
-              <input type="password" class="form-control input-info"
-                id="password" name="password" placeholder="패스워드" />
-            </div>
-            <div class="forgot-pw">
-              <input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
-                style="text-decoration: none">비밀번호 찾기</a>
-              </span>
-            </div>
-            <div class="input-container">
-              <input type="submit" class="btn btn-primary loginbtn"
-                data-dismiss="modal" value="이메일 로그인" />
-            </div>
-          </form>
-          <span class="adduser">아직 세모의 회원이 아니신가요?<a
-            href="Joinus_select">회원가입</a></span>
         </div>
-      </div>
-    </div>
-  </div>
-
-  
-  <!-- 컨텐츠 -->
-    <div class="content">
-
-      <div class="body-content">
-        <div class="main-space">
-
-        <div class="container">
-        <!-- content 박스 세개 중 첫번째 -->
-    
-        <div class="page-title text-center">
-          <h2 class="title">일반회원 가입</h2>
-          <p class="text-muted" style="font-size: 15px;">세모에 오신것을 환영합니다.</p>
-        </div>
-
-        <div class="main-content">
-
-          <form id="changeform" name="filter" class="policy_all" role="form" method="post" action="#" id="result01" style = "display: block;">
-
-             <div>
-            <ul class="gallery">
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
-                <span class="text">약관동의</span>
-              </li>
-              
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                <span class="text">정보입력</span>
-              </li>
-        
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                <span class="text">가입완료</span>
-              </li>
-            </ul>
-          </div>
-  
-            <input type="checkbox" name="agree01" id="agree_all" onClick="agreeCheck()">    
-            <label for="check_box">아래 약관에 모두 동의합니다.</label>
-
-            <br/>
-
-            <input type="checkbox" name="agree" id="agree" />
-            <label for="check_box">세모 서비스 이용약관(필수)</label>
-
-            <div class="policy">
-              <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin">
-              </iframe>
-            </div>    
-
-            <br/>
-
-            <input type="checkbox" name="agree" id="agree" />
-            <label for="check_box">개인정보 수집 및 이용에 대한 동의(필수)</label>
-
-            <br/>
-
-            <div class="policy">
-              <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/userPrivacyPolicy.html?v=637063192662958639#begin">
-              </iframe>
-            </div>  
-
-            <br/>
-
-            <input type="checkbox" name="agree" id="agree" />
-            <label for="check_box">위치 기반 서비스 약관(필수)</label>
-
-            <br/>
-
-            <div class="policy">
-              <iframe width="100%" height="118px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin">
-              </iframe>
+        <!-- 로그인 modal end -->
+        <!-- 컨텐츠 -->
+        <div class="content">
+            <div class="body-content">
+                <div class="main-space">
+                    <div class="container">
+                        <div class="page-title text-center">
+                            <h2 class="title">일반회원 가입</h2>
+                            <p class="text-muted" style="font-size: 15px;">세모에 오신것을 환영합니다.</p>
+                        </div>
+                        <div class="main-content">
+                            <form name="filter" class="policy_all" role="form" method="post" action="#" id="result01" style="display: block;">
+                                <div>
+                                    <ul class="gallery">
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">약관동의</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">정보입력</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">가입완료</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input type="checkbox" name="agree01" id="agree_all" onclick="agreeCheck()">
+                                <label for="check_box">아래 약관에 모두 동의합니다.</label>
+                                <br/>
+                                <input type="checkbox" name="agree" id="agree"/>
+                                <label for="check_box">세모 서비스 이용약관(필수)</label>
+                                <div class="policy">
+                                    <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
+                                </div>
+                                <br/>
+                                <input type="checkbox" name="agree" id="agree"/>
+                                <label for="check_box">개인정보 수집 및 이용에 대한 동의(필수)</label>
+                                <br/>
+                                <div class="policy">
+                                    <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/userPrivacyPolicy.html?v=637063192662958639#begin"></iframe>
+                                </div>
+                                <br/>
+                                <input type="checkbox" name="agree" id="agree"/>
+                                <label for="check_box">위치 기반 서비스 약관(필수)</label>
+                                <br/>
+                                <div class="policy">
+                                    <iframe width="100%" height="118px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
+                                </div>
+                                <div class="general01_btn">
+                                    <input
+                                    type="button" class="btn btn-blue" value="다음" name="checkButton" onclick="page01()">
+                                <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
+                                </div>
+                            </form>
+                            <!-- form 박스 - 1  -->
+                            <form name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style="display: none;">
+                                <div>
+                                    <ul class="gallery">
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">약관동의</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">정보입력</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">가입완료</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <table align="center">
+                                    <div>
+                                        개인정보 입력
+                                    </div>
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                <label for="user_name">이름</label>
+                                            </th>
+                                            <td>
+                                                <input type="text" name="user_name" id="user_name" class="form-control" maxlength="20" placeholder="이름을 입력해주세요">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <label for="user_email">이메일</label>
+                                            </th>
+                                            <td>
+                                                <input type="text" name="user_email" id="user_email" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block;">
+                                                &nbsp;@&nbsp;
+                                                <select class="form-control" name="email" id="email" style="display: inline-block;">
+                                                    <option>----- 선택하세요 -----</option>
+                                                    <option value="naver">naver.com</option>
+                                                    <option value="gmail">gmail.com</option>
+                                                    <option value="daum">daum.net</option>
+                                                </select>
+                                                <br/>
+                                                <input type="checkbox" name="agree" id="agree_y" value="Y"/>
+                                                <label for="agree_y">직접입력</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <label for="user_pw">비밀번호</label>
+                                            </th>
+                                            <td>
+                                                <input type="password" name="user_pw" id="user_pw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <label for="user_pwconfirm">비밀번호 확인</label>
+                                            </th>
+                                            <td>
+                                                <input type="password" name="user_pwconfirm" id="user_pwconfirm" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <label for="user_hp">휴대폰 번호</label>
+                                            </th>
+                                            <td>
+                                                <input type="text" name="user_hp" id="user_hp" class="form-control" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="general02_btn">
+                                    <input
+                                    type="button" class="btn btn-blue" value="입력완료" name="checkButton" onclick="page02()">
+                                <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
+                                </div>
+                            </form>
+                            <!-- form 박스 - 2  -->
+                            <form name="filter" class="join_complete" role="form" method="post" action="#" id="result03" style="display: none;">
+                                <div>
+                                    <ul class="gallery">
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">약관동의</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">정보입력</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                                            <span class="text">가입완료</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="box1">
+                                    <h6>회원가입이 완료되었습니다.</h6>
+                                    <img src="img/noname1.png"/>
+                                </div>
+                                <div>
+                                    <input
+                                    type="button" class="btn btn-blue" value="바로가기" name="checkButton" onclick="location.href='Main.html'">
+                                <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
+                                </div>
+                            </form>
+                            <!-- form 박스 - 3  -->
+                        </div>
+                    </div>
+                    <!-- end container -->
+                </div>
             </div>
-
-            
-
-            <div class="general01_btn">
-              <input type="button" name="checkButton" value="다음" class="btn btn-blue sg-btn-lg" onclick="page01()">
-            </div>
-
-          </form>
-          <!-- form 박스 - 1  -->
-
-
-          <form id="changeform" name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style = "display: none;">
-
-            <div>
-            <ul class="gallery">
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                <span class="text">약관동의</span>
-              </li>
-              
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
-                <span class="text">정보입력</span>
-              </li>
-        
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                <span class="text">가입완료</span>
-              </li>
-            </ul>
-          </div>
-  
-            <table>
-                <div> 개인정보 입력 </div>
-        
-              <tbody>
-                <tr>
-                  <th>
-                    <label for="user_name">이름</label>
-                  </th>
-                  <td> 
-                    <input type="text" name="user_name" id="user_name"
-                    class="form-control" maxlength="20" placeholder="이름을 입력해주세요">
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <label for="user_email">이메일</label>
-                  </th>
-                  <td>
-                    <input type="text" name="user_email" id="user_email" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style = "display: inline-block;" >
-                    &nbsp;@&nbsp;
-                    <select class="form-control" name="email" id="email" style = "display: inline-block;">
-                      <option>----- 선택하세요 -----</option>
-                      <option value="naver">naver.com</option>
-                      <option value="gmail">gmail.com</option>
-                      <option value="daum">daum.net</option>
-                    </select>
-
-                    <br/>
-
-                    <input type="checkbox" name="agree" id="agree_y" value="Y" />
-                    <label for="agree_y">직접입력</label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <label for="user_pw">비밀번호</label>
-                  </th>
-                  <td>  
-                    <input type="password" name="user_pw" id="user_pw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
-                  </td>  
-                </tr>
-                <tr>
-                  <th>    
-                    <label for="user_pwconfirm">비밀번호 확인</label>
-                  </th>
-                  <td>  
-                    <input type="password" name="user_pwconfirm" id="user_pwconfirm" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
-                  </td>  
-                </tr>
-                <tr>
-                  <th>  
-                    <label for="user_hp">휴대폰 번호</label>
-                  </th>
-                  <td>
-                    <input type="text" name="user_hp" id="user_hp" class="form-control" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
-                  </td>    
-               </tr>  
-              </tbody>
-            </table>
-
-            <div class="general02_btn">
-              <input class="btn btn-blue sg-btn-lg" name="checkBtn" type="button" value="입력완료" onclick="page02()" />
-            </div>
-
-          </form>
-          <!-- form 박스 - 2  -->
-
-
-          <form name="filter" class="join_complete" role="form" method="post" action="#" id="result03" style = "display: none;">
-
-            <div>
-            <ul class="gallery">
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                <span class="text">약관동의</span>
-              </li>
-              
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                <span class="text">정보입력</span>
-              </li>
-        
-              <li class="cover01">
-                <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
-                <span class="text">가입완료</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="box1">
-            <h6>회원가입이 완료되었습니다.</h6>
-            <img src="img/noname1.png"/>
-          </div>
-
-          
-
-
-            <div>
-              <button type="button" class="btn btn-blue" onclick="location.href='Main.html'">바로가기</button>
-            </div>
-          
-          </form>
-          <!-- form 박스 - 3  -->
-        
+            <!-- Footer -->
+            <div class="footer"></div>
+            <!-- Footer END -->
         </div>
-        <!-- main-content END -->
-
-        </div>
-        <!-- container END -->
-
-        </div>
-        <!-- main-space END -->
-
-      </div>
-      <!-- body-contents END -->
-    
-
-      <!-- Footer -->
-      <div class="footer"></div>
-      <!-- Footer END -->
-    
-    </div> 
-    <!-- content 끝부분 -->
-    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-
-      var selectAll = document.querySelector("#agree_all");
-      selectAll.addEventListener('click', function(){
-          var objs = document.querySelectorAll("#agree");
-          for (var i = 0; i < objs.length; i++) {
-            objs[i].checked = selectAll.checked;
-          };
-      }, false);
-       
-      var objs = document.querySelectorAll("#agree");
-      for(var i=0; i<objs.length ; i++){
-        objs[i].addEventListener('click', function(){
-          var selectAll = document.querySelector("#agree_all");
-          for (var j = 0; j < objs.length; j++) {
-            if (objs[j].checked === false) {
-              selectAll.checked = false;
-              return;
-            };
-          };
-          selectAll.checked = true;                                   
-      }, false);
-      } 
-      
-     function page01(){
-      var rst = document.getElementById("result01");
-      if(rst.style.display=='block'){
-        rst.style.display = 'none';
-      }
-
-      var rst = document.getElementById("result02");
-      if(rst.style.display=='none'){
-        rst.style.display = 'block';
-      }
-     }
-
-     function page02(){
-      var rst = document.getElementById("result02");
-      if(rst.style.display=='block'){
-        rst.style.display = 'none';
-      }
-
-      var rst = document.getElementById("result03");
-      if(rst.style.display=='none'){
-        rst.style.display = 'block';
-      }
-     }
-    
-     function agreeCheck(){
-      var actionButton = document.getElementById("filter")
-      if(document.filter.agree01.checked){
-        document.filter.checkButton.disabled=false
-      }else{
-        document.filter.checkButton.disabled=true
-      }
-     }
-    </script>
-
-  </body>
+        <!-- end content -->
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            var selectAll = document.querySelector("#agree_all");
+            selectAll.addEventListener('click', function () {
+                var objs = document.querySelectorAll("#agree");
+                for (var i = 0; i < objs.length; i++) {
+                    objs[i].checked = selectAll.checked;
+                };
+            }, false);
+            var objs = document.querySelectorAll("#agree");
+            for (var i = 0; i < objs.length; i++) {
+                objs[i].addEventListener('click', function () {
+                    var selectAll = document.querySelector("#agree_all");
+                    for (var j = 0; j < objs.length; j++) {
+                        if (objs[j].checked === false) {
+                            selectAll.checked = false;
+                            return;
+                        };
+                    };
+                    selectAll.checked = true;
+                }, false);
+            }
+            function page01() {
+                var rst = document.getElementById("result01");
+                if (rst.style.display == 'block') {
+                    rst.style.display = 'none';
+                }
+                var rst = document.getElementById("result02");
+                if (rst.style.display == 'none') {
+                    rst.style.display = 'block';
+                }
+            }
+            function page02() {
+                var rst = document.getElementById("result02");
+                if (rst.style.display == 'block') {
+                    rst.style.display = 'none';
+                }
+                var rst = document.getElementById("result03");
+                if (rst.style.display == 'none') {
+                    rst.style.display = 'block';
+                }
+            }
+        </script>
+    </body>
 </html>

@@ -1,93 +1,103 @@
 @charset "utf-8";
 
-/*------------- 복사해서 사용하세요  --------------------*/
+/** 전체페이지 */
 
-html, body {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	
-}
+		.main-space {
+			background-color: #fff;
+		}
 
-.logo {
-	margin-left: 30px;
-}
 
-.menu_navbar {
-	width: 100%;
-	padding-right: 40px;
-	margin-bottom: 0;
-	line-height:45px;
-}
+/** 목록 정의 초기화 */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.navbar-text {
-	font-size: 20px;
-	font-weight: bold;
-}
+        li {
+            width: 20%;
+            display: inline-block;
+            text-align: center;
+        }
 
-.navbar-right {
-	font-size: 15px;
-}
+        li a {
+            /** 링크의 박스화 --> 하나의 목록 안을 전체 클릭 가능하게 한다. */
+            display: block;
+            padding: 10px 15px;
+            width: auto;
+            /** li에게 border를 지정할 경우 li의 총 넓이 합이 100%를 초과하므로,
+             *  레이아웃이 깨지게 된다.
+             *  링크는 width가 auto이므로, border를 주어도 전체 크기에 영향이 없다. */
+            border-left: 1px dotted #cccccc;
+        }
 
-.content {
-	height: 750px;
-	width: 100%;
-	background: #eee;
-}
+        li:first-child a {
+            border-left: 0;
+        }
 
-.footer {
-	width: 100%;
-	height: 320px;
-	background: #333;
-}
+        li legend:hover {
+            text-decoration: underline;
+        }
 
-.modal-dialog.mymodal-size {
-	width: 400px;
-	height: 360px;
-}
 
-.mymodal-content {
-	width: 100%;
-	height: 100%;
-}
-
-.loginmodal-title {
+/** 표 넣을 박스 정리 */
+.box1{
 	text-align: center;
-	margin-top: 20px;
+	background-color: #eee;
+	width: 90%; 
+  	height: 300px;
+  	margin: auto;
 }
 
-.modal form {
-	margin-top: 20px;
-}
-
-.modal .input-container {
-	margin-bottom: 10px;
+.box2{
 	text-align: center;
+	background-color: #eee;
+	width: 90%; 
+  	height: 300px;
+  	margin: auto;
 }
 
-.modal .input-info {
-	width: 270px;
-	display: inline-block;
+.box3{
+	text-align: center;
+	background-color: #eee;
+	width: 80%; 
+  	height: 300px;
+  	margin: auto;
 }
 
-.modal .forgot-pw input {
-	margin-left: 50px;
+.box4{
+	text-align: center;
+	background-color: #eee;
+	width: 80%; 
+  	height: 300px;
+  	margin: auto;
 }
 
-.modal .forgot-pw span {
-	margin-left: 90px;
+.box5{
+	text-align: center;
+	background-color: #eee;
+	width: 80%; 
+  	height: 300px;
+  	margin: auto;
 }
 
-.mymodal-body .adduser {
-	margin-left: 55px;
+.box6{
+	text-align: center;
+	background-color: #eee;
+	width: 80%; 
+  	height: 450px;
+  	margin: auto;
 }
 
-.loginbtn {
-	margin-top: 30px;
-	display: inline-block;
-	width: 270px;
+.box7{
+	text-align: center;
+	background-color: #eee;
+	width: 80%; 
+  	height: 450px;
+  	margin: auto;
 }
 
-/*------------- 복사해서 사용하세요 END --------------------*/
-
-
+/** 테이블 관련 */
+table{
+	width: 100%;
+}
