@@ -2,11 +2,10 @@
 
 /*------------- 복사해서 사용하세요  --------------------*/
 
-html, body {
+ html, body {
 	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
+    height: 100%;
+  	padding: 0;
 }
 
 .logo {
@@ -31,8 +30,7 @@ html, body {
 
 .content {
 	height: 100%;
-	width: 100%;
-	
+	overflow: hidden;
 }
 
 .footer {
@@ -93,11 +91,10 @@ html, body {
 
 .select-menu {
 	width: 100%;
-	height: 50px;
+	line-height: 50px;
 	background: #eee;
 }
 .main-content{
-	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -107,14 +104,130 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
-.list {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
 
 .maemulList {
-	width: 100%;
-	height: 750px;
+	height: calc(100% - 250px);
+	
 }
+
+
+
+.list {
+	height: 100%;
+	padding: 0;
+}
+/*************** select **************/
+.select-menu .trade, .select-menu .price {
+	display: inline;
+}
+
+.trade {
+	margin-left: 40px;
+}
+
+.dropdown-menu {
+	padding: 10px;
+	margin-top: 10px;
+}
+
+
+
+.price .pricemenu{
+	width: 300px;
+}
+
+.priceSales {
+	width: 100%;
+	position: relative;
+}
+
+.priceSales .centerprice {
+	position: absolute;
+	left:50%;
+	transform: translateX(-50%);
+	color: #888;
+	top: -40px;
+}
+
+.priceSales .startprice {
+	position: absolute;
+	left: 0;
+	color: #0066ff;
+	top: -40px;
+}
+
+.priceSales .endprice {
+	position: absolute;
+	right: 0;
+	color: #0066ff;
+	top: -40px;
+}
+.mpriceSales {
+	width: 100%;
+	position: relative;
+}
+
+.mpriceSales .mcenterprice {
+	position: absolute;
+	left:50%;
+	transform: translateX(-50%);
+	color: #888;
+	top: -40px;
+}
+.mpriceSales .mstartprice {
+	position: absolute;
+	left: 0;
+	color: #0066ff;
+	top: -40px;
+}
+
+.mpriceSales .mendpirce {
+	position: absolute;
+	right: 0;
+	color: #0066ff;
+	top: -40px;
+}
+
+
+#salesrange, #monthrange, #arearange {
+	width: 250px;
+	margin-left: 15px;
+	margin-top: 30px;
+}
+.area {
+	display: inline;
+}
+.area .areamenu{
+	width: 300px;
+}
+.dediArea {
+	width: 100%;
+	position: relative;
+}
+
+.dediArea .centerarea {
+	position: absolute;
+	left:50%;
+	transform: translateX(-50%);
+	color: #888;
+	top: -40px;
+}
+.dediArea .startarea {
+	position: absolute;
+	left: 0;
+	color: #0066ff;
+	top: -40px;
+}
+
+.dediArea .endarea {
+	position: absolute;
+	right: 0;
+	color: #0066ff;
+	top: -40px;
+}
+/*range background*/
+body .noUi-connect {
+	background: #0099ff;
+}
+
 
