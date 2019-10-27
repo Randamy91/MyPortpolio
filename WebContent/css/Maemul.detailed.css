@@ -1,0 +1,282 @@
+@charset "UTF-8";
+
+.row {
+	margin-top: 60px;
+}
+.affix {
+	width: 330px;
+}
+
+.affix-top {
+	width: 330px;
+}
+.affix-bottom {
+	position: absolute;
+	width: 330px;
+	
+}
+
+.box {
+	width: 358px;
+}
+
+.carousel-inner > .item > img {
+	min-width: 100%;
+	max-height: 411px;
+}
+
+.in_container {
+	width: 100%
+}
+.panel {
+	margin-top: 20px;
+}
+.title {
+	border-bottom: 1px solid black
+	
+}
+.text:before {
+  content : "";
+  position: absolute;
+  left    : 2;
+  bottom  : 0;
+  height  : 1px;
+  width   : 90%;  /* or 100px */
+  border-bottom:1px solid #BDBDBD;
+}
+
+.text {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.Text {
+	position: relative;
+	bottom: 15px;
+
+}
+.table {
+	border-bottom:1px solid #BDBDBD;	
+}
+.M_number {
+	border-bottom:1px solid #BDBDBD;		
+}
+.M_icon {
+	
+}
+table  .active {
+	width: 145px;
+}
+.last-row {
+	margin-top: 0px;
+}
+.inside_side {
+	width: 330px;
+	padding: 0px 15px;
+}
+
+.office_info_item {
+	float: left;
+}
+.profile-default {
+	float: left;
+}
+.modal-footer
+{
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    -moz-border-radius-bottomright: 6px;
+}
+
+.title {
+	margin-top: 25px;
+	padding-bottom: 15px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.name {
+	font-size: 12px;
+	color: #777777;
+}
+
+.B_info {
+	margin-bottom:80px;
+}
+.row {
+	margin-top: 30px;
+}
+.value {
+	font-size: 13px;
+	color: #333333;
+	position: absolute;
+	top: 14px;
+	left: 150px;
+
+}
+.Text > .value {
+	position: absolute;
+	top: 3px;
+	left: 135px;	
+}
+.value_detail {
+	font-size: 14px;
+}
+
+.BD_image_info .title {
+	margin-top: 100px;
+}
+.BD_fee .title {
+	margin-top: 50px;
+}
+.image {
+	width: 319px;
+	height: 160px;
+}
+.Name {
+	margin-bottom: 28px;
+}
+.address {
+	color: #777777;
+	margin-bottom: 28px;
+}
+.floor {
+	margin-bottom: 28px;
+}
+th  {
+	text-align: center;
+}
+th span {
+	line-height: 80px;
+	font-weight: normal;
+	color: #777777;
+	font-size: 16px;
+}
+td {
+	font-size: 16px;
+	padding-left: 20px;
+}
+.subtext {
+	text-align: center;
+	font-size: 14px;
+	color: #777777;
+	position: relative;
+	bottom: 10px;
+}
+.M_Number {
+	border-bottom: 1px solid silver;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#well_side {
+	margin-top: 10px;
+	text-align: center;	
+	font-size: 24px;
+	font-weight: bold;
+}
+#well_side .price-level {
+	font-size: 14px;
+	font-weight: normal;
+	color: #777777;
+}
+.M_location {
+	text-align: center;
+	font-size: 14px;
+}
+.location_grid {
+	margin-bottom: 8px;
+}
+.M_icon_item1 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+
+}
+.M_icon_item1::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "사무실"
+}
+.M_icon_item2 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+}
+.M_icon_item2::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "910.4"
+}
+.M_icon_item3 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+}
+.M_icon_item3::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "1/6층"
+}
+.M_icon_item4 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+}
+.M_icon_item4::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "없음"
+}
+.M_icon {
+	margin-top: 6px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+.office {
+	border-top: 1px solid silver;
+	padding-top: 30px;
+}
+.office_name {
+	margin-bottom: 20px;	
+	margin-top: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+.profile-default {
+	width: 60px;
+	height: 60px;
+	margin-bottom: 20px;
+	position: relative;
+	bottom: 10px;
+}
+.profile-default .fa-user {
+	width: 100%;
+	height: 100%;
+
+}
+.office_info_item {
+	padding-left: 20px;
+}
+.office_info_name {
+	margin-bottom: 10px;
+	font-size: 12px;
+	font-weight: bold;
+}
+.office_info_address {
+	font-size: 12px;
+	color:#777777;
+}
+.office_info_detail {
+	margin-bottom: 20px;
+}
+
+
+.modal_profile_default .fas {
+	width: 96px;
+	height:
+}
