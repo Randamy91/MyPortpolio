@@ -132,21 +132,20 @@
 											</div>
 										</div>
 										<!--공개여부 버튼 끝-->
-										<td rowspan="3">
-											<div class="maumul_photobox" style="position: relative;"></div>
-										</td>
 										<tr>
 											<th>건물명</th>
 											<td><input type="text" class="form-control"
 												name="maumul_name" placeholder="건물명을 입력하세요."
-												maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 400px;">
+												maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 400px; margin:15px;">
 											</td>
 										</tr>
 										<tr>
 											<th>사진</th>
-                     						 <td><input type="file" accept="image/jpg"></td>
+                     						 <td>
+											<img id="preview" src="" width="400" height="200" alt="사진 영역입니다.">
+											<input type="file" id="getfile" name="getfile" accept="image/*"></td>
 										</tr>
-									</div>	
+									</div>
 								</td>
 							</tr>
 						</tbody>
@@ -160,8 +159,8 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">
-										<input type="button" id="button_rent" name="button_rent" class="btn btn-primary" value="월세추가">
-										<input type="button" id="button_buy" name="button_buy" class="btn btn-primary" value="매매추가">
+										<input type="button" id="button_rent" name="button_rent" class="btn btn-primary" value="월세추가" >
+										<input type="button" id="button_buy" name="button_buy" class="btn btn-primary" value="매매추가" >
 									</div>
 								</td>
 							</tr>
@@ -177,9 +176,9 @@
 								<td>
 									<div class="number_floors" style="display: inline-block;">
 										<select class="form-control" id="numberfloors" name="numberfloors" style="width: 110px;">
-											<option value="1">지하3층</option>
-											<option value="1">지하2층</option>
-											<option value="1">지하1층</option>
+											<option value="03">지하3층</option>
+											<option value="02">지하2층</option>
+											<option value="01">지하1층</option>
 											<option value="1">1층</option>
 											<option value="2">2층</option>
 											<option value="3">3층</option>
@@ -278,13 +277,13 @@
 								<td>
 									<div class="heat_info" style="width: 110px;">
 										<select class="form-control" id="heatform" name="heatform">
-											<option value="난방">개별난방</option>
-											<option value="난방">지역난방</option>
-											<option value="난방">중앙난방</option>
-											<option value="난방">개별냉난방</option>
-											<option value="난방">지역냉난방</option>
-											<option value="난방">중앙냉난방</option>
-											<option value="난방">없음</option>
+											<option value="personal1">개별난방</option>
+											<option value="area1">지역난방</option>
+											<option value="center1">중앙난방</option>
+											<option value="personal2">개별냉난방</option>
+											<option value="area2">지역냉난방</option>
+											<option value="personal2">중앙냉난방</option>
+											<option value="nono">없음</option>
 										</select>
 									</div>
 								</td>
@@ -292,11 +291,11 @@
 									<td>
 										<div class="toilet_form" style="width: 140px;">
 											<select class="form-control" id="toiletform" name="toiletform">
-											<option value="화장실">외부/남녀구분</option>
-											<option value="화장실">외부/남녀혼용</option>
-											<option value="화장실">내부/남녀구분</option>
-											<option value="화장실">내부/남녀혼용</option>
-											<option value="화장실">없음</option>
+											<option value="outside1">외부/남녀구분</option>
+											<option value="outside2">외부/남녀혼용</option>
+											<option value="inside1">내부/남녀구분</option>
+											<option value="inside1">내부/남녀혼용</option>
+											<option value="toiletno">없음</option>
 										</select>
 									</div>
 								</td>
@@ -306,47 +305,45 @@
 								<td>
 									<div class="year_form" style="display: inline-block; margin: 20px; width: 110px;">
 											<select class="form-control" id="yearform" name="yearform">
-											<option value="연도">정보없음</option>
-											<option value="연도">2019년도</option>
-											<option value="연도">2018년도</option>
-											<option value="연도">2017년도</option>
-											<option value="연도">2016년</option>
-											<option value="연도">2015년</option>
-											<option value="연도">2014년</option>
-											<option value="연도">2013년</option>
-											<option value="연도">2012년</option>
-											<option value="연도">2011년</option>
-											<option value="연도">2010년</option>
-											<option value="연도">2009년</option>
-											<option value="연도">2008년</option>
-											<option value="연도">2007년</option>
-											<option value="연도">2006년</option>
-											<option value="연도">2005년</option>
-											<option value="연도">2004년</option>
-											<option value="연도">2003년</option>
-											<option value="연도">2002년</option>
-											<option value="연도">2001년</option>
-											<option value="연도">2000년</option>
-											<option value="연도">1990년도</option>
-											<option value="연도">1980년도</option>
-											<option value="연도">1970년도</option>
+											<option value="2019">2019년도</option>
+											<option value="2018">2018년도</option>
+											<option value="2017">2017년도</option>
+											<option value="2016">2016년</option>
+											<option value="2015">2015년</option>
+											<option value="2014">2014년</option>
+											<option value="2013">2013년</option>
+											<option value="2012">2012년</option>
+											<option value="2011">2011년</option>
+											<option value="2010">2010년</option>
+											<option value="2009">2009년</option>
+											<option value="2008">2008년</option>
+											<option value="2007">2007년</option>
+											<option value="2006">2006년</option>
+											<option value="2005">2005년</option>
+											<option value="2004">2004년</option>
+											<option value="2003">2003년</option>
+											<option value="2002">2002년</option>
+											<option value="2001">2001년</option>
+											<option value="2000">2000년</option>
+											<option value="1990">1990년도</option>
+											<option value="1980">1980년도</option>
+											<option value="1970">1970년도</option>
 										</select>
 										</div>			
 											<div class="month_form" style="display: inline-block; width: 110px;" >
 											<select class="form-control" id="monthform" name="monthform">
-											<option value="월">정보없음</option>
-											<option value="월">1월</option>
-											<option value="월">2월</option>
-											<option value="월">3월</option>
-											<option value="월">4월</option>
-											<option value="월">5월</option>
-											<option value="월">6월</option>
-											<option value="월">7월</option>
-											<option value="월">8월</option>
-											<option value="월">9월</option>
-											<option value="월">10월</option>
-											<option value="월">11월</option>
-											<option value="월">12월</option>
+											<option value="1">1월</option>
+											<option value="2">2월</option>
+											<option value="3">3월</option>
+											<option value="4">4월</option>
+											<option value="5">5월</option>
+											<option value="6">6월</option>
+											<option value="7">7월</option>
+											<option value="8">8월</option>
+											<option value="9">9월</option>
+											<option value="10">10월</option>
+											<option value="11">11월</option>
+											<option value="12">12월</option>
 										</select>
 									</div>
 									</td>	
@@ -358,7 +355,7 @@
 									 <input type="button" name="nowbtn" id="nowbtn" value="즉시입주" class="btn btn-default">
 									  <input type="button" name="withbtn" id="withbtn" value="협의가능" class="btn btn-default" checked="checked">
 									   <input type="text" id="datepicker" readonly />
-									        <a href="#" id="show-cal"><img src="img/calendar.png" height="20"></a> 
+									      <img src="img/calendar.png" id="show-cal" height="20" style="float: none;">
 							    		</div>
 							    	</td>
 							    </tr>
@@ -372,17 +369,17 @@
 							     	<tr>
 							    	   <th>권리금</th>
 							    		<td>
-							    		<div class="foregift_btn" style="margin : 15px 20px;">
-							    		 <input type="button" name="foregiftbtn" id="foregiftbtn" value="있음" class="btn btn-default">
-							    		  <input type="button" name="foregiftbtn1" id="foregiftbtn1" value="없음" class="btn btn-default">
+							    		<div class="foregift_chk" style="margin : 15px 20px;">
+							    		 <input type="checkbox" name="foregiftchk" value="yesno"/>있음
+							    		  <input type="checkbox" name="foregiftrdo1" value="yesno" />없음
 							    		</div>
 							    		</td>
 							    		<tr>
 							    		<th>관리비</th>
 							    		<td>
 							    		<div class="manage_btn" style="margin : 15px 20px;">
-							    		 <input type="button" name="managebtn" id="managebtn" value="있음" class="btn btn-default">
-							    		  <input type="button" name="manage1" id="manage1" value="없음" class="btn btn-default">
+							    		 <input type="checkbox" name="managebtn" id="managebtn" value="yesno"/>있음
+							    		  <input type="checkbox" name="manage1" id="manage1" value="yesno"/>없음
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -390,8 +387,8 @@
 							    		<th>주차</th>
 							    		<td>
 							    		<div class="park_btn" style="margin : 15px 20px;">
-							    		 <input type="button" name="parkbtn" id="parkbtn" value="가능" class="btn btn-default">
-							    		  <input type="button" name="parkbtn1" id="parkbtn1" value="불가능" class="btn btn-default">
+							    		 <input type="checkbox" name="parkbtn" id="parkbtn" value="yesno"/>가능
+							    		  <input type="checkbox" name="parkbtn1" id="parkbtn1" value="yesno"/>불가능
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -399,8 +396,8 @@
 							    		<th>엘리베이터</th>
 							    		<td>
 							    		<div class="eleva_btn" style="margin : 15px 20px;">
-							    		 <input type="button" name="elevabtn" id="elevabtn" value="있음" class="btn btn-default">
-							    		  <input type="button" name="elevabtn1" id="elevabtn1" value="없음" class="btn btn-default">
+							    		 	<input type="checkbox" name="elevabtn" id="elevabtn" value="yesno"/>있음
+							    		  	<input type="checkbox" name="elevabtn1" id="elevabtn1" value="yesno"/>없음	
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -415,7 +412,7 @@
 								<th>제목</th>
 								<td>
 									<input type="text" class="form-control"	name="explain_name" id="explain_name" placeholder="제목을 입력하세요."
-									maxlength="20글자 이하로 입력하세요." data-val-length-max="20" style="width: 800px; margin: 20px;">
+									maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 800px; margin: 20px;">
 								</td>
 								<tr>
 								<th>상세설명</th>
@@ -430,7 +427,7 @@
 								<th>비공개 메모</th>
 								<td>
 									<input type="text" class="form-control"	name="notopen_memo" id="notopen_memo" placeholder="등록자만 확인할 수 있는 메모 영역입니다."
-									maxlength="30글자 이하로 입력하세요." data-val-length-max="30" style="width: 800px; margin: 20px;">
+									maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 800px; margin: 20px;">
 								</td>
 							</tr>
 						
@@ -443,7 +440,8 @@
 							<tbody>
 								<tr>
 									<th>일반 사진</th>
-									 <td><input type="file" accept="image/jpg"></td>
+									 <td><img id="preview2" src="" width="600" height="400" alt="사진 영역입니다.">
+											<input type="file" id="getfile2" name="getfile2" accept="image/*"></td>
 								</tr>
 							</tbody>
 					</table>
@@ -455,7 +453,7 @@
 					</div>
 					<!-- (완료버튼) -->
 					<div class="register_btn">
-							<input type="button" id="button_cancel" name="button_cancel" class="btn btn-danger btn-lg" value="취소">
+							<button type="button" id="button_cancel" name="button_cancel" class="btn btn-info btn-lg">취소</button>
 							<input type="button" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록">
 						</div>
 				</form>
@@ -513,7 +511,8 @@
         });
     </script>
 
-<!--//datepicker 시작-->
+<!--//datepicker-->
+
 	<!-- 카카오 map -->
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -565,21 +564,53 @@
 		}
 	</script>
 	<!--//카카오 map-->
+
+	<!-- 이미지파일 -->
+	<script>
+	var file = document.querySelector('#getfile');
+
+	file.onchange = function () { 
+    var fileList = file.files ;
+    
+    // 읽기
+    var reader = new FileReader();
+    reader.readAsDataURL(fileList [0]);
+
+    //로드 한 후
+    reader.onload = function  () {
+        document.querySelector('#preview').src = reader.result;
+    }; 
+}; 
+</script>
+	<script>
+	var file = document.querySelector('#getfile2');
+
+	file.onchange = function () { 
+    var fileList = file.files ;
+    
+    var reader = new FileReader();
+    reader.readAsDataURL(fileList [0]);
+
+    reader.onload = function  () {
+        document.querySelector('#preview2').src = reader.result;
+    }; 
+}; 
+</script>
 	<!-- 완료버튼  -->
 	<script>
          $("#button_fini").click(function() {
-        	    // 확인, 취소버튼에 따른 후속 처리 구현
         	    swal({
-        	        title: '확인',                // 제목
-        	        text: "매물등록을 하시겠습니까>",  // 내용
-        	        type: 'warning',              // 종류
-        	        confirmButtonText: 'Yes',     // 확인버튼 표시 문구
-        	        showCancelButton: 'No',       // 취소버튼 표시 여부
-        	        cancelButtonText: 'No',       // 취소버튼 표시 문구
-        	    }).then(function(result) {        // 버튼이 눌러졌을 경우의 콜백 연결
-        	        if (result.value) {           // 확인 버튼이 눌러진 경우
+        	        title: '확인',                
+        	        text: '매물등록을 하시겠습니까?',  
+        	        type: 'warning',              
+        	        confirmButtonText: 'Yes',     
+        	        showCancelButton: 'No',       
+        	        cancelButtonText: 'No',       
+        	    }).then(function(result) {        
+        	        if (result.value) {           
         	            location.href = 'Main.html';
-        	        } else if (result.dismiss === 'cancel') {   // 취소버튼이 눌러진 경우
+        	            location.submit = 'jsp';
+        	        } else if (result.dismiss === 'cancel') {  
         	            swal('취소', '취소되었습니다.', 'error');
         	        }
         	    });
@@ -593,7 +624,15 @@
      		});
      	});
 </script>
-	
-
+<script type="text/javascript">
+			function doSubmit() {
+				// 폼 객체
+				var frm = document.form1;
+				// 입력확인하기
+				if (confirm("입력하신 내용이 맞습니까?")) {
+					frm.submit();	
+				}
+			}
+		</script>
 </body>
 </html>
