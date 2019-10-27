@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "utf-8";
 
 .row {
 	margin-top: 60px;
@@ -187,6 +187,9 @@ td {
 .location_grid {
 	margin-bottom: 8px;
 }
+#icon_box {
+	margin-top: 12px;
+}
 .M_icon_item1 {
 	text-align: center;
 	font-size: 40px;
@@ -234,7 +237,7 @@ td {
 }
 .M_icon {
 	margin-top: 6px;
-	margin-left: 20px;
+	margin-left: 17px;
 	margin-bottom: 20px;
 }
 .office {
@@ -252,7 +255,7 @@ td {
 	height: 60px;
 	margin-bottom: 20px;
 	position: relative;
-	bottom: 10px;
+	
 }
 .profile-default .fa-user {
 	width: 100%;
@@ -260,6 +263,7 @@ td {
 
 }
 .office_info_item {
+	padding-top: 10px;
 	padding-left: 20px;
 }
 .office_info_name {
@@ -279,4 +283,55 @@ td {
 .modal_profile_default .fas {
 	width: 96px;
 	height:
+}
+#button {
+	height: 60px;
+
+}
+.modal_profile_default {
+
+	width: 90px;
+	height: 90px;
+	margin: auto;
+	
+}
+.modal_profile_default .fa-user {
+	width: 100%;
+	height: 100%;
+}
+.I_Number {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #a3a3a3;
+}
+.alert {
+	margin: auto;
+	margin-top: 10px;
+	width: 200px;
+	font-size: 16px;
+	color: black;
+
+}
+.Explain {
+	font-size: 14px;
+	color: #777777;
+	margin-bottom: 40px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+.modal-footer {
+	text-align: center;
+}
+.Modal_office_Name {
+	font-size: 14px;
+}
+.Modal_office_address {
+	margin-top: 8px;
+	font-size: 14px;
+	color: #777777;
+}
+.Modal_I_Phone {
+	font-size: 14px;
+	color: #777777;
 }
