@@ -1,104 +1,15 @@
 @charset "utf-8";
-/*------------- 복사해서 사용하세요  --------------------*/
-
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  
-}
-
-.logo {
-  margin-left: 30px;
-}
-
-.menu_navbar {
-  width: 100%;
-  padding-right: 40px;
-  margin-bottom: 0;
-  line-height:45px;
-}
-
-.navbar-text {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.navbar-right {
-  font-size: 15px;
-}
-
-.content {
-  height: 100%;
-  width: 100%;
-  background: #eee;
-}
-
-.footer {
-  width: 100%;
-  height: 320px;
-  background: #333;
-}
-
-.modal-dialog.mymodal-size {
-  width: 400px;
-  height: 360px;
-}
-
-.mymodal-content {
-  width: 100%;
-  height: 100%;
-}
-
-.loginmodal-title {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.modal form {
-  margin-top: 20px;
-}
-
-.modal .input-container {
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.modal .input-info {
-  width: 270px;
-  display: inline-block;
-}
-
-.modal .forgot-pw input {
-  margin-left: 50px;
-}
-
-.modal .forgot-pw span {
-  margin-left: 90px;
-}
-
-.mymodal-body .adduser {
-  margin-left: 55px;
-}
-
-.loginbtn {
-  margin-top: 30px;
-  display: inline-block;
-  width: 270px;
-}
-
-/*------------- 복사해서 사용하세요 END --------------------*/
 
 /* content
 -----------------------------------------*/
-.title01 {
+.title {
 	margin-top : 60px;
 }
-.grayContent{
-	background-color: #eee;
-	height: 1200px;
+
+.main-content{
 	text-align: center;
 }
+
 
 
 /* content > circle
@@ -124,7 +35,7 @@ ul {
 	width: auto;
 }
 
-.content img{
+.gallery img{
 	margin: 30px 75px 30px 75px;
 }
 
@@ -141,7 +52,7 @@ ul {
 -----------------------------------------*/
 
 
-/* content > personal_info
+/* content > company_info
 -----------------------------------------*/
 .company_info{
 	background-color: #eee;
@@ -154,38 +65,6 @@ th {
 	height: 70px;
 }
 
-#company_name{
-	width: 400px;
-}
-
-#company_number{
-	width: 260px;
-}
-
-#buisness_number{
-	width: 260px;
-}
-
-#user_email{
-	width: 184px;
-}
-
-#email{
-	width: 184px;
-	height: 35px;
-}
-
-#user_pw{
-	width: 400px;
-}
-
-#user_pwconfirm{
-	width: 400px;
-}
-
-#user_hp{
-	width: 400px;
-}
 
 /* content > box > button
 -----------------------------------------*/

@@ -136,16 +136,22 @@
                                 <div>
                                     <ul class="gallery">
                                         <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
+                                        </li>
+                                        <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">약관동의</span>
+                                            <span class="text" style="margin-left: 50px;">약관동의</span>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">정보입력</span>
+                                            <span class="text" style="margin-left: 50px;">정보입력</span>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">가입완료</span>
+                                            <span class="text" style="margin-left: 50px;">가입완료</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -182,36 +188,40 @@
                                 <div>
                                     <ul class="gallery">
                                         <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
+                                        </li>
+                                        <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">약관동의</span>
+                                            <span class="text" style="margin-left: 100px;">약관동의</span>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">정보입력</span>
+                                            <span class="text" style="margin-left: 100px;">정보입력</span>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">가입완료</span>
+                                            <span class="text" style="margin-left: 100px;">가입완료</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                     </ul>
                                 </div>
                                 <table align="center">
-                                    <div>
-                                        개인정보 입력
-                                    </div>
                                     <tbody>
                                         <tr>
                                             <th>
-                                                <label for="user_name">이름</label>
+                                                개인정보 입력
                                             </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="active"><span class="left-name">이름</span></th>
                                             <td>
                                                 <input type="text" name="user_name" id="user_name" class="form-control" maxlength="20" placeholder="이름을 입력해주세요">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                <label for="user_email">이메일</label>
-                                            </th>
+                                            <th class="active"><span class="left-name">이메일</span></th>
                                             <td>
                                                 <input type="text" name="user_email" id="user_email" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block;">
                                                 &nbsp;@&nbsp;
@@ -227,58 +237,60 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                <label for="user_pw">비밀번호</label>
-                                            </th>
+                                            <th class="active"><span class="left-name">비밀번호</span></th>
                                             <td>
-                                                <input type="password" name="user_pw" id="user_pw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                                                <input type="password" name="Rpw" id="Rpw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                <label for="user_pwconfirm">비밀번호 확인</label>
-                                            </th>
+                                            <th class="active"><span class="left-name">새 비밀번호</span></th>
                                             <td>
-                                                <input type="password" name="user_pwconfirm" id="user_pwconfirm" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                                                <input type="password" name="Npw" id="Npw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                <label for="user_hp">휴대폰 번호</label>
-                                            </th>
+                                            <th class="active"><span class="left-name">휴대폰 번호</span></th>
                                             <td>
-                                                <input type="text" name="user_hp" id="user_hp" class="form-control" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
+                                                <input type="text" name="phoneNumber1" id="phoneNumber1" class="form-control" maxlength="20" placeholder="휴대폰번호를 입력해주세요">
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="general02_btn">
+                                <div class="general02_btn" style="text-align: center;">
                                     <input
                                     type="button" class="btn btn-blue" value="입력완료" name="checkButton" onclick="page02()">
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                 </div>
                             </form>
+
+
                             <!-- form 박스 - 2  -->
                             <form name="filter" class="join_complete" role="form" method="post" action="#" id="result03" style="display: none;">
                                 <div>
-                                    <ul class="gallery">
+                                   <ul class="gallery">
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">약관동의</span>
+                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">정보입력</span>
+                                            <span class="text" style="margin-left: 50px;">약관동의</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="text" style="margin-left: 50px;">정보입력</span>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
-                                            <span class="text">가입완료</span>
+                                            <span class="text" style="margin-left: 50px;">가입완료</span>
+                                        </li>
+                                        <li class="cover01">
+                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="box1">
                                     <h6>회원가입이 완료되었습니다.</h6>
-                                    <img src="img/noname1.png"/>
+                                    <img src="img/complete.png"/>
                                 </div>
                                 <div>
                                     <input
