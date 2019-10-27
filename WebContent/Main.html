@@ -159,14 +159,40 @@
 						<span>검색결과</span> <span class="maemulCount" style="color: red;"></span>
 						<span>개</span>
 					</div>
-					<div class="maemulList">
-						<div class="list1">
-							<div class="image"></div>
+					<div class="maemulList" style="overflow-x:hidden;overflow-y:scroll">
+						<div>
+							<div class="list-item" OnClick="location.href ='Maemul.detailed.html'">
+								<div class="image-container">
+									<div class="image" style="background-image: url(img/office.jpg);">
+										
+									</div>
+								</div>
+								<div class="price-container">
+									<div class="primary">
+										<span>월세</span>
+										<span>5000/200</span>
+									</div>
+									<div class="premium">
+										권리금 없음
+									</div>
+								</div>
+								<div class="detail-container">
+									<div class="location">
+										동묘앞역. 도보 6분 (황학동)
+									</div>
+									<div class="option">
+										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비 10만</span>
+									</div>
+									<div class="tag">
+										<span class="option-tag">주차</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<!-- pagenation -->
 					<div class="pageCount">
-						<ul class="pagination">
+						<ul class="pagination page">
 							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 							<li class="page-item"><a class="page-link" href="#">1</a></li>
 							<li class="page-item"><a class="page-link" href="#">Next</a></li>
@@ -191,7 +217,7 @@
 	<script src="plugins/nouislider/nouislider.min.js"></script>
 	<script>
 		//매물개수
-		var maemulCount = 0;
+		var maemulCount = 1;
 		$(".maemulCount").html(maemulCount);
 
 		//KAKAO api javascript 
