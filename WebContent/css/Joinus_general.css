@@ -58,7 +58,7 @@ ul {
 }
 
 th {
-	width : 250px;
+	width : 150px;
 	height: 70px;
 }
 
@@ -87,14 +87,6 @@ th {
 	width: 400px;
 }
 
-/* content > box > button 버튼관련
------------------------------------------*/
-.btn-blue{
-	background-color: #00ccff;
-	height: 50px;
-	width: 80px;
-	margin: 50px;
-}
 
 
 /* content > box1 회원가입 완료 페이지
@@ -105,6 +97,7 @@ th {
 	width: 500px; height: 350px;
 	display: inline-block;
 	margin: auto;
+	border-radius: 50px;
 }
 
 .box1 img{

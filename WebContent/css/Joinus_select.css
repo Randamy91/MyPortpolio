@@ -112,6 +112,7 @@ html, body {
   	height: 350px;
 	display: inline-block;
   	margin: 75px 50px 75px 50px;
+  	border-radius: 50px;
 	
 }
 
@@ -122,6 +123,7 @@ html, body {
   	height: 350px;
 	display: inline-block;
   	margin: 75px 50px 75px 50px;
+  	border-radius: 50px;
 	
 }
 

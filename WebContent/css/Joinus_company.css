@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 /* content
 -----------------------------------------*/
 .title {
@@ -9,7 +10,6 @@
 .main-content{
 	text-align: center;
 }
-
 
 
 /* content > circle
@@ -66,15 +66,6 @@ th {
 }
 
 
-/* content > box > button
------------------------------------------*/
-.btn-blue{
-	background-color: #00ccff;
-	height: 150px
-	width: 250px;
-	margin: 50px
-}
-
 /* content > box1
 -----------------------------------------*/
 .box1{
@@ -83,6 +74,7 @@ th {
 	width: 500px; height: 350px;
 	display: inline-block;
 	margin: auto;
+	border-radius: 50px;
 }
 
 .box1 img{

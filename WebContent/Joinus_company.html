@@ -7,6 +7,8 @@
         <title>세모- 상가 중개사이트</title>
         <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/Joinus_general.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
+        
     </head>
     <style type="text/css">
         .logo {
@@ -139,15 +141,15 @@
                                             <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 50px;">약관동의</span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 50px;">정보입력</span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 50px;">가입완료</span>
                                         </li>
                                         <li class="cover01">
@@ -157,7 +159,7 @@
                                 </div>
                                 <form action="#" class="policy_all" method="post" name="filter">
                                     <input type="checkbox" name="agree01" id="agree_all" onclick="agreeCheck()">
-                                    <label for="check_box">아래 약관에 모두 동의합니다.</label>
+                                    <label for="check_box" >아래 약관에 모두 동의합니다.</label>
                                     <br/>
                                     <input type="checkbox" name="agree" id="agree"/>
                                     <label for="check_box">세모 서비스 이용약관(필수)</label>
@@ -188,7 +190,7 @@
                                     <br/>
                                     <div class="general01_btn">
                                         <input
-                                        type="button" class="btn btn-blue" value="다음" name="checkButton" onclick="page01()">
+                                        type="button" class="btn btn-primary" value="다음" name="checkButton" onclick="page01()" style="height: 50px; width: 80px; margin: 50px">
                                         <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                     </div>
                                 </form>
@@ -202,15 +204,15 @@
                                             <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 100px;">약관동의</span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 100px;">정보입력</span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 100px;">가입완료</span>
                                         </li>
                                         <li class="cover01">
@@ -239,7 +241,7 @@
                                                         <div style="display: inline-block;">
                                                             <input type="file" id="fileBox_1" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
                                                             <label for="fileBox_1">
-                                                                <span class="btn btn-defualt btn-default sg-btn-lg-default">중개등록증 첨부</span>
+                                                                <span class="btn btn-default sg-btn-lg-default">중개등록증 첨부</span>
                                                             </label>
                                                         </div>
                                                     </td>
@@ -252,7 +254,7 @@
                                                         <div style="display: inline-block;">
                                                             <input type="file" id="fileBox_1" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
                                                             <label for="fileBox_1">
-                                                                <span class="btn btn-defualt btn-default sg-btn-lg-default">사업자등록 첨부</span>
+                                                                <span class="btn btn-default sg-btn-lg-default">사업자등록 첨부</span>
                                                             </label>
                                                         </div>
                                                     </td>
@@ -396,7 +398,7 @@
                                                         <img src="img/ceo_image.jpg" class="coe_image" style="float : left; height: 180px; width: 150px; margin: 0;">
                                                         <input type="file" class="form-control" id="coe_image" name="coe_image" style="display: none;">
                                                         <label for="coe_image" class="label_ceo_image">
-                                                            <span class="btn btn-info"style ="margin-left:10px;">사진 업로드</span>
+                                                            <span class="btn btn-default"style ="margin-left:10px;">사진 업로드</span>
                                                         </label>
                                                     </td>
                                                 </tr>
@@ -433,9 +435,9 @@
                                                 <tr>
                                                     <th class="active"><span class="left-name">이메일</span></th>
                                                     <td>
-                                                        <input type="text" name="set_email01" id="set_email01" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block;">
+                                                        <input type="text" name="set_email01" id="set_email01" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block; width: 185px;">
                                                         &nbsp;@&nbsp;
-                                                        <select class="form-control" name="selectEmail" id="selectEmail" style="display: inline-block;">
+                                                        <select class="form-control" name="selectEmail" id="selectEmail" style="display: inline-block; width: 185px;">
                                                             <option>----- 선택하세요 -----</option>
                                                             <option value="naver">naver.com</option>
                                                             <option value="gmail">gmail.com</option>
@@ -482,7 +484,7 @@
                                         </table>
                                         <div class="general02_btn" style="text-align: center;">
                                             <input
-                                            type="button" class="btn btn-blue" value="입력완료" name="checkButton" onclick="page02()">
+                                            type="button" class="btn btn-primary" value="입력완료" name="checkButton" onclick="page02()" style="height: 50px; width: 80px; margin: 50px">
                                         <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                         </div>
                                     </form>
@@ -497,15 +499,15 @@
                                             <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 50px;">약관동의</span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname1.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 50px;">정보입력</span>
                                         </li>
                                         <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname2.png" alt="약관동의" width="120"/></span>
+                                            <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
                                             <span class="text" style="margin-left: 50px;">가입완료</span>
                                         </li>
                                         <li class="cover01">
@@ -514,12 +516,12 @@
                                     </ul>
                                         </div>
                                         <div class="box1">
-                                            <h6>회원가입이 완료되었습니다.</h6>
+                                            <h5>회원가입이 완료되었습니다.</h5>
                                             <img src="img/complete.png"/>
                                         </div>
                                         <div>
                                             <input
-                                            type="button" class="btn btn-blue" value="바로가기" name="checkButton" onclick="location.href='Main.html'">
+                                            type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.html'" style="height: 50px; width: 80px; margin: 50px">
                                         <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                         </div>
                                     </form>
