@@ -106,7 +106,7 @@
         <div class="box2">
           <h5>공인중개사 회원가입</h5>
           <img style="height:150px; width:150px;" src="img/company.png"/>
-          <button type="button" class="btn btn-primary" onclick="location.href='Joinus_company.html'">바로가기</button>
+          <button type="button" class="btn btn-primary" onclick="location.href='Joinus_company.jsp'">바로가기</button>
         </div>
 
       </div>

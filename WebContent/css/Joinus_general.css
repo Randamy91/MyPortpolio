@@ -32,13 +32,13 @@ ul {
 	float: left;
 }
 
+.gallery img{
+	margin: 50px 30px 20px 30px;
+}
+
 .cover01 {
 	display: block;
 	width: auto;
-}
-
-.content img{
-	margin: 30px 75px 30px 75px;
 }
 
 

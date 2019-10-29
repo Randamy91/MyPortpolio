@@ -144,15 +144,15 @@
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 50px;">약관동의</span>
+                                            <div class="text">약관동의</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 50px;">정보입력</span>
+                                            <div class="text">정보입력</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 50px;">가입완료</span>
+                                            <div class="text">가입완료</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
@@ -214,15 +214,15 @@
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 100px;">약관동의</span>
+                                            <div class="text" style="margin-left:60px;">약관동의</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 100px;">정보입력</span>
+                                            <div class="text" style="margin-left:60px;">정보입력</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 100px;">가입완료</span>
+                                            <div class="text" style="margin-left:60px;">가입완료</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
@@ -510,15 +510,15 @@
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 50px;">약관동의</span>
+                                            <div class="text">약관동의</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 50px;">정보입력</span>
+                                            <div class="text">정보입력</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
-                                            <span class="text" style="margin-left: 50px;">가입완료</span>
+                                            <div class="text">가입완료</div>
                                         </li>
                                         <li class="cover01">
                                             <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
@@ -578,6 +578,7 @@
                         if (rst.style.display == 'none') {
                             rst.style.display = 'block';
                         }
+                        $('html').scrollTop(0);
                     }
                     function page02() {
                         var rst = document.getElementById("result02");
@@ -588,6 +589,7 @@
                         if (rst.style.display == 'none') {
                             rst.style.display = 'block';
                         }
+                        $('html').scrollTop(0);
                     }
                 </script>
             </body>
