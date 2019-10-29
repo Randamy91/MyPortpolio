@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -8,16 +10,9 @@
         <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/Joinus_general.css">
         <link rel="stylesheet" href="plugins/icheck/css/blue.css" />
-
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-        <style type="text/css">
-        .btn span.glyphicon {         
-          opacity: 0;       
-        }
-        .btn.active span.glyphicon {        
-          opacity: 1;       
-        }
-        </style>
+        <!-- blue.css / icheck.min.js / jquery에 icheck plugin을 적용시켜 놓음(general만).. 실제 class에 icheck를 먹이면 자바스크립트가 동작을 안함 확인중.. -->
+    
 
 
     </head>
@@ -88,14 +83,14 @@
         <nav
             class="navbar menu_navbar bg-white">
             <!--<div class="navbar-header menu_header">-->
-            <a class="navbar-brand logo" href="Main.html">
+            <a class="navbar-brand logo" href="Main.jsp">
                 <img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
             </a>
             <p class="navbar-text navbar-left">
-                <a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a>
+                <a href="Main.jsp" class="navbar-link" style="text-decoration:none">상가</a>
             </p>
             <p class="navbar-text navbar-left">
-                <a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a>
+                <a href="Bigdata.jsp" class="navbar-link" style="text-decoration:none">상권분석</a>
             </p>
             <p class="navbar-text navbar-right">
                 <a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a>
@@ -313,7 +308,7 @@
                                 </div>
                                 <div>
                                     <input
-                                    type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.html'" style="height: 50px; width: 100px; margin: 50px">
+                                    type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.jsp'" style="height: 50px; width: 100px; margin: 50px">
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                 </div>
                             </form>
@@ -333,7 +328,6 @@
         <script src="plugins/icheck/icheck.min.js"></script>
         <script type="text/javascript">
 
-            function agreeCheck() {
             var selectAll = document.querySelector("#agree_all");
             selectAll.addEventListener('click', function () {
                 var objs = document.querySelectorAll("#agree");

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -77,14 +79,14 @@
         <nav
             class="navbar menu_navbar bg-white">
             <!--<div class="navbar-header menu_header">-->
-            <a class="navbar-brand logo" href="Main.html">
+            <a class="navbar-brand logo" href="Main.jsp">
                 <img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
             </a>
             <p class="navbar-text navbar-left">
-                <a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a>
+                <a href="Main.jsp" class="navbar-link" style="text-decoration:none">상가</a>
             </p>
             <p class="navbar-text navbar-left">
-                <a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a>
+                <a href="Bigdata.jsp" class="navbar-link" style="text-decoration:none">상권분석</a>
             </p>
             <p class="navbar-text navbar-right">
                 <a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a>
@@ -529,7 +531,7 @@
                                         </div>
                                         <div>
                                             <input
-                                            type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.html'" style="height: 50px; width: 100px; margin: 50px">
+                                            type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.jsp'" style="height: 50px; width: 100px; margin: 50px">
                                         <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                         </div>
                                     </form>
@@ -591,4 +593,4 @@
             </body>
         </html>
     </body>
-</html>s
+</html>
