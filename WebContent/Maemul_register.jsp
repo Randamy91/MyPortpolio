@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -160,8 +162,8 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">    
-										 <input type="radio" id="button_rent" name="addmaemul"  value="rent" />&nbsp;월세 추가
-										  <input type="radio" id="button_buy" name="addmaemul" value="buy" />&nbsp;매매 추가
+										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" />&nbsp;월세 추가
+										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy" />&nbsp;매매 추가
 										  
 										  <div class="addrent" hidden=""><input type="text" name="deposit" placeholder="보증금"/>&nbsp;/
 										       <input type="text" name="monthrent" placeholder="월세"/></div>
@@ -529,7 +531,17 @@ $ (document) .ready (function () {
 	checkboxClass : 'icheckbox_flat-blue', 
     radioClass : 'iradio_flat-blue' 
   }); 
-}); 
+  $('#button_rent').on('ifChecked', function() {
+      console.log("checked");
+     $(".addrent").show();
+	});
+  $('#button_buy').on('ifChecked', function() {
+      console.log("checked");
+     $(".addbuy").show();
+});
+});
+
+
 </script>
 <!-- //icheck  -->
 	<!-- 카카오 map -->
@@ -584,20 +596,7 @@ $ (document) .ready (function () {
 	</script>
 	<!-------------------------------------//카카오 map----------------------------------------->
 	<!------------------------------------ 라디오 버튼 요소표시-------------------------------------->
-	<script>
-  $(function() {
-    $("#button_rent").on("click", function() {
-      $(".addrent").show();
-      
-    });
-  });
-     $(function() {
-    $("#button_buy").on("click", function() {
-      $(".addbuy").show();
-      
-    });
-  });
-  </script>
+	
 	<!-- //라디오버튼 요소표시 -->
 	<!-- 이미지파일 -->
 	<script>
