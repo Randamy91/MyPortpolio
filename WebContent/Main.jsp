@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,19 +24,19 @@
 		<!-- 상단 메뉴 바 -->
 		<nav class="navbar menu_navbar bg-white">
 			<!--<div class="navbar-header menu_header">-->
-			<a class="navbar-brand logo" href="Main.html"> <img alt="Brand"
+			<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
 				src="img/main_logo.jpg" width="65px" height="40px">
 			</a>
 			<p class="navbar-text navbar-left">
-				<a href="Main.html" class="navbar-link"
+				<a href="Main.jsp" class="navbar-link"
 					style="text-decoration: none">상가</a>
 			</p>
 			<p class="navbar-text navbar-left">
-				<a href="Bigdata.html" class="navbar-link"
+				<a href="Bigdata.jsp" class="navbar-link"
 					style="text-decoration: none">상권분석</a>
 			</p>
 			<p class="navbar-text navbar-right">
-				<a href="Joinus_select.html" class="navbar-link"
+				<a href="Joinus_select.jsp" class="navbar-link"
 					style="text-decoration: none">회원가입</a>
 			</p>
 			<p class="navbar-text navbar-right">
@@ -64,7 +69,7 @@
 							</div>
 							<div class="forgot-pw">
 								<input type="checkbox" />&nbsp;자동 로그인 <span> <a
-									href="Pw_change.html" style="text-decoration: none">비밀번호 찾기</a>
+									href="Pw_change.jsp" style="text-decoration: none">비밀번호 찾기</a>
 								</span>
 							</div>
 							<div class="input-container">
@@ -73,7 +78,7 @@
 							</div>
 						</form>
 						<span class="adduser">아직 세모의 회원이 아니신가요? <a
-							href="Joinus_select.html">회원가입</a>
+							href="Joinus_select.jsp">회원가입</a>
 						</span>
 					</div>
 				</div>
@@ -95,7 +100,7 @@
 					<h5>
 						<b>거래유형</b>
 					</h5>
-					<input type='radio' class='ichecked' name="salestype" checked>
+					<input type='radio' id="selectAll" class='ichecked' name="salestype" checked>
 					&nbsp; 전체 <br> <input type='radio' class='ichecked'
 						name="salestype"> &nbsp; 월세 <br> <input type='radio'
 						class='ichecked' name="salestype"> &nbsp; 매매
@@ -174,227 +179,17 @@
 					</div>
 					<div class="maemulList"
 						style="overflow-x: hidden; overflow-y: scroll">
-						<div>
-						
-						
 						<!-- 더미 데이터  -->
-						
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
-							<div class="list-item"
-								OnClick="location.href ='Maemul.detailed.html'"
-								style="cursor: pointer;">
-								<div class="image-container">
-									<div class="image"
-										style="background-image: url(img/office.jpg);"></div>
-								</div>
-								<div class="price-container">
-									<div class="primary">
-										<span>월세</span> <span>5000/200</span>
-									</div>
-									<div class="premium">권리금 없음</div>
-								</div>
-								<div class="detail-container">
-									<div class="location">동묘앞역. 도보 6분 (황학동)</div>
-									<div class="option">
-										<span>지하1층</span><span>|</span><span>154.8㎡(47PY)</span><span>|</span><span>관리비
-											10만</span>
-									</div>
-									<div class="tag">
-										<span class="option-tag">주차</span>
-									</div>
-								</div>
-							</div>
+						<div>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
 						</div>
 					</div>
 					<!-- pagenation -->
@@ -424,6 +219,10 @@
 	<script src="plugins/nouislider/nouislider.min.js"></script>
 	<script>
 		//매물개수
+		
+		
+		
+		
 		var maemulCount = $('.list-item').length;
 		$(".maemulCount").html(maemulCount);
 
@@ -452,6 +251,18 @@
 	        minLevel: 1 // 클러스터 할 최소 지도 레벨 
 	    });
 		
+		
+	    var control = new kakao.maps.ZoomControl();
+	    map.addControl(control, kakao.maps.ControlPosition.TOPRIGHT);
+	 // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+	 var mapTypeControl = new kakao.maps.MapTypeControl();
+
+	 // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+	 // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+	 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+
+		
 		$.get("dummydata.json", function(data) {
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
@@ -460,7 +271,7 @@
                 position : new kakao.maps.LatLng(position.lat, position.lng)
             });
         });
-
+		
         // 클러스터러에 마커들을 추가합니다
         clusterer.addMarkers(markers);
     });
@@ -477,14 +288,14 @@
 			radioClass: 'iradio_flat-blue'
 		});
 
-		$('.ichecked').on('ifChecked', function(event) {
+		$('#selectAll').on('ifChecked', function(event) {
 			console.log("checked");
 		});
 
 		$('.ichecked').on('ifUnchecked', function(event) {
 			console.log("unchecked");
 		});
-		
+	
 	});
 	
 	/* 필터 -드롭다운 - 자동 toggle 해제 */
