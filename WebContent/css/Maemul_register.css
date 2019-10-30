@@ -304,10 +304,6 @@ img {
 	text-align: center;
 }
 
-#getfile { margin: 20px;}
+#getfile, #getfile2, #preview, #preview2
+ { margin: 20px;}
 
-#getfile2 {margin: 20px;}
-
-#preview {margin: 20px;}
-
-#preview2 {margin: 20px;}

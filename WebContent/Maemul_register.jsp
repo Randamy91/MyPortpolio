@@ -19,18 +19,18 @@
 	<!-- 상단 메뉴 바 -->
 	<nav class="navbar menu_navbar bg-white">
 		<!--<div class="navbar-header menu_header">-->
-		<a class="navbar-brand logo" href="Main.html"> <img alt="Brand"
+		<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
 			src="img/main_logo.jpg" width="65px" height="40px">
 		</a>
 		<p class="navbar-text navbar-left">
-			<a href="Main.html" class="navbar-link" style="text-decoration: none">상가</a>
+			<a href="Main.jsp" class="navbar-link" style="text-decoration: none">상가</a>
 		</p>
 		<p class="navbar-text navbar-left">
-			<a href="Bigdata.html" class="navbar-link"
+			<a href="Bigdata.jsp" class="navbar-link"
 				style="text-decoration: none">상권분석</a>
 		</p>
 		<p class="navbar-text navbar-right">
-			<a href="Joinus_select.html" class="navbar-link"
+			<a href="Joinus_select.jsp" class="navbar-link"
 				style="text-decoration: none">회원가입</a>
 		</p>
 		<p class="navbar-text navbar-right">
@@ -96,9 +96,9 @@
 								<td>
 									<div class="address_info">
 										<div class="button">
-											<input type="text" name="sample5_address" id="sample5_address" readonly> <input
+											<input type="text" name="sample5_address" id="sample5_address" readonly/> <input
 												class="btn btn-primary" type="button"
-												onclick="sample5_execDaumPostcode()" value="주소 검색">
+												onclick="sample5_execDaumPostcode()" value="주소 검색"/>
 										</div>
 										<div class="detailed_form">
 											<textarea class="form-control"
@@ -128,8 +128,8 @@
 									<div class="maemul_info">
 										<!--공개여부 버튼-->
 										<div class="toggle-radio">
-											<input type="radio" class="radionon" name="rdo" id="yes" checked>
-											<input type="radio" class="radionon" name="rdo" id="no">
+											<input type="radio" class="radionon" name="rdo" id="yes" checked/>
+											<input type="radio" class="radionon" name="rdo" id="no"/>
 											<div class="switch">
 												<label for="yes">공개</label> <label for="no">비공개</label> <span></span>
 											</div>
@@ -139,14 +139,14 @@
 											<th>건물명</th>
 											<td><input type="text" class="form-control"
 												name="maemul_name" placeholder="건물명을 입력하세요."
-												maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 400px; margin:15px;">
+												maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 400px; margin:15px;"/>
 											</td>
 										</tr>
 										<tr>
 											<th>사진</th>
                      						 <td>
 											<img id="preview" src="" width="400" height="200" alt="사진 영역입니다.">
-											<input type="file" id="getfile" name="getfile" accept="image/*"></td>
+											<input type="file" id="getfile" name="getfile" accept="image/*"/></td>
 										</tr>
 									</div>
 								</td>
@@ -165,11 +165,11 @@
 										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" />&nbsp;월세 추가
 										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy" />&nbsp;매매 추가
 										  
-										  <div class="addrent" hidden=""><input type="text" name="deposit" placeholder="보증금"/>&nbsp;/
-										       <input type="text" name="monthrent" placeholder="월세"/></div>
-										  <div class="addbuy" hidden=""><input type="text" name="buy" placeholder="매매가"/>&nbsp;/
-										    <input type="text" name="gideposit" placeholder="기보증금"/>&nbsp;/
-										    <input type="text" name="gimonthrent" placeholder="기월세" />
+										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" placeholder="보증금"/>&nbsp;/
+										       <input type="text" class="addtext" name="monthrent" placeholder="월세"/>&nbsp;만원&nbsp;&nbsp;(예: 5000/100)</div>
+										  <div class="addbuy" hidden="" style="margin-top:10px"><input type="text" name="buy" placeholder="매매가"/>&nbsp;/
+										    <input type="text" class="addtext" name="gideposit" placeholder="기보증금"/>&nbsp;/
+										    <input type="text" class="addtext" name="gimonthrent" placeholder="기월세"/>&nbsp;만원&nbsp;&nbsp;(예: 5000)
 										  </div>
 									</div>
 								</td>
@@ -222,20 +222,20 @@
 										</select>
 									</div>
 							<div class="form-check" style="display: inline;">
- 				 				<input type="checkbox" class="icheckuse"  name="select_check" id="select_check" checked>
+ 				 				<input type="checkbox" class="icheckuse"  name="select_check" id="select_check" checked/>
  							 <label class="form-check-label" for="select_check">복층(연층)</label>
 								</div>				
 						<div class="form-check"  style="display: inline; margin-right:20px;">
- 					 		<input type="checkbox" class="icheckuse" name="select_check" id="select_check2" checked>
+ 					 		<input type="checkbox" class="icheckuse" name="select_check" id="select_check2" checked/>
  							 <label class="form-check-label" for="select_check2">건물 전체</label>
 							</div>
 							</td>
 							<th>계약면적</th>
 								<td>	
 								    <div class="maemul_size" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize" name="maemulsize" style="width: 88px;"><span style="padding-top: 10px;">평</span></div>
+									<input type="text" class="form-control" id="maemulsize" name="maemulsize" style="width: 88px;"/><span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize2" name="maemulsize2" style="margin-left: 20px; width: 88px;"><span style="padding-top: 10px">m</span></div>
+									<input type="text" class="form-control" id="maemulsize2" name="maemulsize2" style="margin-left: 20px; width: 88px;"/><span style="padding-top: 10px">m</span></div>
 							    </td>
 							    <tr>
 								<th>건물 층수</th>
@@ -277,9 +277,9 @@
 										<th>전용 면적</th>
 								<td>	
 								    <div class="maemul_size2" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize1" name="maemulsize1"><span style="padding-top: 10px;">평</span></div>
+									<input type="text" class="form-control" id="maemulsize1" name="maemulsize1"/><span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size2" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize3" name="maemulsize3" ><span style="padding-top: 10px">m</span></div>
+									<input type="text" class="form-control" id="maemulsize3" name="maemulsize3" /><span style="padding-top: 10px">m</span></div>
 							    </td>
 							</tr>
 							<tr>
@@ -362,9 +362,9 @@
 							    	<th>입주가능일</th>
 							    	<td colspan="3">
 							   <div class="movein_day">
-									 <input type="radio" class="icheckuse" name="nowbtn" id="nowbtn" value="nowgo"/>&nbsp;즉시입주
+									 <input type="radio" class="icheckuse" name="nowbtn" id="nowbtn" value="nowgo"checked/>&nbsp;즉시입주
 									  <input type="radio" class="icheckuse" name="nowbtn" id="withbtn" value="withgo"/>&nbsp;협의가능
-									   <input type="text" id="datepicker" readonly />
+									   <input type="text" id="datepicker" placeholder="&nbsp;달력을 클릭하세요." readonly  />
 									      <img src="img/calendar.png" id="show-cal" height="20" style="float: none;">
 							    		</div>
 							    	</td>
@@ -379,18 +379,19 @@
 							     	<tr>
 							    	   <th>권리금</th>
 							    		<td>
-							    		<div class="foregift_chk"  style="margin : 15px 20px;">
-							    		
-							    		 <input type="radio" class="icheckuse" name="foregiftchk" value="yes"/>&nbsp;있음 
-							    		 <input type="radio" class="icheckuse" name="foregiftchk" value="no" />&nbsp;없음
+							    		<div class="foregift_chk"  style="margin : 15px 20px;">		
+							    		 <input type="radio" id="foregiftchk" class="icheckuse"  name="foregiftchk" value="yes"/>&nbsp;있음 
+							    		 <input type="radio" class="icheckuse" name="foregiftchk" value="no" checked />&nbsp;없음
+							    		  <div class="foregift" hidden="" style="margin-top:10px"><input type="text" class="foregifttext" name="foregift" placeholder="권리금"/>&nbsp;만원&nbsp;&nbsp;(예: 1000)</div>
 							    		</div>
 							    		</td>
 							    		<tr>
 							    		<th>관리비</th>
 							    		<td>
 							    		<div class="manage_chk" style="margin : 15px 20px;">
-							    		 <input type="radio" class="icheckuse" name="managechk" id="managechk" value="yes"/>&nbsp;있음
-							    		  <input type="radio" class="icheckuse" name="managechk" id="manage1" value="no"/>&nbsp;없음
+							    		 <input type="radio" class="icheckuse" id="managechk" name="managechk" id="managechk" value="yes"/>&nbsp;있음
+							    		  <input type="radio" class="icheckuse" name="managechk" id="manage1" value="no"checked/>&nbsp;없음
+							    		   <div class="manage" hidden="" style="margin-top:10px"><input type="text" class="managetext" name="manage" placeholder="관리비"/>&nbsp;만원&nbsp;&nbsp;(예: 1000)</div>
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -399,7 +400,29 @@
 							    		<td>
 							    		<div class="park_chk" style="margin : 15px 20px;">
 							    		 <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="yes"/>&nbsp;가능
-							    		  <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="no"/>&nbsp;불가능
+							    		  <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="no"checked/>&nbsp;불가능
+							    		  <div class="parkuse" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="parkuse" name="parkuse">
+							    		  <option value="">선택</option>
+							    		  <option value="1">1대</option>
+							    		  <option value="2">2대</option>
+							    		  <option value="3">3대</option>
+							    		  <option value="4">4대</option>
+							    		  <option value="5">5대</option>
+							    		  <option value="6">6대</option>
+							    		  <option value="7">7대</option>
+							    		  <option value="8">8대</option>
+							    		  <option value="9">9대</option>
+							    		  <option value="10">10대</option>
+							    		  <option value="20">20대</option>
+							    		  <option value="30">30대</option>
+							    		  <option value="40">40대</option>
+							    		  <option value="50">50대</option>
+							    		  <option value="60">60대</option>
+							    		  <option value="70">70대</option>
+							    		  <option value="80">80대</option>
+							    		  <option value="90">90대</option>
+							    		  <option value="100">100대이상</option>
+							    		  </select></div>
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -408,7 +431,20 @@
 							    		<td>
 							    		<div class="eleva_chk" style="margin : 15px 20px;">
 							    		 	<input type="radio" class="icheckuse" name="elevachk" id="elevachk" value="yes"/>&nbsp;있음
-							    		  	<input type="radio" class="icheckuse" name="elevachk" id="elevachk1" value="no"/>&nbsp;없음	
+							    		  	<input type="radio" class="icheckuse" name="elevachk" id="elevachk1" value="no"checked/>&nbsp;없음	
+							    		  	 <div class="elevause" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="elevause" name="elevause">
+							    		  	 <option value="1">1</option>
+							    		  	 <option value="2">2</option>
+							    		  	 <option value="3">3</option>
+							    		  	 <option value="4">4</option>
+							    		  	 <option value="5">5</option>
+							    		  	 <option value="6">6</option>
+							    		  	 <option value="7">7</option>
+							    		  	 <option value="8">8</option>
+							    		  	 <option value="9">9</option>
+							    		  	 <option value="10">10대이상</option>
+							    		  	 </select>
+							    		  	 </div>
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -423,7 +459,7 @@
 								<th>제목</th>
 								<td>
 									<input type="text" class="form-control"	name="explain_name" id="explain_name" placeholder="제목을 입력하세요."
-									maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 800px; margin: 20px;">
+									maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 800px; margin: 20px;"/>
 								</td>
 								<tr>
 								<th>상세설명</th>
@@ -438,7 +474,7 @@
 								<th>비공개 메모</th>
 								<td>
 									<input type="text" class="form-control"	name="notopen_memo" id="notopen_memo" placeholder="등록자만 확인할 수 있는 메모 영역입니다."
-									maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 800px; margin: 20px;">
+									maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 800px; margin: 20px;"/>
 								</td>
 							</tr>
 						
@@ -452,7 +488,7 @@
 								<tr>
 									<th>일반 사진</th>
 									 <td><img id="preview2" src="" width="600" height="400" alt="사진 영역입니다.">
-											<input multiple="multiple" type="file" id="getfile2" name="getfile2" accept="image/*"></td>
+											<input multiple="multiple" type="file" id="getfile2" name="getfile2" accept="image/*"/></td>
 								</tr>
 							</tbody>
 					</table>
@@ -465,7 +501,7 @@
 					<!-- (완료버튼) -->
 					<div class="register_btn">
 							<button type="button" id="button_cancel" name="button_cancel" class="btn btn-info btn-lg">취소</button>
-							<input type="button" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록">
+							<input type="button" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록"/>
 						</div>
 				</form>
 			</div>
@@ -494,7 +530,7 @@
                 weekStart: 0,           // 시작요일(0=일요일~6=토요일)
                 trigger: '#show-cal'    // 클릭시 달력을 표시할 요소의 id
             });
-           <!--datepicker 끝-->
+           <!--//datepicker 끝-->
             <!--평수 자동변환 로직-->
             $("#maemulsize").keyup(function(){
 
@@ -530,14 +566,55 @@ $ (document) .ready (function () {
   $ ('.icheckuse').iCheck ({ 
 	checkboxClass : 'icheckbox_flat-blue', 
     radioClass : 'iradio_flat-blue' 
-  }); 
+}); 
   $('#button_rent').on('ifChecked', function() {
       console.log("checked");
      $(".addrent").show();
-	});
+});
+  $('#button_rent').on('ifUnchecked', function() {
+      console.log("unchecked");
+     $(".addrent").hide();
+});
+  
   $('#button_buy').on('ifChecked', function() {
       console.log("checked");
      $(".addbuy").show();
+});
+  $('#button_buy').on('ifUnchecked', function() {
+      console.log("unchecked");
+     $(".addbuy").hide();
+});
+  $('#foregiftchk').on('ifChecked', function() {
+      console.log("checked");
+     $(".foregift").show();
+});
+  $('#foregiftchk').on('ifUnchecked', function() {
+      console.log("unchecked");
+     $(".foregift").hide();
+});
+  $('#managechk').on('ifChecked', function() {
+      console.log("checked");
+     $(".manage").show();
+});
+  $('#managechk').on('ifUnchecked', function() {
+      console.log("unchecked");
+     $(".manage").hide();
+});
+  $('#parkchk').on('ifChecked', function() {
+      console.log("checked");
+     $(".parkuse").show();
+});
+  $('#parkchk').on('ifUnchecked', function() {
+      console.log("unchecked");
+     $(".parkuse").hide();
+});
+  $('#elevachk').on('ifChecked', function() {
+      console.log("checked");
+     $(".elevause").show();
+});
+  $('#elevachk').on('ifUnchecked', function() {
+      console.log("unchecked");
+     $(".elevause").hide();
 });
 });
 
@@ -641,7 +718,7 @@ $ (document) .ready (function () {
         	        cancelButtonText: 'No',       
         	    }).then(function(result) {        
         	        if (result.value) {           
-        	            location.href = 'Main.html';
+        	            location.href = 'Maemul.detailed.jsp';
         	            location.submit = 'jsp';
         	        } else if (result.dismiss === 'cancel') {  
         	            swal('취소', '취소되었습니다.', 'error');
@@ -653,7 +730,7 @@ $ (document) .ready (function () {
 <script>
         $(function(){
      		$('#button_cancel').click(function(){
-     			location.href = 'Main.html';
+     			location.href = 'Main.jsp';
      		});
      	});
 </script>
