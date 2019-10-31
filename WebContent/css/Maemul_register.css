@@ -142,7 +142,7 @@ html, body {
 .map_box {
   width: 400px;
   height: 200px;
-  border: none;
+  border: 1px solid #d9d9d9;
   background-color: #EAEAEA;
   
   
@@ -304,6 +304,11 @@ img {
 	text-align: center;
 }
 
-#getfile, #getfile2, #preview, #preview2
+#getfile, #getfile2
  { margin: 20px;}
+ 
+#preview, #preview2 { 
+	margin:20px;
+	border: 1px solid #d9d9d9;
+}
 

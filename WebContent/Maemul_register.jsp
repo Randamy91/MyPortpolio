@@ -101,7 +101,7 @@
 												onclick="sample5_execDaumPostcode()" value="주소 검색"/>
 										</div>
 										<div class="detailed_form">
-											<textarea class="form-control"
+											<textarea class="form-control" id="adddetailed" name="adddetailed"
 												style="width: 400px; height: 130px; margin-top: 20px;"
 												placeholder="상세주소를 입력하세요."></textarea>
 										</div>
@@ -128,7 +128,7 @@
 									<div class="maemul_info">
 										<!--공개여부 버튼-->
 										<div class="toggle-radio">
-											<input type="radio" class="radionon" name="rdo" id="yes" checked/>
+											<input type="radio" class="radionon" name="rdo" id="yes" checked />
 											<input type="radio" class="radionon" name="rdo" id="no"/>
 											<div class="switch">
 												<label for="yes">공개</label> <label for="no">비공개</label> <span></span>
@@ -138,8 +138,9 @@
 										<tr>
 											<th>건물명</th>
 											<td><input type="text" class="form-control"
-												name="maemul_name" placeholder="건물명을 입력하세요."
+												name="maemul_name" id="maemul_name" placeholder="건물명을 입력하세요."
 												maxlength="50글자 이하로 입력하세요." data-val-length-max="50" style="width: 400px; margin:15px;"/>
+												<span class="alertmaemulname"></span>
 											</td>
 										</tr>
 										<tr>
@@ -162,14 +163,19 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">    
-										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" />&nbsp;월세 추가
-										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy" />&nbsp;매매 추가
+										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" checked/>&nbsp;월세 추가
+										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy"/>&nbsp;매매 추가
 										  
-										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" placeholder="보증금"/>&nbsp;/
-										       <input type="text" class="addtext" name="monthrent" placeholder="월세"/>&nbsp;만원&nbsp;&nbsp;(예: 5000/100)</div>
-										  <div class="addbuy" hidden="" style="margin-top:10px"><input type="text" name="buy" placeholder="매매가"/>&nbsp;/
-										    <input type="text" class="addtext" name="gideposit" placeholder="기보증금"/>&nbsp;/
-										    <input type="text" class="addtext" name="gimonthrent" placeholder="기월세"/>&nbsp;만원&nbsp;&nbsp;(예: 5000)
+										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" placeholder="보증금"
+										  onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;/
+										       <input type="text" class="addtext" name="monthrent" placeholder="월세"
+										       onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;만원&nbsp;&nbsp;(예: 5000/100)</div>
+										  <div class="addbuy" hidden="" style="margin-top:10px"><input type="text" name="buy" placeholder="매매가"
+										  onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;/
+										    <input type="text" class="addtext" name="gideposit" placeholder="기보증금"
+										    onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;/
+										    <input type="text" class="addtext" name="gimonthrent" placeholder="기월세"
+										    onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;만원&nbsp;&nbsp;(예: 5000)
 										  </div>
 									</div>
 								</td>
@@ -185,7 +191,8 @@
 								<th>해당 층수</th>
 								<td>
 									<div class="number_floors" style="display: inline-block;">
-										<select class="form-control" id="numberfloors" name="numberfloors" style="width: 110px;">
+										<select class="form-control" id="validselect" name="numberfloors" style="width: 110px;">
+											<option value="">--선택--</option>
 											<option value="03">지하3층</option>
 											<option value="02">지하2층</option>
 											<option value="01">지하1층</option>
@@ -222,26 +229,31 @@
 										</select>
 									</div>
 							<div class="form-check" style="display: inline;">
- 				 				<input type="checkbox" class="icheckuse"  name="select_check" id="select_check" checked/>
+ 				 				<input type="checkbox" class="icheckuse"  name="select_check" id="validselect" checked/>
  							 <label class="form-check-label" for="select_check">복층(연층)</label>
 								</div>				
 						<div class="form-check"  style="display: inline; margin-right:20px;">
- 					 		<input type="checkbox" class="icheckuse" name="select_check" id="select_check2" checked/>
+ 					 		<input type="checkbox" class="icheckuse" name="select_check" id="validselect" checked/>
  							 <label class="form-check-label" for="select_check2">건물 전체</label>
 							</div>
 							</td>
 							<th>계약면적</th>
 								<td>	
 								    <div class="maemul_size" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize" name="maemulsize" style="width: 88px;"/><span style="padding-top: 10px;">평</span></div>
+									<input type="text" class="form-control" id="maemulsize" pattern="/^[0-9]*$/" name="maemulsize" style="width: 88px;"
+									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+									 <span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize2" name="maemulsize2" style="margin-left: 20px; width: 88px;"/><span style="padding-top: 10px">m</span></div>
+									<input type="text" class="form-control" id="maemulsize2" name="maemulsize2" style="margin-left: 20px; width: 88px;"
+									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+									<span style="padding-top: 10px">m</span></div>
 							    </td>
 							    <tr>
 								<th>건물 층수</th>
 								<td>
 									<div class="maemul_floors" style="width: 110px;">
-										<select class="form-control" id="maemulfloors" name="maemulfloors">
+										<select class="form-control" id="validselect" name="maemulfloors">
+											<option value="">--선택--</option>
 											<option value="1">1층</option>
 											<option value="2">2층</option>
 											<option value="3">3층</option>
@@ -277,16 +289,21 @@
 										<th>전용 면적</th>
 								<td>	
 								    <div class="maemul_size2" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize1" name="maemulsize1"/><span style="padding-top: 10px;">평</span></div>
+									<input type="text" class="form-control" id="maemulsize1" name="maemulsize1"
+									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+									<span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size2" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize3" name="maemulsize3" /><span style="padding-top: 10px">m</span></div>
+									<input type="text" class="form-control" id="maemulsize3" name="maemulsize3"
+									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+									<span style="padding-top: 10px">m</span></div>
 							    </td>
 							</tr>
 							<tr>
 								<th>난방 종류</th>
 								<td>
 									<div class="heat_info" style="width: 110px;">
-										<select class="form-control" id="heatform" name="heatform">
+										<select class="form-control" id="validselect" name="heatform">
+											<option value="">--선택--</option>
 											<option value="personal1">개별난방</option>
 											<option value="area1">지역난방</option>
 											<option value="center1">중앙난방</option>
@@ -300,7 +317,8 @@
 									<th>화장실</th>
 									<td>
 										<div class="toilet_form" style="width: 140px;">
-											<select class="form-control" id="toiletform" name="toiletform">
+											<select class="form-control" id="validselect" name="toiletform">
+											<option value="">--선택--</option>
 											<option value="outside1">외부/남녀구분</option>
 											<option value="outside2">외부/남녀혼용</option>
 											<option value="inside1">내부/남녀구분</option>
@@ -314,7 +332,8 @@
 								<th>준공년도</th>
 								<td>
 									<div class="year_form" style="display: inline-block; margin: 20px; width: 110px;">
-											<select class="form-control" id="yearform" name="yearform">
+											<select class="form-control" id="validselect" name="yearform">
+											<option value="">--선택--</option>
 											<option value="2019">2019년도</option>
 											<option value="2018">2018년도</option>
 											<option value="2017">2017년도</option>
@@ -341,7 +360,8 @@
 										</select>
 										</div>			
 											<div class="month_form" style="display: inline-block; width: 110px;" >
-											<select class="form-control" id="monthform" name="monthform">
+											<select class="form-control" id="validselect" name="monthform">
+											<option value="">--선택--</option>
 											<option value="1">1월</option>
 											<option value="2">2월</option>
 											<option value="3">3월</option>
@@ -365,7 +385,7 @@
 									 <input type="radio" class="icheckuse" name="nowbtn" id="nowbtn" value="nowgo"checked/>&nbsp;즉시입주
 									  <input type="radio" class="icheckuse" name="nowbtn" id="withbtn" value="withgo"/>&nbsp;협의가능
 									   <input type="text" id="datepicker" placeholder="&nbsp;달력을 클릭하세요." readonly  />
-									      <img src="img/calendar.png" id="show-cal" height="20" style="float: none;">
+									      <img src="img/calendar.png" id="show-cal" height="20" style="float: none; cursor:pointer;">
 							    		</div>
 							    	</td>
 							    </tr>
@@ -382,7 +402,8 @@
 							    		<div class="foregift_chk"  style="margin : 15px 20px;">		
 							    		 <input type="radio" id="foregiftchk" class="icheckuse"  name="foregiftchk" value="yes"/>&nbsp;있음 
 							    		 <input type="radio" class="icheckuse" name="foregiftchk" value="no" checked />&nbsp;없음
-							    		  <div class="foregift" hidden="" style="margin-top:10px"><input type="text" class="foregifttext" name="foregift" placeholder="권리금"/>&nbsp;만원&nbsp;&nbsp;(예: 1000)</div>
+							    		  <div class="foregift" hidden="" style="margin-top:10px"><input type="text" class="foregifttext" name="foregift" placeholder="권리금"
+							    		   onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;만원&nbsp;&nbsp;(예: 1000)</div>
 							    		</div>
 							    		</td>
 							    		<tr>
@@ -391,7 +412,8 @@
 							    		<div class="manage_chk" style="margin : 15px 20px;">
 							    		 <input type="radio" class="icheckuse" id="managechk" name="managechk" id="managechk" value="yes"/>&nbsp;있음
 							    		  <input type="radio" class="icheckuse" name="managechk" id="manage1" value="no"checked/>&nbsp;없음
-							    		   <div class="manage" hidden="" style="margin-top:10px"><input type="text" class="managetext" name="manage" placeholder="관리비"/>&nbsp;만원&nbsp;&nbsp;(예: 1000)</div>
+							    		   <div class="manage" hidden="" style="margin-top:10px"><input type="text" class="managetext" name="manage" placeholder="관리비"
+							    		    onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;만원&nbsp;&nbsp;(예: 1000)</div>
 							    		</div>
 							    		</td>
 							    		</tr>
@@ -401,8 +423,8 @@
 							    		<div class="park_chk" style="margin : 15px 20px;">
 							    		 <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="yes"/>&nbsp;가능
 							    		  <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="no"checked/>&nbsp;불가능
-							    		  <div class="parkuse" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="parkuse" name="parkuse">
-							    		  <option value="">선택</option>
+							    		  <div class="parkuse" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="parkuse">
+							    		  <option value="">--선택--</option>
 							    		  <option value="1">1대</option>
 							    		  <option value="2">2대</option>
 							    		  <option value="3">3대</option>
@@ -432,7 +454,8 @@
 							    		<div class="eleva_chk" style="margin : 15px 20px;">
 							    		 	<input type="radio" class="icheckuse" name="elevachk" id="elevachk" value="yes"/>&nbsp;있음
 							    		  	<input type="radio" class="icheckuse" name="elevachk" id="elevachk1" value="no"checked/>&nbsp;없음	
-							    		  	 <div class="elevause" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="elevause" name="elevause">
+							    		  	 <div class="elevause" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="elevause">
+							    		  	 <option value="">--선택--</option>
 							    		  	 <option value="1">1</option>
 							    		  	 <option value="2">2</option>
 							    		  	 <option value="3">3</option>
@@ -488,7 +511,7 @@
 								<tr>
 									<th>일반 사진</th>
 									 <td><img id="preview2" src="" width="600" height="400" alt="사진 영역입니다.">
-											<input multiple="multiple" type="file" id="getfile2" name="getfile2" accept="image/*"/></td>
+											<input multiple="multiple" type="file" id="getfile2" name="getfile2" accept="image/*" /></td>
 								</tr>
 							</tbody>
 					</table>
@@ -501,7 +524,7 @@
 					<!-- (완료버튼) -->
 					<div class="register_btn">
 							<button type="button" id="button_cancel" name="button_cancel" class="btn btn-info btn-lg">취소</button>
-							<input type="button" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록"/>
+							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록"/>
 						</div>
 				</form>
 			</div>
@@ -621,6 +644,11 @@ $ (document) .ready (function () {
 
 </script>
 <!-- //icheck  -->
+<!--------------------------------------------- input type 유효성 검사 -------------------------------------->
+<script>
+
+</script>
+<!-- //input type 유효성 검사 -->
 	<!-- 카카오 map -->
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -708,7 +736,7 @@ $ (document) .ready (function () {
 </script>
 	<!----------------------------- 완료버튼 sweetalert ------------------------->
 	<script>
-         $("#button_fini").click(function() {
+         $("#button_fini").click('submit',function() {
         	    swal({
         	        title: '확인',                
         	        text: '매물등록을 하시겠습니까?',  
@@ -744,5 +772,6 @@ $ (document) .ready (function () {
 				}
 			}
 		</script>
+	
 </body>
 </html>
