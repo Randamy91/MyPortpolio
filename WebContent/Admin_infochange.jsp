@@ -145,7 +145,7 @@
 								id="password" name="password" placeholder="패스워드" />
 						</div>
 						<div class="forgot-pw">
-							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
+							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.jsp"
 								style="text-decoration: none">비밀번호 찾기</a>
 							</span>
 						</div>

@@ -1,11 +1,10 @@
 @charset "utf-8";
 
 /*------------- 복사해서 사용하세요  --------------------*/
-
- html, body {
+html, body {
 	margin: 0;
-    height: 100%;
-  	padding: 0;
+	height: 100%;
+	padding: 0;
 }
 
 .logo {
@@ -16,7 +15,7 @@
 	width: 100%;
 	padding-right: 40px;
 	margin-bottom: 0;
-	line-height:45px;
+	line-height: 45px;
 }
 
 .navbar-text {
@@ -86,15 +85,14 @@
 	width: 270px;
 }
 
-
 /*------------- 복사해서 사용하세요 END --------------------*/
-
 .select-menu {
 	width: 100%;
 	line-height: 50px;
 	background: #eee;
 }
-.main-content{
+
+.main-content {
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -112,7 +110,7 @@
 /********* 매물리스트 ***********/
 .maemulList {
 	height: calc(100% - 250px);
-	overflow:scroll;
+	overflow: scroll;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
@@ -123,25 +121,23 @@
 	border-bottom: 1px solid #ddd;
 	position: relative;
 	padding: 8px 8px 8px 136px;
-	
 }
 
 .list-item:hover {
 	background: #efefef;
-	
 }
 
 .list-item .image-container {
 	overflow: hidden;
 	position: absolute;
 	top: 6px;
-    left: 6px;
-    width: 118px;
-    height: 118px;
-    border: 1px solid rgba(0,0,0,.1);
-    background-size: 40px 40px;
-    background-position: center center;
-    background-repeat: no-repeat;
+	left: 6px;
+	width: 118px;
+	height: 118px;
+	border: 1px solid rgba(0, 0, 0, .1);
+	background-size: 40px 40px;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
 .list-item .image {
@@ -149,7 +145,7 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;	
+	bottom: 0;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -162,6 +158,7 @@
 .list-item .detail-container {
 	margin-top: 10px;
 }
+
 .primary {
 	font-size: 18px;
 	font-weight: bold;
@@ -169,33 +166,32 @@
 
 .premium {
 	font-weight: 700;
-    font-size: 13px;
-    color: #10bcce;
-    margin-bottom: -5px;
+	font-size: 13px;
+	color: #10bcce;
+	margin-bottom: -5px;
 }
 
 .option {
 	color: #333;
-    font-size: 12px;
+	font-size: 12px;
 }
 
 .option-tag {
 	font-size: 12px;
-    color: #777;
-    background-color: #f1f1f1;
-    margin-right: 4px;
-    padding: 0 3px;
+	color: #777;
+	background-color: #f1f1f1;
+	margin-right: 4px;
+	padding: 0 3px;
 }
 
 /************* **************/
-
 .pageCount {
 	position: relative;
 }
 
 .pageCount .page {
 	position: absolute;
-	left:50%;
+	left: 50%;
 	transform: translateX(-50%);
 }
 
@@ -217,9 +213,7 @@
 	margin-top: 10px;
 }
 
-
-
-.price .pricemenu{
+.price .pricemenu {
 	width: 300px;
 }
 
@@ -230,7 +224,7 @@
 
 .priceSales .centerprice {
 	position: absolute;
-	left:50%;
+	left: 50%;
 	transform: translateX(-50%);
 	color: #888;
 	top: -40px;
@@ -249,6 +243,7 @@
 	color: #0066ff;
 	top: -40px;
 }
+
 .mpriceSales {
 	width: 100%;
 	position: relative;
@@ -256,11 +251,12 @@
 
 .mpriceSales .mcenterprice {
 	position: absolute;
-	left:50%;
+	left: 50%;
 	transform: translateX(-50%);
 	color: #888;
 	top: -40px;
 }
+
 .mpriceSales .mstartprice {
 	position: absolute;
 	left: 0;
@@ -275,18 +271,20 @@
 	top: -40px;
 }
 
-
 #salesrange, #monthrange, #arearange {
 	width: 250px;
 	margin-left: 15px;
 	margin-top: 30px;
 }
+
 .area {
 	display: inline;
 }
-.area .areamenu{
+
+.area .areamenu {
 	width: 300px;
 }
+
 .dediArea {
 	width: 100%;
 	position: relative;
@@ -294,12 +292,13 @@
 
 .dediArea .centerarea {
 	position: absolute;
-	left:50%;
+	left: 50%;
 	transform: translateX(-50%);
 	color: #888;
 	top: -40px;
 	font-size: 10px;
 }
+
 .dediArea .startarea {
 	position: absolute;
 	left: 0;
@@ -318,4 +317,13 @@ body .noUi-connect {
 	background: #0099ff;
 }
 
-
+/* 마커 */
+.marker {
+	width: 40px;
+	line-height: 40px;
+	background: #368AFF;
+	border-radius: 20px;
+	color: white;
+	text-align: center;
+	font-size: 30px;
+}

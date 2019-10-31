@@ -76,7 +76,7 @@
 						</div>
 					</form>
 					<span class="adduser">아직 세모의 회원이 아니신가요?<a
-						href="Joinus_select">회원가입</a></span>
+						href="Joinus_select.jsp">회원가입</a></span>
 				</div>
 			</div>
 		</div>

@@ -190,7 +190,21 @@
 							<%@ include file="dummyMaemul.jsp" %>
 							<%@ include file="dummyMaemul.jsp" %>
 							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							<%@ include file="dummyMaemul.jsp" %>
+							
 						</div>
+						
+						
 					</div>
 					<!-- pagenation -->
 					<div class="pageCount">
@@ -248,10 +262,10 @@
 	    var clusterer = new kakao.maps.MarkerClusterer({
 	        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
 	        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-	        minLevel: 1 // 클러스터 할 최소 지도 레벨 
+	        minLevel: 1// 클러스터 할 최소 지도 레벨 
 	    });
 		
-		
+	    
 	    var control = new kakao.maps.ZoomControl();
 	    map.addControl(control, kakao.maps.ControlPosition.TOPRIGHT);
 	 // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
@@ -261,18 +275,18 @@
 	 // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
 	 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-
 		
 		$.get("dummydata.json", function(data) {
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
         var markers = $(data.positions).map(function(i, position) {
-            return new kakao.maps.Marker({
+            return new kakao.maps.CustomOverlay({
                 position : new kakao.maps.LatLng(position.lat, position.lng)
             });
         });
 		
         // 클러스터러에 마커들을 추가합니다
+        clusterer.setMinClusterSize(1);
         clusterer.addMarkers(markers);
     });
 	

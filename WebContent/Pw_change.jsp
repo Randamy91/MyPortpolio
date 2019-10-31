@@ -28,11 +28,11 @@
 			<a href="Main.jsp" class="navbar-link" style="text-decoration: none">상가</a>
 		</p>
 		<p class="navbar-text navbar-left">
-			<a href="Bigdata.html" class="navbar-link"
+			<a href="Bigdata.jsp" class="navbar-link"
 				style="text-decoration: none">상권분석</a>
 		</p>
 		<p class="navbar-text navbar-right">
-			<a href="Joinus_select.html" class="navbar-link"
+			<a href="Joinus_select.jsp" class="navbar-link"
 				style="text-decoration: none">회원가입</a>
 		</p>
 		<p class="navbar-text navbar-right">
@@ -65,7 +65,7 @@
 								id="password" name="password" placeholder="패스워드" />
 						</div>
 						<div class="forgot-pw">
-							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
+							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.jsp"
 								style="text-decoration: none">비밀번호 찾기</a>
 							</span>
 						</div>
@@ -75,7 +75,7 @@
 						</div>
 					</form>
 					<span class="adduser">아직 세모의 회원이 아니신가요?<a
-						href="Joinus_select">회원가입</a></span>
+						href="Joinus_select.jsp">회원가입</a></span>
 				</div>
 			</div>
 		</div>
