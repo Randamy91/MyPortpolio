@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,37 +14,34 @@
 <title>세모 - 상가 매물 중개 사이트</title>
 
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Login.css" />
+<link rel="stylesheet" type="text/css" href="css/Maemul.interest.css" />
 
 </head>
-
 <body>
 	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
 	<!-- 상단 메뉴 바 -->
 	<nav class="navbar menu_navbar bg-white">
 		<!--<div class="navbar-header menu_header">-->
-		<a class="navbar-brand logo" href="Main.html"> <img alt="Brand"
+		<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
 			src="img/main_logo.jpg" width="65px" height="40px">
 		</a>
 		<p class="navbar-text navbar-left">
-			<a href="Main.html" class="navbar-link" style="text-decoration: none">상가</a>
+			<a href="Main.jsp" class="navbar-link" style="text-decoration: none">상가</a>
 		</p>
 		<p class="navbar-text navbar-left">
-			<a href="Bigdata.html" class="navbar-link"
+			<a href="Bigdata.jsp" class="navbar-link"
 				style="text-decoration: none">상권분석</a>
 		</p>
 		<p class="navbar-text navbar-right">
-			<a href="Joinus_select" class="navbar-link"
-				style="text-decoration: none">회원가입</a>
+			<a href="#" class="navbar-link" style="text-decoration: none">이재민
+				님</a>
 		</p>
 		<p class="navbar-text navbar-right">
-			<a href="#myModal" data-toggle="modal" class="navbar-link"
-				style="text-decoration: none">로그인</a>
+			<a href="Maemul.interest.jsp" data-toggle="modal" class="navbar-link"
+				style="text-decoration: none">관심매물</a>
 		</p>
 	</nav>
-
 	<!-- 상단 메뉴 바  -->
-
 
 	<!--  로그인 Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -71,52 +74,50 @@
 						</div>
 					</form>
 					<span class="adduser">아직 세모의 회원이 아니신가요?<a
-						href="Joinus_select">회원가입</a></span>
+						href="Joinus_select.jsp">회원가입</a></span>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 	<!-- 컨텐츠 -->
 	<div class="content">
-
 		<div class="container content-container">
 			<div class="content-top">
-				<h2>로그인</h2>
-				<p>세모에 오신것을 환영합니다.</p>
+				<h2>관심매물</h2>
+				<p>관심매물은 30개까지 저장됩니다.</p>
 			</div>
 			<div class="content-body">
-				<div class="loginDiv">
-					<div class="emailLogin">이메일 로그인</div>
-					<form action="#" method="post">
-						<div class="input-login1">
-							<input type="text" class="form-control input-info email" id="email"
-								name="email" placeholder="이메일" />
-						</div>
-						<div class="input-login2">
-							<input type="password" class="form-control input-info password"
-								id="password" name="password" placeholder="패스워드" />
-						</div>
-						<div class="forgot-pw1">
-							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.html"
-								style="text-decoration: none">비밀번호 찾기</a>
-							</span>
-						</div>
-						<div class="input-container1">
-							<input type="submit" class="btn btn-primary loginbutton" id="loginbutton"
-								data-dismiss="modal" value="이메일 로그인" />
-						</div>
-					</form>
-					<div class="adduserBtn">
-						<button type="button" id="btn1" class="btn btn-default btn1">일반 회원가입</button>
-						<button type="button" id="btn2" class="btn btn-default btn2">중개사 회원가입</button>
+				<ul class="nav nav-tabs">
+					<li role="presentation" class="active"><a href="#">최근 본 매물</a></li>
+					<li role="presentation"><a href="#">찜한 매물</a></li>
+				</ul>
+				<div class="sub">
+					<span>최근 본 매물</span><span id="maemulcount">0</span><span>개</span>
+					<button type="button" class="btn btn-default delAll">전체 삭제</button>
+				</div>
+				<div class="tab-content">
+					<div id="interItem">
+						
 					</div>
+					<div id="heartItem">
+					
+					</div>
+				</div>
+				<div class="paginavi">
+					<nav>
+						<ul class="pagination adminPagi">
+							<li><a href="#" aria-label="Previous"> <span
+									aria-hidden="true">&laquo;</span>
+							</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#" aria-label="Next"> <span
+									aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<!-- 컨텐츠  END -->
 
@@ -124,38 +125,6 @@
 	<div class="footer"></div>
 	<!-- Footer END -->
 
-	<!--------------------------- 복사하여 사용 하세요  END---------------------------->
-
-
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			
-			$('#btn1').click(function(){
-				location.href = 'Joinus_general.html';
-			});
-			$('#btn2').click(function(){
-				location.href = 'Joinus_company.html';
-			});
-			//이메일 형식 유효성 검사
-			$('.email').blur(function(){
-				
-				var email = $('.email').val();
-				var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-				if(exptext.test(email)==false){
-							
-					alert('이메일 형식을 확인해 주세요.');
-					return false;
-				}	
-				
-			});
-		});
-	
-
-	
-	</script>
-	
 
 </body>
 </html>
