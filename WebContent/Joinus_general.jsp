@@ -12,7 +12,10 @@
         <link rel="stylesheet" href="plugins/icheck/css/blue.css" />
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- blue.css / icheck.min.js / jquery에 icheck plugin을 적용시켜 놓음(general만).. 실제 class에 icheck를 먹이면 자바스크립트가 동작을 안함 확인중.. -->
-    
+    	
+    	 <script language="javascript">
+  			function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
+  		 </script>
 
 
     </head>
@@ -80,55 +83,70 @@
     </style>
     <body>
         <!-- 상단 메뉴 바 -->
-        <nav
-            class="navbar menu_navbar bg-white">
-            <!--<div class="navbar-header menu_header">-->
-            <a class="navbar-brand logo" href="Main.jsp">
-                <img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
-            </a>
-            <p class="navbar-text navbar-left">
-                <a href="Main.jsp" class="navbar-link" style="text-decoration:none">상가</a>
-            </p>
-            <p class="navbar-text navbar-left">
-                <a href="Bigdata.jsp" class="navbar-link" style="text-decoration:none">상권분석</a>
-            </p>
-            <p class="navbar-text navbar-right">
-                <a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a>
-            </p>
-            <p class="navbar-text navbar-right">
-                <a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a>
-            </p>
-        </nav>
-        <!--  로그인 Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog mymodal-size">
-                <div class="modal-content mymodal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-                        <form action="#" method="post">
-                            <div class="input-container">
-                                <input type="text" class="form-control input-info" id="email" name="email" placeholder="이메일"/>
-                            </div>
-                            <div class="input-container">
-                                <input type="password" class="form-control input-info" id="password" name="password" placeholder="패스워드"/>
-                            </div>
-                            <div class="forgot-pw">
-                                <input type="checkbox"/>&nbsp;자동 로그인
-                                <span>
-                                    <a href="#" style="text-decoration:none">비밀번호 찾기</a>
-                                </span>
-                            </div>
-                            <div class="input-container">
-                                <input type="submit" class="btn btn-primary loginbtn" data-dismiss="modal" value="이메일 로그인"/>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        		<!--------------------------- 복사하여 사용 하세요 ---------------------------->
+		<!-- 상단 메뉴 바 -->
+		<nav class="navbar menu_navbar bg-white">
+			<!--<div class="navbar-header menu_header">-->
+			<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
+				src="img/main_logo.jpg" width="65px" height="40px">
+			</a>
+			<p class="navbar-text navbar-left">
+				<a href="Main.jsp" class="navbar-link"
+					style="text-decoration: none">상가</a>
+			</p>
+			<p class="navbar-text navbar-left">
+				<a href="Bigdata.jsp" class="navbar-link"
+					style="text-decoration: none">상권분석</a>
+			</p>
+			<p class="navbar-text navbar-right">
+				<a href="Joinus_select.jsp" class="navbar-link"
+					style="text-decoration: none">회원가입</a>
+			</p>
+			<p class="navbar-text navbar-right">
+				<a href="#myModal" data-toggle="modal" class="navbar-link"
+					style="text-decoration: none">로그인</a>
+			</p>
+		</nav>
+
+		<!-- 상단 메뉴 바  -->
+
+		<!--  로그인 Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog mymodal-size">
+				<div class="modal-content mymodal-content">
+					<div class="modal-body mymodal-body">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+						<form action="#" method="post">
+							<div class="input-container">
+								<input type="text" class="form-control input-info" id="email"
+									name="email" placeholder="이메일" />
+							</div>
+							<div class="input-container">
+								<input type="password" class="form-control input-info"
+									id="password" name="password" placeholder="패스워드" />
+							</div>
+							<div class="forgot-pw">
+								<input type="checkbox" />&nbsp;자동 로그인 <span> <a
+									href="Pw_change.jsp" style="text-decoration: none">비밀번호 찾기</a>
+								</span>
+							</div>
+							<div class="input-container">
+								<input type="submit" class="btn btn-primary loginbtn"
+									data-dismiss="modal" value="이메일 로그인" />
+							</div>
+						</form>
+						<span class="adduser">아직 세모의 회원이 아니신가요? <a
+							href="Joinus_select.jsp">회원가입</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
         <!-- 로그인 modal end -->
         <!-- 컨텐츠 -->
         <div class="content">
@@ -164,7 +182,7 @@
                                     </ul>
                                 </div>
                                 <div style="text-align: left;">
-                                    <input type="checkbox" name="agree01" id="agree_all" ifClicked="agreeCheck()">
+                                    <input type="checkbox" name="agree01" id="agree_all">
                                     <label for="check_box">아래 약관에 모두 동의합니다.</label>
                                 </div>
                                 <br/>
@@ -173,7 +191,7 @@
                                     <label for="check_box">세모 서비스 이용약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
+                                    <iframe width="100%" height="150px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">
@@ -181,7 +199,7 @@
                                     <label for="check_box">개인정보 수집 및 이용에 대한 동의(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="118px" frameborder="0" src="http://cdn.nemoapp.kr/policy/userPrivacyPolicy.html?v=637063192662958639#begin"></iframe>
+                                    <iframe width="100%" height="150px" frameborder="0" src="http://cdn.nemoapp.kr/policy/userPrivacyPolicy.html?v=637063192662958639#begin"></iframe>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">
@@ -189,11 +207,11 @@
                                 <label for="check_box">위치 기반 서비스 약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="118px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
+                                    <iframe width="100%" height="150px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
                                 </div>
                                 <div class="general01_btn">
                                     <input
-                                    type="button" class="btn btn-primary" value="다음" name="checkButton" onclick="page01()" style="height: 50px; width: 100px; margin: 50px">
+                                    type="button" class="btn btn-primary"  id="pass_ge01" value="다음" name="checkButton" onclick="page01()" style="height: 50px; width: 100px; margin: 50px">
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                 </div>
                             </form>
@@ -246,7 +264,7 @@
                                                     <option value="daum">daum.net</option>
                                                 </select>
                                                 <br/>
-                                                <input type="checkbox" name="agree" id="agree_y" value="Y"/>
+                                                <input type="checkbox" name="agree" id="clickMe" value="Y" onclick="showPopup();"/>
                                                 <label for="agree_y">직접입력</label>
                                             </td>
                                         </tr>
@@ -270,7 +288,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="general02_btn" style="text-align: center;">
+                                <div class="general02_btn on" style="text-align: center;">
                                     <input
                                     type="button" class="btn btn-primary" value="입력완료" name="checkButton" onclick="page02()" style="height: 50px; width: 100px; margin: 50px" >
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
@@ -327,28 +345,52 @@
         <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
         <script src="plugins/icheck/icheck.min.js"></script>
         <script type="text/javascript">
-
-            var selectAll = document.querySelector("#agree_all");
-            selectAll.addEventListener('click', function () {
-                var objs = document.querySelectorAll("#agree");
-                for (var i = 0; i < objs.length; i++) {
-                    objs[i].checked = selectAll.checked;
-                };
-            }, false);
-            var objs = document.querySelectorAll("#agree");
-            for (var i = 0; i < objs.length; i++) {
-                objs[i].addEventListener('click', function () {
-                    var selectAll = document.querySelector("#agree_all");
-                    for (var j = 0; j < objs.length; j++) {
-                        if (objs[j].checked === false) {
-                            selectAll.checked = false;
-                            return;
-                        };
-                    };
-                    selectAll.checked = true;
-                }, false);
-            }
-
+        	   	
+        	$('#pass_ge01').attr('disabled', true);
+        	$('#agree_all').on('change',function(){
+                var agree_all = $('input:checkbox[id="agree_all"]').is(":checked");
+                if(agree_all==true){
+                    $('#pass_ge01').removeAttr("disabled");
+                    $('.general01_btn').removeClass("on");
+                }else{
+                    $('#pass_ge01').attr("disabled", true);
+                    $('.general01_btn').addClass("on");
+                }
+            });
+        	
+        	
+       	 	var selectAll = document.querySelector("#agree_all");
+         		selectAll.addEventListener('click', function(){
+            	var objs = document.querySelectorAll("#agree");
+            		for (var i = 0; i < objs.length; i++) {
+               			objs[i].checked = selectAll.checked;
+            		};
+         		}, false);
+         		// 전체체크박스 체크시 전체선택, 전체체크박스 해제시 전체해제 
+          
+         		var objs = document.querySelectorAll("#agree");
+         			for(var i=0; i<objs.length ; i++){
+          				objs[i].addEventListener('click', function(){
+          				// agree 라는 ID를 가지는 체크박스 체크시,
+            				var selectAll = document.querySelector("#agree_all");
+          					// selectAll은 전체선택 체크박스의 함수로 지정
+            					for (var j = 0; j < objs.length; j++) {
+               						if (objs[j].checked == false) {
+               							// 체크박스 중 하나라도 체크가 안되어있을 경우 
+                  						selectAll.checked = false;
+                  						$('#pass_ge01').attr("disabled", true);
+                  	                    $('.general01_btn').addClass("on");
+               	  						return;
+               	  						// 
+               							};
+             						};
+             						selectAll.checked = true;
+             						// 체크박스가 모두 체크되어있을 경우
+             						$('#pass_ge01').removeAttr("disabled");
+             	                    $('.general01_btn').removeClass("on");
+         	 						}, false);
+      		 	  		    } 
+        	
             function page01() {
                 var rst = document.getElementById("result01");
                 if (rst.style.display == 'block') {
@@ -360,6 +402,7 @@
                 }
                 $('html').scrollTop(0);
             }
+            
             function page02() {
                 var rst = document.getElementById("result02");
                 if (rst.style.display == 'block') {
@@ -371,6 +414,8 @@
                 }
                 $('html').scrollTop(0);
             }
+            
+            
 
             $(function(){
                 //icheck plugin적용
