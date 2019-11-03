@@ -406,7 +406,7 @@
 							</ul>							
 						</div> <!-- end panel -->
 						<div class="Go text-center">
-							<button type="submit" class="btn btn-danger btn-lg" id="complete" href="" style="width: 200px; height: 80px;">입력완료</button>
+							<button type="submit" class="btn btn-primary btn-lg" id="complete" href="" style="width: 200px; height: 80px;">입력완료</button>
 						</div>
 					</form>
 				</div>

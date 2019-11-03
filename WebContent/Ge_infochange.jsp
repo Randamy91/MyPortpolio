@@ -232,7 +232,7 @@
 						</div> <!-- end panel -->
 						<div class="exit  text-right"><a href="#" class="exit-item" data-toggle="modal" data-target="#myModal2" id="open_modal_btn">탈퇴하기</a></div>
 						<div class="Go text-center">
-							<button type="submit" class="btn btn-danger btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
+							<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
 						</div>
 					</form>
 				</div>
