@@ -20,65 +20,9 @@
 <body>
 	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
 	<!-- 상단 메뉴 바 -->
-	<nav class="navbar menu_navbar bg-white">
-		<!--<div class="navbar-header menu_header">-->
-		<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
-			src="img/main_logo.jpg" width="65px" height="40px">
-		</a>
-		<p class="navbar-text navbar-left">
-			<a href="Main.jsp" class="navbar-link" style="text-decoration: none">상가</a>
-		</p>
-		<p class="navbar-text navbar-left">
-			<a href="Bigdata.jsp" class="navbar-link"
-				style="text-decoration: none">상권분석</a>
-		</p>
-		<p class="navbar-text navbar-right">
-			<a href="#" class="navbar-link" style="text-decoration: none">이재민
-				님</a>
-		</p>
-		<p class="navbar-text navbar-right">
-			<a href="Maemul.interest.jsp" data-toggle="modal" class="navbar-link"
-				style="text-decoration: none">관심매물</a>
-		</p>
-	</nav>
-	<!-- 상단 메뉴 바  -->
-
+	<%@ include file="include/loginHeader.jsp" %>
 	<!--  로그인 Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog mymodal-size">
-			<div class="modal-content mymodal-content">
-				<div class="modal-body mymodal-body">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-					<form action="#" method="post">
-						<div class="input-container">
-							<input type="text" class="form-control input-info" id="email"
-								name="email" placeholder="이메일" />
-						</div>
-						<div class="input-container">
-							<input type="password" class="form-control input-info"
-								id="password" name="password" placeholder="패스워드" />
-						</div>
-						<div class="forgot-pw">
-							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
-								style="text-decoration: none">비밀번호 찾기</a>
-							</span>
-						</div>
-						<div class="input-container">
-							<input type="submit" class="btn btn-primary loginbtn"
-								data-dismiss="modal" value="이메일 로그인" />
-						</div>
-					</form>
-					<span class="adduser">아직 세모의 회원이 아니신가요?<a
-						href="Joinus_select.jsp">회원가입</a></span>
-				</div>
-			</div>
-		</div>
-	</div>
+	<%@ include file="include/loginmodal.jsp" %>	
 	<!-- 컨텐츠 -->
 	<div class="content">
 		<div class="container content-container">
@@ -87,34 +31,36 @@
 				<p>관심매물은 30개까지 저장됩니다.</p>
 			</div>
 			<div class="content-body">
-				<ul class="nav nav-tabs">
-					<li role="presentation" class="active"><a href="#">최근 본 매물</a></li>
-					<li role="presentation"><a href="#">찜한 매물</a></li>
+				<ul class="nav nav-tabs nav-justified" role="tablist">
+					<li role="presentation" class="active"><a href="#interItem"
+						role="tab" data-toggle="tab" aria-contols="interItem">최근 본 매물</a></li>
+					<li role="presentation"><a href="#heartItem" role="tab"
+						data-toggle="tab" aria-contols="heartItem">찜한 매물</a></li>
 				</ul>
-				<div class="sub">
-					<span>최근 본 매물</span><span id="maemulcount">0</span><span>개</span>
-					<button type="button" class="btn btn-default delAll">전체 삭제</button>
-				</div>
+
 				<div class="tab-content">
-					<div id="interItem">
-						
+					<div role="tabpanel" class="tab-pane fade active in" id="interItem">
+						<div class="sub">
+							<span>최근 본 매물</span><span class="maemulcount" style="color: red;"></span><span>개</span>
+							<button type="button" class="btn btn-default delAll">전체 삭제</button>
+						</div>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
 					</div>
-					<div id="heartItem">
-					
+					<div role="tabpanel" class="tab-pane fade" id="heartItem">
+						<div class="sub">
+							<span>찜한 매물</span><span class="heartcount" style="color: red;"></span><span>개</span>
+							<button type="button" class="btn btn-default delAll">전체 삭제</button>
+						</div>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="include/dummyCard.jsp"%>
 					</div>
-				</div>
-				<div class="paginavi">
-					<nav>
-						<ul class="pagination adminPagi">
-							<li><a href="#" aria-label="Previous"> <span
-									aria-hidden="true">&laquo;</span>
-							</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#" aria-label="Next"> <span
-									aria-hidden="true">&raquo;</span>
-							</a></li>
-						</ul>
-					</nav>
 				</div>
 			</div>
 		</div>
@@ -122,9 +68,32 @@
 	<!-- 컨텐츠  END -->
 
 	<!-- Footer -->
-	<div class="footer"></div>
+	<%@ include file="include/footer.jsp"%>
 	<!-- Footer END -->
 
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var maemulCount = $('#interItem .article-card').length;
+			$(".maemulcount").html(maemulCount);
+			
+			var heartCount = $('#heartItem .article-card').length;
+			$(".heartcount").html(heartCount);
+		});
 
+		var interDelAll = $('#interItem .delAll');
+		interDelAll.on('click', function() {
+			$("#interItem .article-card").remove();
+			var maemulCount = $('#interItem .article-card').length;
+			$(".maemulcount").html(maemulCount);
+		});
+		var heartDelAll = $('#heartItem .delAll');
+		heartDelAll.on('click', function() {
+			$("#heartItem .article-card").remove();
+			var heartCount = $('#heartItem .article-card').length;
+			$(".heartcount").html(heartCount);
+		});
+	</script>
 </body>
 </html>

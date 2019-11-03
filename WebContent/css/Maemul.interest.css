@@ -6,8 +6,8 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	width: 100%;
-	
+	height:100%;
+	width:100%;
 }
 
 .logo {
@@ -31,7 +31,7 @@ html, body {
 }
 
 .content {
-	height: 750px;
+	min-height: 750px;
 	width: 100%;
 	background: #eee;
 }
@@ -135,4 +135,65 @@ html, body {
 
 #maemulcount {
 	color: red;
+}
+
+.interItem {
+	margin-top: 20px;
+}
+
+.article-card {
+	position: relative;
+	float: left;
+    width: 370px;
+    height: 290px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    background: white;
+	text-decoration: none;    
+}
+
+.picture-container {
+   	top: 12px;
+    left: 12px;
+    right: 12px;
+    height: 154px;
+    overflow: hidden;
+    position: absolute;
+    border: 1px solid rgba(0,0,0,.1);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR…g+oq1zRl1jZQDk7z9i/1vznEEhw4EKeIJVhupOzSGQZQT+BeZ86C6SJKT8AAAAAElFTkSuQmCC);
+    background-size: 40px 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.preview {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.price-container {
+	font-size: 20px;
+	margin-left: 12px;
+	margin-top: 200px;
+	color: black;
+	font-weight: bold;	
+}
+
+
+
+.option {
+    margin-left: 12px;
+    color: black;
+}
+
+.tab-content {
+	margin-left: 5px;
 }
