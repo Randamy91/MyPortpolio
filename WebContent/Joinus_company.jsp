@@ -1,309 +1,335 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="utf-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>세모- 상가 중개사이트</title>
-        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/Joinus_general.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
-        
-    </head>
-    <style type="text/css">
-        .logo {
-            margin-left: 30px;
-        }
-        .menu_navbar {
-            width: 100%;
-            padding-right: 40px;
-            margin-bottom: 0;
-            line-height: 45px;
-        }
-        .navbar-text {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .navbar-right {
-            font-size: 15px;
-        }
-        .content {
-            height: 100%;
-            width: 100%;
-            background: #eee;
-        }
-        .footer {
-            width: 100%;
-            height: 320px;
-            background: #333;
-        }
-        .modal-dialog.mymodal-size {
-            width: 400px;
-            height: 360px;
-        }
-        .mymodal-content {
-            width: 100%;
-            height: 100%;
-        }
-        .loginmodal-title {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .modal form {
-            margin-top: 20px;
-        }
-        .modal .input-container {
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .modal .input-info {
-            width: 270px;
-            display: inline-block;
-        }
-        .modal .forgot-pw input {
-            margin-left: 50px;
-        }
-        .modal .forgot-pw span {
-            margin-left: 90px;
-        }
-        .loginbtn {
-            margin-top: 30px;
-            display: inline-block;
-            width: 270px;
-        }
-    </style>
-    <body>
-		<!--------------------------- 복사하여 사용 하세요 ---------------------------->
-		<!-- 상단 메뉴 바 -->
-		<nav class="navbar menu_navbar bg-white">
-			<!--<div class="navbar-header menu_header">-->
-			<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
-				src="img/main_logo.jpg" width="65px" height="40px">
-			</a>
-			<p class="navbar-text navbar-left">
-				<a href="Main.jsp" class="navbar-link"
-					style="text-decoration: none">상가</a>
-			</p>
-			<p class="navbar-text navbar-left">
-				<a href="Bigdata.jsp" class="navbar-link"
-					style="text-decoration: none">상권분석</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Joinus_select.jsp" class="navbar-link"
-					style="text-decoration: none">회원가입</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="#myModal" data-toggle="modal" class="navbar-link"
-					style="text-decoration: none">로그인</a>
-			</p>
-		</nav>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>세모- 상가 중개사이트</title>
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/Joinus_general.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
 
-		<!-- 상단 메뉴 바  -->
+</head>
+<style type="text/css">
+.logo {
+	margin-left: 30px;
+}
 
-		<!--  로그인 Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog mymodal-size">
-				<div class="modal-content mymodal-content">
-					<div class="modal-body mymodal-body">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-						<form action="#" method="post">
-							<div class="input-container">
-								<input type="text" class="form-control input-info" id="email"
-									name="email" placeholder="이메일" />
-							</div>
-							<div class="input-container">
-								<input type="password" class="form-control input-info"
-									id="password" name="password" placeholder="패스워드" />
-							</div>
-							<div class="forgot-pw">
-								<input type="checkbox" />&nbsp;자동 로그인 <span> <a
-									href="Pw_change.jsp" style="text-decoration: none">비밀번호 찾기</a>
-								</span>
-							</div>
-							<div class="input-container">
-								<input type="submit" class="btn btn-primary loginbtn"
-									data-dismiss="modal" value="이메일 로그인" />
-							</div>
-						</form>
-						<span class="adduser">아직 세모의 회원이 아니신가요? <a
-							href="Joinus_select.jsp">회원가입</a>
-						</span>
-					</div>
+.menu_navbar {
+	width: 100%;
+	padding-right: 40px;
+	margin-bottom: 0;
+	line-height: 45px;
+}
+
+.navbar-text {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.navbar-right {
+	font-size: 15px;
+}
+
+.content {
+	height: 100%;
+	width: 100%;
+	background: #eee;
+}
+
+.footer {
+	width: 100%;
+	height: 320px;
+	background: #333;
+}
+
+.modal-dialog.mymodal-size {
+	width: 400px;
+	height: 360px;
+}
+
+.mymodal-content {
+	width: 100%;
+	height: 100%;
+}
+
+.loginmodal-title {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.modal form {
+	margin-top: 20px;
+}
+
+.modal .input-container {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.modal .input-info {
+	width: 270px;
+	display: inline-block;
+}
+
+.modal .forgot-pw input {
+	margin-left: 50px;
+}
+
+.modal .forgot-pw span {
+	margin-left: 90px;
+}
+
+.loginbtn {
+	margin-top: 30px;
+	display: inline-block;
+	width: 270px;
+}
+</style>
+<body>
+	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
+	<!-- 상단 메뉴 바 -->
+	<nav class="navbar menu_navbar bg-white">
+		<!--<div class="navbar-header menu_header">-->
+		<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
+			src="img/main_logo.jpg" width="65px" height="40px">
+		</a>
+		<p class="navbar-text navbar-left">
+			<a href="Main.jsp" class="navbar-link" style="text-decoration: none">상가</a>
+		</p>
+		<p class="navbar-text navbar-left">
+			<a href="Bigdata.jsp" class="navbar-link"
+				style="text-decoration: none">상권분석</a>
+		</p>
+		<p class="navbar-text navbar-right">
+			<a href="Joinus_select.jsp" class="navbar-link"
+				style="text-decoration: none">회원가입</a>
+		</p>
+		<p class="navbar-text navbar-right">
+			<a href="#myModal" data-toggle="modal" class="navbar-link"
+				style="text-decoration: none">로그인</a>
+		</p>
+	</nav>
+
+	<!-- 상단 메뉴 바  -->
+
+	<!--  로그인 Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog mymodal-size">
+			<div class="modal-content mymodal-content">
+				<div class="modal-body mymodal-body">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
+					<form action="#" method="post">
+						<div class="input-container">
+							<input type="text" class="form-control input-info" id="email"
+								name="email" placeholder="이메일" />
+						</div>
+						<div class="input-container">
+							<input type="password" class="form-control input-info"
+								id="password" name="password" placeholder="패스워드" />
+						</div>
+						<div class="forgot-pw">
+							<input type="checkbox" />&nbsp;자동 로그인 <span> <a
+								href="Pw_change.jsp" style="text-decoration: none">비밀번호 찾기</a>
+							</span>
+						</div>
+						<div class="input-container">
+							<input type="submit" class="btn btn-primary loginbtn"
+								data-dismiss="modal" value="이메일 로그인" />
+						</div>
+					</form>
+					<span class="adduser">아직 세모의 회원이 아니신가요? <a
+						href="Joinus_select.jsp">회원가입</a>
+					</span>
 				</div>
 			</div>
 		</div>
-        <!-- 로그인 modal end -->
-        <!-- 컨텐츠 -->
-        <div class="content">
-            <div class="body-content">
-                <div class="main-space">
-                    <div class="container">
-                        <div class="page-title text-center">
-                            <h2 class="title">공인중개사 회원가입</h2>
-                            <p class="text-muted" style="font-size: 15px;">세모에 오신것을 환영합니다.</p>
-                        </div>
-                        <div class="main-content">
-                            <form name="filter" class="policy_all" role="form" method="post" action="#" id="result01" style="display: block;">
-                                <div>
-                                    <ul class="gallery">
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
-                                            <div class="text">약관동의</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
-                                            <div class="text">정보입력</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
-                                            <div class="text">가입완료</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <form action="#" class="policy_all" method="post" name="filter">
-                                    <div style="text-align: left;">
-                                        <input type="checkbox" name="agree01" id="agree_all" onclick="agreeCheck()">
-                                        <label for="check_box" >아래 약관에 모두 동의합니다.</label>
-                                    </div>
-                                    <br/>
-                                    <div style="text-align: left;">
-                                        <input type="checkbox" name="agree" id="agree"/>
-                                        <label for="check_box">세모 서비스 이용약관(필수)</label>
-                                    </div>
-                                    <div class="policy">
-                                        <iframe width="100%" height="150px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
-                                    </div>
-                                    <br/>
-                                    <div style="text-align: left;">
-                                        <input type="checkbox" name="agree" id="agree"/>
-                                        <label for="check_box">공인중개사 회원가입 개인정보 수집 및 이용에 대한 동의(필수)</label>
-                                    </div>
-                                    <div class="policy">
-                                        <iframe width="100%" height="150px" frameborder="0" src="https://cdn.nemoapp.kr/policy/agentPrivacyPolicy.html?v=637073928717585804#begin"></iframe>
-                                    </div>
-                                    <br/>
-                                    <div style="text-align: left;">
-                                        <input type="checkbox" name="agree" id="agree"/>
-                                        <label for="check_box">위치 기반 서비스 약관(필수)</label>
-                                    </div>
-                                    <div class="policy">
-                                        <iframe width="100%" height="150px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
-                                    </div>
-                                    <br/>
-                                    <div style="text-align: left;">
-                                        <input type="checkbox" name="agree" id="agree"/>
-                                        <label for="check_box">공인중개사 비즈니스 회원 서비스 이용 약관 동의 (필수)</label>
-                                    </div>
-                                    <div class="policy">
-                                        <iframe width="100%" height="150px" frameborder="0" src="https://cdn.nemoapp.kr/policy/servicePolicy.html?v=637073928717585804#begin"></iframe>
-                                    </div>
-                                    <br/>
-                                    <div class="general01_btn">
-                                        <input
-                                        type="button" class="btn btn-primary" id="pass_co01" value="다음" name="checkButton" onclick="page01()" style="height: 50px; width: 100px; margin: 50px">
-                                        <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
-                                    </div>
-                                </form>
-                                <!-- form 박스 - 1 END -->
+	</div>
+	<!-- 로그인 modal end -->
+	<!-- 컨텐츠 -->
+	<div class="content">
+		<div class="body-content">
+			<div class="main-space">
+				<div class="container">
+					<div class="page-title text-center">
+						<h2 class="title">공인중개사 회원가입</h2>
+						<p class="text-muted" style="font-size: 15px;">세모에 오신것을 환영합니다.</p>
+					</div>
+					<div class="main-content">
+						<form name="filter" class="policy_all" name="filter" role="form" method="post"
+							action="#" id="result01" style="display: block;">
+							<div>
+								<ul class="gallery">
+									<li class="cover01"><span class="cover02"><img
+											class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+									</li>
+									<li class="cover01"><span class="cover02"><img
+											class="circle" src="img/contract1.png" alt="약관동의" width="120" /></span>
+										<div class="text">약관동의</div></li>
+									<li class="cover01"><span class="cover02"><img
+											class="circle" src="img/contract2.png" alt="약관동의" width="120" /></span>
+										<div class="text">정보입력</div></li>
+									<li class="cover01"><span class="cover02"><img
+											class="circle" src="img/contract2.png" alt="약관동의" width="120" /></span>
+										<div class="text">가입완료</div></li>
+									<li class="cover01"><span class="cover02"><img
+											class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+									</li>
+								</ul>
+							</div>
+							
+								<div style="text-align: left;">
+									<input type="checkbox" name="agree01" id="agree_all"
+										onclick="agreeCheck()"> <label for="check_box">아래
+										약관에 모두 동의합니다.</label>
+								</div>
+								<br />
+								<div style="text-align: left;">
+									<input type="checkbox" name="agree" id="agree" /> <label
+										for="check_box">세모 서비스 이용약관(필수)</label>
+								</div>
+								<div class="policy">
+									<iframe width="100%" height="150px" frameborder="0" 
+										src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
+								</div>
+								<br />
+								<div style="text-align: left;">
+									<input type="checkbox" name="agree" id="agree" /> <label
+										for="check_box">공인중개사 회원가입 개인정보 수집 및 이용에 대한 동의(필수)</label>
+								</div>
+								<div class="policy">
+									<iframe width="100%" height="150px" frameborder="0"
+										src="https://cdn.nemoapp.kr/policy/agentPrivacyPolicy.html?v=637073928717585804#begin"></iframe>
+								</div>
+								<br />
+								<div style="text-align: left;">
+									<input type="checkbox" name="agree" id="agree" /> <label
+										for="check_box">위치 기반 서비스 약관(필수)</label>
+								</div>
+								<div class="policy">
+									<iframe width="100%" height="150px" frameborder="0"
+										src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
+								</div>
+								<br />
+								<div style="text-align: left;">
+									<input type="checkbox" name="agree" id="agree" /> <label
+										for="check_box">공인중개사 비즈니스 회원 서비스 이용 약관 동의 (필수)</label>
+								</div>
+								<div class="policy">
+									<iframe width="100%" height="150px" frameborder="0"
+										src="https://cdn.nemoapp.kr/policy/servicePolicy.html?v=637073928717585804#begin"></iframe>
+								</div>
+								<br />
+								<div class="general01_btn">
+									<input type="button" class="btn btn-primary" id="pass_co01"
+										value="다음" name="checkButton" onclick="page01()"
+										style="height: 50px; width: 100px; margin: 50px">
+									<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
+								</div>
+							</form>
+							<!-- form 박스 - 1 END -->
 
 
-                                <form name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style="display: none;">
-                                    <!-- 페이지 이동 방지를 위한 iframe -->
-                                    <iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
-                                    <div>
-                                       <ul class="gallery">
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
-                                            <div class="text" style="margin-left:60px;">약관동의</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
-                                            <div class="text" style="margin-left:60px;">정보입력</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract2.png" alt="약관동의" width="120"/></span>
-                                            <div class="text" style="margin-left:60px;">가입완료</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                    <form action="#" class="company_info" role="form" method="post">
-                                        <table align="center">
-                                            <tr>
-                                                <th>공인중개사정보 입력
-                                                </th>
-                                            </tr>
-                                            <tbody>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">중개사무소명</span></th>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="co_name" id="co_name"  maxlength="20" placeholder="중개사무소명을 입력해주세요" style="width:400px;">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">중개사 등록번호</span></th>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="co_number" id="co_number"  maxlength="20" placeholder="중개사 등록번호를 입력해주세요" style="float:left; width: 260px;">
-                                                        &nbsp;&nbsp;
-                                                        <div style="display: inline-block;">
-                                                            <input type="file" name="fileBox_1" id="fileBox_1" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
-                                                            <label for="fileBox_1">
-                                                                <span class="btn btn-default sg-btn-lg-default">중개등록증 첨부</span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">사업자 등록번호</span></th>
-                                                    <td>
-                                                        <input type="text" name="coe_number" id="coe_number" class="form-control" maxlength="20" placeholder="사업자 등록번호를 입력해주세요" style="float:left; width: 260px;">
-                                                        &nbsp;&nbsp;
-                                                        <div style="display: inline-block;">
-                                                            <input type="file" name="fileBox_2" id="fileBox_2" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
-                                                            <label for="fileBox_1">
-                                                                <span class="btn btn-default sg-btn-lg-default">사업자등록 첨부</span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>
-                                                        <label for="address">중개사무소 주소</label>
-                                                    </th>
-                                                    <!-------------- 카카오 소스 시작 ---------------->
-                                                <td>
-                                                    <div id="kakaomap">
-                                                        <input type="text" id="sample2_postcode" placeholder="우편번호">
-                                                        <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-                                                        <input type="text" id="sample2_address" placeholder="주소"><br>
-                                                        <input type="text" id="sample2_detailAddress" placeholder="상세주소">
-                                                        <input type="text" id="sample2_extraAddress" placeholder="참고항목">
-                                                    </div>
-                                                            <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-                                                            <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-                                                            <!--<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼"> -->
-                                                            </div>
-
-                                                            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-                                                            <script>
+							<form name="filter" class="personal_info" role="form"
+								method="post" action="#" id="result02" style="display: none;">
+								<!-- 페이지 이동 방지를 위한 iframe -->
+								<iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
+								<div>
+									<ul class="gallery">
+										<li class="cover01"><span class="cover02"><img
+												class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+										</li>
+										<li class="cover01"><span class="cover02"><img
+												class="circle" src="img/contract3.png" alt="약관동의"
+												width="120" /></span>
+											<div class="text" style="margin-left: 60px;">약관동의</div></li>
+										<li class="cover01"><span class="cover02"><img
+												class="circle" src="img/contract1.png" alt="약관동의"
+												width="120" /></span>
+											<div class="text" style="margin-left: 60px;">정보입력</div></li>
+										<li class="cover01"><span class="cover02"><img
+												class="circle" src="img/contract2.png" alt="약관동의"
+												width="120" /></span>
+											<div class="text" style="margin-left: 60px;">가입완료</div></li>
+										<li class="cover01"><span class="cover02"><img
+												class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+										</li>
+									</ul>
+								</div>
+								
+									<table align="center">
+										<tr>
+											<th>공인중개사정보 입력</th>
+										</tr>
+										<tbody>
+											<tr>
+												<th class="active"><span class="left-name">중개사무소명</span></th>
+												<td><input type="text" class="form-control"
+													name="co_name" id="co_name" maxlength="20"
+													placeholder="중개사무소명을 입력해주세요" style="width: 400px;">
+												</td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">중개사
+														등록번호</span></th>
+												<td><input type="text" class="form-control"
+													name="co_number" id="co_number" maxlength="20"
+													placeholder="중개사 등록번호를 입력해주세요"
+													style="float: left; width: 260px;"> &nbsp;&nbsp;
+													<div style="display: inline-block;">
+														<input type="file" name="fileBox_1" id="fileBox_1"
+															class="form-control" accept="image/jpeg,image/png"
+															style="float: right; display: none"> <label
+															for="fileBox_1"> <span
+															class="btn btn-default sg-btn-lg-default">중개등록증 첨부</span>
+														</label>
+													</div></td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">사업자
+														등록번호</span></th>
+												<td><input type="text" name="coe_number"
+													id="coe_number" class="form-control" maxlength="20"
+													placeholder="사업자 등록번호를 입력해주세요"
+													style="float: left; width: 260px;"> &nbsp;&nbsp;
+													<div style="display: inline-block;">
+														<input type="file" name="fileBox_2" id="fileBox_2"
+															class="form-control" accept="image/jpeg,image/png"
+															style="float: right; display: none"> <label
+															for="fileBox_2"> <span
+															class="btn btn-default sg-btn-lg-default">사업등록증 첨부</span>
+														</label>
+													</div></td>
+											</tr>
+											<tr>
+												<th><label for="address">중개사무소 주소</label></th>
+												<!-------------- 카카오 소스 시작 ---------------->
+												<td>
+													<div id="kakaomap">
+														<input type="text" id="sample2_postcode"
+															placeholder="우편번호"> <input type="button"
+															onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
+														<input type="text" id="sample2_address" placeholder="주소"><br>
+														<input type="text" id="sample2_detailAddress"
+															placeholder="상세주소"> <input type="text"
+															id="sample2_extraAddress" placeholder="참고항목">
+													</div> <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+													<div id="layer"
+														style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+														<!--<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼"> -->
+													</div> <script
+														src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+													<script>
                                                                 // 우편번호 찾기 화면을 넣을 element
                                                                 var element_layer = document.getElementById('layer');
 
@@ -390,184 +416,196 @@
                                                                     element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
                                                                 }
                                                             </script>
-                                                </td>
-                                                    <!-------------- 카카오 소스 끝 ---------------->
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">중개사 대표명</span></th>
-                                                    <td>
-                                                        <input type="text" name="coe_name" id="coe_name" class="form-control" maxlength="20" placeholder="중개사 대표명을 입력해주세요">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <!-------------- 상윤이 소스 시작 ---------------->
-                                                    <th class="active"><span class="left-name">중개사 대표번호</span></th>
-                                                    <td>
-                                                        <div class="coe_Telephone">
-                                                            <select class="form-control pull-left" id="coe_Telephone1" name="coe_Telephone1" style="width: 80px; height: 35px;">
-                                                                <option value="02">02</option>
-                                                                <option value="031">031</option>
-                                                                <option value="032">032</option>
-                                                            </select>
-                                                            <input type="text" class="form-control pull-left" id="coe_Telephone2" name="coe_Telephone2" style="width: 80px; height: 35px; margin-left: 20px;">
-                                                            <input type="text" class="form-control" id="coe_Telephone3" name="coe_Telephone3" style="width: 80px; height: 35px; margin-left: 200px;">
-                                                        </div>
-                                                        <!-- coe Telphone end -->
-                                                    </td>
-                                                    <!-------------- 상윤이 소스 끝 ---------------->
-                                                </tr>
-                                                <!-------------- 상윤이 소스 시작 ---------------->
-                                                <tr>
-                                                    <th class="active"><span class="left-name">대표 사진</span></th>
-                                                    <td>
-                                                        <img src="img/ceo_image.jpg" class="coe_image" style="float : left; height: 180px; width: 150px; margin: 0;">
-                                                        <input type="file" class="form-control" id="coe_image" name="coe_image" style="display: none;">
-                                                        <label for="coe_image" class="label_ceo_image">
-                                                            <span class="btn btn-default"style ="margin-left:10px;">사진 업로드</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <!-------------- 상윤이 소스 끝 ---------------->
-                                                <tr>
-                                                    <th>개인정보 입력
-                                                    </th>
-                                                </tr>
-                                            </tbody>
-                                            <tbody>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">이름</span></th>
-                                                    <td>
-                                                        <input type="text" name="P_name" id="P_name" class="form-control" maxlength="20" placeholder="이름을 입력해주세요">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">직급/직책</span></th>
-                                                    <td>
-                                                        <input type="text" name="position" id="position" class="form-control" maxlength="20" placeholder="직급/직책을 입력해주세요">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">권한/자격</span></th>
-                                                    <td>
-                                                        <select class="form-control" name="position2" id="position2" style="display: inline-block;">
-                                                            <option value="">----- 선택하세요 -----</option>
-                                                            <option value="qulity01">대표공인중개사</option>
-                                                            <option value="qulity02">소속공인중개사</option>
-                                                            <option value="qulity03">중개보조원</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">이메일</span></th>
-                                                    <td>
-                                                        <input type="text" name="set_email01" id="set_email01" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block; width: 185px;">
-                                                        &nbsp;@&nbsp;
-                                                        <select class="form-control" name="selectEmail" id="selectEmail" style="display: inline-block; width: 185px;">
-                                                            <option value="">----- 선택하세요 -----</option>
-                                                            <option value="naver">naver.com</option>
-                                                            <option value="gmail">gmail.com</option>
-                                                            <option value="daum">daum.net</option>
-                                                        </select>
-                                                        <input type="text" name="email_ge2" id="selectEmail2" class="form-control" maxlength="20" placeholder="ex)gmail.com" style="display: none; width: 184px; height: 35px;">
-                                                        <br/>
-                                                        <input type="checkbox" name="agree" id="agree_y" value="Y"/>
-                                                        <label for="agree_y">직접입력</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">비밀번호</span></th>
-                                                    <td>
-                                                        <input type="password" name="co_pw" id="co_pw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="active"><span class="left-name">비밀번호 확인</span></th>
-                                                    <td>
-                                                        <input type="password" name="co_pw_check" id="co_pw_check" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <!-------------- 상윤이 소스 시작 ---------------->
-                                                    <th class="active"><span class="left-name">휴대폰 번호</span></th>
-                                                    <td>
-                                                        <div class="coe_Telephone">
-                                                            <select class="form-control pull-left" id="phoneNumber1" name="phoneNumber1" style="width: 80px; height: 35px;">
-                                                                <option value="010">010</option>
-                                                                <option value="011">011</option>
-                                                                <option value="016">016</option>
-                                                                <option value="017">017</option>
-                                                                <option value="018">018</option>
-                                                                <option value="019">019</option>
-                                                            </select>
-                        
-                                                            <input type="text" class="form-control pull-left" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 35px; margin-left: 20px;">
-                                                            <input type="text" class="form-control pull-left" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 35px; margin-left: 20px;">
-                                                        </div>
-                                                        <!-- coe Telphone end -->
-                                                    </td>
-                                                    <!-------------- 상윤이 소스 끝 ---------------->
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="general02_btn" style="text-align: center;">
-                                            <input
-                                            type="submit" class="btn btn-primary" value="입력완료" name="checkButton" onclick="submit_form()" style="height: 50px; width: 100px; margin: 50px">
-                                        <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
-                                        </div>
-                                    </form>
-                                    <!-- form 박스 - 2 END -->
+												</td>
+												<!-------------- 카카오 소스 끝 ---------------->
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">중개사
+														대표명</span></th>
+												<td><input type="text" name="coe_name" id="coe_name"
+													class="form-control" maxlength="20"
+													placeholder="중개사 대표명을 입력해주세요"></td>
+											</tr>
+											<tr>
+												<!-------------- 상윤이 소스 시작 ---------------->
+												<th class="active"><span class="left-name">중개사
+														대표번호</span></th>
+												<td>
+													<div class="coe_Telephone">
+														<select class="form-control pull-left" id="coe_Telephone1"
+															name="coe_Telephone1" style="width: 80px; height: 35px;">
+															<option value="02">02</option>
+															<option value="031">031</option>
+															<option value="032">032</option>
+														</select> <input type="text" class="form-control pull-left"
+															id="coe_Telephone2" name="coe_Telephone2"
+															style="width: 80px; height: 35px; margin-left: 20px;">
+														<input type="text" class="form-control"
+															id="coe_Telephone3" name="coe_Telephone3"
+															style="width: 80px; height: 35px; margin-left: 200px;">
+													</div> <!-- coe Telphone end -->
+												</td>
+												<!-------------- 상윤이 소스 끝 ---------------->
+											</tr>
+											<!-------------- 상윤이 소스 시작 ---------------->
+											<tr>
+												<th class="active"><span class="left-name">대표 사진</span></th>
+												<td><img src="img/ceo_image.jpg" class="coe_image"
+													style="float: left; height: 180px; width: 150px; margin: 0;">
+													<input type="file" class="form-control" id="coe_image"
+													name="coe_image" style="display: none;"> <label
+													for="coe_image" class="label_ceo_image"> <span
+														class="btn btn-default" style="margin-left: 10px;">사진
+															업로드</span>
+												</label></td>
+											</tr>
+											<!-------------- 상윤이 소스 끝 ---------------->
+											<tr>
+												<th>개인정보 입력</th>
+											</tr>
+										</tbody>
+										<tbody>
+											<tr>
+												<th class="active"><span class="left-name">이름</span></th>
+												<td><input type="text" name="P_name" id="P_name"
+													class="form-control" maxlength="20"
+													placeholder="이름을 입력해주세요"></td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">직급/직책</span></th>
+												<td><input type="text" name="position" id="position"
+													class="form-control" maxlength="20"
+													placeholder="직급/직책을 입력해주세요"></td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">권한/자격</span></th>
+												<td><select class="form-control" name="position2"
+													id="position2" style="display: inline-block;">
+														<option value="">----- 선택하세요 -----</option>
+														<option value="qulity01">대표공인중개사</option>
+														<option value="qulity02">소속공인중개사</option>
+														<option value="qulity03">중개보조원</option>
+												</select></td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">이메일</span></th>
+												<td><input type="text" name="user_email" id="user_email" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block;">
+                                                &nbsp;@&nbsp;
+                                                <select class="form-control" name="email_ge" id="email_ge" style="display: inline-block; width: 184px; height: 35px;">
+        											<option value="">----- 선택하세요 -----</option>
+        										    <option value="value 1">naver.com</option>
+        											<option value="value 2">gmail.com</option>
+        											<option value="value 3">daum.net</option>
+    											</select>
+                              
+                                                <input type="text" name="email_ge2" id="email_ge2" class="form-control" maxlength="20" placeholder="ex)gmail.com" style="display: none; width: 184px; height: 35px;">
+                                                <br/>
+                                                <input type="checkbox" name="direct" id="direct" value="Y" onclick="formChange()"/>
+                                                
+                                                <label for="agree_y">직접입력</label>
+												</td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">비밀번호</span></th>
+												<td><input type="password" name="co_pw" id="co_pw"
+													class="form-control" maxlength="20"
+													placeholder="비밀번호를 입력해주세요"></td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">비밀번호
+														확인</span></th>
+												<td><input type="password" name="co_pw_check"
+													id="co_pw_check" class="form-control" maxlength="20"
+													placeholder="비밀번호를 입력해주세요"></td>
+											</tr>
+											<tr>
+												<!-------------- 상윤이 소스 시작 ---------------->
+												<th class="active"><span class="left-name">휴대폰
+														번호</span></th>
+												<td>
+													<div class="coe_Telephone">
+														<select class="form-control pull-left" id="phoneNumber1"
+															name="phoneNumber1" style="width: 80px; height: 35px;">
+															<option value="010">010</option>
+															<option value="011">011</option>
+															<option value="016">016</option>
+															<option value="017">017</option>
+															<option value="018">018</option>
+															<option value="019">019</option>
+														</select> <input type="text" class="form-control pull-left"
+															id="phoneNumber2" name="phoneNumber2"
+															style="width: 80px; height: 35px; margin-left: 20px;">
+														<input type="text" class="form-control pull-left"
+															id="phoneNumber3" name="phoneNumber3"
+															style="width: 80px; height: 35px; margin-left: 20px;">
+													</div> <!-- coe Telphone end -->
+												</td>
+												<!-------------- 상윤이 소스 끝 ---------------->
+											</tr>
+										</tbody>
+									</table>
+									<div class="general02_btn" style="text-align: center;">
+										<input type="submit" class="btn btn-primary" value="입력완료"
+											name="checkButton" onclick="submit_form()"
+											style="height: 50px; width: 100px; margin: 50px">
+										<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
+									</div>
+								</form>
+								<!-- form 박스 - 2 END -->
 
 
 
 
-                                    <form name="filter" class="join_complete" role="form" method="post" action="#" id="result03" style="display: none;">
-                                        <div>
-                                           <ul class="gallery">
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
-                                            <div class="text">약관동의</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract3.png" alt="약관동의" width="120"/></span>
-                                            <div class="text">정보입력</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/contract1.png" alt="약관동의" width="120"/></span>
-                                            <div class="text">가입완료</div>
-                                        </li>
-                                        <li class="cover01">
-                                            <span class="cover02"><img class="circle" src="img/noname0.png" alt="약관동의" width="120"/></span>
-                                        </li>
-                                    </ul>
-                                        </div>
-                                        <div class="box1">
-                                            <h5>회원가입이 완료되었습니다.</h5>
-                                            <img src="img/complete.png"/>
-                                        </div>
-                                        <div>
-                                            <input
-                                            type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.jsp'" style="height: 50px; width: 100px; margin: 50px">
-                                        <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
-                                        </div>
-                                    </form>
-                                    <!-- form 박스 - 3 END -->
-                                </div>
-                            </div>
-                            <!-- end container -->
-                        </div>
-                    </div>
-                    <!-- Footer -->
-                    <div class="footer"></div>
-                    <!-- Footer END -->
-                </div>
-                <!-- end content -->
-                <script src="regex/regex.js"></script>
-                <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-                <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-                <script type="text/javascript">
+								<form name="filter" class="join_complete" role="form"
+									method="post" action="#" id="result03" style="display: none;">
+									<div>
+										<ul class="gallery">
+											<li class="cover01"><span class="cover02"><img
+													class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+											</li>
+											<li class="cover01"><span class="cover02"><img
+													class="circle" src="img/contract3.png" alt="약관동의"
+													width="120" /></span>
+												<div class="text">약관동의</div></li>
+											<li class="cover01"><span class="cover02"><img
+													class="circle" src="img/contract3.png" alt="약관동의"
+													width="120" /></span>
+												<div class="text">정보입력</div></li>
+											<li class="cover01"><span class="cover02"><img
+													class="circle" src="img/contract1.png" alt="약관동의"
+													width="120" /></span>
+												<div class="text">가입완료</div></li>
+											<li class="cover01"><span class="cover02"><img
+													class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+											</li>
+										</ul>
+									</div>
+									<div class="box1">
+										<h5>회원가입이 완료되었습니다.</h5>
+										<img src="img/complete.png" />
+									</div>
+									<div>
+										<input type="button" class="btn btn-primary" value="바로가기"
+											name="checkButton" onclick="location.href='Main.jsp'"
+											style="height: 50px; width: 100px; margin: 50px">
+										<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
+									</div>
+								</form>
+								<!-- form 박스 - 3 END -->
+					</div>
+				</div>
+				<!-- end container -->
+			</div>
+		</div>
+		<!-- Footer -->
+		<div class="footer"></div>
+		<!-- Footer END -->
+	</div>
+	<!-- end content -->
+	<script src="regex/regex.js"></script>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
                 	$('#pass_co01').attr('disabled', true);
             		$('#agree_all').on('change',function(){
                     	var agree_all = $('input:checkbox[id="agree_all"]').is(":checked");
@@ -629,20 +667,20 @@
                     }
 
                     $(document).ready(function(){
-                        $("#agree_y").change(function(){
-                        if($("#agree_y").is(":checked")){
-                        var rst = document.getElementById("selectEmail");   
-                        rst.style.display = 'none';           
-                        var est = document.getElementById("selectEmail2");
-                        est.style.display = 'inline-block';
-                        }else{
-                        var rst = document.getElementById("selectEmail");   
-                        rst.style.display = 'inline-block';           
-                        var est = document.getElementById("selectEmail2");
-                        est.style.display = 'none';
-                        }
+                        $("#direct").change(function(){
+                            if($("#direct").is(":checked")){
+                            	var rst = document.getElementById("email_ge");   
+                                rst.style.display = 'none';           
+                        		var est = document.getElementById("email_ge2");
+            	                est.style.display = 'inline-block';
+                            }else{
+                            	var rst = document.getElementById("email_ge");   
+                                rst.style.display = 'inline-block';           
+                        		var est = document.getElementById("email_ge2");
+            	                est.style.display = 'none';
+                            }
                         });
-                        });  
+                    });    
 
                  	// 페이지 이동없이 submit 처리 (없어도 되네? 왜 갑자기 이러는지는 모름)       
                     function submit_form() {
@@ -677,7 +715,7 @@
                         // 중개사 번호 파일체크
                         var subject = $("#fileBox_1").val();
                         if (!subject) {
-                            alert("파일을 첨부하세요");
+                            alert("중개등록증을 첨부하세요");
                             $("#fileBox_1").focus();
                             return false;
                         }
@@ -692,10 +730,10 @@
                             return false;
                         }
                         
-                     	// 사업자 번호 파일체크
-                     	var subject = $("#fileBox_2").val();
+                     	// 사업자 등록증 파일체크
+                        var subject = $("#fileBox_2").val();
                         if (!subject) {
-                            alert("파일을 첨부하세요");
+                            alert("사업자등록증을 첨부하세요");
                             $("#fileBox_2").focus();
                             return false;
                         }
@@ -726,7 +764,7 @@
                             $('#coe_Telephone2').focus();
                             return false;
                         }
-                        if (!regex.min_length('#coe_Telephone2', 4, '최소 3자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.min_length('#coe_Telephone2', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
                 		if (!regex.max_length('#coe_Telephone2', 4, '최대 4자 까지만 입력 가능합니다.')) { return false; }
                 		
                 		// 중개사대표번호 입력 검사 -2
@@ -763,23 +801,23 @@
                         }
                         
                         /** 이메일 검사 -1 */
-                        if (!regex.value('#set_email01', '이메일을 입력하세요.')) { return false; }
-                        if (!regex.eng_num('#set_email01', '이메일은 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
-                        if (!regex.min_length('#set_email01', 4, '이메일은 최소 4자 이상 입력 가능합니다.')) { return false; }
-                        if (!regex.max_length('#set_email01', 20, '이메일은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
+                        if (!regex.eng_num('#user_email', '이메일은 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
+                        if (!regex.min_length('#user_email', 4, '이메일은 최소 4자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#user_email', 20, '이메일은 최대 20자 까지만 입력 가능합니다.')) { return false; }
                         
                         if($("#direct").is(":checked")){
                         	/** 이메일 검사 2-2 */
                             if (!regex.value('#email_ge2', '이메일을 입력하세요.')) { return false; }
                         }else{
                         	/** 이메일 검사 2-1 자바스크립트 12일차 2번예제 dropdown*/           
-                            var subject = $("#selectEmail").val();
+                            var subject = $("#email_ge").val();
                             if (!subject) {
                                 alert("이메일을 선택하세요.");
-                                $("#selectEmail").focus();
+                                $("#email_ge").focus();
                                 return false;
                             }
-                        
+                        }
 				
                         /** 비밀번호 검사 */
                         if (!regex.value('#co_pw', '비밀번호를 입력하세요.')) { return false; }
@@ -797,7 +835,7 @@
                             return false;
                         }
                         if (!regex.min_length('#phoneNumber2', 4, '휴대폰 번호 양식에 맞춰주세요.')) { return false; }
-                		if (!regex.max_length('#phoneNumber2', 4, '휴대폰 번호 양식에 맞춰주세요')) { return false; }
+                		if (!regex.max_length('#phoneNumber2', 4, '휴대폰 번호 양식에 맞춰주세요.')) { return false; }
                 		
                 		// 휴대폰번호 입력 검사 -3
                 		if (!regex.value('#phoneNumber3', '휴대폰 번호를 입력하세요.')) { return false; }
@@ -809,17 +847,12 @@
                             return false;
                         }
                         if (!regex.min_length('#phoneNumber3', 4, '휴대폰 번호 양식에 맞춰주세요')) { return false; }
-                		if (!regex.max_length('#phoneNumber3', 4, '최대 4자 까지만 입력 가능합니다.')) { return false; }
-                        
-                        
-						
+                		if (!regex.max_length('#phoneNumber3', 4, '휴대폰 번호 양식에 맞춰주세요.')) { return false; }
+                        		
                        	page02();
 
-                    });
+                       });
                  });
-                    
                 </script>
-            </body>
-        </html>
-    </body>
+</body>
 </html>

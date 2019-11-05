@@ -18,7 +18,7 @@
   		 </script>
 
 
-    </head>
+  
     <style type="text/css">
         .logo {
             margin-left: 30px;
@@ -81,6 +81,7 @@
             width: 270px;
         }
     </style>
+    </head>
     <body>
         <!-- 상단 메뉴 바 -->
         		<!--------------------------- 복사하여 사용 하세요 ---------------------------->
@@ -265,7 +266,7 @@
         											<option value="">----- 선택하세요 -----</option>
         										    <option value="value 1">naver.com</option>
         											<option value="value 2">gmail.com</option>
-        											<option value="daum">daum.net</option>
+        											<option value="value 3">daum.net</option>
     											</select>
                               
                                                 <input type="text" name="email_ge2" id="email_ge2" class="form-control" maxlength="20" placeholder="ex)gmail.com" style="display: none; width: 184px; height: 35px;">
@@ -441,7 +442,7 @@
             });     
             
       		// 유효성 검사
-			
+	
       		$(function() {
             /** 가입폼의 submit 이벤트 */
             $("#result02").submit(function(e) {
