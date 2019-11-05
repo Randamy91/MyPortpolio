@@ -216,7 +216,11 @@
                                 </div>
                             </form>
                             <!-- form 박스 - 1  -->
-                            <form name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style="display: none;">
+                            
+                            <form name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style="display: none;" >
+                                <!-- 페이지 이동 방지를 위한 iframe -->
+                                <iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
+
                                 <div>
                                     <ul class="gallery">
                                         <li class="cover01">
@@ -257,14 +261,17 @@
                                             <td>
                                                 <input type="text" name="user_email" id="user_email" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block;">
                                                 &nbsp;@&nbsp;
-                                                <select class="form-control" name="email" id="email" style="display: inline-block;">
-                                                    <option>----- 선택하세요 -----</option>
-                                                    <option value="naver">naver.com</option>
-                                                    <option value="gmail">gmail.com</option>
-                                                    <option value="daum">daum.net</option>
-                                                </select>
+                                                <select class="form-control" name="email_ge" id="email_ge" style="display: inline-block; width: 184px; height: 35px;">
+        											<option value="">----- 선택하세요 -----</option>
+        										    <option value="value 1">naver.com</option>
+        											<option value="value 2">gmail.com</option>
+        											<option value="daum">daum.net</option>
+    											</select>
+                              
+                                                <input type="text" name="email_ge2" id="email_ge2" class="form-control" maxlength="20" placeholder="ex)gmail.com" style="display: none; width: 184px; height: 35px;">
                                                 <br/>
-                                                <input type="checkbox" name="agree" id="clickMe" value="Y" onclick="showPopup();"/>
+                                                <input type="checkbox" name="direct" id="direct" value="Y" onclick="formChange()"/>
+                                                
                                                 <label for="agree_y">직접입력</label>
                                             </td>
                                         </tr>
@@ -277,7 +284,7 @@
                                         <tr>
                                             <th class="active"><span class="left-name">새 비밀번호</span></th>
                                             <td>
-                                                <input type="password" name="Npw" id="Npw" class="form-control" maxlength="20" placeholder="비밀번호를 입력해주세요">
+                                                <input type="password" name="Npw" id="Npw" class="form-control" maxlength="20" placeholder="비밀번호를 확인해주세요">
                                             </td>
                                         </tr>
                                         <tr>
@@ -290,12 +297,11 @@
                                 </table>
                                 <div class="general02_btn on" style="text-align: center;">
                                     <input
-                                    type="button" class="btn btn-primary" value="입력완료" name="checkButton" onclick="page02()" style="height: 50px; width: 100px; margin: 50px" >
+                                    type="submit" class="btn btn-primary" id="submit_ge02" value="입력완료" name="checkButton" onclick ="submit_form()"style="height: 50px; width: 100px; margin: 50px" >
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                 </div>
                             </form>
-
-
+							
                             <!-- form 박스 - 2  -->
                             <form name="filter" class="join_complete" role="form" method="post" action="#" id="result03" style="display: none;">
                                 <div>
@@ -341,6 +347,7 @@
             <!-- Footer END -->
         </div>
         <!-- end content -->
+        <script src="regex/regex.js"></script>
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
         <script src="plugins/icheck/icheck.min.js"></script>
@@ -402,7 +409,7 @@
                 }
                 $('html').scrollTop(0);
             }
-            
+
             function page02() {
                 var rst = document.getElementById("result02");
                 if (rst.style.display == 'block') {
@@ -413,10 +420,82 @@
                     rst.style.display = 'block';
                 }
                 $('html').scrollTop(0);
-            }
+                }
             
             
+            
+            $(document).ready(function(){
+                $("#direct").change(function(){
+                    if($("#direct").is(":checked")){
+                    	var rst = document.getElementById("email_ge");   
+                        rst.style.display = 'none';           
+                		var est = document.getElementById("email_ge2");
+    	                est.style.display = 'inline-block';
+                    }else{
+                    	var rst = document.getElementById("email_ge");   
+                        rst.style.display = 'inline-block';           
+                		var est = document.getElementById("email_ge2");
+    	                est.style.display = 'none';
+                    }
+                });
+            });     
+            
+      		// 유효성 검사
+			
+      		$(function() {
+            /** 가입폼의 submit 이벤트 */
+            $("#result02").submit(function(e) {
+                // 기본동작 수행 방식
+                e.preventDefault();
 
+                /** 이름 검사 */
+                if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
+                /** if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; } */
+                if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+                if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                
+                /** 이메일 검사 -1 */
+                if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }
+                if (!regex.eng_num('#user_email', '이메일은 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
+                if (!regex.min_length('#user_email', 4, '이메일은 최소 4자 이상 입력 가능합니다.')) { return false; }
+                if (!regex.max_length('#user_email', 20, '이메일은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                
+                if($("#direct").is(":checked")){
+                	/** 이메일 검사 2-2 */
+                    if (!regex.value('#email_ge2', '이메일을 입력하세요.')) { return false; }
+                }else{
+                	/** 이메일 검사 2-1 자바스크립트 12일차 2번예제 dropdown*/           
+                    var subject = $("#email_ge").val();
+                    if (!subject) {
+                        alert("이메일을 선택하세요.");
+                        $("#email_ge").focus();
+                        return false;
+                    }
+                }
+                
+                /** 비밀번호 검사 */
+                if (!regex.value('#Rpw', '비밀번호를 입력하세요.')) { return false; }
+                if (!regex.min_length('#Rpw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+                if (!regex.max_length('#Rpw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                if (!regex.compare_to('#Rpw', '#Npw', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+                
+                /** 연락처 검사 */
+                if (!regex.value('#phoneNumber1', '번호를 입력하세요.')) { return false; }
+                if (!regex.phone('#phoneNumber1', '번호가 잘못되었습니다.')) { return false; }
+
+                page02();
+
+            });
+        });
+      		
+         	// 페이지 이동없이 submit 처리 (없어도 되네? 왜 갑자기 이러는지는 모름)       
+            function submit_form() {
+            document.filter.target = 'ifrm';
+            document.filter.action = 'save_data.php';
+            document.filter.submit();
+            }
+        
+            
             $(function(){
                 //icheck plugin적용
             $(".ichecked").iCheck({

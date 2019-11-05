@@ -221,6 +221,8 @@
 
 
                                 <form name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style="display: none;">
+                                    <!-- 페이지 이동 방지를 위한 iframe -->
+                                    <iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
                                     <div>
                                        <ul class="gallery">
                                         <li class="cover01">
@@ -262,7 +264,7 @@
                                                         <input type="text" class="form-control" name="co_number" id="co_number"  maxlength="20" placeholder="중개사 등록번호를 입력해주세요" style="float:left; width: 260px;">
                                                         &nbsp;&nbsp;
                                                         <div style="display: inline-block;">
-                                                            <input type="file" id="fileBox_1" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
+                                                            <input type="file" name="fileBox_1" id="fileBox_1" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
                                                             <label for="fileBox_1">
                                                                 <span class="btn btn-default sg-btn-lg-default">중개등록증 첨부</span>
                                                             </label>
@@ -275,7 +277,7 @@
                                                         <input type="text" name="coe_number" id="coe_number" class="form-control" maxlength="20" placeholder="사업자 등록번호를 입력해주세요" style="float:left; width: 260px;">
                                                         &nbsp;&nbsp;
                                                         <div style="display: inline-block;">
-                                                            <input type="file" id="fileBox_1" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
+                                                            <input type="file" name="fileBox_2" id="fileBox_2" class="form-control" accept="image/jpeg,image/png" style="float:right; display: none">
                                                             <label for="fileBox_1">
                                                                 <span class="btn btn-default sg-btn-lg-default">사업자등록 첨부</span>
                                                             </label>
@@ -447,8 +449,8 @@
                                                 <tr>
                                                     <th class="active"><span class="left-name">권한/자격</span></th>
                                                     <td>
-                                                        <select class="form-control" name="position" id="position" style="display: inline-block;">
-                                                            <option>----- 선택하세요 -----</option>
+                                                        <select class="form-control" name="position2" id="position2" style="display: inline-block;">
+                                                            <option value="">----- 선택하세요 -----</option>
                                                             <option value="qulity01">대표공인중개사</option>
                                                             <option value="qulity02">소속공인중개사</option>
                                                             <option value="qulity03">중개보조원</option>
@@ -461,11 +463,12 @@
                                                         <input type="text" name="set_email01" id="set_email01" class="form-control" maxlength="20" placeholder="이메일을 입력해주세요" style="display: inline-block; width: 185px;">
                                                         &nbsp;@&nbsp;
                                                         <select class="form-control" name="selectEmail" id="selectEmail" style="display: inline-block; width: 185px;">
-                                                            <option>----- 선택하세요 -----</option>
+                                                            <option value="">----- 선택하세요 -----</option>
                                                             <option value="naver">naver.com</option>
                                                             <option value="gmail">gmail.com</option>
                                                             <option value="daum">daum.net</option>
                                                         </select>
+                                                        <input type="text" name="email_ge2" id="selectEmail2" class="form-control" maxlength="20" placeholder="ex)gmail.com" style="display: none; width: 184px; height: 35px;">
                                                         <br/>
                                                         <input type="checkbox" name="agree" id="agree_y" value="Y"/>
                                                         <label for="agree_y">직접입력</label>
@@ -508,11 +511,12 @@
                                         </table>
                                         <div class="general02_btn" style="text-align: center;">
                                             <input
-                                            type="button" class="btn btn-primary" value="입력완료" name="checkButton" onclick="page02()" style="height: 50px; width: 100px; margin: 50px">
+                                            type="submit" class="btn btn-primary" value="입력완료" name="checkButton" onclick="submit_form()" style="height: 50px; width: 100px; margin: 50px">
                                         <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                         </div>
                                     </form>
                                     <!-- form 박스 - 2 END -->
+
 
 
 
@@ -560,6 +564,7 @@
                     <!-- Footer END -->
                 </div>
                 <!-- end content -->
+                <script src="regex/regex.js"></script>
                 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
                 <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
                 <script type="text/javascript">
@@ -599,6 +604,7 @@
                         	$('.general01_btn').removeClass("on");
                         }, false);
                     }
+                    
                     function page01() {
                         var rst = document.getElementById("result01");
                         if (rst.style.display == 'block') {
@@ -621,6 +627,197 @@
                         }
                         $('html').scrollTop(0);
                     }
+
+                    $(document).ready(function(){
+                        $("#agree_y").change(function(){
+                        if($("#agree_y").is(":checked")){
+                        var rst = document.getElementById("selectEmail");   
+                        rst.style.display = 'none';           
+                        var est = document.getElementById("selectEmail2");
+                        est.style.display = 'inline-block';
+                        }else{
+                        var rst = document.getElementById("selectEmail");   
+                        rst.style.display = 'inline-block';           
+                        var est = document.getElementById("selectEmail2");
+                        est.style.display = 'none';
+                        }
+                        });
+                        });  
+
+                 	// 페이지 이동없이 submit 처리 (없어도 되네? 왜 갑자기 이러는지는 모름)       
+                    function submit_form() {
+                    document.filter.target = 'ifrm';
+                    document.filter.action = 'save_data.php';
+                    document.filter.submit();
+                    }
+                    
+                    // 폼 유효성 검사
+                    $(function() {
+                    /** 폼의 데이터 전송 이벤트 */
+                    $("#result02").submit(function(e) {
+                        // 폼의 기본 동작 방지 --> 데이터를 전송하지 않는다.(새로고침 방지)
+                        e.preventDefault();
+                        
+                        /** 중개사무소명 검사 */
+                        if (!regex.value('#co_name', '중개사무소명을 입력하세요.')) { return false; }
+                        /** if (!regex.kor('#co_name', '중개사무소명은 한글만 입력 가능합니다.')) { return false; } */
+                        if (!regex.min_length('#co_name', 2, '중개사무소명은 최소 2자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#co_name', 20, '중개사무소명은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        
+                     	// 중개사 번호 숫자 입력 검사
+                     	if (!regex.value('#co_number', '중개사 등록번호를 입력하세요.')) { return false; }
+                        var pattern2 = /^[0-9]*$/;
+                        if (!pattern2.test($('#co_number').val())) {
+                            alert('중개사 등록번호는 숫자만 입력 가능합니다.');
+                            $('#co_number').val('');
+                            $('#co_number').focus();
+                            return false;
+                        }
+                        
+                        // 중개사 번호 파일체크
+                        var subject = $("#fileBox_1").val();
+                        if (!subject) {
+                            alert("파일을 첨부하세요");
+                            $("#fileBox_1").focus();
+                            return false;
+                        }
+                        
+                     	// 사업자 등록 번호 숫자 입력 검사
+                     	if (!regex.value('#coe_number', '사업자 등록번호를 입력하세요.')) { return false; }
+                        var pattern2 = /^[0-9]*$/;
+                        if (!pattern2.test($('#coe_number').val())) {
+                            alert('사업자 등록번호는 숫자만 입력 가능합니다.');
+                            $('#coe_number').val('');
+                            $('#coe_number').focus();
+                            return false;
+                        }
+                        
+                     	// 사업자 번호 파일체크
+                     	var subject = $("#fileBox_2").val();
+                        if (!subject) {
+                            alert("파일을 첨부하세요");
+                            $("#fileBox_2").focus();
+                            return false;
+                        }
+                        
+                        
+                        //주소검사 1
+                        if (!regex.value('#sample2_postcode', '주소를 입력하세요.')) { return false; }
+                        
+                        //주소검사 2
+                        if (!regex.value('#sample2_address', '상세주소를 입력하세요.')) { return false; }
+                        
+                     	// 상세주소 입력 검사
+                     	if (!regex.value('#sample2_detailAddress', '상세주소를 입력하세요.')) { return false; }
+                     	
+                     	// 중개사 대표명
+                     	if (!regex.value('#coe_name', '중개사 대표명을 입력하세요.')) { return false; }
+                		/** if (!regex.kor('#coe_name', '중개사 대표명은 한글만 입력 가능합니다.')) { return false; } */
+                		if (!regex.min_length('#coe_name', 2, '중개사 대표명은 최소 2자 이상 입력 가능합니다.')) { return false; }
+                		if (!regex.max_length('#coe_name', 4, '중개사 대표명은 최대 4자 까지만 입력 가능합니다.')) { return false; }
+                		
+                		
+                		// 중개사대표번호 입력 검사 -1
+                		if (!regex.value('#coe_Telephone2', '중개사 대표번호를 입력하세요.')) { return false; }
+                        var pattern2 = /^[0-9]*$/;
+                        if (!pattern2.test($('#coe_Telephone2').val())) {
+                            alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+                            $('#coe_Telephone2').val('');
+                            $('#coe_Telephone2').focus();
+                            return false;
+                        }
+                        if (!regex.min_length('#coe_Telephone2', 4, '최소 3자 이상 입력 가능합니다.')) { return false; }
+                		if (!regex.max_length('#coe_Telephone2', 4, '최대 4자 까지만 입력 가능합니다.')) { return false; }
+                		
+                		// 중개사대표번호 입력 검사 -2
+                		if (!regex.value('#coe_Telephone3', '중개사 대표번호를 입력하세요.')) { return false; }
+                        var pattern2 = /^[0-9]*$/;
+                        if (!pattern2.test($('#coe_Telephone3').val())) {
+                            alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+                            $('#coe_Telephone3').val('');
+                            $('#coe_Telephone3').focus();
+                            return false;
+                        }
+                        if (!regex.min_length('#coe_Telephone3', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
+                		if (!regex.max_length('#coe_Telephone3', 4, '최대 4자 까지만 입력 가능합니다.')) { return false; }
+                		
+                		
+                		/** 이름 검사 */
+                        if (!regex.value('#P_name', '이름을 입력하세요.')) { return false; }
+                        /** if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) { return false; } */
+                        if (!regex.min_length('#P_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#P_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        
+                        /** 직급/직책 검사 */
+                        if (!regex.value('#position', '직급/직책을 입력하세요.')) { return false; }
+                        /** if (!regex.kor('#position', '직급/직책은 한글만 입력 가능합니다.')) { return false; } */
+                        if (!regex.min_length('#position', 2, '직급/직책은 최소 2자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#position', 20, '직급/직책은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        
+                        /** 권한/자격 검사 */
+                        var subject = $("#position2").val();
+                        if (!subject) {
+                            alert("권한/자격을 선택하세요.");
+                            $("#position2").focus();
+                            return false;
+                        }
+                        
+                        /** 이메일 검사 -1 */
+                        if (!regex.value('#set_email01', '이메일을 입력하세요.')) { return false; }
+                        if (!regex.eng_num('#set_email01', '이메일은 영어와 숫자 조합만 입력 가능합니다.')) { return false; }
+                        if (!regex.min_length('#set_email01', 4, '이메일은 최소 4자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#set_email01', 20, '이메일은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        
+                        if($("#direct").is(":checked")){
+                        	/** 이메일 검사 2-2 */
+                            if (!regex.value('#email_ge2', '이메일을 입력하세요.')) { return false; }
+                        }else{
+                        	/** 이메일 검사 2-1 자바스크립트 12일차 2번예제 dropdown*/           
+                            var subject = $("#selectEmail").val();
+                            if (!subject) {
+                                alert("이메일을 선택하세요.");
+                                $("#selectEmail").focus();
+                                return false;
+                            }
+                        
+				
+                        /** 비밀번호 검사 */
+                        if (!regex.value('#co_pw', '비밀번호를 입력하세요.')) { return false; }
+                        if (!regex.min_length('#co_pw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#co_pw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        if (!regex.compare_to('#co_pw', '#co_pw_check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+                        
+                    	// 휴대폰번호 입력 검사 -2
+                		if (!regex.value('#phoneNumber2', '휴대폰 번호를 입력하세요.')) { return false; }
+                        var pattern2 = /^[0-9]*$/;
+                        if (!pattern2.test($('#phoneNumber2').val())) {
+                            alert('휴대폰 번호는 숫자만 입력 가능합니다.');
+                            $('#phoneNumber2').val('');
+                            $('#phoneNumber2').focus();
+                            return false;
+                        }
+                        if (!regex.min_length('#phoneNumber2', 4, '휴대폰 번호 양식에 맞춰주세요.')) { return false; }
+                		if (!regex.max_length('#phoneNumber2', 4, '휴대폰 번호 양식에 맞춰주세요')) { return false; }
+                		
+                		// 휴대폰번호 입력 검사 -3
+                		if (!regex.value('#phoneNumber3', '휴대폰 번호를 입력하세요.')) { return false; }
+                        var pattern2 = /^[0-9]*$/;
+                        if (!pattern2.test($('#phoneNumber3').val())) {
+                            alert('휴대폰 번호는 숫자만 입력 가능합니다.');
+                            $('#phoneNumber3').val('');
+                            $('#phoneNumber3').focus();
+                            return false;
+                        }
+                        if (!regex.min_length('#phoneNumber3', 4, '휴대폰 번호 양식에 맞춰주세요')) { return false; }
+                		if (!regex.max_length('#phoneNumber3', 4, '최대 4자 까지만 입력 가능합니다.')) { return false; }
+                        
+                        
+						
+                       	page02();
+
+                    });
+                 });
+                    
                 </script>
             </body>
         </html>
