@@ -23,7 +23,7 @@
 	<!--page title-->
 	<div class="content">
 		<div class="container">
-			<h1 class="text-center">상가 매물등록</h1>
+			<h1 class="text-center">상가 매물등록수정</h1>
 			<p class="text-muted">▶등록된 매물은 60일간 노출되며, 매물 관리 규정에 위배되거나 신고된 매물은
 				비공개 혹은 삭제 처리됩니다.</p>
 			<!--//page title-->
@@ -467,7 +467,7 @@
 					<!-- (완료버튼) -->
 					<div class="register_btn">
 							<button type="button" id="button_cancel" name="button_cancel" class="btn btn-info btn-lg">취소</button>
-							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록"/>
+							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="수정완료"/>
 						</div>
 				</form>
 			</div>
@@ -485,7 +485,6 @@
     <script src="plugins/datepicker/datepicker.ko-KR.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95f002774aca91da5371858ef1ee4891&libraries=services"></script>
-    <script src="plugins/sweetalert/sweetalert2.all.min.js"></script>
     <script>
     <!-------------------------datepicker 시작------------------------------->
         $(function() {
@@ -677,26 +676,7 @@ $ (document) .ready (function () {
     }; 
 }; 
 </script>
-	<!----------------------------- 완료버튼 sweetalert ------------------------->
-<!-- 	<script>
-         $("#button_fini").click(function() {
-        	    swal({
-        	        title: '확인',                
-        	        text: '매물등록을 하시겠습니까?',  
-        	        type: 'warning',              
-        	        confirmButtonText: 'Yes',     
-        	        showCancelButton: 'No',       
-        	        cancelButtonText: 'No',       
-        	    }).then(function(result) {        
-        	        if (result.value) {           
-        	            location.href = 'Maemul.detailed.jsp';
-        	            location.submit = 'jsp';
-        	        } else if (result.dismiss === 'cancel') {  
-        	            swal('취소', '취소되었습니다.', 'error');
-        	        }
-        	    });
-        	}); 
-</script> -->
+
 <!-- 취소버튼  -->
 <script>
         $(function(){
@@ -705,16 +685,7 @@ $ (document) .ready (function () {
      		});
      	});
 </script>
-<!--  <script type="text/javascript">
-			function doSubmit() {
-				// 폼 객체
-				var frm = document.form1;
-				// 입력확인하기
-				if (confirm("입력하신 내용이 맞습니까?")) {
-					frm.submit();	
-				}
-			}
-		</script> -->
+
 	
 </body>
 </html>
