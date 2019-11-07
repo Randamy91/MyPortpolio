@@ -29,7 +29,7 @@
 				<h2>비밀번호 초기화</h2>
 				<p>새로운 비밀번호로 초기화 하세요.</p>
 			</div>
-			<form action="#" method="post">
+			<form action="Pw_resetok.jsp" method="post">
 			<div class="content-body">
 				<div class="pwch-title">
 					<span class="title">비밀번호 초기화</span><br>
@@ -42,7 +42,7 @@
 								이메일
 							</th>
 							<td class="td">
-								<input type="text" class="form-control email" name="email"/>
+								<input type="text" class="form-control email" name="email" required/>
 								<span class="alertEmail"></span>
 							</td>
 						</tr>
@@ -51,7 +51,7 @@
 								비밀번호
 							</th>
 							<td class="td">
-								<input type="password" class="form-control passwd" name="passwd"/>
+								<input type="password" class="form-control passwd" name="passwd" required/>
 							</td>
 						</tr>
 						<tr>
@@ -59,7 +59,7 @@
 								비밀번호 확인
 							</th>
 							<td class="td">
-								<input type="password" class="form-control repasswd" name="repasswd"/>
+								<input type="password" class="form-control repasswd" name="repasswd" required/>
 								<span class="alertrePasswd"></span>
 							</td>
 						</tr>

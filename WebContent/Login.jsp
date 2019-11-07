@@ -34,14 +34,14 @@
 			<div class="content-body">
 				<div class="loginDiv">
 					<div class="emailLogin">이메일 로그인</div>
-					<form action="#" method="post">
+					<form action="index.jsp" method="post">
 						<div class="input-login1">
 							<input type="text" class="form-control input-info email" id="email"
-								name="email" placeholder="이메일" />
+								name="email" placeholder="이메일" required/>
 						</div>
 						<div class="input-login2">
 							<input type="password" class="form-control input-info password"
-								id="password" name="password" placeholder="패스워드" />
+								id="password" name="password" placeholder="패스워드" required/>
 						</div>
 						<div class="forgot-pw1">
 							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.jsp"

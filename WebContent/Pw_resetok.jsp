@@ -31,7 +31,7 @@
 			</div>
 			<div class="content-body">
 				<span>비밀번호가 초기화 되었습니다.<br>
-				이제 새로운 비밀벊노로 로그인할 수 있습니다.</span>
+				이제 새로운 비밀번호로 로그인할 수 있습니다.</span>
 			</div>
 			<button class="btn btn-primary gologin">세모 로그인 하기</button>
 		</div>

@@ -29,7 +29,7 @@
 				<h2>비밀번호 재설정</h2>
 				<p>회원가입시 등록하신 이메일 주소를 입력해주세요. 비밀번호 재설정 메일을 보내드립니다.</p>
 			</div>
-			<form action="#" method="post">
+			<form action="Pw_changeok.jsp" method="post">
 			<div class="content-body">
 				<div class="pwch-title">
 					<span>비밀번호 재설정</span>
