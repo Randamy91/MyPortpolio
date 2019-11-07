@@ -11,8 +11,6 @@
 }
 
 
-
-
 /* content > circle
 -----------------------------------------*/
 .circle{
@@ -70,10 +68,6 @@ th {
 	width: 184px;
 }
 
-#email{
-	width: 184px;
-	height: 35px;
-}
 
 #user_pw{
 	width: 400px;

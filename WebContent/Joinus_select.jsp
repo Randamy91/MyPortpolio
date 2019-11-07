@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -12,7 +12,6 @@
     <!-- 부트스트랩 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/Joinus_select.css" />
-    <link rel="stylesheet" type="text/css" href="css/Main.css" />
 
     <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
     <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
@@ -24,67 +23,9 @@
   <body>
   <!--------------------------- 복사하여 사용 하세요 ---------------------------->
   <!-- 상단 메뉴 바 -->
-  <nav class="navbar menu_navbar bg-white">
-    <!--<div class="navbar-header menu_header">-->
-    <a class="navbar-brand logo" href="main.jsp"> <img alt="Brand"
-      src="img/main_logo.jpg" width="65px" height="40px">
-    </a>
-    <p class="navbar-text navbar-left">
-      <a href="main.jsp" class="navbar-link" style="text-decoration: none">상가</a>
-    </p>
-    <p class="navbar-text navbar-left">
-      <a href="Bigdata.jsp" class="navbar-link"
-        style="text-decoration: none">상권분석</a>
-    </p>
-    <p class="navbar-text navbar-right">
-      <a href="Joinus_select.jsp" class="navbar-link"
-        style="text-decoration: none">회원가입</a>
-    </p>
-    <p class="navbar-text navbar-right">
-      <a href="#myModal" data-toggle="modal" class="navbar-link"
-        style="text-decoration: none">로그인</a>
-    </p>
-  </nav>
-
-  <!-- 상단 메뉴 바  -->
-
-
+	<%@ include file="include/header.jsp" %>
   <!--  로그인 Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog mymodal-size">
-      <div class="modal-content mymodal-content">
-        <div class="modal-body mymodal-body">
-          <button type="button" class="close" data-dismiss="modal"
-            aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-          <form action="#" method="post">
-            <div class="input-container">
-              <input type="text" class="form-control input-info" id="email"
-                name="email" placeholder="이메일" />
-            </div>
-            <div class="input-container">
-              <input type="password" class="form-control input-info"
-                id="password" name="password" placeholder="패스워드" />
-            </div>
-            <div class="forgot-pw">
-              <input type="checkbox" />&nbsp;자동 로그인 <span> <a href="#"
-                style="text-decoration: none">비밀번호 찾기</a>                                
-              </span>
-            </div>
-            <div class="input-container">
-              <input type="submit" class="btn btn-primary loginbtn"
-                data-dismiss="modal" value="이메일 로그인" />
-            </div>
-          </form>
-          <span class="adduser">아직 세모의 회원이 아니신가요?<a
-            href="Joinus_select">회원가입</a></span>
-        </div>
-      </div>
-    </div>
-  </div>
+	<%@ include file="include/loginmodal.jsp" %>
 
 
   <!-- 컨텐츠 -->

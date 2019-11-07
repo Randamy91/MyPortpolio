@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="utf-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -9,140 +9,106 @@
         <title>세모- 상가 중개사이트</title>
         <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/Joinus_general.css">
-        <link rel="stylesheet" href="plugins/icheck/css/blue.css" />
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- blue.css / icheck.min.js / jquery에 icheck plugin을 적용시켜 놓음(general만).. 실제 class에 icheck를 먹이면 자바스크립트가 동작을 안함 확인중.. -->
      
     <style type="text/css">
-        .logo {
-            margin-left: 30px;
-        }
-        .menu_navbar {
-            width: 100%;
-            padding-right: 40px;
-            margin-bottom: 0;
-            line-height: 45px;
-        }
-        .navbar-text {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .navbar-right {
-            font-size: 15px;
-        }
-        .content {
-            height: 100%;
-            width: 100%;
-            background: #eee;
-        }
-        .footer {
-            width: 100%;
-            height: 320px;
-            background: #333;
-        }
-        .modal-dialog.mymodal-size {
-            width: 400px;
-            height: 360px;
-        }
-        .mymodal-content {
-            width: 100%;
-            height: 100%;
-        }
-        .loginmodal-title {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .modal form {
-            margin-top: 20px;
-        }
-        .modal .input-container {
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .modal .input-info {
-            width: 270px;
-            display: inline-block;
-        }
-        .modal .forgot-pw input {
-            margin-left: 50px;
-        }
-        .modal .forgot-pw span {
-            margin-left: 90px;
-        }
-        .loginbtn {
-            margin-top: 30px;
-            display: inline-block;
-            width: 270px;
-        }
+/*------------- 복사해서 사용하세요  --------------------*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	
+}
+
+.logo {
+	margin-left: 30px;
+}
+
+.menu_navbar {
+	width: 100%;
+	padding-right: 40px;
+	margin-bottom: 0;
+	line-height:45px;
+}
+
+.navbar-text {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.navbar-right {
+	font-size: 15px;
+}
+
+.content {
+	height: 100%;
+	width: 100%;
+	background: #eee;
+}
+
+.footer {
+	width: 100%;
+	height: 320px;
+	background: #333;
+}
+
+.modal-dialog.mymodal-size {
+	width: 400px;
+	height: 360px;
+}
+
+.mymodal-content {
+	width: 100%;
+	height: 100%;
+}
+
+.loginmodal-title {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.modal form {
+	margin-top: 20px;
+}
+
+.modal .input-container {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.modal .input-info {
+	width: 270px;
+	display: inline-block;
+}
+
+.modal .forgot-pw input {
+	margin-left: 50px;
+}
+
+.modal .forgot-pw span {
+	margin-left: 90px;
+}
+
+.mymodal-body .adduser {
+	margin-left: 55px;
+}
+
+.loginbtn {
+	margin-top: 30px;
+	display: inline-block;
+	width: 270px;
+}
+
+/*------------- 복사해서 사용하세요 END --------------------*/
     </style>
     </head>
     <body>
         <!-- 상단 메뉴 바 -->
-        		<!--------------------------- 복사하여 사용 하세요 ---------------------------->
-		<!-- 상단 메뉴 바 -->
-		<nav class="navbar menu_navbar bg-white">
-			<!--<div class="navbar-header menu_header">-->
-			<a class="navbar-brand logo" href="Main.jsp"> <img alt="Brand"
-				src="img/main_logo.jpg" width="65px" height="40px">
-			</a>
-			<p class="navbar-text navbar-left">
-				<a href="Main.jsp" class="navbar-link"
-					style="text-decoration: none">상가</a>
-			</p>
-			<p class="navbar-text navbar-left">
-				<a href="Bigdata.jsp" class="navbar-link"
-					style="text-decoration: none">상권분석</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Joinus_select.jsp" class="navbar-link"
-					style="text-decoration: none">회원가입</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="#myModal" data-toggle="modal" class="navbar-link"
-					style="text-decoration: none">로그인</a>
-			</p>
-		</nav>
-
-		<!-- 상단 메뉴 바  -->
-
+			<%@ include file="include/header.jsp" %>
 		<!--  로그인 Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog mymodal-size">
-				<div class="modal-content mymodal-content">
-					<div class="modal-body mymodal-body">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-						<form action="#" method="post">
-							<div class="input-container">
-								<input type="text" class="form-control input-info" id="email"
-									name="email" placeholder="이메일" />
-							</div>
-							<div class="input-container">
-								<input type="password" class="form-control input-info"
-									id="password" name="password" placeholder="패스워드" />
-							</div>
-							<div class="forgot-pw">
-								<input type="checkbox" />&nbsp;자동 로그인 <span> <a
-									href="Pw_change.jsp" style="text-decoration: none">비밀번호 찾기</a>
-								</span>
-							</div>
-							<div class="input-container">
-								<input type="submit" class="btn btn-primary loginbtn"
-									data-dismiss="modal" value="이메일 로그인" />
-							</div>
-						</form>
-						<span class="adduser">아직 세모의 회원이 아니신가요? <a
-							href="Joinus_select.jsp">회원가입</a>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-        <!-- 로그인 modal end -->
+			<%@ include file="include/loginmodal.jsp" %>
+			
         <!-- 컨텐츠 -->
         <div class="content">
             <div class="body-content">
