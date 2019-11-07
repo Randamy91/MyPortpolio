@@ -149,8 +149,8 @@
                 		<div class="commercialArea">
                 		<hr >	
                         <ul>
-                        	<li> <h4 type="text" onclick="page02()">상권 개요</h4> </li>
-                        	<li> <h4 type="text" onclick="page01()">고객 분석 및 업종 분석</h4> </li>
+                        	<li> <h4 id="market" onclick="page02()">상권 개요</h4> </li>
+                        	<li> <h4 id="customer" onclick="page01()">고객 분석 및 업종 분석</h4> </li>
                         </ul>
                         <hr size="10px">
                         </div>
@@ -159,22 +159,26 @@
                     <div class="container">
 
                         <div class="main-content">
-                        <div name="filter" class="page01" role="form" method="post" action="#" id="result01" style="display: block;">
+                        <div class="page01" role="form" id="result01" style="display: block;">
                                 
                                 <table>
                                 	<tr>
+                                		<td>
                                 <h4 style="margin-left:80px;">상권현황</h4>
                                 <div class="box1"></div>
+                                		</td>
                                 	</tr>
                                 	<tr>
+                                		<td>
                                 <h4 style="margin-left:80px; margin-top: 60px;">작년동기 대비 총 매출액</h4>
                                 <div class="box2"></div>  
+                                		</td>
                                 	</tr>
                                 </table>
 
                             </div>
                             <!-- form 박스 - 1  -->
-                            <div name="filter" class="page02" role="form" method="post" action="#" id="result02" style="display: none;">
+                            <div  class="page02" role="form" id="result02" style="display: none;">
 
                             	<table>
                                 	<tr>
