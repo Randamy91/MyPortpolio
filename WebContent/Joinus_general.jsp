@@ -204,7 +204,7 @@ html, body {
                                         </li>
                                     </ul>
                                 </div>
-                                <table style="align:center">
+                                <table style="margin:auto;">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -293,7 +293,7 @@ html, body {
                                 </div>
                                 <div>
                                     <input
-                                    type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='Main.jsp'" style="height: 50px; width: 100px; margin: 50px">
+                                    type="button" class="btn btn-primary" value="바로가기" name="checkButton" onclick="location.href='index.jsp'" style="height: 50px; width: 100px; margin: 50px">
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                 </div>
                             </form>
@@ -309,6 +309,8 @@ html, body {
         </div>
         <!-- end content -->
         <script src="regex/regex.js"></script>
+        <!--   한글 입력 유효성 체크를 위한 regex2 추가 -->
+        <script src="regex/regex2.js"></script>
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
         <script src="plugins/icheck/icheck.min.js"></script>
@@ -411,7 +413,7 @@ html, body {
 
                 /** 이름 검사 */
                 if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
-                /** if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; } */
+                if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
                 if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
                 if (!regex.max_length('#user_name', 10, '이름은 최대 10자 까지만 입력 가능합니다.')) { return false; }
                 

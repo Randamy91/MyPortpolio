@@ -222,7 +222,7 @@ html, body {
 									</ul>
 								</div>
 								
-									<table style="align:center">
+									<table style="margin:auto;">
 										<tr>
 											<th>공인중개사정보 입력</th>
 										</tr>
@@ -535,7 +535,7 @@ html, body {
 									</div>
 									<div>
 										<input type="button" class="btn btn-primary" value="바로가기"
-											name="checkButton" onclick="location.href='Main.jsp'"
+											name="checkButton" onclick="location.href='index.jsp'"
 											style="height: 50px; width: 100px; margin: 50px">
 										<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
 									</div>
@@ -552,6 +552,8 @@ html, body {
 	</div>
 	<!-- end content -->
 	<script src="regex/regex.js"></script>
+	<!--   한글 입력 유효성 체크를 위한 regex2 추가 -->
+	<script src="regex/regex2.js"></script>
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -647,7 +649,7 @@ html, body {
                         
                         /** 중개사무소명 검사 */
                         if (!regex.value('#co_name', '중개사무소명을 입력하세요.')) { return false; }
-                        /** if (!regex.kor('#co_name', '중개사무소명은 한글만 입력 가능합니다.')) { return false; } */
+                        if (!regex.kor('#co_name', '중개사무소명은 한글만 입력 가능합니다.')) { return false; }
                         if (!regex.min_length('#co_name', 2, '중개사무소명은 최소 2자 이상 입력 가능합니다.')) { return false; }
                         if (!regex.max_length('#co_name', 20, '중개사무소명은 최대 20자 까지만 입력 가능합니다.')) { return false; }
                         
@@ -699,7 +701,7 @@ html, body {
                      	
                      	// 중개사 대표명
                      	if (!regex.value('#coe_name', '중개사 대표명을 입력하세요.')) { return false; }
-                		/** if (!regex.kor('#coe_name', '중개사 대표명은 한글만 입력 가능합니다.')) { return false; } */
+                		if (!regex.kor('#coe_name', '중개사 대표명은 한글만 입력 가능합니다.')) { return false; }
                 		if (!regex.min_length('#coe_name', 2, '중개사 대표명은 최소 2자 이상 입력 가능합니다.')) { return false; }
                 		if (!regex.max_length('#coe_name', 4, '중개사 대표명은 최대 4자 까지만 입력 가능합니다.')) { return false; }
                 		
@@ -731,7 +733,7 @@ html, body {
                 		
                 		/** 이름 검사 */
                         if (!regex.value('#P_name', '이름을 입력하세요.')) { return false; }
-                        /** if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) { return false; } */
+                        if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) { return false; } 
                         if (!regex.min_length('#P_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
                         if (!regex.max_length('#P_name', 10, '이름은 최대 10자 까지만 입력 가능합니다.')) { return false; }
                         
