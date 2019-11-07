@@ -13,9 +13,6 @@
 <link rel="stylesheet" type="text/css" href="./css/Ge_infochange.css">
 
 
-
-</head>
-
 <style type="text/css">
 	.logo {
 	margin-left: 30px;
@@ -91,6 +88,10 @@
 	width: 270px;
 }
 
+</head>
+
+
+
 </style>
 <body>
 
@@ -98,12 +99,12 @@
 	<!-- 상단 메뉴 바 -->
 <nav class="navbar menu_navbar bg-white">
 	<!--<div class="navbar-header menu_header">-->
-	<a class="navbar-brand logo" href="Main.jsp" >
+	<a class="navbar-brand logo" href="Main.html" >
 	<img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
 	</a>
-	<p class="navbar-text navbar-left"><a href="Main.jsp" class="navbar-link" style="text-decoration:none">상가</a></p>
+	<p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a></p>
 	<p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a></p>
-	<p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a></p>
+	<p class="navbar-text navbar-right"><a href="Joinus_select.html" class="navbar-link" style="text-decoration:none">회원가입</a></p>
 	<p class="navbar-text navbar-right"><a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a></p>
 </nav>
 
@@ -155,21 +156,18 @@
 										<tbody>
 											<tr>
 												<th class="active"><span class="left-name">이름</span></th>
-												
 												<td>
 													
 													<input type="text" class="form-control"
 													id="user_name"
-													name="user_name"  placeholder="등록인이름공란" style="width: 350px; height: 50px;">
-													
-													
+													name="user_name"  placeholder="등록인이름공란" style="width: 350px; height: 50px;"/>	
 												</td>
 												
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">이메일</span></th>
 												<td>
-													<input type="text" class="form-control sg-form-control-md" style="width: 350px; height: 50px;" disabled>
+													<input type="text" class="form-control sg-form-control-md" id="email-value" name="email-value" style="width: 350px; height: 50px;">
 												</td>
 											</tr>
 											<tr>
@@ -184,9 +182,9 @@
 																<option value="019">019</option>
 															</select>
 															-
-															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;">
+															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4">
 															-
-															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;">
+															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4">
 													</div>
 												</td>
 											</tr>
@@ -226,6 +224,7 @@
 										이벤트 및 혜택 알림 수신에 동의합니다.</label>
 										<span class="panel panel-default yak"><a class="claim" href="wak.html" target="_blank" style="font-size: 10px;">약관보기</a></span>
 									</div>
+
 								</li>
 							</ul>
 							
@@ -272,6 +271,9 @@
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/validate/jquery.validate.min.js"></script>
+<script src="plugins/validate/additional-methods.min.js"></script>
+<script src="./regex/regex2.js"></script>
 <!--<script type="text/javascript"
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script> --> 
 <script type="text/javascript">
@@ -282,22 +284,48 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&lib
 		});
 	};
 
-	function complete() {
-		$("#complete").click(function() {
-			alert("계정 정보가 수정되었습니다.");
-		});
-	}
-
-
 	$(function() { 
 		exit();
-		complete();
-		
-	});
+		$("#changeform").submit(function(e) {
+			e.preventDefault();
+			/** 이름 검사 */
+			if(!regex.value('#user_name', '이름을 입력하세요.')) {return false;}
+			if(!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; }
+            if(!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+
+            if (!regex.value('#email-value', '이메일을 입력하세요.')) { return false; }
+            if (!regex.email('#email-value', '이메일 주소가 잘못되었습니다.')) { return false; }
+
+            /**핸드폰 검사1 */
+            var numberTest= /^[0-9]*$/;
+            if(!regex.value('#phoneNumber2', '번호를 입력하세요.')) {return false;}
+            if(!regex.min_length('#phoneNumber2',4, "휴대폰 번호는 4자리를 입력하셔야합니다."))
+            if(!numberTest.test($('#phoneNumber2').val())) {
+            	alert('휴대폰 번호는 숫자만 입력가능 합니다.');
+            	$('#phoneNumber2').val('');
+            	$('#phoneNumber2').focus();
+            	return false;
+            } 
+            // 휴대폰 검사1 end 
+            if(!regex.value('#phoneNumber3', '번호를 입력하세요.')) {return false;}
+     		if(!regex.min_length('#phoneNumber3',4, " 휴대폰 번호는 4자리를 입력하셔야합니다."))
+            if(!numberTest.test($('#phoneNumber3').val())) {
+            	alert('휴대폰 번호는 숫자만 입력가능 합니다.');
+            	$('#phoneNumber3').val('');
+            	$('#phoneNumber3').focus();
+            	return false;
+            }
+            // 휴대폰 검사2 end 
+            
+            // 비밀번호 검사 
+            if (!regex.value('#Rpw', '비밀번호를 입력하세요.')) { return false; }
+            if (!regex.value('#Npw', '새로 설정할 비밀번호를 입력하세요.')) { return false; }
+            if (!regex.min_length('#Npw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#Npw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+            if (!regex.compare_to('#Npw', '#Npw-check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+		});	
+	}); 
+	// function end
 </script>
-
-
-
-
 </body>
 </html>

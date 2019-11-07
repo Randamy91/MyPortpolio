@@ -7,7 +7,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>중개사 회원정보 수정</title>
+<title>세모- 상가 중개사이트</title>
 
 <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
 
@@ -99,10 +99,10 @@
 	<!-- 상단 메뉴 바 -->
 <nav class="navbar menu_navbar bg-white">
 	<!--<div class="navbar-header menu_header">-->
-	<a class="navbar-brand logo" href="Main.jsp" >
+	<a class="navbar-brand logo" href="Main.html" >
 	<img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
 	</a>
-	<p class="navbar-text navbar-left"><a href="Main.jsp" class="navbar-link" style="text-decoration:none">상가</a></p>
+	<p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a></p>
 	<p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a></p>
 	<p class="navbar-text navbar-right"><a href="Joinus_select" class="navbar-link" style="text-decoration:none">회원가입</a></p>
 	<p class="navbar-text navbar-right"><a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a></p>
@@ -165,7 +165,7 @@
 													<input type="text" class="form-control"
 													id="co_name"
 													name="co_name" style="width: 350px; height: 50px;">
-												</td>	
+												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">중개사 등록번호</span></th>
@@ -312,9 +312,9 @@
 															<option value="032">032</option>
 														</select>
 														-
-														<input type="text" class="form-control" id="coe_Telephone2" name="coe_Telephone2" style="width: 80px; height: 50px;">
+														<input type="text" class="form-control" id="coe_Telephone2" name="coe_Telephone2" style="width: 80px; height: 50px;"  maxlength="4">
 														-
-														<input type="text" class="form-control" id="coe_Telephone3" name="coe_Telephone3" style="width: 80px; height: 50px;">
+														<input type="text" class="form-control" id="coe_Telephone3" name="coe_Telephone3" style="width: 80px; height: 50px;"  maxlength="4">
 													</div> <!-- coe Telphone end -->
 												</td>
 											</tr>
@@ -322,8 +322,8 @@
 												<th class="active"><span class="left-name">대표 사진</span></th>
 												<td>
 													<img src="./img/ceo_image.jpg" class="coe_image">
-													<input type="file" class="form-control" id="coe_image" name="coe_image" style="display: none;">
-													<label for="coe_image" class="label_ceo_image">
+													<input type="file" class="form-control" id="best_image" name="best_image" style="display: none;">
+													<label for="best_image" class="label_best_image">
 														<span class="btn btn-info btn-lg" style="position: relative; bottom: 175px;">사진 업로드</span>
 													</label>
 												</td>
@@ -344,10 +344,10 @@
 											<tr>
 												<th class="active"><span class="left-name">직급/직책</span></th>
 												<td>
-													<select class="form-control" id="position" name="position" >
+													<select class="form-control" id="position" name="position">
 														<option value="">--------선택하세요-------</option>
 														<option value="boss">대표공인중개사</option>
-														<option value="em">소속공인중개사</option>
+														<option value="include">소속공인중개사</option>
 														<option value="intern">중개보조원</option>
 													</select>
 												</td>
@@ -361,7 +361,7 @@
 														<input type="text" name="set_email02" id="set_email02" class="form-control" style="width:175px; height: 50px;" disabled value="naver.com">
 														<select class="form-control" id="selectEmail" name="selectEmail" style="height: 50px;">
 															<option value="1">직접입력</option>
-															<option value="naver.com"  selected>naver.com</option>
+															<option value="navercom"  selected>naver.com</option>
 															<option value="hanmail.net">hanmail.net</option>
 															<option value="nate.com">nate.com</option>
 															<option value="gmail.com">gmail.com</option>
@@ -394,9 +394,9 @@
 																<option value="019">019</option>
 															</select>
 															-
-															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;">
+															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4">
 															-
-															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;">
+															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4">
 													</div>
 												</td>
 											</tr>								
@@ -423,7 +423,7 @@
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-
+<script src="./regex/regex.js"></script>
 <script type="text/javascript">
 	$("#selectEmail").change(function() {
 		$("#selectEmail option:selected").each(function() {
@@ -435,10 +435,150 @@
 				$("#set_email02").attr("disabled", true);
 			}
 		});
+	}); // change end 
+
+	$(function() {
+		$("#changeform").submit(function(e) {
+			e.preventDefault();
+
+			/** 중개사무소명 검사 */
+            if (!regex.value('#co_name', '중개사무소명을 입력하세요.')) { return false; }
+            if (!regex.min_length('#co_name', 2, '중개사무소명은 최소 2자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#co_name', 10, '중개사무소명은 최대 10자 까지만 입력 가능합니다.')) { return false; }
+
+            // 중개사 번호 검사 
+            if (!regex.value('#co_number', '중개사 등록번호 입력하세요.')) { return false; }
+           	var pattern2 = /^[0-9]*$/;
+           	if (!pattern2.test($('#co_number').val())) {
+	            alert('중개사 등록번호는 숫자만 입력 가능합니다.');
+	            $('#co_number').val('');
+	            $('#co_number').focus();
+	             return false;
+            }
+
+            // 중개사 번호 파일체크
+            var subject = $("#co_image").val();
+            if (!subject) {
+                alert("중개 등록증을 첨부하세요.");
+                $("#co_image").focus();
+                return false;
+            }
+
+            // 사업자 등록 번호 숫자 입력 검사
+            if (!regex.value('#coe_number', '사업자 등록번호를 입력하세요.')) { return false; }
+            if (!pattern2.test($('#coe_number').val())) {
+                alert('사업자 등록번호는 숫자만 입력 가능합니다.');
+                $('#coe_number').val('');
+                $('#coe_number').focus();
+                return false;
+            }
+
+            // 사업자 번호 파일체크
+             var subject2 = $("#coe_image").val();
+             if (!subject2) {
+                 alert("사업자 등록증을 첨부하세요.");
+                 $("#coe_image").focus();
+                  return false;
+            }
+
+            //주소검사 1
+            if (!regex.value('#sample2_postcode', '주소를 입력하세요.')) { return false; }
+                        
+            //주소검사 2
+            if (!regex.value('#sample2_address', '상세주소를 입력하세요.')) { return false; }
+                        
+
+            // 중개사 대표명
+            if (!regex.value('#coe_name', '중개사 대표명을 입력하세요.')) { return false; }
+            if (!regex.kor('#coe_name', '중개사무소명은 한글만 입력 가능합니다.')) { return false; }	
+            if (!regex.min_length('#coe_name', 2, '중개사 대표명은 최소 2자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#coe_name', 4, '중개사 대표명은 최대 4자 까지만 입력 가능합니다.')) { return false; }
+
+            // 중개사대표번호 입력 검사 -1
+            if (!regex.value('#coe_Telephone2', '중개사 대표번호를 입력하세요.')) { return false; }
+            if (!pattern2.test($('#coe_Telephone2').val())) {
+                alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+                $('#coe_Telephone2').val('');
+                $('#coe_Telephone2').focus();
+                return false;
+            }
+            if (!regex.min_length('#coe_Telephone2', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
+
+
+            // 중개사대표번호 입력 검사 -2
+            if (!regex.value('#coe_Telephone3', '중개사 대표번호를 입력하세요.')) { return false; }
+            if (!pattern2.test($('#coe_Telephone3').val())) {
+                alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+                $('#coe_Telephone3').val('');
+                $('#coe_Telephone3').focus();
+                return false;
+            }
+            if (!regex.min_length('#coe_Telephone3', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
+
+            
+        	// 대표사진 검사 
+             var best = $("#best_image").val();
+             if (!best) {
+                 alert("대표자 사진을 첨부하세요.");
+                 $("#best_image").focus();
+                  return false;
+            }
+        	
+
+
+            /** 이름 검사 */
+            if (!regex.value('#P_name', '이름을 입력하세요.')) { return false; }
+            if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) { return false; }
+            if (!regex.min_length('#P_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#P_name', 10, '이름은 최대 10자 까지만 입력 가능합니다.')) { return false; }
+
+            /** 직급/직책 검사 */
+            if (!regex.value('#position', '직급/직책을 입력하세요.')) { return false; }
+
+            // 이메일 검사 
+            if(!regex.value('#set_email01', '이메일 앞자리를 입력하세요.')) {return false;}
+            if(!regex.eng('#set_email01','이메일은 영문만 입력가능합니다.')) {return false;}
+
+            if(!regex.value('#set_email02', '이메일 뒷자리를 입력하세요.')) {return false;}
+            
+            
+            // 비밀번호 검사 
+        	if (!regex.value('#co_pw', '비밀번호를 입력하세요.')) {return false;}
+        	if (!regex.min_length('#co_pw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#co_pw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+			if (!regex.value('#co_pw_check', '비밀번호를 입력하세요.')) {return false;}
+        	if (!regex.min_length('#co_pw_check', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.max_length('#co_pw_check', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+            if (!regex.compare_to('#co_pw', '#co_pw_check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+
+            /**핸드폰 검사1 */
+            if (!regex.value('#phoneNumber2', '휴대폰 번호를 입력하세요.')) { return false; }
+            if (!pattern2.test($('#phoneNumber2').val())) {
+                alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+                $('#phoneNumber2').val('');
+                $('#phoneNumber2').focus();
+                return false;
+            }
+            if (!regex.min_length('#phoneNumber2', 4, '최소 3자 이상 입력 가능합니다.')) { return false; }
+             
+            // 휴대폰 검사1 end 
+
+            
+            
+            // 휴대폰 검사2 
+            if(!regex.value('#phoneNumber3', '휴대폰 번호를 입력하세요.')) {return false;}
+     		if(!regex.min_length('#phoneNumber3',4, " 휴대폰 번호는 4자리를 입력하셔야합니다."))
+            if(!pattern2.test($('#phoneNumber3').val())) {
+            	alert('휴대폰 번호는 숫자만 입력가능 합니다.');
+            	$('#phoneNumber3').val('');
+            	$('#phoneNumber3').focus();
+            	return false;
+            }
+            // 휴대폰 검사2 end 
+
+		});	
 	});
-	$("#complete").click(function() {
-		alert("수정이 완료되었습니다.");
-	})
+	
 </script>
 
 
