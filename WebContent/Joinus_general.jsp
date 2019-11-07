@@ -12,13 +12,7 @@
         <link rel="stylesheet" href="plugins/icheck/css/blue.css" />
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- blue.css / icheck.min.js / jquery에 icheck plugin을 적용시켜 놓음(general만).. 실제 class에 icheck를 먹이면 자바스크립트가 동작을 안함 확인중.. -->
-    	
-    	 <script language="javascript">
-  			function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
-  		 </script>
-
-
-  
+     
     <style type="text/css">
         .logo {
             margin-left: 30px;
@@ -244,7 +238,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <table align="center">
+                                <table style="align:center">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -283,7 +277,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th class="active"><span class="left-name">새 비밀번호</span></th>
+                                            <th class="active"><span class="left-name">비밀번호 확인</span></th>
                                             <td>
                                                 <input type="password" name="Npw" id="Npw" class="form-control" maxlength="20" placeholder="비밀번호를 확인해주세요">
                                             </td>
@@ -453,7 +447,9 @@
                 if (!regex.value('#user_name', '이름을 입력하세요.')) { return false; }
                 /** if (!regex.kor('#user_name', '이름은 한글만 입력 가능합니다.')) { return false; } */
                 if (!regex.min_length('#user_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
-                if (!regex.max_length('#user_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                if (!regex.max_length('#user_name', 10, '이름은 최대 10자 까지만 입력 가능합니다.')) { return false; }
+                
+                
                 
                 /** 이메일 검사 -1 */
                 if (!regex.value('#user_email', '이메일을 입력하세요.')) { return false; }

@@ -14,7 +14,6 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
 
-</head>
 <style type="text/css">
 .logo {
 	margin-left: 30px;
@@ -91,6 +90,7 @@
 	width: 270px;
 }
 </style>
+</head>
 <body>
 	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
 	<!-- 상단 메뉴 바 -->
@@ -267,7 +267,7 @@
 									</ul>
 								</div>
 								
-									<table align="center">
+									<table style="align:center">
 										<tr>
 											<th>공인중개사정보 입력</th>
 										</tr>
@@ -470,12 +470,6 @@
 												<td><input type="text" name="P_name" id="P_name"
 													class="form-control" maxlength="20"
 													placeholder="이름을 입력해주세요"></td>
-											</tr>
-											<tr>
-												<th class="active"><span class="left-name">직급/직책</span></th>
-												<td><input type="text" name="position" id="position"
-													class="form-control" maxlength="20"
-													placeholder="직급/직책을 입력해주세요"></td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">권한/자격</span></th>
@@ -784,13 +778,7 @@
                         if (!regex.value('#P_name', '이름을 입력하세요.')) { return false; }
                         /** if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) { return false; } */
                         if (!regex.min_length('#P_name', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
-                        if (!regex.max_length('#P_name', 20, '이름은 최대 20자 까지만 입력 가능합니다.')) { return false; }
-                        
-                        /** 직급/직책 검사 */
-                        if (!regex.value('#position', '직급/직책을 입력하세요.')) { return false; }
-                        /** if (!regex.kor('#position', '직급/직책은 한글만 입력 가능합니다.')) { return false; } */
-                        if (!regex.min_length('#position', 2, '직급/직책은 최소 2자 이상 입력 가능합니다.')) { return false; }
-                        if (!regex.max_length('#position', 20, '직급/직책은 최대 20자 까지만 입력 가능합니다.')) { return false; }
+                        if (!regex.max_length('#P_name', 10, '이름은 최대 10자 까지만 입력 가능합니다.')) { return false; }
                         
                         /** 권한/자격 검사 */
                         var subject = $("#position2").val();
