@@ -106,7 +106,7 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">    
-										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" checked />&nbsp;월세 추가
+										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" required/>&nbsp;월세 추가
 										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy"/>&nbsp;매매 추가
 										  
 										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" placeholder="보증금"
@@ -681,7 +681,7 @@ $ (document) .ready (function () {
 <script>
         $(function(){
      		$('#button_cancel').click(function(){
-     			location.href = 'Main.jsp';
+     			location.href = 'index.jsp';
      		});
      	});
 </script>

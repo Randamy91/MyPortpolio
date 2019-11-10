@@ -29,8 +29,7 @@
 			<!--//page title-->
 			<!--main section 시작-->
 			<div class="main_section">
-				<form id="registerform" name="registerform" action="Maemul.detailed.jsp" target="post"
-					role="form">
+				<form id="registerform" name="registerform" action="index.jsp" method="post">
 					<!--위치정보-->
 					<table class="info_article_one">
 						<caption class="text-center">위치 정보</caption>
@@ -106,7 +105,7 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">    
-										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" checked />&nbsp;월세 추가
+										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" required/>&nbsp;월세 추가
 										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy"/>&nbsp;매매 추가
 										  
 										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" placeholder="보증금"
@@ -183,13 +182,13 @@
 							<th>계약면적</th>
 								<td>	
 								    <div class="maemul_size" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize" pattern="/^[0-9]*$/" name="maemulsize" style="width: 88px;" maxlength="4"
+									<input type="text" class="form-control" id="maemulsize" name="maemulsize" maxlength="4"
 									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
-									 <span style="padding-top: 10px;">평</span></div>
+									<span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize2" name="maemulsize2" style="margin-left: 20px; width: 88px;"
+									<input type="text" class="form-control" id="maemulsize2" name="maemulsize"
 									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
-									<span style="padding-top: 10px">m</span></div>
+									<span style="padding-top: 10px;">m</span></div>
 							    </td>
 							    <tr>
 								<th>건물 층수</th>
@@ -236,7 +235,7 @@
 									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
 									<span style="padding-top: 10px;">평</span></div>
 									<div class="maemul_size2" style="display: inline-flex;">
-									<input type="text" class="form-control" id="maemulsize3" name="maemulsize3"
+									<input type="text" class="form-control" id="maemulsize3" name="maemulsize1"
 									 onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
 									<span style="padding-top: 10px">m</span></div>
 							    </td>
@@ -467,7 +466,7 @@
 					<!-- (완료버튼) -->
 					<div class="register_btn">
 							<button type="button" id="button_cancel" name="button_cancel" class="btn btn-info btn-lg">취소</button>
-							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록"/>
+							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" onclick="location.href='index.jsp'" value="매물등록"/>
 						</div>
 				</form>
 			</div>
@@ -587,11 +586,7 @@ $ (document) .ready (function () {
 
 </script>
 <!-- //icheck  -->
-<!--------------------------------------------- input type 유효성 검사 -------------------------------------->
-<script>
 
-</script>
-<!-- //input type 유효성 검사 -->
 	<!-- 카카오 map -->
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -643,9 +638,6 @@ $ (document) .ready (function () {
 		}
 	</script>
 	<!-------------------------------------//카카오 map----------------------------------------->
-	<!------------------------------------ 라디오 버튼 요소표시-------------------------------------->
-	
-	<!-- //라디오버튼 요소표시 -->
 	<!-- 이미지파일 -->
 	<script>
 	var file = document.querySelector('#getfile');
@@ -677,44 +669,14 @@ $ (document) .ready (function () {
     }; 
 }; 
 </script>
-	<!----------------------------- 완료버튼 sweetalert ------------------------->
-<!-- 	<script>
-         $("#button_fini").click(function() {
-        	    swal({
-        	        title: '확인',                
-        	        text: '매물등록을 하시겠습니까?',  
-        	        type: 'warning',              
-        	        confirmButtonText: 'Yes',     
-        	        showCancelButton: 'No',       
-        	        cancelButtonText: 'No',       
-        	    }).then(function(result) {        
-        	        if (result.value) {           
-        	            location.href = 'Maemul.detailed.jsp';
-        	            location.submit = 'jsp';
-        	        } else if (result.dismiss === 'cancel') {  
-        	            swal('취소', '취소되었습니다.', 'error');
-        	        }
-        	    });
-        	}); 
-</script> -->
+	
 <!-- 취소버튼  -->
 <script>
         $(function(){
      		$('#button_cancel').click(function(){
-     			location.href = 'Main.jsp';
+     			location.href = 'index.jsp';
      		});
      	});
 </script>
-<!--  <script type="text/javascript">
-			function doSubmit() {
-				// 폼 객체
-				var frm = document.form1;
-				// 입력확인하기
-				if (confirm("입력하신 내용이 맞습니까?")) {
-					frm.submit();	
-				}
-			}
-		</script> -->
-	
 </body>
 </html>
