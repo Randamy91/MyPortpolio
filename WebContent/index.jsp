@@ -22,7 +22,43 @@
 <body>
 	<div class="content">
 		<!-- 상단 메뉴 바 -->
-		<%@ include file="include/header.jsp"%>
+		<nav class="navbar menu_navbar bg-white">
+	<!--<div class="navbar-header menu_header">-->
+	<a class="navbar-brand logo" href="index.jsp"> <img alt="Brand"
+		src="img/main_logo.jpg" width="65px" height="40px">
+	</a>
+	<p class="navbar-text navbar-left">
+		<a href="index.jsp" class="navbar-link" style="text-decoration: none">상가</a>
+	</p>
+	<p class="navbar-text navbar-left">
+		<a href="Bigdata.jsp" class="navbar-link"
+			style="text-decoration: none">상권분석</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Joinus_select.jsp" class="navbar-link"
+			style="text-decoration: none">회원가입</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="#myModal" data-toggle="modal" class="navbar-link"
+			style="text-decoration: none">로그인</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Admin.jsp" class="navbar-link"
+			style="text-decoration: none">관리자 페이지</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Maemul.manage.jsp" class="navbar-link"
+			style="text-decoration: none">매물관리</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Maemul.interest.jsp" class="navbar-link"
+			style="text-decoration: none">관심매물</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Maemul_register.jsp" class="navbar-link"
+			style="text-decoration: none">매물등록</a>
+	</p>	
+</nav>
 		<!--  로그인 Modal -->
 		<%@ include file="include/loginmodal.jsp"%>
 

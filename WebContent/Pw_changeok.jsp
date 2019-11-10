@@ -51,7 +51,7 @@
 	<script>
 		$(function(){
 			$('.gologin').click(function(){
-				location.href = 'Login.jsp';
+				location.href = 'Pw_reset.jsp';
 			});
 		});
 	
