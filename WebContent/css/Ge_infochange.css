@@ -48,12 +48,11 @@ input[type="checkbox"]:checked + label span {
 
 
 }
-  .exit a , .yak a {
+ .exit a , .yak a {
  	text-decoration: none;
  	color: black;
  }
   
- 
  .table-1 {
  	margin-bottom: 0px;
  }

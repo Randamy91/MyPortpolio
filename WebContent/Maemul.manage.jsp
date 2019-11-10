@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="function">
                                         <button class="btn btn-primary">
-                                            <a href="#">수정</a>
+                                            <a href="./Register_change.jsp">수정</a>
                                         </button>
                                         <button class="btn btn-primary delete">
                                             <a href="#">삭제</a>
@@ -247,7 +247,7 @@
                                     </div>
                                     <div class="function">
                                         <button class="btn btn-primary">
-                                            <a href="#">수정</a>
+                                            <a href="./Register_change.jsp">수정</a>
                                         </button>
                                         <button class="btn btn-primary delete">
                                             <a href="#">삭제</a>
@@ -318,7 +318,7 @@
                                     </div>
                                     <div class="function">
                                         <button class="btn btn-primary">
-                                            <a href="#">수정</a>
+                                            <a href="./Register_change.jsp">수정</a>
                                         </button>
                                         <button class="btn btn-primary delete">
                                             <a href="#">삭제</a>

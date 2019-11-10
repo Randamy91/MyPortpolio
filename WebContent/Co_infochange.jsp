@@ -151,7 +151,7 @@
 					<h2 class="title">공인중개사 회원정보 수정</h2>
 				</div>
 				<div class="main-content">
-					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="#">
+					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="./index.jsp">
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -404,11 +404,11 @@
 									</table>
 								</li>
 							</ul>							
-						</div> <!-- end panel -->
-						<div class="Go text-center">
-							<button type="submit" class="btn btn-primary btn-lg" id="complete" href="" style="width: 200px; height: 80px;">입력완료</button>
-						</div>
+						</div> <!-- end panel -->						
 					</form>
+					<div class="Go text-center">
+						<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
+					</div>
 				</div>
 			</div> <!-- end container -->
 		</div>
@@ -438,7 +438,7 @@
 	}); // change end 
 
 	$(function() {
-		$("#changeform").submit(function(e) {
+		$("#complete").click(function(e) {
 			e.preventDefault();
 
 			/** 중개사무소명 검사 */
@@ -574,8 +574,8 @@
             	$('#phoneNumber3').focus();
             	return false;
             }
-            // 휴대폰 검사2 end 
-
+            // 휴대폰 검사2 end
+     		$("#changeform").submit();
 		});	
 	});
 	

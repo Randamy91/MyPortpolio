@@ -97,16 +97,8 @@
 
 
 	<!-- 상단 메뉴 바 -->
-<nav class="navbar menu_navbar bg-white">
-	<!--<div class="navbar-header menu_header">-->
-	<a class="navbar-brand logo" href="Main.html" >
-	<img alt="Brand" src="img/main_logo.jpg" width="65px" height="40px">
-	</a>
-	<p class="navbar-text navbar-left"><a href="Main.html" class="navbar-link" style="text-decoration:none">상가</a></p>
-	<p class="navbar-text navbar-left"><a href="Bigdata.html" class="navbar-link" style="text-decoration:none">상권분석</a></p>
-	<p class="navbar-text navbar-right"><a href="Joinus_select.html" class="navbar-link" style="text-decoration:none">회원가입</a></p>
-	<p class="navbar-text navbar-right"><a href="#myModal" data-toggle="modal" class="navbar-link" style="text-decoration:none">로그인</a></p>
-</nav>
+	<%@ include file="./include/loginHeader.jsp" %>
+	<!-- 상단 메뉴바  -->
 
 <!--  로그인 Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -147,7 +139,7 @@
 					<p class="text-muted" style="font-size: 15px;">회원 정보와 비밀번호를 변경할 수 있습니다.</p>
 				</div>
 				<div class="main-content">
-					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="#">
+					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="./index.jsp">
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -218,22 +210,19 @@
 								</li>
 								<li class="list-group-item third-list">
 									<div class="sign">
-
 										<input type="checkbox" name="agree" id="check_box" value="check" />
 										<label for="check_box" style="font-weight: normal;"><span></span><strong>[안내]</strong>
 										이벤트 및 혜택 알림 수신에 동의합니다.</label>
 										<span class="panel panel-default yak"><a class="claim" href="wak.html" target="_blank" style="font-size: 10px;">약관보기</a></span>
 									</div>
-
 								</li>
-							</ul>
-							
+							</ul>							
 						</div> <!-- end panel -->
-						<div class="exit  text-right"><a href="#" class="exit-item" data-toggle="modal" data-target="#myModal2" id="open_modal_btn">탈퇴하기</a></div>
-						<div class="Go text-center">
-							<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
-						</div>
+						<div class="exit  text-right"><a href="#" class="exit-item" data-toggle="modal" data-target="#myModal2" id="open_modal_btn">탈퇴하기</a></div>						
 					</form>
+					<div class="Go text-center">
+							<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
+					</div>
 				</div>
 			</div> <!-- end container -->
 		</div>
@@ -256,10 +245,8 @@
 			</div>
 			<div class="modal-body" style="text-align: center;">
 				<p>탈퇴, 시 네모에 등록하신 매물과 개인정보 등이 모두 삭제되며 <br> 이후 복구가 불가능 합니다. 정말 탈퇴 하시겠습니까?</p>
-				<img src="./img/cry.png" style="width: 160px; height: 160px">
-				
+				<img src="./img/cry.png" style="width: 160px; height: 160px">			
 			</div>
-
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal" id="exit-right" style="width: 100%;">회원 탈퇴하기</button>
 			</div>
@@ -271,8 +258,6 @@
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/validate/jquery.validate.min.js"></script>
-<script src="plugins/validate/additional-methods.min.js"></script>
 <script src="./regex/regex2.js"></script>
 <!--<script type="text/javascript"
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script> --> 
@@ -281,12 +266,13 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&lib
 	function exit() {
 		$("#exit-right").click(function(e) {
 				alert("회원 탈퇴가 완료 되었습니다.\r\n \r\n그동안 세모 서비스를 아끼고 사랑해주셔서 감사합니다. \r\n더욱더 노력하고 발전하는 세모가 되겠습니다.");
+				window.location.href = "./index.jsp"
 		});
 	};
 
 	$(function() { 
 		exit();
-		$("#changeform").submit(function(e) {
+		$("#complete").click(function(e) {
 			e.preventDefault();
 			/** 이름 검사 */
 			if(!regex.value('#user_name', '이름을 입력하세요.')) {return false;}
@@ -297,7 +283,7 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&lib
             if (!regex.email('#email-value', '이메일 주소가 잘못되었습니다.')) { return false; }
 
             /**핸드폰 검사1 */
-            var numberTest= /^[0-9]*$/;
+             var numberTest= /^[0-9]*$/;
             if(!regex.value('#phoneNumber2', '번호를 입력하세요.')) {return false;}
             if(!regex.min_length('#phoneNumber2',4, "휴대폰 번호는 4자리를 입력하셔야합니다."))
             if(!numberTest.test($('#phoneNumber2').val())) {
@@ -323,7 +309,9 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&lib
             if (!regex.min_length('#Npw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
             if (!regex.max_length('#Npw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
             if (!regex.compare_to('#Npw', '#Npw-check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+            $("#changeform").submit();
 		});	
+		
 	}); 
 	// function end
 </script>
