@@ -18,7 +18,6 @@
 			님</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Maemul.interest.jsp" data-toggle="modal" class="navbar-link"
-			style="text-decoration: none">관심매물</a>
+		<a href="Maemul.interest.jsp" class="navbar-link" style="text-decoration: none">관심매물</a>
 	</p>
 </nav>

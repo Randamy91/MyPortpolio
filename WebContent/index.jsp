@@ -57,6 +57,14 @@
 	<p class="navbar-text navbar-right">
 		<a href="Maemul_register.jsp" class="navbar-link"
 			style="text-decoration: none">매물등록</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Ge_infochange.jsp" class="navbar-link"
+			style="text-decoration: none">회원정보수정</a>
+	</p>
+	<p class="navbar-text navbar-right">
+		<a href="Co_infochange.jsp" class="navbar-link"
+			style="text-decoration: none">중개사회원정보수정</a>
 	</p>	
 </nav>
 		<!--  로그인 Modal -->
