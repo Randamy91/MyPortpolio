@@ -195,7 +195,7 @@
 								<td>
 									<div class="maemul_floors" style="width: 110px;">
 										<select class="form-control" id="validselect" name="maemulfloors" required>
-											<option value="">--선택--</option>
+										 <option value="">--선택--</option>
 											<option value="1">1층</option>
 											<option value="2">2층</option>
 											<option value="3">3층</option>
@@ -245,7 +245,7 @@
 								<td>
 									<div class="heat_info" style="width: 110px;">
 										<select class="form-control" id="validselect" name="heatform" required>
-											<option value="">--선택--</option>
+										 <option value="">--선택--</option>
 											<option value="personal1">개별난방</option>
 											<option value="area1">지역난방</option>
 											<option value="center1">중앙난방</option>
@@ -260,7 +260,7 @@
 									<td>
 										<div class="toilet_form" style="width: 140px;">
 											<select class="form-control" id="validselect" name="toiletform" required>
-											<option value="">--선택--</option>
+											 <option value="">--선택--</option>
 											<option value="outside1">외부/남녀구분</option>
 											<option value="outside2">외부/남녀혼용</option>
 											<option value="inside1">내부/남녀구분</option>
@@ -275,7 +275,7 @@
 								<td>
 									<div class="year_form" style="display: inline-block; margin: 20px; width: 110px;">
 											<select class="form-control" id="validselect" name="yearform" required>
-											<option value="">--선택--</option>
+											 <option value="">--선택--</option>
 											<option value="2019">2019년도</option>
 											<option value="2018">2018년도</option>
 											<option value="2017">2017년도</option>
@@ -303,7 +303,7 @@
 										</div>			
 											<div class="month_form" style="display: inline-block; width: 110px;" >
 											<select class="form-control" id="validselect" name="monthform" required>
-											<option value="">--선택--</option>
+											 <option value="">--선택--</option>
 											<option value="1">1월</option>
 											<option value="2">2월</option>
 											<option value="3">3월</option>
@@ -366,7 +366,6 @@
 							    		 <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="yes"/>&nbsp;가능
 							    		  <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="no"checked/>&nbsp;불가능
 							    		  <div class="parkuse" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="parkuse" required>
-							    		  <option value="">--선택--</option>
 							    		  <option value="1">1대</option>
 							    		  <option value="2">2대</option>
 							    		  <option value="3">3대</option>
@@ -397,7 +396,7 @@
 							    		 	<input type="radio" class="icheckuse" name="elevachk" id="elevachk" value="yes"/>&nbsp;있음
 							    		  	<input type="radio" class="icheckuse" name="elevachk" id="elevachk1" value="no"checked/>&nbsp;없음	
 							    		  	 <div class="elevause" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="elevause" required>
-							    		  	 <option value="">--선택--</option>
+							    		  	 
 							    		  	 <option value="1">1</option>
 							    		  	 <option value="2">2</option>
 							    		  	 <option value="3">3</option>
@@ -451,10 +450,16 @@
 						<caption class="text-center">사진 등록</caption>
 							<tbody>
 								<tr>
-									<th>일반 사진</th>
-									 <td><img id="preview2" src="" width="600" height="400" alt="사진 영역입니다.">
-											<input multiple="multiple" type="file" id="getfile2" name="getfile2" accept="image/*" /></td>
-								</tr>
+								<!-- 멀티업로드 수정중 -->
+                           <th>일반 사진</th>
+                            <td class="preview2">
+                            <input type="file" style="margin:20px;" name="maemulinput_imgs" id="maemulinput_imgs"  multiple/>
+                            <div class="maemulimgs_wrap">
+                               <img id="img"/>
+                            </div>
+                            </td>
+                        </tr>
+                        <!-- //멀티업로드 수정중 -->
 							</tbody>
 					</table>
 					<!--//사진 등록-->
@@ -466,7 +471,7 @@
 					<!-- (완료버튼) -->
 					<div class="register_btn">
 							<button type="button" id="button_cancel" name="button_cancel" class="btn btn-info btn-lg">취소</button>
-							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" onclick="location.href='index.jsp'" value="매물등록"/>
+							<input type="submit" id="button_fini" name="button_fini" class="btn btn-primary btn-lg" value="매물등록"/>
 						</div>
 				</form>
 			</div>
@@ -638,11 +643,12 @@ $ (document) .ready (function () {
 		}
 	</script>
 	<!-------------------------------------//카카오 map----------------------------------------->
-	<!-- 이미지파일 -->
-	<script>
-	var file = document.querySelector('#getfile');
+	
+   <!----------------------------------- 이미지파일 ------------------------------>
+   <script>
+   var file = document.querySelector('#getfile');
 
-	file.onchange = function () { 
+   file.onchange = function () { 
     var fileList = file.files ;
     
     // 읽기
@@ -654,22 +660,48 @@ $ (document) .ready (function () {
         document.querySelector('#preview').src = reader.result;
     }; 
 }; 
-</script>
-	<script>
-	var file = document.querySelector('#getfile2');
 
-	file.onchange = function () { 
-    var fileList = file.files ;
-    
-    var reader = new FileReader();
-    reader.readAsDataURL(fileList [0]);
+//다중 이미지 파일 (---------------------------수정중---------------------------)
+var sel_files= [];
 
-    reader.onload = function  () {
-        document.querySelector('#preview2').src = reader.result;
-    }; 
-}; 
-</script>
-	
+$(document).ready(function() {
+    $("#maemulinput_imgs").on("change", handleImgFileSelect);
+}); 
+
+function fileUploadAction() {
+    console.log("fileUploadAction");
+    $("#maemulinput_imgs").trigger('click');
+}
+
+function handleImgFileSelect(e) {
+
+    sel_files = [];
+    $(".maemulimgs_wrap").empty();
+
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    var index = 0;
+    filesArr.forEach(function(f) {
+        if(!f.type.match("image.*")) {
+            alert("확장자는 이미지 확장자만 가능합니다.");
+            return;
+        }
+
+        sel_files.push(f);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+")\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+            $(".maemulimgs_wrap").append(html);
+            index++;
+
+        }
+        reader.readAsDataURL(f);
+        
+    });
+}
+	</script>
 <!-- 취소버튼  -->
 <script>
         $(function(){
