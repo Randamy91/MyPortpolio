@@ -158,11 +158,11 @@
 												</th>
 												<td>
 													<div id="kakaomap">
-														<input type="text" id="sample2_postcode" placeholder="우편번호">
+														<input type="text" id="sample2_postcode" name="sample2_postcode" placeholder="우편번호">
 														<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-														<input type="text" id="sample2_address" placeholder="주소"><br>
-														<input type="text" id="sample2_detailAddress" placeholder="상세주소">
-														<input type="text" id="sample2_extraAddress" placeholder="참고항목">
+														<input type="text" id="sample2_address" name="sample2_address" placeholder="주소"><br>
+														<input type="text" id="sample2_detailAddress" name="sample2_detailAddress" placeholder="상세주소">
+														<input type="text" id="sample2_extraAddress" name="sample2_extraAddress" placeholder="참고항목">
 													</div>
 															<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 															<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -284,8 +284,8 @@
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
 												<td>
-													<img src="./img/ceo_image.jpg" class="coe_image">
-													<input type="file" class="form-control" id="best_image" name="best_image" style="display: none;">
+													<img id="preview" src="./img/ceo_image.jpg" class="coe_image" alt="이미지 로드후 미리보기 보여질 영역">
+													<input type="file" class="form-control" id="best_image" name="best_image" accept="image/*" style="display: none;">
 													<label for="best_image" class="label_best_image">
 														<span class="btn btn-info btn-lg" style="position: relative; bottom: 175px;">사진 업로드</span>
 													</label>
@@ -400,7 +400,23 @@
 		});
 	}); // change end 
 
+	// 사진 업로드 미리보기 
 	$(function() {
+		var file = document.querySelector("#best_image");
+		
+		file.onchange = function () {
+			var fileList = file.files;
+			// 읽기
+			var reader = new FileReader();
+			reader.readAsDataURL(fileList [0]);
+			
+			// 로드 한 후 
+			reader.onload = function() {
+				document.querySelector('#preview').src = reader.result;
+			};
+		};
+	// 사진 미리보기 end	
+		
 		$("#complete").click(function(e) {
 			e.preventDefault();
 
