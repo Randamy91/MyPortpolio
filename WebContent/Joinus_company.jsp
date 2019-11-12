@@ -406,7 +406,7 @@ html, body {
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
 											
-                     						 	<td><img id="preview" src="img/noname00.png" width="180" height="240" alt="사진 영역입니다.">
+                     						 	<td><img id="preview" src="img/company.png" width="180" height="240" alt="사진 영역입니다.">
 												<input type="file" id="getfile" name="getfile" accept="image/*" required/></td>
 												
 											</tr>
