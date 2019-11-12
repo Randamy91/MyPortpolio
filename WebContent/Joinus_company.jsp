@@ -405,14 +405,10 @@ html, body {
 											<!-------------- 상윤이 소스 시작 ---------------->
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
-												<td><img src="img/ceo_image.jpg" class="coe_image"
-													style="float: left; height: 180px; width: 150px; margin: 0;">
-													<input type="file" class="form-control" id="coe_image"
-													name="coe_image" style="display: none;"> <label
-													for="coe_image" class="label_ceo_image"> <span
-														class="btn btn-default" style="margin-left: 10px;">사진
-															업로드</span>
-												</label></td>
+											
+                     						 	<td><img id="preview" src="img/noname00.png" width="180" height="240" alt="사진 영역입니다.">
+												<input type="file" id="getfile" name="getfile" accept="image/*" required/></td>
+												
 											</tr>
 											<!-------------- 상윤이 소스 끝 ---------------->
 											<tr>
@@ -798,6 +794,24 @@ html, body {
 
                        });
                  });
+                    
+                    <!----------------------------------- 이미지파일 ------------------------------>
+                    var file = document.querySelector('#getfile');
+
+                    file.onchange = function () { 
+                     var fileList = file.files ;
+                     
+                     // 읽기
+                     var reader = new FileReader();
+                     reader.readAsDataURL(fileList [0]);
+
+                     //로드 한 후
+                     reader.onload = function  () {
+                         document.querySelector('#preview').src = reader.result;
+                     }; 
+                 }; 
+                    
+                    
                 </script>
 </body>
 </html>
