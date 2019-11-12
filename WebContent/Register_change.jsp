@@ -88,8 +88,8 @@
 										</tr>
 										<tr>
 											<th>사진</th>
-                     						 <td>
-											<img id="preview" src="" width="400" height="200" alt="사진 영역입니다.">
+                     						 <td class="preview">
+											<img id="preview" src="img/noname0.png" width="400" height="200">
 											<input type="file" id="getfile" name="getfile" accept="image/*" required/></td>
 										</tr>
 									</div>
@@ -367,7 +367,6 @@
 							    		 <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="yes"/>&nbsp;가능
 							    		  <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="no"checked/>&nbsp;불가능
 							    		  <div class="parkuse" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="parkuse" required>
-							    		  <option value="">--선택--</option>
 							    		  <option value="1">1대</option>
 							    		  <option value="2">2대</option>
 							    		  <option value="3">3대</option>
@@ -398,7 +397,6 @@
 							    		 	<input type="radio" class="icheckuse" name="elevachk" id="elevachk" value="yes"/>&nbsp;있음
 							    		  	<input type="radio" class="icheckuse" name="elevachk" id="elevachk1" value="no"checked/>&nbsp;없음	
 							    		  	 <div class="elevause" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="elevause" required>
-							    		  	 <option value="">--선택--</option>
 							    		  	 <option value="1">1</option>
 							    		  	 <option value="2">2</option>
 							    		  	 <option value="3">3</option>
@@ -451,11 +449,20 @@
 					<table>
 						<caption class="text-center">사진 등록</caption>
 							<tbody>
-								<tr>
-									<th>일반 사진</th>
-									 <td><img id="preview2" src="" width="600" height="400" alt="사진 영역입니다.">
-											<input multiple="multiple" type="file" id="getfile2" name="getfile2" accept="image/*" /></td>
-								</tr>
+										<!-- 멀티업로드 수정중 -->
+						<tr>
+                           <th>일반 사진</th>
+                            <td class="preview2">
+                            <input type="file" style="margin:20px; margin-left:40px;" name="maemulinput_imgs" id="maemulinput_imgs" maxlength="3" multiple required/>
+                            	 <ul class="notice"><li style="font-weight: bold;">사진은 최소 3장에서 10장까지 등록이 가능하며, 10MB이하의 가로로 찍은 사진을 권장합니다.</li>
+                            	  <li style="color:red;">공인중개사 또는 부동산의 불필요한 정보(워터마크,상호,전화번호)가 있는 매물은 비공개 처리 됩니다.</li></ul>
+                            <div class="maemulimgs_wrap">
+                               <img id="img" src="img/images.png"/>
+
+                            </div>
+                            </td>
+                        </tr>
+                        <!-- //멀티업로드 수정중 -->
 							</tbody>
 					</table>
 					<!--//사진 등록-->
@@ -497,31 +504,31 @@
             });
            <!--//datepicker 끝-->
             <!--평수 자동변환 로직-->
-            $("#maemulsize").keyup(function(){
+           $("#maemulsize").keyup(function(){
 
-                // 2. #out 공간에 #data의 내용이 출력된다.
+               // 2. #out 공간에 #data의 내용이 출력된다.
 
-                
-                $("#maemulsize2").val($("#maemulsize").val() * 3.3);
+               
+               $("#maemulsize2").val(($("#maemulsize").val() * 3.3).toFixed(2));
 
-                // #out의 위치에 text로 데이터를 받는다.(setter)
+               // #out의 위치에 text로 데이터를 받는다.(setter)
 
-                // 들어가는 데이터는 #data의 값(.val())이다. (getter)
+               // 들어가는 데이터는 #data의 값(.val())이다. (getter)
 
-                // 메서드 괄호 안에 아무것도 없으면 getter, 파라미터가 있으면 setter이다.
+               // 메서드 괄호 안에 아무것도 없으면 getter, 파라미터가 있으면 setter이다.
 
-             });
-            $("#maemulsize1").keyup(function(){
-            	$("#maemulsize3").val($("#maemulsize1").val() * 3.3);	
             });
-            $("#maemulsize2").keyup(function(){
-            	$("#maemulsize").val($("#maemulsize2").val() / 3.3 );	
-            });
-            $("#maemulsize3").keyup(function(){
-            	$("#maemulsize1").val($("#maemulsize3").val() / 3.3);	
-            });
-        });
-    </script>
+           $("#maemulsize1").keyup(function(){
+           	$("#maemulsize3").val(($("#maemulsize1").val() * 3.3).toFixed(2));	
+           });
+           $("#maemulsize2").keyup(function(){
+           	$("#maemulsize").val(($("#maemulsize2").val() / 3.3 ).toFixed(2));	
+           });
+           $("#maemulsize3").keyup(function(){
+           	$("#maemulsize1").val(($("#maemulsize3").val() / 3.3).toFixed(2));	
+           });
+       });
+   </script>
 
 <!--//평수 자동변환 로직-->
 <!--------------------------------- radio,checkbox icheck  -------------------------->
@@ -645,11 +652,11 @@ $ (document) .ready (function () {
 	<!------------------------------------ 라디오 버튼 요소표시-------------------------------------->
 	
 	<!-- //라디오버튼 요소표시 -->
-	<!-- 이미지파일 -->
-	<script>
-	var file = document.querySelector('#getfile');
+	  <!----------------------------------- 이미지파일 ------------------------------>
+   <script>
+   var file = document.querySelector('#getfile');
 
-	file.onchange = function () { 
+   file.onchange = function () { 
     var fileList = file.files ;
     
     // 읽기
@@ -661,21 +668,61 @@ $ (document) .ready (function () {
         document.querySelector('#preview').src = reader.result;
     }; 
 }; 
-</script>
+
+//다중 이미지 파일 (---------------------------수정중---------------------------)
+var sel_files= [];
+
+$(document).ready(function() {
+    $("#maemulinput_imgs").on("change", handleImgFileSelect);
+}); 
+
+function fileUploadAction() {
+    console.log("fileUploadAction");
+    $("#maemulinput_imgs").trigger('click');
+}
+
+function handleImgFileSelect(e) {
+
+    sel_files = [];
+    $(".maemulimgs_wrap").empty();
+
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    var index = 0;
+    filesArr.forEach(function(f) {
+        if(!f.type.match("image.*")) {
+            alert("확장자는 이미지 확장자만 가능합니다.");
+            return;
+        }
+
+        sel_files.push(f);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+")\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+            $(".maemulimgs_wrap").append(html);
+            index++;
+
+        }
+        reader.readAsDataURL(f);
+        
+    });
+}
+<!--다중이미지 특정이미지 삭제-->
+	</script>
 	<script>
-	var file = document.querySelector('#getfile2');
-
-	file.onchange = function () { 
-    var fileList = file.files ;
-    
-    var reader = new FileReader();
-    reader.readAsDataURL(fileList [0]);
-
-    reader.onload = function  () {
-        document.querySelector('#preview2').src = reader.result;
-    }; 
-}; 
-</script>
+	function deleteImageAction(index) {
+		console.log("index : " +index);
+		sel_files.splice(index, 1);
+		
+		var img_id = "#img_id_"+index;
+		$(img_id).remove();
+		
+		console.log(sel_files);
+	}
+	</script>
+	<!--//다중이미지 특정이미지 삭제-->
 
 <!-- 취소버튼  -->
 <script>

@@ -296,19 +296,37 @@ input, img {vertical-align: middle;}
 	margin-top: 120px;
 }
 /**사진 이미지 */
-img {
+.preview img {
 	float: left;
-	border: none;
-	background-color: #EAEAEA;
-	color: #A6A6A6;
-	text-align: center;
+}
+
+/**다중 이미지*/
+
+.preview2 img {
+	width: 150px;
+    height: 140px;
+    margin: 5px;
+    margin-left: 10px;
+    border: none;
+}
+
+.notice  {
+	list-style: none;
+	font-size: 12px;
 }
 
 #getfile, #getfile2
  { margin: 20px;}
  
-#preview, #preview2 { 
+#preview { 
 	margin:20px;
 	border: 1px solid #d9d9d9;
+}
+.maemulimgs_wrap {
+	border: 1px solid #D5D5D5;
+    width: 850px;
+    height: 300px;
+    margin-left: 40px;
+    margin-bottom: 20px;
 }
 
