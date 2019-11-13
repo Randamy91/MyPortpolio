@@ -155,7 +155,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0" 
-										src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
+										src="terms/terms_common01.jsp"></iframe>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -164,7 +164,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0"
-										src="https://cdn.nemoapp.kr/policy/agentPrivacyPolicy.html?v=637073928717585804#begin"></iframe>
+										src="terms/terms_co01.jsp"></iframe>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -173,7 +173,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0"
-										src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
+										src="terms/terms_common02.jsp"></iframe>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -182,7 +182,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0"
-										src="https://cdn.nemoapp.kr/policy/servicePolicy.html?v=637073928717585804#begin"></iframe>
+										src="terms/terms_co02.jsp"></iframe>
 								</div>
 								<br />
 								<div class="general01_btn">

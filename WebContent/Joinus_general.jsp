@@ -152,7 +152,7 @@ html, body {
                                     <label for="check_box">세모 서비스 이용약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="150px" frameborder="0" src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
+                                    <iframe width="100%" height="150px" frameborder="0" src="terms/terms_common01.jsp"></iframe>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">
@@ -160,7 +160,7 @@ html, body {
                                     <label for="check_box">개인정보 수집 및 이용에 대한 동의(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="150px" frameborder="0" src="http://cdn.nemoapp.kr/policy/userPrivacyPolicy.html?v=637063192662958639#begin"></iframe>
+                                    <iframe width="100%" height="150px" frameborder="0" src="terms/terms_ge01.jsp"></iframe>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">
@@ -168,7 +168,7 @@ html, body {
                                 <label for="check_box">위치 기반 서비스 약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="150px" frameborder="0" src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
+                                    <iframe width="100%" height="150px" frameborder="0" src="terms/terms_common02.jsp"></iframe>
                                 </div>
                                 <div class="general01_btn">
                                     <input
