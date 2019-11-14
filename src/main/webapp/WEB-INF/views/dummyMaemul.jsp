@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<div class="list-item" OnClick="location.href ='Maemul.detailed.jsp'"
+<div class="list-item" OnClick="location.href ='Maemul.detailed.do'"
 	style="cursor: pointer;">
 	<div class="image-container">
-		<div class="image" style="background-image: url(img/office.jpg);"></div>
+		<div class="image" style="background-image: url(${pageContext.request.contextPath}/assets/img/office.jpg);"></div>
 	</div>
 	<div class="price-container">
 		<div class="primary">

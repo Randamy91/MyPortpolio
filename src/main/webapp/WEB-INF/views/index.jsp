@@ -25,18 +25,18 @@
 		<!-- 상단 메뉴 바 -->
 		<nav class="navbar menu_navbar bg-white">
 	<!--<div class="navbar-header menu_header">-->
-	<a class="navbar-brand logo" href="index.jsp"> <img alt="Brand"
-		src="img/main_logo.jpg" width="65px" height="40px">
+	<a class="navbar-brand logo" href="index.do"> <img alt="Brand"
+		src="${pageContext.request.contextPath}/assets/img/main_logo.jpg" width="65px" height="40px">
 	</a>
 	<p class="navbar-text navbar-left">
-		<a href="index.jsp" class="navbar-link" style="text-decoration: none">상가</a>
+		<a href="index.do" class="navbar-link" style="text-decoration: none">상가</a>
 	</p>
 	<p class="navbar-text navbar-left">
-		<a href="Bigdata.jsp" class="navbar-link"
+		<a href="Bigdata.do" class="navbar-link"
 			style="text-decoration: none">상권분석</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Joinus_select.jsp" class="navbar-link"
+		<a href="Joinus_select.do" class="navbar-link"
 			style="text-decoration: none">회원가입</a>
 	</p>
 	<p class="navbar-text navbar-right">
@@ -44,27 +44,27 @@
 			style="text-decoration: none">로그인</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Admin.jsp" class="navbar-link"
+		<a href="Admin.do" class="navbar-link"
 			style="text-decoration: none">관리자 페이지</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Maemul.manage.jsp" class="navbar-link"
-			style="text-decoration: none">매물관리</a>
+		<a href="Maemul.manage.do" class="navbar-link"
+			style="tex1t-decoration: none">매물관리</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Maemul.interest.jsp" class="navbar-link"
+		<a href="Maemul.interest.do" class="navbar-link"
 			style="text-decoration: none">관심매물</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Maemul_register.jsp" class="navbar-link"
+		<a href="Maemul_register.do" class="navbar-link"
 			style="text-decoration: none">매물등록</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Ge_infochange.jsp" class="navbar-link"
+		<a href="Ge_infochange.do" class="navbar-link"
 			style="text-decoration: none">회원정보수정</a>
 	</p>
 	<p class="navbar-text navbar-right">
-		<a href="Co_infochange.jsp" class="navbar-link"
+		<a href="Co_infochange.do" class="navbar-link"
 			style="text-decoration: none">중개사회원정보수정</a>
 	</p>	
 </nav>
@@ -182,10 +182,7 @@
 							<%@ include file="dummyMaemul.jsp"%>
 							<%@ include file="dummyMaemul.jsp"%>
 							<%@ include file="dummyMaemul.jsp"%>
-							<%@ include file="dummyMaemul.jsp"%>
-							<%@ include file="dummyMaemul.jsp"%>
-							<%@ include file="dummyMaemul.jsp"%>
-							<%@ include file="dummyMaemul.jsp"%>
+							
 
 						</div>
 

@@ -20,9 +20,9 @@
 <body>
 	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="assets/include/header.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>	
+	<%@ include file="assets/include/loginmodal.jsp" %>	
 	<!-- 컨텐츠 -->
 	<div class="content">
 
@@ -34,7 +34,7 @@
 			<div class="content-body">
 				<div class="loginDiv">
 					<div class="emailLogin">이메일 로그인</div>
-					<form action="index.jsp" method="post">
+					<form action="index.do" method="post">
 						<div class="input-login1">
 							<input type="text" class="form-control input-info email" id="email"
 								name="email" placeholder="이메일" required/>
@@ -44,7 +44,7 @@
 								id="password" name="password" placeholder="패스워드" required/>
 						</div>
 						<div class="forgot-pw1">
-							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.jsp"
+							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.do"
 								style="text-decoration: none">비밀번호 찾기</a>
 							</span>
 						</div>
@@ -77,10 +77,10 @@
 		$(function(){
 			
 			$('#btn1').click(function(){
-				location.href = 'Joinus_general.jsp';
+				location.href = 'Joinus_general.do';
 			});
 			$('#btn2').click(function(){
-				location.href = 'Joinus_company.jsp';
+				location.href = 'Joinus_company.do';
 			});
 			//이메일 형식 유효성 검사
 			$('.email').blur(function(){
