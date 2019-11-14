@@ -9,8 +9,8 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>세모- 상가 중개사이트</title>
-<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/Joinus_general.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Joinus_general.css">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
 
@@ -108,9 +108,9 @@ html, body {
 </head>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="assets/include/header.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>
+	<%@ include file="assets/include/loginmodal.jsp" %>
 	<!-- 컨텐츠 -->
 	<div class="content">
 		<div class="body-content">
@@ -126,19 +126,19 @@ html, body {
 							<div>
 								<ul class="gallery">
 									<li class="cover01"><span class="cover02"><img
-											class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+											class="circle" src="${pageContext.request.contextPath}/assets/img/noname0.png" alt="약관동의" width="120" /></span>
 									</li>
 									<li class="cover01"><span class="cover02"><img
-											class="circle" src="img/contract1.png" alt="약관동의" width="120" /></span>
+											class="circle" src="${pageContext.request.contextPath}/assets/img/contract1.png" alt="약관동의" width="120" /></span>
 										<div class="text">약관동의</div></li>
 									<li class="cover01"><span class="cover02"><img
-											class="circle" src="img/contract2.png" alt="약관동의" width="120" /></span>
+											class="circle" src="${pageContext.request.contextPath}/assets/img/contract2.png" alt="약관동의" width="120" /></span>
 										<div class="text">정보입력</div></li>
 									<li class="cover01"><span class="cover02"><img
-											class="circle" src="img/contract2.png" alt="약관동의" width="120" /></span>
+											class="circle" src="${pageContext.request.contextPath}/assets/img/contract2.png" alt="약관동의" width="120" /></span>
 										<div class="text">가입완료</div></li>
 									<li class="cover01"><span class="cover02"><img
-											class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+											class="circle" src="${pageContext.request.contextPath}/assets/img/noname0.png" alt="약관동의" width="120" /></span>
 									</li>
 								</ul>
 							</div>
@@ -155,7 +155,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0" 
-										src="http://cdn.nemoapp.kr/policy/servicePolicy.html?v=637063192662958639#begin"></iframe>
+										src="${pageContext.request.contextPath}/assets/terms/terms_common01.jsp"></iframe>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -164,7 +164,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0"
-										src="https://cdn.nemoapp.kr/policy/agentPrivacyPolicy.html?v=637073928717585804#begin"></iframe>
+										src="${pageContext.request.contextPath}/assets/terms/terms_co01.jsp"></iframe>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -173,7 +173,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0"
-										src="https://cdn.nemoapp.kr/policy/locatoinPolicy.html?v=637063192662958639#begin"></iframe>
+										src="${pageContext.request.contextPath}/assets/terms/terms_common02.jsp"></iframe>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -182,7 +182,7 @@ html, body {
 								</div>
 								<div class="policy">
 									<iframe width="100%" height="150px" frameborder="0"
-										src="https://cdn.nemoapp.kr/policy/servicePolicy.html?v=637073928717585804#begin"></iframe>
+										src="${pageContext.request.contextPath}/assets/terms/terms_co02.jsp"></iframe>
 								</div>
 								<br />
 								<div class="general01_btn">
@@ -202,22 +202,22 @@ html, body {
 								<div>
 									<ul class="gallery">
 										<li class="cover01"><span class="cover02"><img
-												class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+												class="circle" src="${pageContext.request.contextPath}/assets/img/noname0.png" alt="약관동의" width="120" /></span>
 										</li>
 										<li class="cover01"><span class="cover02"><img
-												class="circle" src="img/contract3.png" alt="약관동의"
+												class="circle" src="${pageContext.request.contextPath}/assets/img/contract3.png" alt="약관동의"
 												width="120" /></span>
 											<div class="text" style="margin-left: 60px;">약관동의</div></li>
 										<li class="cover01"><span class="cover02"><img
-												class="circle" src="img/contract1.png" alt="약관동의"
+												class="circle" src="${pageContext.request.contextPath}/assets/img/contract1.png" alt="약관동의"
 												width="120" /></span>
 											<div class="text" style="margin-left: 60px;">정보입력</div></li>
 										<li class="cover01"><span class="cover02"><img
-												class="circle" src="img/contract2.png" alt="약관동의"
+												class="circle" src="${pageContext.request.contextPath}/assets/img/contract2.png" alt="약관동의"
 												width="120" /></span>
 											<div class="text" style="margin-left: 60px;">가입완료</div></li>
 										<li class="cover01"><span class="cover02"><img
-												class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+												class="circle" src="${pageContext.request.contextPath}/assets/img/noname0.png" alt="약관동의" width="120" /></span>
 										</li>
 									</ul>
 								</div>
@@ -506,32 +506,32 @@ html, body {
 									<div>
 										<ul class="gallery">
 											<li class="cover01"><span class="cover02"><img
-													class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+													class="circle" src="${pageContext.request.contextPath}/assets/img/noname0.png" alt="약관동의" width="120" /></span>
 											</li>
 											<li class="cover01"><span class="cover02"><img
-													class="circle" src="img/contract3.png" alt="약관동의"
+													class="circle" src="${pageContext.request.contextPath}/assets/img/contract3.png" alt="약관동의"
 													width="120" /></span>
 												<div class="text">약관동의</div></li>
 											<li class="cover01"><span class="cover02"><img
-													class="circle" src="img/contract3.png" alt="약관동의"
+													class="circle" src="${pageContext.request.contextPath}/assets/img/contract3.png" alt="약관동의"
 													width="120" /></span>
 												<div class="text">정보입력</div></li>
 											<li class="cover01"><span class="cover02"><img
-													class="circle" src="img/contract1.png" alt="약관동의"
+													class="circle" src="${pageContext.request.contextPath}/assets/img/contract1.png" alt="약관동의"
 													width="120" /></span>
 												<div class="text">가입완료</div></li>
 											<li class="cover01"><span class="cover02"><img
-													class="circle" src="img/noname0.png" alt="약관동의" width="120" /></span>
+													class="circle" src="${pageContext.request.contextPath}/assets/img/noname0.png" alt="약관동의" width="120" /></span>
 											</li>
 										</ul>
 									</div>
 									<div class="box1">
 										<h5>회원가입이 완료되었습니다.</h5>
-										<img src="img/complete.png" />
+										<img src="${pageContext.request.contextPath}/assets/img/complete.png" />
 									</div>
 									<div>
 										<input type="button" class="btn btn-primary" value="바로가기"
-											name="checkButton" onclick="location.href='index.jsp'"
+											name="checkButton" onclick="location.href='index.do'"
 											style="height: 50px; width: 100px; margin: 50px">
 										<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
 									</div>
@@ -549,9 +549,9 @@ html, body {
 	<!-- end content -->
 	<script src="regex/regex.js"></script>
 	<!--   한글 입력 유효성 체크를 위한 regex2 추가 -->
-	<script src="regex/regex2.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/regex/regex2.js"></script>
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
                 	$('#pass_co01').attr('disabled', true);
             		$('#agree_all').on('change',function(){
@@ -793,7 +793,7 @@ html, body {
                        	page02();
 
                        });
-                 });
+    });
                     
                     <!----------------------------------- 이미지파일 ------------------------------>
                     var file = document.querySelector('#getfile');

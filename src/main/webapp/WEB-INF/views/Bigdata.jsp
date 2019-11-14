@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title>세모- 상가 중개사이트</title>
-        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/Bigdata.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Bigdata.css">
         
     </head>
     <style type="text/css">
@@ -105,9 +105,9 @@ html, body {
     <body>
         <!--------------------------- 복사하여 사용 하세요 ---------------------------->
 		<!-- 상단 메뉴 바 -->
-			<%@ include file="include/header.jsp" %>
+			<%@ include file="assets/include/header.jsp" %>
 		<!--  로그인 Modal -->
-			<%@ include file="include/loginmodal.jsp" %>
+			<%@ include file="assets/include/loginmodal.jsp" %>
 
         <!-- 컨텐츠 -->
         <div class="content">
@@ -188,7 +188,7 @@ html, body {
         </div>
         <!-- end content -->
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             function page01() {
                 var rst = document.getElementById("result01");

@@ -10,8 +10,8 @@
     <title>회원가입 선택</title>
 
     <!-- 부트스트랩 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/Joinus_select.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="href="${pageContext.request.contextPath}/assets/css/Joinus_select.css" />
 
     <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
     <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
@@ -23,9 +23,9 @@
   <body>
   <!--------------------------- 복사하여 사용 하세요 ---------------------------->
   <!-- 상단 메뉴 바 -->
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="assets/include/header.jsp" %>
   <!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>
+	<%@ include file="assets/include/loginmodal.jsp" %>
 
 
   <!-- 컨텐츠 -->
@@ -40,14 +40,14 @@
         
         <div class="box1">
           <h5>일반 회원가입</h5>
-          <img style="height:150px; width:150px;" src="img/general.png"/>
-          <button type="button" class="btn btn-primary" onclick="location.href='Joinus_general.jsp'">바로가기</button>
+          <img style="height:150px; width:150px;" src="${pageContext.request.contextPath}/assets/img/general.png"/>
+          <button type="button" class="btn btn-primary" onclick="location.href='Joinus_general.do'">바로가기</button>
         </div>
 
         <div class="box2">
           <h5>공인중개사 회원가입</h5>
-          <img style="height:150px; width:150px;" src="img/company.png"/>
-          <button type="button" class="btn btn-primary" onclick="location.href='Joinus_company.jsp'">바로가기</button>
+          <img style="height:150px; width:150px;" src="${pageContext.request.contextPath}/assets/img/company.png"/>
+          <button type="button" class="btn btn-primary" onclick="location.href='Joinus_company.do'">바로가기</button>
         </div>
 
       </div>
@@ -63,7 +63,7 @@
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
   </body>
 
 </html>
