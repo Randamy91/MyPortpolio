@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	
 %>
@@ -13,10 +14,10 @@
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>세모 - 상가 매물 중개 사이트</title>
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Main.css" />
-<link rel="stylesheet" href="plugins/icheck/css/blue.css" />
-<link rel="stylesheet" href="plugins/nouislider/nouislider.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/icheck/css/blue.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/nouislider/nouislider.css" />
 
 </head>
 <body>
@@ -68,7 +69,7 @@
 	</p>	
 </nav>
 		<!--  로그인 Modal -->
-		<%@ include file="include/loginmodal.jsp"%>
+		<%@ include file="assets/include/loginmodal.jsp"%>
 
 		<!-- 컨텐츠 -->
 		<div class="select-menu">
@@ -210,11 +211,11 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script>
-	<script src="plugins/icheck/icheck.min.js"></script>
-	<script src="plugins/nouislider/nouislider.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugins/icheck/icheck.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugins/nouislider/nouislider.min.js"></script>
 	<script>
 		//매물개수
 

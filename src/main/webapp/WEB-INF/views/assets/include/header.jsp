@@ -4,7 +4,7 @@
 <nav class="navbar menu_navbar bg-white">
 	<!--<div class="navbar-header menu_header">-->
 	<a class="navbar-brand logo" href="index.jsp"> <img alt="Brand"
-		src="img/main_logo.jpg" width="65px" height="40px">
+		src="${pageContext.request.contextPath}/img/main_logo.jpg" width="65px" height="40px">
 	</a>
 	<p class="navbar-text navbar-left">
 		<a href="index.jsp" class="navbar-link" style="text-decoration: none">상가</a>
