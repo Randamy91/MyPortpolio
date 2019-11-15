@@ -81,7 +81,7 @@
 							</tr>
 							<tr>
 								<th>0001</th>
-								<td><a href="Admin_infochange.jsp" style="text-decoration:none">이젠부동산</a></td>
+								<td><a href="Admin_infochange.do" style="text-decoration:none">이젠부동산</a></td>
 								<td>장상윤</td>
 								<td>010-4685-7666</td>
 								<td>2019-10-22</td>

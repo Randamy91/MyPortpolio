@@ -441,11 +441,11 @@
 	
 		$("#accept").click(function() {
 			alert("승인되었습니다.");
-			location.replace('Admin.jsp');
+			location.replace('Admin.do');
 		});
 		$("#delete").click(function() {
 			alert("삭제되었습니다.");
-			location.replace('Admin.jsp');
+			location.replace('Admin.do');
 		});
 			
 		
