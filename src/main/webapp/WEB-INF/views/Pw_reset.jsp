@@ -11,16 +11,16 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Pw_reset.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Pw_reset.css" />
 
 <title>세모- 상가 중개사이트</title>
 </head>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="assets/include/header.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>
+	<%@ include file="assets/include/loginmodal.jsp" %>
 
 	<!-- 컨텐츠 -->
 	<div class="content">
@@ -29,7 +29,7 @@
 				<h2>비밀번호 초기화</h2>
 				<p>새로운 비밀번호로 초기화 하세요.</p>
 			</div>
-			<form action="Pw_resetok.jsp" method="post">
+			<form action="Pw_resetok.do" method="post">
 			<div class="content-body">
 				<div class="pwch-title">
 					<span class="title">비밀번호 초기화</span><br>
@@ -81,7 +81,7 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script>
 		$(function(){
 			

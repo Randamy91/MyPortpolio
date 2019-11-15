@@ -12,16 +12,16 @@
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>세모 - 상가 매물 중개 사이트</title>
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Admin.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Admin.css" />
 
 
 </head>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/loginHeader.jsp" %>
+	<%@ include file="assets/include/loginHeader.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>
+	<%@ include file="assets/include/loginmodal.jsp" %>
 
 
 	<!-- 컨텐츠 -->
@@ -133,7 +133,7 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		
 	</script>

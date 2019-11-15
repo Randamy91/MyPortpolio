@@ -12,9 +12,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>중개사 회원정보 수정</title>
 
-<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets//bootstrap/css/bootstrap.min.css" />
 
-<link rel="stylesheet" type="text/css" href="./css/Admin_infochange.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets//css/Admin_infochange.css">
 
 
 
@@ -98,9 +98,9 @@
 </style>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="assets/include/header.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>
+	<%@ include file="assets/include/loginmodal.jsp" %>
 
 	<!-- 컨텐츠 -->
 	<div class="content">
@@ -348,7 +348,7 @@
 														<div class="set_email">
 															<input type="text" class="form-control" id="set_email01"
 																name="set_email01" style="width: 175px; height: 50px;">
-															@ <input type="text" name="set_email02" id="set_email02"
+															 <input type="text" name="set_email02" id="set_email02"
 																class="form-control" style="width: 175px; height: 50px;"
 																disabled value="naver.com"> <select
 																class="form-control" id="selectEmail" name="selectEmail"
@@ -423,7 +423,7 @@
 	<!-- end content -->
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
 	

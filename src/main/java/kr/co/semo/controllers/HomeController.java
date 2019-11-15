@@ -28,17 +28,138 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "Login.do", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
-		
-		return "Login";
-	}
-	
-	@RequestMapping(value = "index.do", method = RequestMethod.GET)
+	// 인덱스 페이지
+	@RequestMapping(value = "index.do")
 	public String index(Locale locale, Model model) {
 		
 		return "index";
 	}
 	
 	
+	
+	// Login 페이지
+	@RequestMapping(value = "Login.do", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		
+		return "Login";
+	}
+	
+	// Admin 페이지
+	@RequestMapping(value = "Admin.do")
+	public String admin(Locale locale, Model model) {
+		
+		return "Admin";
+	}
+	
+	// Admin_infochange 페이지
+	@RequestMapping(value = "Admin_infochange.do")
+	public String adminInfochange(Locale locale, Model model) {
+		
+		return "Admin_infochange";
+	}
+	
+	// Bigdata 페이지
+	@RequestMapping(value = "Bigdata.do", method = RequestMethod.GET)
+	public String bigdata(Locale locale, Model model) {
+		
+		return "Bigdata";
+	}
+	
+	// Co_infochange 페이지
+	@RequestMapping(value = "Co_infochange.do", method = RequestMethod.GET)
+	public String coInfochange(Locale locale, Model model) {
+		
+		return "Co_infochange";
+	}
+	
+	// Ge_infochange 페이지
+	@RequestMapping(value = "Ge_infochange.do", method = RequestMethod.GET)
+	public String geInfochange(Locale locale, Model model) {
+		
+		return "Ge_infochange";
+	}
+	
+	// Joinus_company 페이지
+	@RequestMapping(value = "Joinus_company.do", method = RequestMethod.GET)
+	public String joinusCompany(Locale locale, Model model) {
+		
+		return "Joinus_company";
+	}
+	
+	// Joinus_general 페이지
+	@RequestMapping(value = "Joinus_general.do", method = RequestMethod.GET)
+	public String joinusGeneral(Locale locale, Model model) {
+		
+		return "Joinus_general";
+	}
+	
+	// Joinus_select 페이지
+	@RequestMapping(value = "Joinus_select.do", method = RequestMethod.GET)
+	public String joinusSelect(Locale locale, Model model) {
+		
+		return "Joinus_select";
+	}
+	
+	// Maemul_register 페이지
+	@RequestMapping(value = "Maemul_register.do", method = RequestMethod.POST)
+	public String maemulRegister(Locale locale, Model model) {
+		
+		return "Maemul_register";
+	}
+	
+	// Maemul.detailed 페이지
+	@RequestMapping(value = "Maemul.detailed.do", method = RequestMethod.GET)
+	public String maemulDetailed(Locale locale, Model model) {
+		
+		return "Maemul.detailed";
+	}
+	
+	// Maemul.interest 페이지
+	@RequestMapping(value = "Maemul.interest.do", method = RequestMethod.GET)
+	public String maemulInterest(Locale locale, Model model) {
+		
+		return "Maemul.interest";
+	}
+	
+	// Maemul.manage 페이지
+	@RequestMapping(value = "Maemul.manage.do", method = RequestMethod.GET)
+	public String maemulManage(Locale locale, Model model) {
+		
+		return "Maemul.manage";
+	}
+	
+	// Pw_change 페이지
+	@RequestMapping(value = "Pw_change.do", method = RequestMethod.GET)
+	public String pwChange(Locale locale, Model model) {
+		
+		return "Pw_change";
+	}
+	
+	// Pw_changeok 페이지
+	@RequestMapping(value = "Pw_changeok.do", method = RequestMethod.POST)
+	public String pwChangeok(Locale locale, Model model) {
+		
+		return "Pw_changeok";
+	}
+	
+	// Pw_reset 페이지
+	@RequestMapping(value = "Pw_reset.do", method = RequestMethod.GET)
+	public String pwReset(Locale locale, Model model) {
+		
+		return "Pw_reset";
+	}
+	
+	// Pw_resetok 페이지
+	@RequestMapping(value = "Pw_resetok.do", method = RequestMethod.POST)
+	public String resetOk(Locale locale, Model model) {
+		
+		return "Pw_resetok";
+	}
+	
+	// Register_change 페이지
+	@RequestMapping(value = "Register_change.do", method = RequestMethod.POST)
+	public String registerChange(Locale locale, Model model) {
+		
+		return "Register_change";
+	}
 }

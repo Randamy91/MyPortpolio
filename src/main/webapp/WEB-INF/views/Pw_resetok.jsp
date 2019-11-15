@@ -11,16 +11,16 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Pw_resetok.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Pw_resetok.css" />
 
 <title>세모- 상가 중개사이트</title>
 </head>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="assets/include/header.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>
+	<%@ include file="assets/include/loginmodal.jsp" %>
 
 	<!-- 컨텐츠 -->
 	<div class="content">
@@ -47,11 +47,11 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script>
 		$(function(){
 			$('.gologin').click(function(){
-				location.href = 'Login.jsp';
+				location.href = 'Login.do';
 			});
 		});
 	
