@@ -8,16 +8,16 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>세모- 매물 등록</title>
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Maemul_register.css" />
-<link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />
-<link rel="stylesheet" href="plugins/sweetalert/sweetalert2.min.css" />
-<link rel="stylesheet" href ="plugins/icheck/css/blue.css" /> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Maemul_register.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/datepicker/datepicker.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/sweetalert/sweetalert2.min.css" />
+<link rel="stylesheet" href ="${pageContext.request.contextPath}/assets/plugins/icheck/css/blue.css" /> 
 
 </head>
 <body>
  <!-- 상단 메뉴바  -->
- <%@ include file="include/co_loginHeader.jsp"%>
+ <%@ include file="assets/include/co_loginHeader.jsp"%>
  <!-- //상단 메뉴바 -->
 
 	<!--page title-->
@@ -29,7 +29,7 @@
 			<!--//page title-->
 			<!--main section 시작-->
 			<div class="main_section">
-				<form id="registerform" name="registerform" action="Maemul.detailed.jsp" target="post"
+				<form id="registerform" name="registerform" action="Maemul.detailed.do" target="post"
 					role="form">
 					<!--위치정보-->
 					<table class="info_article_one">
@@ -89,7 +89,7 @@
 										<tr>
 											<th>사진</th>
                      						 <td class="preview">
-											<img id="preview" src="img/noname0.png" width="400" height="200">
+											<img id="preview" src="${pageContext.request.contextPath}/assets/img/noname0.png" width="400" height="200">
 											<input type="file" id="getfile" name="getfile" accept="image/*" required/></td>
 										</tr>
 									</div>
@@ -328,7 +328,7 @@
 									 <input type="radio" class="icheckuse" name="nowbtn" id="nowbtn" value="nowgo"checked/>&nbsp;즉시입주
 									  <input type="radio" class="icheckuse" name="nowbtn" id="withbtn" value="withgo"/>&nbsp;협의가능
 									   <input type="text" id="datepicker" placeholder="&nbsp;달력을 클릭하세요." readonly  />
-									      <img src="img/calendar.png" id="show-cal" height="20" style="float: none; cursor:pointer;">
+									      <img src="${pageContext.request.contextPath}/assets/img/calendar.png" id="show-cal" height="20" style="float: none; cursor:pointer;">
 							    		</div>
 							    	</td>
 							    </tr>
@@ -457,7 +457,7 @@
                             	 <ul class="notice"><li style="font-weight: bold;">사진은 최소 3장에서 10장까지 등록이 가능하며, 10MB이하의 가로로 찍은 사진을 권장합니다.</li>
                             	  <li style="color:red;">공인중개사 또는 부동산의 불필요한 정보(워터마크,상호,전화번호)가 있는 매물은 비공개 처리 됩니다.</li></ul>
                             <div class="maemulimgs_wrap">
-                               <img id="img" src="img/images.png"/>
+                               <img id="img" src="${pageContext.request.contextPath}/assets/img/images.png"/>
 
                             </div>
                             </td>
@@ -487,9 +487,9 @@
 	</div>
 
 	 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	 <script src = "plugins/icheck/icheck.min.js"></script>
-    <script src="plugins/datepicker/datepicker.min.js"></script>
-    <script src="plugins/datepicker/datepicker.ko-KR.js"></script>
+	 <script src = "${pageContext.request.contextPath}/assets/plugins/icheck/icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/datepicker/datepicker.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/datepicker/datepicker.ko-KR.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95f002774aca91da5371858ef1ee4891&libraries=services"></script>
     <script>
@@ -728,7 +728,7 @@ function handleImgFileSelect(e) {
 <script>
         $(function(){
      		$('#button_cancel').click(function(){
-     			location.href = 'index.jsp';
+     			location.href = 'index.do';
      		});
      	});
 </script>
