@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <nav class="navbar menu_navbar bg-white">
 	<!--<div class="navbar-header menu_header">-->
-	<a class="navbar-brand logo" href="index.jsp"> <img alt="Brand"
+	<a class="navbar-brand logo" href="index.do"> <img alt="Brand"
 		src="${pageContext.request.contextPath}/assets/img/main_logo.jpg" width="65px" height="40px">
 	</a>
 	<p class="navbar-text navbar-left">
