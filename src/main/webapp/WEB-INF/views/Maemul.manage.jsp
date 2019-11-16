@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,9 +13,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>세모- 상가 중개사이트</title>
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Login.css" />
-<link rel="stylesheet" type="text/css" href="./css/Maemul.manage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Login.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Maemul.manage.css">
 
 <style type="text/css">
 	body, html {
@@ -99,7 +103,7 @@
 
 <!--------------------------- 복사하여 사용 하세요 ---------------------------->
 <!-- 상단 메뉴 바 -->
-<%@ include file="./include/loginHeader.jsp" %>
+<%@ include file="./assets/include/loginHeader.jsp" %>
 <!-- 상단 메뉴 바  -->
 
 <!-- 로그인모달 -->
@@ -139,7 +143,7 @@
                             <a href="#">
                             	<div class="maemul" id="maemul">
                                 	<div class="maemul-image">
-                                        <span><img src="./img/office.jpg"></span>
+                                        <span><img src="${pageContext.request.contextPath}/assets/img/office.jpg"></span>
                                         <span class="mark" style="display: none;">거래완료</span>
                                     </div>
                                     <div class="maemul-detailed">
@@ -210,7 +214,7 @@
                             <a href="#">
                             	<div class="maemul" id="maemul">
                                 	<div class="maemul-image">
-                                        <span><img src="./img/office.jpg"></span>
+                                        <span><img src="${pageContext.request.contextPath}/assets/img/office.jpg"></span>
                                         <span class="mark" style="display: none;">거래완료</span>
                                     </div>
                                     <div class="maemul-detailed">
@@ -281,7 +285,7 @@
                             <a href="#">
                             	<div class="maemul" id="maemul">
                                 	<div class="maemul-image">
-                                        <span><img src="./img/office.jpg"></span>
+                                        <span><img src="${pageContext.request.contextPath}/assets/img/office.jpg"></span>
                                         <span class="mark" style="display: none;">거래완료</span>
                                     </div>
                                     <div class="maemul-detailed">
@@ -380,7 +384,7 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 	<script type="text/javascript">

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,11 +13,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>세모- 상가 중개사이트</title>
 
-<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" />
 
-<link rel="stylesheet" type="text/css" href="./css/Co_infochange.css">
-
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Co_infochange.css">
 
 </head>
 
@@ -97,7 +99,7 @@
 
 
 <!-- 상단 메뉴 바 -->
- <%@ include file="./include/co_loginHeader.jsp" %>	
+ <%@ include file="./assets/include/co_loginHeader.jsp" %>	
 <!-- 상단 메뉴바 end -->
 
 
@@ -114,7 +116,7 @@
 					<h2 class="title">공인중개사 회원정보 수정</h2>
 				</div>
 				<div class="main-content">
-					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="./index.jsp">
+					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="#" enctype="multipart/form-data">
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -284,7 +286,7 @@
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
 												<td>
-													<img id="preview" src="./img/ceo_image.jpg" class="coe_image" alt="이미지 로드후 미리보기 보여질 영역">
+													<img id="preview" src="${pageContext.request.contextPath}/assets/img/ceo_image.jpg" class="coe_image" alt="이미지 로드후 미리보기 보여질 영역">
 													<input type="file" class="form-control" id="best_image" name="best_image" accept="image/*" style="display: none;">
 													<label for="best_image" class="label_best_image">
 														<span class="btn btn-info btn-lg" style="position: relative; bottom: 175px;">사진 업로드</span>
@@ -385,8 +387,8 @@
 </div>  <!-- end content -->
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-<script src="./regex/regex.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/regex/regex.js"></script>
 <script type="text/javascript">
 	$("#selectEmail").change(function() {
 		$("#selectEmail option:selected").each(function() {

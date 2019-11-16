@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,9 +12,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>세모- 상가 중개사이트</title>
 
-<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" />
 
-<link rel="stylesheet" type="text/css" href="./css/Ge_infochange.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Ge_infochange.css">
 
 
 <style type="text/css">
@@ -94,7 +98,7 @@
 </style>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="./include/loginHeader.jsp" %>
+	<%@ include file="./assets/include/loginHeader.jsp" %>
 	<!-- 상단 메뉴바  -->
 
 <!--  로그인 Modal -->
@@ -111,7 +115,7 @@
 					<p class="text-muted" style="font-size: 15px;">회원 정보와 비밀번호를 변경할 수 있습니다.</p>
 				</div>
 				<div class="main-content">
-					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="./index.jsp">
+					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="#">
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -217,7 +221,7 @@
 			</div>
 			<div class="modal-body" style="text-align: center;">
 				<p>탈퇴, 시 네모에 등록하신 매물과 개인정보 등이 모두 삭제되며 <br> 이후 복구가 불가능 합니다. 정말 탈퇴 하시겠습니까?</p>
-				<img src="./img/cry.png" style="width: 160px; height: 160px">			
+				<img src="${pageContext.request.contextPath}/assets/img/cry.png" style="width: 160px; height: 160px">			
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal" id="exit-right" style="width: 100%;">회원 탈퇴하기</button>
@@ -229,8 +233,8 @@
 
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-<script src="./regex/regex2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/regex/regex2.js"></script>
 <!--<script type="text/javascript"
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script> --> 
 <script type="text/javascript">

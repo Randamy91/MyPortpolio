@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,9 +12,9 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>세모- 상가 중개사이트</title>
-<link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="./css/Maemul.detailed.css">
-<link rel="stylesheet" type="text/css" href="./css/Login.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Maemul.detailed.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Login.css">
 
 
 <style type="text/css">
@@ -105,12 +109,12 @@ html, body {
 <body>
 <!--------------------------- 복사하여 사용 하세요 ---------------------------->
 <!-- 상단 메뉴 바 -->
-<%@ include file="./include/header.jsp" %>
+<%@ include file="./assets/include/header.jsp" %>
 <!-- 상단 메뉴 바  -->
 
 
 <!--  로그인 Modal -->
-<%@ include file="./include/loginmodal.jsp" %>
+<%@ include file="./assets/include/loginmodal.jsp" %>
 <!-- 로그인 Modal end -->
 
 
@@ -134,17 +138,17 @@ html, body {
 				<div class="carousel-inner center-block">
 					<!-- 항목 (1) -->
 					<div class="item active">
-						<img src="./img/office.jpg" alt="슬라이더(1)">
+						<img src="${pageContext.request.contextPath}/assets/img/office.jpg" alt="슬라이더(1)">
 					</div>
 
 					<!-- 항목 (2) -->
 					<div class="item">
-						<img src="./img/office2.jpg" alt="슬라이더(2)">
+						<img src="${pageContext.request.contextPath}/assets/img/office2.jpg" alt="슬라이더(2)">
 					</div>
 
 					<!-- 항목 (3) -->
 					<div class="item">
-						<img src="./img/office3.jpg" alt="슬라이더(3)">
+						<img src="${pageContext.request.contextPath}/assets/img/office3.jpg" alt="슬라이더(3)">
 					</div>
 				</div>
 				<!-- // 내용영역 구성 -->
@@ -442,7 +446,7 @@ html, body {
 <!-- 컨텐츠  END -->
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 <script type="text/javascript">
