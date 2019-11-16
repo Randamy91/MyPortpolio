@@ -3,16 +3,15 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>세모- 상가 중개사이트</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Joinus_general.css">
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>세모- 상가 중개사이트</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Joinus_general.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/terms01.css">
+    	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/terms02.css">
 
 <style type="text/css">
 /*------------- 복사해서 사용하세요  --------------------*/
@@ -153,8 +152,7 @@ html, body {
 										for="check_box">세모 서비스 이용약관(필수)</label>
 								</div>
 								<div class="policy">
-									<iframe width="100%" height="150px" frameborder="0" 
-										src="${pageContext.request.contextPath}/assets/terms/terms_common01.jsp"></iframe>
+									<%@ include file="assets/include/terms/terms_common01.jsp" %>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -162,8 +160,7 @@ html, body {
 										for="check_box">공인중개사 회원가입 개인정보 수집 및 이용에 대한 동의(필수)</label>
 								</div>
 								<div class="policy">
-									<iframe width="100%" height="150px" frameborder="0"
-										src="${pageContext.request.contextPath}/assets/terms/terms_co01.jsp"></iframe>
+									<%@ include file="assets/include/terms/terms_co01.jsp" %>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -171,8 +168,7 @@ html, body {
 										for="check_box">위치 기반 서비스 약관(필수)</label>
 								</div>
 								<div class="policy">
-									<iframe width="100%" height="150px" frameborder="0"
-										src="${pageContext.request.contextPath}/assets/terms/terms_common02.jsp"></iframe>
+									<%@ include file="assets/include/terms/terms_common02.jsp" %>
 								</div>
 								<br />
 								<div style="text-align: left;">
@@ -180,8 +176,7 @@ html, body {
 										for="check_box">공인중개사 비즈니스 회원 서비스 이용 약관 동의 (필수)</label>
 								</div>
 								<div class="policy">
-									<iframe width="100%" height="150px" frameborder="0"
-										src="${pageContext.request.contextPath}/assets/terms/terms_co02.jsp"></iframe>
+									<%@ include file="assets/include/terms/terms_co02.jsp" %>
 								</div>
 								<br />
 								<div class="general01_btn">
@@ -793,8 +788,7 @@ html, body {
 
                        });
     });
-                    
-                    <!----------------------------------- 이미지파일 ------------------------------>
+                    <!-- 이미지 파일 -->
                     var file = document.querySelector('#getfile');
 
                     file.onchange = function () { 

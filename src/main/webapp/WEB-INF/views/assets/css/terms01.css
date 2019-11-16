@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    color: #777777;
+}
+body {
+    font-family: "Nanum Barun Gothic, sans-serif"
+}
+
+.sg-main__title{
+    display: block;
+    padding: 25px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+.sg-main__title h1{
+    display: block;
+    float: left;
+    margin-top: 13px;
+    font-size: 26px;
+    font-weight: normal;
+    color: #333;
+}
+.sg-main__title .select_box{
+    display: block;
+    float: right;
+}
+.sg-main__title:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.select_box {
+    position: relative;
+    width: 265px;
+    height: 55px;
+    border: 1px solid #e0e0e0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.select_box__bg{
+    display: block;
+    height: 55px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #f8f8f8;
+    z-index: -1;
+}
+.select_box label {
+    position: absolute;
+    font-size: 14px;
+    color: #777777;
+    top: 17px;
+    left: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.select_box select#color {
+    width: 100%;
+    height: 55px;
+    min-height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    opacity: 0;
+    filter: alpha(opacity=0); /* IE 8 */
+}
+.tri{
+    display: block;
+    position: absolute;
+    top: 42%;
+    right: 6%;
+    width: 0;
+    height: 0;
+    border-top:7px solid #777;
+    border-bottom:7px solid transparent;
+    border-right: 7px solid transparent;
+    border-left: 7px solid  transparent;
+}
+
+.sg-main {
+    padding: 0 20px 20px 20px;
+    font-size: 14px;
+}
+.sg-agent {
+    margin-top: 15px;
+}
+.sg-agent h1 {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+.sg-agent h2 {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.sg-agent p {
+    margin-bottom: 5px;
+}
+.sg-agent ol,
+.sg-agent ul{
+    display: table;
+    overflow: hidden;
+    padding: 0;
+}
+.sg-agent ol li,
+.sg-agent ul li{
+    display: table;
+    margin: 5px 0;
+    list-style: none;
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+}
+.sg-agent ol li ol,
+.sg-agent ol li ul {
+    margin-top: 5px;
+}
+.sg-agent ol li ol > li > .listNum,
+.sg-agent ol li ul > li > .listNum {
+    width: 10px;
+}
+.sg-agent ol li ol > li > .sg-text,
+.sg-agent ol li ul > li > .sg-text {
+    padding-bottom: 5px;
+}
+.sg-agent ol li ol > li > .sg-text--left10,
+.sg-agent ol li ul > li > .sg-text--left10 {
+    padding-bottom: 5px;
+    position: relative;
+    left: -10px;
+}
+.color-red {
+    color: red;
+}
+.listNum {
+    display: table-cell;
+    width: 20px;
+}
+.sg-text {
+    padding-bottom: 5px;
+}
+.sg-agent dl {
+    clear: both;
+    margin-top: 5px;
+}
+
+.sg-agent dt {
+    display: block;
+    float: left;
+    margin-right: 5px;
+}
+
+.sg-agent dd {
+    display: block;
+}
+
+.sg-agent table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.sg-agent table caption {
+    display: none;
+}
+
+.sg-agent table thead {
+    background-color: #999;
+}
+
+.sg-agent table thead th {
+    border: 1px solid #999;
+}
+
+.sg-agent table tbody td {
+    border: 1px solid #999;
+}
+
+.sg-agent .nemo__information {
+    margin-bottom: 5px;
+}

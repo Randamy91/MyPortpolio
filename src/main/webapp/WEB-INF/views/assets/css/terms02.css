@@ -1,0 +1,52 @@
+@media all and (max-width: 767px){
+    .select_box {
+        position: relative;
+        width: 225px;
+        height: 45px;
+        margin-top: 10px;
+        border: 1px solid #e0e0e0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    .select_box__bg{
+        display: block;
+        height: 45px;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: #f8f8f8;
+        z-index: -1;
+    }
+    .select_box label {
+        position: absolute;
+        font-size: 14px;
+        color: #777777;
+        top: 14px;
+        left: 12px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .select_box select#color {
+        width: 100%;
+        height: 45px;
+        min-height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+        opacity: 0;
+        filter: alpha(opacity=0); /* IE 8 */
+    }
+    .tri{
+        display: block;
+        position: absolute;
+        top: 42%;
+        right: 6%;
+        width: 0;
+        height: 0;
+        border-top:5px solid #777;
+        border-bottom:5px solid transparent;
+        border-right: 5px solid transparent;
+        border-left: 5px solid  transparent;
+    }
+}

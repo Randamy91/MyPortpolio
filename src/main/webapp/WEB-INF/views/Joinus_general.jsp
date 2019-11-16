@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Joinus_general.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/terms01.css">
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/terms02.css">
-        <!-- blue.css / icheck.min.js / jquery에 icheck plugin을 적용시켜 놓음(general만).. 실제 class에 icheck를 먹이면 자바스크립트가 동작을 안함 확인중.. -->
      
     <style type="text/css">
+       
 /*------------- 복사해서 사용하세요  --------------------*/
 
 html, body {
@@ -154,7 +154,7 @@ html, body {
                                     <label for="check_box">세모 서비스 이용약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                	<%@ include file="assets/terms/terms_common01.jsp" %>
+                                	<%@ include file="assets/include/terms/terms_common01.jsp" %>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">
@@ -162,7 +162,7 @@ html, body {
                                     <label for="check_box">개인정보 수집 및 이용에 대한 동의(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="150px" frameborder="0" src="${pageContext.request.contextPath}/assets/terms/terms_ge01.jsp"></iframe>
+                                	<%@ include file="assets/include/terms/terms_ge01.jsp" %>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">
@@ -170,7 +170,7 @@ html, body {
                                 <label for="check_box">위치 기반 서비스 약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="150px" frameborder="0" src="${pageContext.request.contextPath}/assets/terms/terms_common02.jsp"></iframe>
+                                	<%@ include file="assets/include/terms/terms_common02.jsp" %>
                                 </div>
                                 <div class="general01_btn">
                                     <input

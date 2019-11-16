@@ -7,11 +7,9 @@
 <title>이용약관</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
     <meta name="format-detection" content="telephone=no, address=no, email=no" />
-    <link rel="stylesheet" href="../css/terms01.css">
-    <link rel="stylesheet" href="../css/terms02.css">
 </head>
 <body>
-	<div class="sg-main">
+	<div style="overflow-x:hidden; overflow-y:auto; width:100%; height:150px;" class="sg-main">
         <section class="sg-main__title">
             <h1>이용약관</h1>
             <div class="select_box">

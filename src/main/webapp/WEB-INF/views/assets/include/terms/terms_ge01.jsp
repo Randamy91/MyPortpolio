@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/terms02.css">
 </head>
 <body>
-	<div class="sg-main">
+	<div style="overflow-x:hidden; overflow-y:auto; width:100%; height:150px;" class="sg-main">
         <section class="sg-main__title">
             <h1>개인 사용자 회원 가입 개인정보 수집 및 이용에 대한 동의</h1>
         </section>
