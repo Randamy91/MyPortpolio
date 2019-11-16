@@ -9,6 +9,8 @@
         <title>세모- 상가 중개사이트</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Joinus_general.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/terms01.css">
+    	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/terms02.css">
         <!-- blue.css / icheck.min.js / jquery에 icheck plugin을 적용시켜 놓음(general만).. 실제 class에 icheck를 먹이면 자바스크립트가 동작을 안함 확인중.. -->
      
     <style type="text/css">
@@ -152,7 +154,7 @@ html, body {
                                     <label for="check_box">세모 서비스 이용약관(필수)</label>
                                 </div>
                                 <div class="policy">
-                                    <iframe width="100%" height="150px" frameborder="0" src="${pageContext.request.contextPath}/assets/terms/terms_common01.jsp"></iframe>
+                                	<%@ include file="assets/terms/terms_common01.jsp" %>
                                 </div>
                                 <br/>
                                 <div style="text-align: left;">

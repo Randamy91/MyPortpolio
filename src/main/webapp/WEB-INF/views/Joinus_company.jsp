@@ -142,7 +142,6 @@ html, body {
 									</li>
 								</ul>
 							</div>
-							
 								<div style="text-align: left;">
 									<input type="checkbox" name="agree01" id="agree_all"
 										onclick="agreeCheck()"> <label for="check_box">아래
@@ -406,7 +405,7 @@ html, body {
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
 											
-                     						 	<td><img id="preview" src="img/noname1.png" width="180" height="240" alt="사진 영역입니다.">
+                     						 	<td><img id="preview" src="${pageContext.request.contextPath}/assets/img/noname1.png" width="180" height="240" alt="사진 영역입니다.">
 												<input type="file" id="getfile" name="getfile" accept="image/*" required/></td>
 												
 											</tr>
@@ -547,7 +546,7 @@ html, body {
 		<!-- Footer END -->
 	</div>
 	<!-- end content -->
-	<script src="regex/regex.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/regex/regex.js"></script>
 	<!--   한글 입력 유효성 체크를 위한 regex2 추가 -->
 	<script src="${pageContext.request.contextPath}/assets/js/regex/regex2.js"></script>
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
