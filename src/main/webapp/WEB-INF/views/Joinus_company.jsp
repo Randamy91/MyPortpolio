@@ -396,15 +396,15 @@ html, body {
 												</td>
 												<!-------------- 상윤이 소스 끝 ---------------->
 											</tr>
-											<!-------------- 상윤이 소스 시작 ---------------->
+											<!-------------- 하린이 소스 시작 ---------------->
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
 											
                      						 	<td><img id="preview" src="${pageContext.request.contextPath}/assets/img/noname1.png" width="180" height="240" alt="사진 영역입니다.">
-												<input type="file" id="getfile" name="getfile" accept="image/*" required/></td>
+												<input type="file" id="getfile" name="getfile" accept="image/*" /></td>
 												
 											</tr>
-											<!-------------- 상윤이 소스 끝 ---------------->
+											<!-------------- 하린이 소스 끝 ---------------->
 											<tr>
 												<th>개인정보 입력</th>
 											</tr>
@@ -720,7 +720,14 @@ html, body {
                         if (!regex.min_length('#coe_Telephone3', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
                 		if (!regex.max_length('#coe_Telephone3', 4, '최대 4자 까지만 입력 가능합니다.')) { return false; }
                 		
-                		
+                		// 대표사진 검사
+                		var subject = $("#getfile").val();
+                        if (!subject) {
+                            alert("대표사진을 첨부하세요");
+                            $("#getfile").focus();
+                            return false;                     
+                        }     		
+                        		                		
                 		/** 이름 검사 */
                         if (!regex.value('#P_name', '이름을 입력하세요.')) { return false; }
                         if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) { return false; } 
@@ -787,22 +794,25 @@ html, body {
                        	page02();
 
                        });
-    });
-                    <!-- 이미지 파일 -->
+    			});
+                	
+                    // 대표사진 미리보기 (유효성검사는 별도로 있음)
                     var file = document.querySelector('#getfile');
-
-                    file.onchange = function () { 
-                     var fileList = file.files ;
-                     
-                     // 읽기
-                     var reader = new FileReader();
-                     reader.readAsDataURL(fileList [0]);
-
-                     //로드 한 후
-                     reader.onload = function  () {
-                         document.querySelector('#preview').src = reader.result;
-                     }; 
-                 }; 
+                	file.onchange = function () { 
+                 	var fileList = file.files ;                     
+                 	 // 읽기
+                	 var reader = new FileReader();
+                	 reader.readAsDataURL(fileList [0]);
+                 	 //로드 한 후
+                	 reader.onload = function  () {
+                     document.querySelector('#preview').src = reader.result;
+             	   	 }; 
+             	   	
+             		};
+                
+                 	
+                   
+                   
                     
                     
                 </script>
