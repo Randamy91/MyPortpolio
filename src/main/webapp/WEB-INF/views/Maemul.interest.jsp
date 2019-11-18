@@ -13,16 +13,16 @@
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>세모 - 상가 매물 중개 사이트</title>
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/Maemul.interest.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Maemul.interest.css" />
 
 </head>
 <body>
 	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="include/loginHeader.jsp" %>
+	<%@ include file="assets/include/loginHeader.jsp" %>
 	<!--  로그인 Modal -->
-	<%@ include file="include/loginmodal.jsp" %>	
+	<%@ include file="assets/include/loginmodal.jsp" %>	
 	<!-- 컨텐츠 -->
 	<div class="content">
 		<div class="container content-container">
@@ -44,22 +44,26 @@
 							<span>최근 본 매물</span><span class="maemulcount" style="color: red;"></span><span>개</span>
 							<button type="button" class="btn btn-default delAll">전체 삭제</button>
 						</div>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="heartItem">
 						<div class="sub">
 							<span>찜한 매물</span><span class="heartcount" style="color: red;"></span><span>개</span>
 							<button type="button" class="btn btn-default delAll">전체 삭제</button>
 						</div>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
-						<%@ include file="include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						<%@ include file="assets/include/dummyCard.jsp"%>
+						
 					</div>
 				</div>
 			</div>
@@ -68,11 +72,11 @@
 	<!-- 컨텐츠  END -->
 
 	<!-- Footer -->
-	<%@ include file="include/footer.jsp"%>
+	<%@ include file="assets/include/footer.jsp"%>
 	<!-- Footer END -->
 
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			var maemulCount = $('#interItem .article-card').length;
