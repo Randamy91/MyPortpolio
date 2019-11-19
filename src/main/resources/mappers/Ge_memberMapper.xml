@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Ge_memberMapper">
+	<!-- Beans 의 멤버변수 (property) 이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+	<resultMap type="kr.co.semo.model.Ge_member" id="ge_memberMap">
+		<result property="id"			column="id"/>
+		<result property="name"			column="name"/>
+		<result property="email_id"		column="email_id"/>
+		<result property="user_pw"		column="user_pw"/>
+		<result property="tel_num"		column="tel_num"/>
+		<result property="reg_date"		column="reg_date"/>
+		<result property="recent_date"	column="recent_date"/>
+	</resultMap>
+
+	<!-- 데이터 저장 -->
+	<insert id="insertItem" 
+		parameterType="kr.co.semo.model.Ge_member" 
+		useGeneratedKeys="true" 
+		keyProperty="id">
+		INSERT INTO ge_member (
+			name, email_id, user_pw, tel_num, reg_date, recent_date
+		) VALUES (
+			#{name}, #{email_id}, #{user_pw}, #{tel_num}, #{reg_date}, #{recent_date}
+		)
+	</insert>
+	
+	<!-- 단일행 조회 -->
+    <select id="selectItem"
+        parameterType="kr.co.semo.model.Ge_member"
+        resultMap="ge_memberMap">
+        SELECT name, email_id, user_pw, tel_num, reg_date, recent_date 
+        FROM ge_member 
+        WHERE id=#{id};
+    </select>
+    
+    <!-- 다중행 조회 -->
+	
+</mapper>

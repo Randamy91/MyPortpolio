@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Co_memberMapper">
+	<resultMap type="kr.co.semo.model.Co_member" id="co_memberMap">
+		<result property="id"			column="id"/>
+		<result property="co_name"		column="co_name"/>
+		<result property="broker_num"	column="broker_num"/>
+		<result property="office_num"	column=""/>
+		<result property="office_addr"	column="office_addr"/>
+		<result property="tel_num"		column="tel_num"/>
+		<result property="boss_name"	column="boss_name"/>
+		<result property="tel"			column="tel"/>
+		<result property="assi_name"	column="assi_name"/>
+		<result property="position"		column="position"/>
+		<result property="email_id"		column="email_id"/>
+		<result property="user_pw"		column="user_pw"/>
+		<result property="approval"		column="approval"/>
+		<result property="reg_date"		column="reg_date"/>
+		<result property="broker_img"	column="broker_img"/>		
+		<result property="recent_date"	column="recent_date"/>
+	</resultMap>	
+		<insert id="insertItem" parameterType="kr.co.semo.model.Co_member" 
+		useGeneratedKeys="true" keyProperty="id">
+			INSERT INTO co_member (
+				co_name, broker_num, office_num, office_addr, tel_num, boss_name,
+				tel, assi_name, position, email_id, user_pw, approval, reg_date,
+				broker_img, recent_date
+			) VALUES (
+				#{co_name}, #{broker_num}, #{office_num}, #{office_addr}, #{tel_num}, 
+				#{boss_name}, #{tel} , #{assi_name},#{position}, #{email_id}, #{user_pw}, 
+				#{approval}, #{reg_date}, #{broker_img}, #{recent_date}
+			)
+		</insert>
+	
+</mapper>
