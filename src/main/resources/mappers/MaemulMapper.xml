@@ -4,7 +4,7 @@
   
   <mapper namespace="MaemulMapper">
      <!-- Beans의 맴버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-     <resultMap type="kr.co.semo.springhelper.model.Maemul" id="maemulMap">
+     <resultMap type="kr.co.semo.model.Maemul" id="maemulMap">
         <result property="id" column="id"/>
         <result property="item_addrst" column="item_addrst"/> 
         <result property="item_addrnd" column="item_addrnd"/>
@@ -38,7 +38,7 @@
      
      <!-- 데이터 저장을 위한 기능 정의 -->
      <insert id="insertItem"
-     parameterType="kr.co.semo.springhelper.model.Maemul"
+     parameterType="kr.co.semo.model.Maemul"
      keyProperty="id"
      useGeneratedKeys="true">
         INSERT INTO maemul_register (item_addrst, item_addrnd, select_type, build_name, floor, all_floor,
