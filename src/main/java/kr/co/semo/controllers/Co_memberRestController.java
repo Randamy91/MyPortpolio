@@ -1,5 +1,8 @@
 package kr.co.semo.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
@@ -16,10 +20,10 @@ import kr.co.semo.model.Ge_member;
 import kr.co.semo.service.Co_memberService;
 import kr.co.semo.service.Ge_memberService;
 
-@Controller
-public class Co_memberController {
+@RestController
+public class Co_memberRestController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(Co_memberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(Co_memberRestController.class);
 	
 	@Autowired WebHelper webHelper;
 	@Autowired Co_memberService co_memberService;
@@ -27,12 +31,11 @@ public class Co_memberController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	@RequestMapping(value="coAdd.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
-	public String adduser(
+	@RequestMapping(value="/addCo_member", method = RequestMethod.POST)
+	public Map<String, Object> adduser(
 			@RequestParam(value="co_name") String co_name,
-			@RequestParam(value="broker_num") String broker_num,
-			@RequestParam(value="office_num") String office_num,
+			@RequestParam(value="coe_number") String broker_num,
+			@RequestParam(value="co_number") String office_num,
 			@RequestParam(value="office_addr") String office_addr,
 			@RequestParam(value="tel_num") String tel_num,
 			@RequestParam(value="boss_name") String boss_name,
@@ -44,7 +47,9 @@ public class Co_memberController {
 			@RequestParam(value="approval") String approval,
 			@RequestParam(value="reg_date") String reg_date,
 			@RequestParam(value="broker_img") String broker_img,
-			@RequestParam(value="recent_date") String recent_date
+			@RequestParam(value="recent_date") String recent_date,
+			@RequestParam(value="filebox_1") String member_file_office,
+			@RequestParam(value="fileBox_2") String member_file_lice
 			) {
 		
 		Co_member input = new Co_member();
@@ -64,13 +69,16 @@ public class Co_memberController {
 		input.setBroker_img(broker_img);
 		input.setRecent_date(recent_date);
 		
+		Map<String, Object> output = new HashMap<String, Object>();
+		
+		output.put("message", 1);
+		
 		try {
 			co_memberService.addCo_member(input);
-			return "success";
 		} catch (Exception e) {
-			return "fail";
+			System.out.println(e.getLocalizedMessage());
 		}
 		
-		
+		return output;
 	}
 }

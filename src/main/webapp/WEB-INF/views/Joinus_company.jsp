@@ -202,7 +202,9 @@ html, body {
 
 
 						<form name="filter" class="personal_info" role="form"
-							method="post" action="#" id="result02" style="display: none;">
+							method="post"
+							action="${pageContext.request.contextPath}/co_member"
+							id="result02" style="display: none;">
 							<!-- 페이지 이동 방지를 위한 iframe -->
 							<iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
 							<div>
@@ -473,9 +475,9 @@ html, body {
 											class="form-control" name="email_ge" id="email_ge"
 											style="display: inline-block; width: 184px; height: 35px;">
 												<option value="">----- 선택하세요 -----</option>
-												<option value="value 1">naver.com</option>
-												<option value="value 2">gmail.com</option>
-												<option value="value 3">daum.net</option>
+												<option value="1">naver.com</option>
+												<option value="2">gmail.com</option>
+												<option value="3">daum.net</option>
 										</select> <input type="text" name="email_ge2" id="email_ge2"
 											class="form-control" maxlength="20"
 											placeholder="ex)gmail.com"
@@ -522,7 +524,7 @@ html, body {
 							</table>
 							<div class="general02_btn" style="text-align: center;">
 								<input type="submit" class="btn btn-primary" value="입력완료"
-									name="checkButton" onclick="submit_form()"
+									name="checkButton"
 									style="height: 50px; width: 100px; margin: 50px">
 								<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
 							</div>
@@ -593,7 +595,6 @@ html, body {
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-	
 		$('#pass_co01').attr('disabled', true);
 		$('#agree_all').on('change', function() {
 			var agree_all = $('input:checkbox[id="agree_all"]').is(":checked");
@@ -672,13 +673,6 @@ html, body {
 				}
 			});
 		});
-
-		// 페이지 이동없이 submit 처리 (없어도 되네? 왜 갑자기 이러는지는 모름)       
-		function submit_form() {
-			document.filter.target = 'ifrm';
-			document.filter.action = 'save_data.php';
-			document.filter.submit();
-		}
 
 		// 폼 유효성 검사
 		$(function() {
@@ -1017,31 +1011,13 @@ html, body {
 								var fileName = fileValue[fileValue.length - 1]; //파일명
 								var filePath = "d:/"
 								//ajax parsing
-								$.ajax({
-									url : '/semo',
-									type : 'POST',
-									data : {
-										co_name : $("#co_name").val(),
-										broker_num : $("#co_number").val(),
-										office_num : $("#coe_number").val(),
-										office_addr : $("#sample2_address")
-												.val(),
-										tel_num : fullphone,
-										boss_name : $("#coe_name").val(),
-										position : position,
-										assi_name : $("#P_name").val(),
-										email_id : fullEmail,
-										user_pw : $("#co_pw").val(),
-										tel : fulltel,
-										approval : "N",
-										reg_date : s,
-										broker_img : fileName,
-										recent_date : s
+								$("#result02").ajaxForm({
+									method : 'POST',
+									success : function(json) {
+										console.log(json)
 									}
 								});
-
 								page02();
-
 							});
 		});
 

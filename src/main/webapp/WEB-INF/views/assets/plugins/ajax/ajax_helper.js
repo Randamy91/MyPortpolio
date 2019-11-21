@@ -68,8 +68,7 @@ jQuery.each([ "put", "delete" ], function(i, method) {
             url : url,
             type : method,
             dataType : type,
-            data : data,
-            success : callback
+            data : data
         });
     };
 });

@@ -28,7 +28,7 @@ public class Ge_memberRestController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	@RequestMapping(value="/semo", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="/addGe_member", method = RequestMethod.POST)
 	public Map<String, Object> adduser(
 			@RequestParam(value="name") String name,
 			@RequestParam(value="email_id") String email_id,
@@ -37,8 +37,6 @@ public class Ge_memberRestController {
 			@RequestParam(value="reg_date") String reg_date,
 			@RequestParam(value="recent_date") String recent_date
 			) {
-		
-		System.out.println("111111111111111----31242342352435234wefdwqefsadf1435rf34f34f" );
 		Ge_member input = new Ge_member();
 		input.setName(name);
 		input.setEmail_id(email_id);
@@ -47,15 +45,15 @@ public class Ge_memberRestController {
 		input.setReg_date(reg_date);
 		input.setRecent_date(recent_date);
 		
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> output = new HashMap<String, Object>();
+		
+		
 		
 		try {
 			ge_memberService.addGe_member(input);
-			data.put("item", input);
-			return data;
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-		
-	}
+		return output;
+	}	
 }
