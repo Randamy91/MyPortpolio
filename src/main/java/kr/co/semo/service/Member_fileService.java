@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.co.semo.model.Member_file;
 
-public interface Member_fileservice {
+public interface Member_fileService {
 	public Member_file getMember_fileItem(Member_file input) throws Exception;
 
 	public List<Member_file> getMember_fileList(Member_file input) throws Exception;

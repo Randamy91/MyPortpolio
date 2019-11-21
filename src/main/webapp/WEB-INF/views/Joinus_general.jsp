@@ -121,7 +121,7 @@ html, body {
                             <p class="text-muted" style="font-size: 15px;">세모에 오신것을 환영합니다.</p>
                         </div>
                         <div class="main-content">
-                            <form name="filter" class="policy_all" role="form" method="post" action="#" id="result01" style="display: block;">
+                            <form name="filter" class="policy_all" role="form" method="post" id="result01" style="display: block;">
                                 <div>
                                     <ul class="gallery">
                                         <li class="cover01">
@@ -180,7 +180,7 @@ html, body {
                             </form>
                             <!-- form 박스 - 1  -->
                             
-                            <form name="filter" class="personal_info" role="form" method="post" action="#" id="result02" style="display: none;" >
+                            <form name="filter" class="personal_info" role="form" id="result02" style="display: none;" >
                                 <!-- 페이지 이동 방지를 위한 iframe -->
                                 <iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
 
@@ -260,7 +260,7 @@ html, body {
                                 </table>
                                 <div class="general02_btn on" style="text-align: center;">
                                     <input
-                                    type="submit" class="btn btn-primary" id="submit_ge02" value="입력완료" name="checkButton" onclick ="submit_form()"style="height: 50px; width: 100px; margin: 50px" >
+                                    type="submit" class="btn btn-primary" id="submit_ge02" value="입력완료" name="checkButton" style="height: 50px; width: 100px; margin: 50px" >
                                 <!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
                                 </div>
                             </form>
@@ -316,6 +316,7 @@ html, body {
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/plugins/icheck/icheck.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
         <script type="text/javascript">
         	   	
         	$('#pass_ge01').attr('disabled', true);
@@ -450,17 +451,66 @@ html, body {
                 if (!regex.value('#phoneNumber1', '번호를 입력하세요.')) { return false; }
                 if (!regex.phone('#phoneNumber1', '번호가 잘못되었습니다.')) { return false; }
 
-                page02();
+                /*
+				ajax 비동기 회원정보 parsing
+				 */
+				// 현재 시간 yyyy-mm-dd hh:mm:ss
+				function leadingZeros(n, digits) {
+					var zero = '';
+					n = n.toString();
 
+					if (n.length < digits) {
+						for (i = 0; i < digits - n.length; i++)
+							zero += '0';
+					}
+					return zero + n;
+				}
+
+				var d = new Date();
+				var s = leadingZeros(d.getFullYear(), 4) + '-'
+						+ leadingZeros(d.getMonth() + 1, 2) + '-'
+						+ leadingZeros(d.getDate(), 2) + ' ' +
+
+						leadingZeros(d.getHours(), 2) + ':'
+						+ leadingZeros(d.getMinutes(), 2) + ':'
+						+ leadingZeros(d.getSeconds(), 2);
+
+				var firstEmail = $("#user_email");
+				var fullEmail;
+				// email 결합
+				if ($("#direct").is(":checked")) {
+					fullEmail = firstEmail.val() + "@"
+							+ $("#email_ge2").val();
+				} else {
+					fullEmail = firstEmail.val() + "@"
+							+ $("#email_ge option:selected").text();
+				}
+
+				//ajax parsing
+				$.ajax({
+					url : 'http://localhost:8080/semo',
+					dataType : 'json',
+					type : 'POST',
+					data : {
+						name : $("#user_name").val(),
+						email_id : fullEmail,
+						user_pw : $("#Rpw").val(),
+						tel_num : $("#phoneNumber1").val(),
+						reg_date : s,
+						recent_date : s
+					}
+				});
+                page02();
             });
         });
       		
-         	// 페이지 이동없이 submit 처리 (없어도 되네? 왜 갑자기 이러는지는 모름)       
+         	/*
+      		// 페이지 이동없이 submit 처리 (없어도 되네? 왜 갑자기 이러는지는 모름)       
             function submit_form() {
             document.filter.target = 'ifrm';
             document.filter.action = 'save_data.php';
             document.filter.submit();
-            }
+            }*/
         
             
             $(function(){

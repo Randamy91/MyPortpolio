@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.semo.model.Maemul;
-import kr.co.semo.service.Maemulservice;
+import kr.co.semo.service.MaemulService;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class Maemulserviceimpl implements Maemulservice{
+public class MaemulServiceImpl implements MaemulService{
 
 	@Autowired
     SqlSession sqlSession;

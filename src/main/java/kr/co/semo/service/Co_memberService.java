@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.co.semo.model.Co_member;
 
-public interface Co_memberservice {
+public interface Co_memberService {
 	public Co_member getCo_memberItem(Co_member input) throws Exception;
 
 	public List<Co_member> getCo_memberList(Co_member input) throws Exception;

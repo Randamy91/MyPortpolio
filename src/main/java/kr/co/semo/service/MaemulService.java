@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.co.semo.model.Maemul;
 
-public interface Maemulservice {
+public interface MaemulService {
 	public Maemul getMaemulItem(Maemul input) throws Exception;
 
 	public List<Maemul> getMaemulList(Maemul input) throws Exception;

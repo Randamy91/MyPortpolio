@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.semo.model.Ge_member;
-import kr.co.semo.service.Ge_mamberservice;
+import kr.co.semo.service.Ge_memberService;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class Ge_memberserviceimpl implements Ge_mamberservice{
+public class Ge_memberServiceImpl implements Ge_memberService{
 
 	@Autowired
     SqlSession sqlSession;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.co.semo.model.Ge_member;
 
-public interface Ge_mamberservice {
+public interface Ge_memberService {
 	
 	public Ge_member getGe_memberItem(Ge_member input) throws Exception;
 
