@@ -73,7 +73,7 @@ public class MaemulServiceImpl implements MaemulService{
     }
 
     @Override
-    public int addMaemul(Maemul input) throws Exception {
+    public int AddMaemul(Maemul input) throws Exception {
         int result = 0;
 
         try {

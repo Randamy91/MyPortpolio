@@ -5,9 +5,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import kr.co.semo.helper.WebHelper;
 import lombok.extern.slf4j.Slf4j;
 import uap_clj.java.api.Browser;
 import uap_clj.java.api.Device;
@@ -16,6 +18,9 @@ import uap_clj.java.api.OS;
 @Slf4j
 public class AppInterceptor extends HandlerInterceptorAdapter {
 	long startTime = 0, endTime = 0;
+	
+	@Autowired
+	WebHelper webHelper;
 
 	/**
 	 * Controller 실행 요청 전에 수행되는 메서드 클라이언트의 요청을 컨트롤러에 전달 하기 전에 호출된다. return 값으로
@@ -27,6 +32,10 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// log.debug("AppInterceptor.preHandle 실행됨");
+		
+		// WebHelper의 초기화는 모든 컨트롤러마다 개별적으로 호출되어야 한다. 
+		// Interceptor에서 이 작업을 수행하면 모든 메서드마다 수행하는 동일 작업을 일괄처리 할수 있다. 
+		webHelper.init();
 
 		// 컨트롤러 실행 직전에 현재 시각을 저장한다.
 		startTime = System.currentTimeMillis();

@@ -29,7 +29,7 @@
 			<!--//page title-->
 			<!--main section 시작-->
 			<div class="main_section">
-				<form id="registerform" name="registerform" action="index.jsp" method="post">
+				<form id="registerform" name="registerform" action="${pageContext.request.contextPath}/maemul"  enctype="multipart/form-data">
 					<!--위치정보-->
 					<table class="info_article_one">
 						<caption class="text-center">위치 정보</caption>
@@ -39,12 +39,12 @@
 								<td>
 									<div class="address_info">
 										<div class="button">
-											<input type="text" name="sample5_address" id="sample5_address" readonly /> <input
+											<input type="text" name="item_addrst" id="item_addrst" readonly /> <input
 												class="btn btn-primary" type="button"
 												onclick="sample5_execDaumPostcode()" value="주소 검색" />
 										</div>
 										<div class="detailed_form">
-											<textarea class="form-control" id="adddetailed" name="adddetailed"
+											<textarea class="form-control" id="item_addrnd" name="item_addrnd"
 												style="width: 400px; height: 130px; margin-top: 20px; resize: none"
 												placeholder="상세주소를 입력하세요." required></textarea>
 										</div>
@@ -71,8 +71,8 @@
 									<div class="maemul_info">
 										<!--공개여부 버튼-->
 										<div class="toggle-radio">
-											<input type="radio" class="radionon" name="rdo" id="yes" checked />
-											<input type="radio" class="radionon" name="rdo" id="no"/>
+											<input type="radio" class="radionon" name="rdo" id="yes" value="Y" checked />
+											<input type="radio" class="radionon" name="rdo" id="no" value="N"/>
 											<div class="switch">
 												<label for="yes">공개</label> <label for="no">비공개</label> <span></span>
 											</div>
@@ -105,10 +105,10 @@
 								<th>종류 선택</th>
 								<td>
 									<div class="deal_info">    
-										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="rent" required/>&nbsp;월세 추가
-										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="buy"/>&nbsp;매매 추가
+										 <input type="radio" id="button_rent" class="icheckuse" name="addmaemul"  value="Y" required/>&nbsp;월세 추가
+										  <input type="radio" id="button_buy" class="icheckuse" name="addmaemul" value="N" />&nbsp;매매 추가
 										  
-										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" placeholder="보증금"
+										  <div class="addrent" hidden="" style="margin-top:10px"><input type="text" class="addtext" name="deposit" id="deposit" placeholder="보증금"
 										  onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;/
 										       <input type="text" class="addtext" name="monthrent" placeholder="월세"
 										       onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>&nbsp;만원&nbsp;&nbsp;(예: 5000/100)</div>
@@ -324,8 +324,8 @@
 							    	<th>입주가능일</th>
 							    	<td colspan="3">
 							   <div class="movein_day">
-									 <input type="radio" class="icheckuse" name="nowbtn" id="nowbtn" value="nowgo"checked/>&nbsp;즉시입주
-									  <input type="radio" class="icheckuse" name="nowbtn" id="withbtn" value="withgo"/>&nbsp;협의가능
+									 <input type="radio" class="icheckuse" name="nowbtn" id="nowbtn" value="Y"checked/>&nbsp;즉시입주
+									  <input type="radio" class="icheckuse" name="nowbtn" id="withbtn" value="N"/>&nbsp;협의가능
 									   <input type="text" id="datepicker" placeholder="&nbsp;달력을 클릭하세요." readonly  />
 									      <img src="${pageContext.request.contextPath}/assets/img/calendar.png" id="show-cal" height="20" style="float: none; cursor:pointer;">
 							    		</div>
@@ -429,9 +429,9 @@
 								<th>상세설명</th>
 								<td>
 									<div class="detailed_explain">
-											<textarea class="form-control" style="width: 850px; height: 300px; margin: 20px; margin-left:40px; resize: none"
+											<textarea class="form-control" id=detail_text name=detail_text style="width: 850px; height: 300px; margin: 20px; margin-left:40px; resize: none"
 											placeholder="상세설명을 입력하세요." required></textarea>
-										</div>
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -453,12 +453,13 @@
 						<tr>
                            <th>일반 사진</th>
                             <td class="preview2">
-                            <input type="file" style="margin:20px; margin-left:40px;" name="maemulinput_imgs" id="maemulinput_imgs" maxlength="3" multiple required/>
+                            <input type="file" style="margin:20px; margin-left:40px;" name="maemulinput_imgs" id="maemulinput_imgs" multiple required/>
                             	 <ul class="notice"><li style="font-weight: bold;">사진은 최소 3장에서 10장까지 등록이 가능하며, 10MB이하의 가로로 찍은 사진을 권장합니다.</li>
                             	  <li style="color:red;">공인중개사 또는 부동산의 불필요한 정보(워터마크,상호,전화번호)가 있는 매물은 비공개 처리 됩니다.</li></ul>
                             <div class="maemulimgs_wrap">
                                <img id="img" src="${pageContext.request.contextPath}/assets/img/images.png"/>
-
+                               
+							
                             </div>
                             </td>
                         </tr>
@@ -485,14 +486,21 @@
 <div class="footer"></div>
 		<!-- Footer END -->
 	</div>
-
-	 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	    <!-- Google CDN서버로 부터 jQuey 참조 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!--  jQuery Ajax Form plugin CDN -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<!-- jQuery Ajax Setup -->
+	<script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+	
+	 
 	 <script src = "${pageContext.request.contextPath}/assets/plugins/icheck/icheck.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugins/datepicker/datepicker.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugins/datepicker/datepicker.ko-KR.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95f002774aca91da5371858ef1ee4891&libraries=services"></script>
     <script src="${pageContext.request.contextPath}/assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
+
       <script>
     <!-------------------------datepicker 시작------------------------------->
         $(function() {
@@ -621,7 +629,7 @@ $ (document) .ready (function () {
 					var addr = data.address; // 최종 주소 변수
 
 					// 주소 정보를 해당 필드에 넣는다.
-					document.getElementById("sample5_address").value = addr;
+					document.getElementById("item_addrst").value = addr;
 					// 주소로 상세 정보를 검색
 					geocoder.addressSearch(data.address, function(results,
 							status) {
@@ -703,6 +711,7 @@ function handleImgFileSelect(e) {
         }
         reader.readAsDataURL(f);
         
+        
     });
 }
 <!--다중이미지 특정이미지 삭제-->
@@ -723,9 +732,29 @@ function handleImgFileSelect(e) {
 <script>
         $(function(){
      		$('#button_cancel').click(function(){
-     			location.href = 'index.do';
+     			location.href = 'maemul_ok';
      		});
      	});
+        
+        $(function() {
+			// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다. 
+			$("#registerform").ajaxForm({
+				// 전송 메서드 지정
+				method:"POST",
+				// 서버에서 200 응답을 전달할 경우 실행됨 
+				success: function(json) {
+					console.log(json);
+					
+					// json에 포함된 데이터를 활용하여 상세페이지로 이동한다. 
+					if(json.rt == "OK") {
+						alert("매물 저장이 완료되었습니다.");
+						window.location = "${pageContext.request.contextPath}"
+					}
+				}				
+			});
+		});
+        
+        
 </script>
 </body>
 </html>

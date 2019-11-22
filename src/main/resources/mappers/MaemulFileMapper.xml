@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member_fileMapper">
+     <!-- Beans의 맴버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+     <resultMap type="kr.co.semo.helper.UploadItem" id="maemulFileMap">
+        <result property="item_num" column="item_num" />
+ 		<result property="fieldName" column="fieldName"/>
+ 		<result property="orginName" column="origin_name" />
+ 		<result property="file_dir" column="file_dir"/>
+ 		<result property="filePath" column="file_name"/>
+ 		<result property="contentType" column="content_type"/>
+ 		<result property="fileSize" column="file_size"/>
+ 		<result property="reg_date" column="reg_date"/>
+ 		<result property="edit_date" column="edit_date"/>
+ 		<result property="maemul_num" column="maemul_num"/>
+     </resultMap>
+     
+     <!-- 데이터 저장을 위한 기능 정의 -->
+     <insert id="insertItem"
+     parameterType="kr.co.semo.helper.UploadItem"
+     keyProperty="item_num"
+ 	useGeneratedKeys="true">
+		INSERT INTO item_file (fieldName, origin_name, file_dir, file_name, content_type, file_size, reg_date, edit_date, maemul_num)
+ 		VALUES (
+ 			#{fieldName},#{orginName},#{file_dir},#{filePath},#{contentType},#{fileSize},#{reg_date},#{edit_date},#{maemul_num}
+ 		)
+     </insert>
+           
+  </mapper>
