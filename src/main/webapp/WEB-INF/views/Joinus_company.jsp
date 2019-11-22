@@ -154,9 +154,9 @@ html, body {
 								</ul>
 							</div>
 							<div style="text-align: left;">
-								<input type="checkbox" name="agree01" id="agree_all"
-									onclick="agreeCheck()"> <label for="check_box">아래
-									약관에 모두 동의합니다.</label>
+							<!-- onclick="agreeCheck()" -->
+								<input type="checkbox" name="agree01" id="agree_all"> 
+								<label for="check_box">아래약관에 모두 동의합니다.</label>
 							</div>
 							<br />
 							<div style="text-align: left;">
@@ -201,9 +201,8 @@ html, body {
 						<!-- form 박스 - 1 END -->
 
 
-						<form name="filter" class="personal_info" role="form"
-							method="post"
-							action="${pageContext.request.contextPath}/co_member"
+						<form name="filter" class="personal_info" role="form" enctype="multipart/form-data"
+							action="${pageContext.request.contextPath}/addCo_member"
 							id="result02" style="display: none;">
 							<!-- 페이지 이동 방지를 위한 iframe -->
 							<iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
@@ -461,9 +460,9 @@ html, body {
 										<td><select class="form-control" name="position2"
 											id="position2" style="display: inline-block;">
 												<option value="">----- 선택하세요 -----</option>
-												<option value="qulity01">대표공인중개사</option>
-												<option value="qulity02">소속공인중개사</option>
-												<option value="qulity03">중개보조원</option>
+												<option value="대표공인중개사">대표공인중개사</option>
+												<option value="소속공인중개사">소속공인중개사</option>
+												<option value="중개보조원">중개보조원</option>
 										</select></td>
 									</tr>
 									<tr>
@@ -474,9 +473,9 @@ html, body {
 											class="form-control" name="user_email" id="email_ge"
 											style="display: inline-block; width: 184px; height: 35px;">
 												<option value="">----- 선택하세요 -----</option>
-												<option value="1">naver.com</option>
-												<option value="2">gmail.com</option>
-												<option value="3">daum.net</option>
+												<option value="naver.com">naver.com</option>
+												<option value="gmail.com">gmail.com</option>
+												<option value="daum.net">daum.net</option>
 										</select> <input type="text" name="user_email" id="email_ge2"
 											class="form-control" maxlength="20"
 											placeholder="ex)gmail.com"
@@ -523,7 +522,7 @@ html, body {
 							</table>
 							<div class="general02_btn" style="text-align: center;">
 								<input type="submit" class="btn btn-primary" value="입력완료"
-									name="checkButton"
+									name="checkButton" id="submit_btn"
 									style="height: 50px; width: 100px; margin: 50px">
 								<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
 							</div>
@@ -590,9 +589,14 @@ html, body {
 	<!--   한글 입력 유효성 체크를 위한 regex2 추가 -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/regex/regex2.js"></script>
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script> -->
+	
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
 	<script type="text/javascript">
 		$('#pass_co01').attr('disabled', true);
 		$('#agree_all').on('change', function() {
@@ -672,352 +676,362 @@ html, body {
 				}
 			});
 		});
-
+		
 		// 폼 유효성 검사
-		$(function() {
-			/** 폼의 데이터 전송 이벤트 */
-			$("#result02")
-					.submit(
-							function(e) {
-								// 폼의 기본 동작 방지 --> 데이터를 전송하지 않는다.(새로고침 방지)
-								e.preventDefault();
+		
+		
+		/** 폼의 데이터 전송 이벤트 */
+		$("#submit_btn").click(function() {
+			// 폼의 기본 동작 방지 --> 데이터를 전송하지 않는다.(새로고침 방지)
+			//e.preventDefault();
 
-								/** 중개사무소명 검사 */
-								if (!regex.value('#co_name', '중개사무소명을 입력하세요.')) {
-									return false;
-								}
-								if (!regex.kor('#co_name',
-										'중개사무소명은 한글만 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.min_length('#co_name', 2,
-										'중개사무소명은 최소 2자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#co_name', 20,
-										'중개사무소명은 최대 20자 까지만 입력 가능합니다.')) {
-									return false;
-								}
+			/** 중개사무소명 검사 */
+			console.log("클릭")
+			if (!regex.value('#co_name', '중개사무소명을 입력하세요.')) {
+				return false;
+			}
+			if (!regex.kor('#co_name',
+					'중개사무소명은 한글만 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.min_length('#co_name', 2,
+					'중개사무소명은 최소 2자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#co_name', 20,
+					'중개사무소명은 최대 20자 까지만 입력 가능합니다.')) {
+				return false;
+			}
 
-								// 중개사 번호 숫자 입력 검사
-								if (!regex.value('#co_number',
-										'중개사 등록번호를 입력하세요.')) {
-									return false;
-								}
-								var pattern2 = /^[0-9]*$/;
-								if (!pattern2.test($('#co_number').val())) {
-									alert('중개사 등록번호는 숫자만 입력 가능합니다.');
-									$('#co_number').val('');
-									$('#co_number').focus();
-									return false;
-								}
+			// 중개사 번호 숫자 입력 검사
+			if (!regex.value('#co_number',
+					'중개사 등록번호를 입력하세요.')) {
+				return false;
+			}
+			var pattern2 = /^[0-9]*$/;
+			if (!pattern2.test($('#co_number').val())) {
+				alert('중개사 등록번호는 숫자만 입력 가능합니다.');
+				$('#co_number').val('');
+				$('#co_number').focus();
+				return false;
+			}
 
-								// 중개사 번호 파일체크
-								var subject = $("#fileBox_1").val();
-								if (!subject) {
-									alert("중개등록증을 첨부하세요");
-									$("#fileBox_1").focus();
-									return false;
-								}
+			// 중개사 번호 파일체크
+			var subject = $("#fileBox_1").val();
+			if (!subject) {
+				alert("중개등록증을 첨부하세요");
+				$("#fileBox_1").focus();
+				return false;
+			}
 
-								// 사업자 등록 번호 숫자 입력 검사
-								if (!regex.value('#coe_number',
-										'사업자 등록번호를 입력하세요.')) {
-									return false;
-								}
-								var pattern2 = /^[0-9]*$/;
-								if (!pattern2.test($('#coe_number').val())) {
-									alert('사업자 등록번호는 숫자만 입력 가능합니다.');
-									$('#coe_number').val('');
-									$('#coe_number').focus();
-									return false;
-								}
+			// 사업자 등록 번호 숫자 입력 검사
+			if (!regex.value('#coe_number',
+					'사업자 등록번호를 입력하세요.')) {
+				return false;
+			}
+			var pattern2 = /^[0-9]*$/;
+			if (!pattern2.test($('#coe_number').val())) {
+				alert('사업자 등록번호는 숫자만 입력 가능합니다.');
+				$('#coe_number').val('');
+				$('#coe_number').focus();
+				return false;
+			}
 
-								// 사업자 등록증 파일체크
-								var subject = $("#fileBox_2").val();
-								if (!subject) {
-									alert("사업자등록증을 첨부하세요");
-									$("#fileBox_2").focus();
-									return false;
-								}
+			// 사업자 등록증 파일체크
+			var subject = $("#fileBox_2").val();
+			if (!subject) {
+				alert("사업자등록증을 첨부하세요");
+				$("#fileBox_2").focus();
+				return false;
+			}
 
-								//주소검사 1
-								if (!regex.value('#sample2_postcode',
-										'주소를 입력하세요.')) {
-									return false;
-								}
+			//주소검사 1
+			if (!regex.value('#sample2_postcode',
+					'주소를 입력하세요.')) {
+				return false;
+			}
 
-								//주소검사 2
-								if (!regex.value('#sample2_address',
-										'상세주소를 입력하세요.')) {
-									return false;
-								}
+			//주소검사 2
+			if (!regex.value('#sample2_address',
+					'상세주소를 입력하세요.')) {
+				return false;
+			}
 
-								// 상세주소 입력 검사
-								if (!regex.value('#sample2_detailAddress',
-										'상세주소를 입력하세요.')) {
-									return false;
-								}
+			// 상세주소 입력 검사
+			if (!regex.value('#sample2_detailAddress',
+					'상세주소를 입력하세요.')) {
+				return false;
+			}
 
-								// 중개사 대표명
-								if (!regex
-										.value('#coe_name', '중개사 대표명을 입력하세요.')) {
-									return false;
-								}
-								if (!regex.kor('#coe_name',
-										'중개사 대표명은 한글만 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.min_length('#coe_name', 2,
-										'중개사 대표명은 최소 2자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#coe_name', 4,
-										'중개사 대표명은 최대 4자 까지만 입력 가능합니다.')) {
-									return false;
-								}
+			// 중개사 대표명
+			if (!regex
+					.value('#coe_name', '중개사 대표명을 입력하세요.')) {
+				return false;
+			}
+			if (!regex.kor('#coe_name',
+					'중개사 대표명은 한글만 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.min_length('#coe_name', 2,
+					'중개사 대표명은 최소 2자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#coe_name', 4,
+					'중개사 대표명은 최대 4자 까지만 입력 가능합니다.')) {
+				return false;
+			}
 
-								// 중개사대표번호 입력 검사 -1
-								if (!regex.value('#coe_Telephone2',
-										'중개사 대표번호를 입력하세요.')) {
-									return false;
-								}
-								var pattern2 = /^[0-9]*$/;
-								if (!pattern2.test($('#coe_Telephone2').val())) {
-									alert('중개사 대표번호는 숫자만 입력 가능합니다.');
-									$('#coe_Telephone2').val('');
-									$('#coe_Telephone2').focus();
-									return false;
-								}
-								if (!regex.min_length('#coe_Telephone2', 3,
-										'최소 3자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#coe_Telephone2', 4,
-										'최대 4자 까지만 입력 가능합니다.')) {
-									return false;
-								}
+			// 중개사대표번호 입력 검사 -1
+			if (!regex.value('#coe_Telephone2',
+					'중개사 대표번호를 입력하세요.')) {
+				return false;
+			}
+			var pattern2 = /^[0-9]*$/;
+			if (!pattern2.test($('#coe_Telephone2').val())) {
+				alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+				$('#coe_Telephone2').val('');
+				$('#coe_Telephone2').focus();
+				return false;
+			}
+			if (!regex.min_length('#coe_Telephone2', 3,
+					'최소 3자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#coe_Telephone2', 4,
+					'최대 4자 까지만 입력 가능합니다.')) {
+				return false;
+			}
 
-								// 중개사대표번호 입력 검사 -2
-								if (!regex.value('#coe_Telephone3',
-										'중개사 대표번호를 입력하세요.')) {
-									return false;
-								}
-								var pattern2 = /^[0-9]*$/;
-								if (!pattern2.test($('#coe_Telephone3').val())) {
-									alert('중개사 대표번호는 숫자만 입력 가능합니다.');
-									$('#coe_Telephone3').val('');
-									$('#coe_Telephone3').focus();
-									return false;
-								}
-								if (!regex.min_length('#coe_Telephone3', 3,
-										'최소 3자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#coe_Telephone3', 4,
-										'최대 4자 까지만 입력 가능합니다.')) {
-									return false;
-								}
+			// 중개사대표번호 입력 검사 -2
+			if (!regex.value('#coe_Telephone3',
+					'중개사 대표번호를 입력하세요.')) {
+				return false;
+			}
+			var pattern2 = /^[0-9]*$/;
+			if (!pattern2.test($('#coe_Telephone3').val())) {
+				alert('중개사 대표번호는 숫자만 입력 가능합니다.');
+				$('#coe_Telephone3').val('');
+				$('#coe_Telephone3').focus();
+				return false;
+			}
+			if (!regex.min_length('#coe_Telephone3', 3,
+					'최소 3자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#coe_Telephone3', 4,
+					'최대 4자 까지만 입력 가능합니다.')) {
+				return false;
+			}
 
-								// 대표사진 검사
-								var subject = $("#getfile").val();
-								if (!subject) {
-									alert("대표사진을 첨부하세요");
-									$("#getfile").focus();
-									return false;
-								}
+			// 대표사진 검사
+			var subject = $("#getfile").val();
+			if (!subject) {
+				alert("대표사진을 첨부하세요");
+				$("#getfile").focus();
+				return false;
+			}
 
-								/** 이름 검사 */
-								if (!regex.value('#P_name', '이름을 입력하세요.')) {
-									return false;
-								}
-								if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.min_length('#P_name', 2,
-										'이름은 최소 2자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#P_name', 10,
-										'이름은 최대 10자 까지만 입력 가능합니다.')) {
-									return false;
-								}
+			/** 이름 검사 */
+			if (!regex.value('#P_name', '이름을 입력하세요.')) {
+				return false;
+			}
+			if (!regex.kor('#P_name', '이름은 한글만 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.min_length('#P_name', 2,
+					'이름은 최소 2자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#P_name', 10,
+					'이름은 최대 10자 까지만 입력 가능합니다.')) {
+				return false;
+			}
 
-								/** 권한/자격 검사 */
-								var subject = $("#position2").val();
-								if (!subject) {
-									alert("권한/자격을 선택하세요.");
-									$("#position2").focus();
-									return false;
-								}
+			/** 권한/자격 검사 */
+			var subject = $("#position2").val();
+			if (!subject) {
+				alert("권한/자격을 선택하세요.");
+				$("#position2").focus();
+				return false;
+			}
 
-								/** 이메일 검사 -1 */
-								if (!regex.value('#user_email', '이메일을 입력하세요.')) {
-									return false;
-								}
-								if (!regex.eng_num('#user_email',
-										'이메일은 영어와 숫자 조합만 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.min_length('#user_email', 4,
-										'이메일은 최소 4자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#user_email', 20,
-										'이메일은 최대 20자 까지만 입력 가능합니다.')) {
-									return false;
-								}
+			/** 이메일 검사 -1 */
+			if (!regex.value('#user_email', '이메일을 입력하세요.')) {
+				return false;
+			}
+			if (!regex.eng_num('#user_email',
+					'이메일은 영어와 숫자 조합만 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.min_length('#user_email', 4,
+					'이메일은 최소 4자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#user_email', 20,
+					'이메일은 최대 20자 까지만 입력 가능합니다.')) {
+				return false;
+			}
 
-								if ($("#direct").is(":checked")) {
-									/** 이메일 검사 2-2 */
-									if (!regex.value('#email_ge2',
-											'이메일을 입력하세요.')) {
-										return false;
-									}
-								} else {
-									/** 이메일 검사 2-1 자바스크립트 12일차 2번예제 dropdown*/
-									var subject = $("#email_ge").val();
-									if (!subject) {
-										alert("이메일을 선택하세요.");
-										$("#email_ge").focus();
-										return false;
-									}
-								}
+			if ($("#direct").is(":checked")) {
+				/** 이메일 검사 2-2 */
+				if (!regex.value('#email_ge2',
+						'이메일을 입력하세요.')) {
+					return false;
+				}
+			} else {
+				/** 이메일 검사 2-1 자바스크립트 12일차 2번예제 dropdown*/
+				var subject = $("#email_ge").val();
+				if (!subject) {
+					alert("이메일을 선택하세요.");
+					$("#email_ge").focus();
+					return false;
+				}
+			}
 
-								/** 비밀번호 검사 */
-								if (!regex.value('#co_pw', '비밀번호를 입력하세요.')) {
-									return false;
-								}
-								if (!regex.min_length('#co_pw', 4,
-										'비밀번호는 최소 4자 이상 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.max_length('#co_pw', 20,
-										'비밀번호는 최대 20자 까지만 입력 가능합니다.')) {
-									return false;
-								}
-								if (!regex.compare_to('#co_pw', '#co_pw_check',
-										'비밀번호 확인이 잘못되었습니다.')) {
-									return false;
-								}
+			/** 비밀번호 검사 */
+			if (!regex.value('#co_pw', '비밀번호를 입력하세요.')) {
+				return false;
+			}
+			if (!regex.min_length('#co_pw', 4,
+					'비밀번호는 최소 4자 이상 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.max_length('#co_pw', 20,
+					'비밀번호는 최대 20자 까지만 입력 가능합니다.')) {
+				return false;
+			}
+			if (!regex.compare_to('#co_pw', '#co_pw_check',
+					'비밀번호 확인이 잘못되었습니다.')) {
+				return false;
+			}
 
-								// 휴대폰번호 입력 검사 -2
-								if (!regex.value('#phoneNumber2',
-										'휴대폰 번호를 입력하세요.')) {
-									return false;
-								}
-								var pattern2 = /^[0-9]*$/;
-								if (!pattern2.test($('#phoneNumber2').val())) {
-									alert('휴대폰 번호는 숫자만 입력 가능합니다.');
-									$('#phoneNumber2').val('');
-									$('#phoneNumber2').focus();
-									return false;
-								}
-								if (!regex.min_length('#phoneNumber2', 4,
-										'휴대폰 번호 양식에 맞춰주세요.')) {
-									return false;
-								}
-								if (!regex.max_length('#phoneNumber2', 4,
-										'휴대폰 번호 양식에 맞춰주세요.')) {
-									return false;
-								}
+			// 휴대폰번호 입력 검사 -2
+			if (!regex.value('#phoneNumber2',
+					'휴대폰 번호를 입력하세요.')) {
+				return false;
+			}
+			var pattern2 = /^[0-9]*$/;
+			if (!pattern2.test($('#phoneNumber2').val())) {
+				alert('휴대폰 번호는 숫자만 입력 가능합니다.');
+				$('#phoneNumber2').val('');
+				$('#phoneNumber2').focus();
+				return false;
+			}
+			if (!regex.min_length('#phoneNumber2', 4,
+					'휴대폰 번호 양식에 맞춰주세요.')) {
+				return false;
+			}
+			if (!regex.max_length('#phoneNumber2', 4,
+					'휴대폰 번호 양식에 맞춰주세요.')) {
+				return false;
+			}
 
-								// 휴대폰번호 입력 검사 -3
-								if (!regex.value('#phoneNumber3',
-										'휴대폰 번호를 입력하세요.')) {
-									return false;
-								}
-								var pattern2 = /^[0-9]*$/;
-								if (!pattern2.test($('#phoneNumber3').val())) {
-									alert('휴대폰 번호는 숫자만 입력 가능합니다.');
-									$('#phoneNumber3').val('');
-									$('#phoneNumber3').focus();
-									return false;
-								}
-								if (!regex.min_length('#phoneNumber3', 4,
-										'휴대폰 번호 양식에 맞춰주세요')) {
-									return false;
-								}
-								if (!regex.max_length('#phoneNumber3', 4,
-										'휴대폰 번호 양식에 맞춰주세요.')) {
-									return false;
-								}
+			// 휴대폰번호 입력 검사 -3
+			if (!regex.value('#phoneNumber3',
+					'휴대폰 번호를 입력하세요.')) {
+				return false;
+			}
+			var pattern2 = /^[0-9]*$/;
+			if (!pattern2.test($('#phoneNumber3').val())) {
+				alert('휴대폰 번호는 숫자만 입력 가능합니다.');
+				$('#phoneNumber3').val('');
+				$('#phoneNumber3').focus();
+				return false;
+			}
+			if (!regex.min_length('#phoneNumber3', 4,
+					'휴대폰 번호 양식에 맞춰주세요')) {
+				return false;
+			}
+			if (!regex.max_length('#phoneNumber3', 4,
+					'휴대폰 번호 양식에 맞춰주세요.')) {
+				return false;
+			}
 
-								/*
-								ajax 비동기 회원정보 parsing
-								 */
-								// 현재 시간 yyyy-mm-dd hh:mm:ss
-								function leadingZeros(n, digits) {
-									var zero = '';
-									n = n.toString();
+			/*
+			ajax 비동기 회원정보 parsing
+			 */
+			// 현재 시간 yyyy-mm-dd hh:mm:ss
+			/*
+			function leadingZeros(n, digits) {
+				var zero = '';
+				n = n.toString();
 
-									if (n.length < digits) {
-										for (i = 0; i < digits - n.length; i++)
-											zero += '0';
-									}
-									return zero + n;
-								}
+				if (n.length < digits) {
+					for (i = 0; i < digits - n.length; i++)
+						zero += '0';
+				}
+				return zero + n;
+			}
 
-								var d = new Date();
-								var s = leadingZeros(d.getFullYear(), 4) + '-'
-										+ leadingZeros(d.getMonth() + 1, 2)
-										+ '-' + leadingZeros(d.getDate(), 2)
-										+ ' ' +
+			var d = new Date();
+			var s = leadingZeros(d.getFullYear(), 4) + '-'
+					+ leadingZeros(d.getMonth() + 1, 2)
+					+ '-' + leadingZeros(d.getDate(), 2)
+					+ ' ' +
 
-										leadingZeros(d.getHours(), 2) + ':'
-										+ leadingZeros(d.getMinutes(), 2) + ':'
-										+ leadingZeros(d.getSeconds(), 2);
+					leadingZeros(d.getHours(), 2) + ':'
+					+ leadingZeros(d.getMinutes(), 2) + ':'
+					+ leadingZeros(d.getSeconds(), 2);
 
-								var firstEmail = $("#user_email");
-								var fullEmail;
-								// email 결합
-								if ($("#direct").is(":checked")) {
-									fullEmail = firstEmail.val() + "@"
-											+ $("#email_ge2").val();
-								} else {
-									fullEmail = firstEmail.val()
-											+ "@"
-											+ $("#email_ge option:selected")
-													.text();
-								}
-								// 대표번호 결합
-								var fulltel = $(
-										"#coe_Telephone1 option:selected")
-										.text()
-										+ $("#coe_Telephone2").val()
-										+ $("#coe_Telephone3").val();
+			var firstEmail = $("#user_email");
+			var fullEmail;
+			// email 결합
+			if ($("#direct").is(":checked")) {
+				fullEmail = firstEmail.val() + "@"
+						+ $("#email_ge2").val();
+			} else {
+				fullEmail = firstEmail.val()
+						+ "@"
+						+ $("#email_ge option:selected")
+								.text();
+			}*/
+			/*
+			// 대표번호 결합
+			var fulltel = $(
+					"#coe_Telephone1 option:selected")
+					.text()
+					+ $("#coe_Telephone2").val()
+					+ $("#coe_Telephone3").val();
 
-								// 휴대폰 번호 결합
-								var fullphone = $(
-										"#phoneNumber1 option:selected").text()
-										+ $("#phoneNumber2").val()
-										+ $("#phoneNumber3").val();
+			// 휴대폰 번호 결합
+			var fullphone = $(
+					"#phoneNumber1 option:selected").text()
+					+ $("#phoneNumber2").val()
+					+ $("#phoneNumber3").val();
 
-								//position 권한  문자로 변환
-								var select_position = $(
-										"#position2 option:selected").text();
-								var position;
-								if (select_position == "대표공인중개사") {
-									position = "A";
-								} else if (select_position == "소속공인중개사") {
-									position = "B";
-								} else if (select_position == "중개보조원") {
-									position = "C";
-								}
+			//position 권한  문자로 변환
+			var select_position = $(
+					"#position2 option:selected").text();
+			var position;
+			if (select_position == "대표공인중개사") {
+				position = "A";
+			} else if (select_position == "소속공인중개사") {
+				position = "B";
+			} else if (select_position == "중개보조원") {
+				position = "C";
+			}
 
-								//파일 명 가저오기
-								var fileValue = $("#getfile").val().split("\\");
-								var fileName = fileValue[fileValue.length - 1]; //파일명
-								var filePath = "d:/"
-								//ajax parsing
-								$("#result02").ajaxForm({
-									method : 'POST',
-									success : function(json) {
-										console.log(json)
-									}
-								});
-								page02();
-							});
+			//파일 명 가저오기
+			var fileValue = $("#getfile").val().split("\\");
+			var fileName = fileValue[fileValue.length - 1]; //파일명
+			var filePath = "d:/"
+			*/
+			//ajax parsing
+			console.log("유효성검사 완료");
+			
+			
+			$("#result02").ajaxForm({
+				method : 'POST',
+				success : function(json) {
+					console.log(json);
+				},
+				error:function(request,status,error){
+				    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+			});
+			console.log("ajaxform 실행");
+			page02();
+			console.log("페이지변경");
 		});
 
 		// 대표사진 미리보기 (유효성검사는 별도로 있음)

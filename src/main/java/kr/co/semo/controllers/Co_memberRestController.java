@@ -28,49 +28,53 @@ public class Co_memberRestController {
 	@Autowired WebHelper webHelper;
 	@Autowired Co_memberService co_memberService;
 	
-	@Value("#{servletContext.contextPath}")
-	String contextPath;
-	
 	@RequestMapping(value="/addCo_member", method = RequestMethod.POST)
 	public Map<String, Object> adduser(
-			@RequestParam(value="co_name") String co_name,
+			
+			@RequestParam(value="co_name", required=false, defaultValue="name") String co_name
+			
+			
+			/*
 			@RequestParam(value="co_number") String broker_num,
 			@RequestParam(value="coe_number") String office_num,
 			@RequestParam(value="office_addr") String office_addr,
-			@RequestParam(value="tel_num") String tel_num,
+			@RequestParam(value="phoneNum") String[] tel_num,
 			@RequestParam(value="coe_name") String boss_name,
-			@RequestParam(value="tel") String tel,
+			@RequestParam(value="tel") String[] tel,
 			@RequestParam(value="P_name") String assi_name,
 			@RequestParam(value="position2") String position,
-			@RequestParam(value="user_email") String email_id,
+			@RequestParam(value="user_email") String[] email_id,
 			@RequestParam(value="co_pw") String user_pw,
 			@RequestParam(value="reg_date") String reg_date,
 			@RequestParam(value="broker_img") String broker_img,
 			@RequestParam(value="filebox_1") String member_file_office,
 			@RequestParam(value="fileBox_2") String member_file_lice
+			*/
 			) {
-		
+		//String co_name = webHelper.getString("co_name");
+		/*
+		System.out.println("---- controller 도착 ----");
 		Co_member input = new Co_member();
 		input.setCo_name(co_name);
 		input.setBroker_num(broker_num);
 		input.setOffice_num(office_num);
 		input.setOffice_addr(office_addr);
-		input.setTel_num(tel_num);
+		input.setTel_num(tel_num[0]);
 		input.setBoss_name(boss_name);
-		input.setTel(tel);
+		input.setTel(tel[0]);
 		input.setAssi_name(assi_name);
 		input.setPosition(position);
-		input.setEmail_id(email_id);
+		input.setEmail_id(email_id[0]);
 		input.setUser_pw(user_pw);
 		input.setReg_date(reg_date);
 		input.setBroker_img(broker_img);
-		
+		*/
+		System.out.println(co_name);
 		Map<String, Object> output = new HashMap<String, Object>();
-		
-		output.put("message", 1);
+		output.put("co_name", co_name);
 		
 		try {
-			co_memberService.addCo_member(input);
+			System.out.println("---- service 완료 -----");
 		} catch (Exception e) {
 			System.out.println(e.getLocalizedMessage());
 		}
