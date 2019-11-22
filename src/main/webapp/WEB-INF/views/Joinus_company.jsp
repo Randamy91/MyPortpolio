@@ -285,14 +285,13 @@ html, body {
 											<div id="kakaomap">
 												<input type="text" id="sample2_postcode" placeholder="우편번호">
 												<input type="button" onclick="sample2_execDaumPostcode()"
-													value="우편번호 찾기"><br> <input type="text"
-													id="sample2_address" placeholder="주소"><br> <input
-													type="text" id="sample2_detailAddress" placeholder="상세주소">
+													value="우편번호 찾기"><br> 
+												<input type="text" name="office_addr" id="sample2_address" placeholder="주소"><br> 
+												<input type="text" id="sample2_detailAddress" placeholder="상세주소">
 												<input type="text" id="sample2_extraAddress"
 													placeholder="참고항목">
 											</div> <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-											<div id="layer"
-												style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+											<div id="layer"	style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
 												<!--<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼"> -->
 											</div> <script
 												src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -422,15 +421,15 @@ html, body {
 										<td>
 											<div class="coe_Telephone">
 												<select class="form-control pull-left" id="coe_Telephone1"
-													name="coe_Telephone1" style="width: 80px; height: 35px;">
+													name="tel" style="width: 80px; height: 35px;">
 													<option value="02">02</option>
 													<option value="031">031</option>
 													<option value="032">032</option>
 												</select> <input type="text" class="form-control pull-left"
-													id="coe_Telephone2" name="coe_Telephone2"
+													id="coe_Telephone2" name="tel"
 													style="width: 80px; height: 35px; margin-left: 20px;">
 												<input type="text" class="form-control" id="coe_Telephone3"
-													name="coe_Telephone3"
+													name="tel"
 													style="width: 80px; height: 35px; margin-left: 200px;">
 											</div> <!-- coe Telphone end -->
 										</td>
@@ -472,13 +471,13 @@ html, body {
 										<td><input type="text" name="user_email" id="user_email"
 											class="form-control" maxlength="20" placeholder="이메일을 입력해주세요"
 											style="display: inline-block;"> &nbsp;@&nbsp; <select
-											class="form-control" name="email_ge" id="email_ge"
+											class="form-control" name="user_email" id="email_ge"
 											style="display: inline-block; width: 184px; height: 35px;">
 												<option value="">----- 선택하세요 -----</option>
 												<option value="1">naver.com</option>
 												<option value="2">gmail.com</option>
 												<option value="3">daum.net</option>
-										</select> <input type="text" name="email_ge2" id="email_ge2"
+										</select> <input type="text" name="user_email" id="email_ge2"
 											class="form-control" maxlength="20"
 											placeholder="ex)gmail.com"
 											style="display: none; width: 184px; height: 35px;"> <br />
@@ -503,7 +502,7 @@ html, body {
 										<td>
 											<div class="coe_Telephone">
 												<select class="form-control pull-left" id="phoneNumber1"
-													name="phoneNumber1" style="width: 80px; height: 35px;">
+													name="phoneNum" style="width: 80px; height: 35px;">
 													<option value="010">010</option>
 													<option value="011">011</option>
 													<option value="016">016</option>
@@ -511,10 +510,10 @@ html, body {
 													<option value="018">018</option>
 													<option value="019">019</option>
 												</select> <input type="text" class="form-control pull-left"
-													id="phoneNumber2" name="phoneNumber2"
+													id="phoneNumber2" name="phoneNum"
 													style="width: 80px; height: 35px; margin-left: 20px;">
 												<input type="text" class="form-control pull-left"
-													id="phoneNumber3" name="phoneNumber3"
+													id="phoneNumber3" name="phoneNum"
 													style="width: 80px; height: 35px; margin-left: 20px;">
 											</div> <!-- coe Telphone end -->
 										</td>

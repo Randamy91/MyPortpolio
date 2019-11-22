@@ -34,20 +34,18 @@ public class Co_memberRestController {
 	@RequestMapping(value="/addCo_member", method = RequestMethod.POST)
 	public Map<String, Object> adduser(
 			@RequestParam(value="co_name") String co_name,
-			@RequestParam(value="coe_number") String broker_num,
-			@RequestParam(value="co_number") String office_num,
+			@RequestParam(value="co_number") String broker_num,
+			@RequestParam(value="coe_number") String office_num,
 			@RequestParam(value="office_addr") String office_addr,
 			@RequestParam(value="tel_num") String tel_num,
-			@RequestParam(value="boss_name") String boss_name,
+			@RequestParam(value="coe_name") String boss_name,
 			@RequestParam(value="tel") String tel,
-			@RequestParam(value="assi_name") String assi_name,
-			@RequestParam(value="position") String position,
-			@RequestParam(value="email_id") String email_id,
-			@RequestParam(value="user_pw") String user_pw,
-			@RequestParam(value="approval") String approval,
+			@RequestParam(value="P_name") String assi_name,
+			@RequestParam(value="position2") String position,
+			@RequestParam(value="user_email") String email_id,
+			@RequestParam(value="co_pw") String user_pw,
 			@RequestParam(value="reg_date") String reg_date,
 			@RequestParam(value="broker_img") String broker_img,
-			@RequestParam(value="recent_date") String recent_date,
 			@RequestParam(value="filebox_1") String member_file_office,
 			@RequestParam(value="fileBox_2") String member_file_lice
 			) {
@@ -64,10 +62,8 @@ public class Co_memberRestController {
 		input.setPosition(position);
 		input.setEmail_id(email_id);
 		input.setUser_pw(user_pw);
-		input.setApproval(approval);
 		input.setReg_date(reg_date);
 		input.setBroker_img(broker_img);
-		input.setRecent_date(recent_date);
 		
 		Map<String, Object> output = new HashMap<String, Object>();
 		

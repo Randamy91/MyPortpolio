@@ -4,7 +4,7 @@
 
 <mapper namespace="Member_fileMapper">
      <!-- Beans의 맴버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-     <resultMap type="kr.co.semo.model.Maemul" id="maemulMap">
+     <resultMap type="kr.co.semo.model.Member_file" id="maemulMap">
         <result property="id" column="id"/>
         <result property="origin_name" column="item_addrst"/> 
         <result property="file_name" column="item_addrnd"/>
