@@ -134,5 +134,28 @@ public class Ge_memberServiceImpl implements Ge_memberService{
 
         return result;
     }
+    
+    //login service
+    @Override
+    public int getLoginuser_item(Ge_member input) throws Exception {
+    	
+    	int result = 0;
+    	
+    	try {
+			result = sqlSession.selectOne("Ge_memberMapper.selectLoginUser", input);
+			
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+            throw new Exception("검색된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 검색에 실패했습니다..");
+		}
+    	
+    	return result;
+    }
 
 }

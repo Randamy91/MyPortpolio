@@ -36,5 +36,11 @@
     </select>
     
     <!-- 다중행 조회 -->
+    <!-- 로그인 회원 조회 -->
+    <select id="selectLoginUser" parameterType="kr.co.semo.model.Ge_member" resultMap="ge_memberMap">
+    	SELECT name, email_id, user_pw, tel_num, reg_date, recent_date 
+    	FROM ge_member 
+    	WHERE email_id=#{email_id} AND user_pw=#{user_pw};
+    </select>
 	
 </mapper>
