@@ -29,7 +29,7 @@
 			<!--//page title-->
 			<!--main section 시작-->
 			<div class="main_section">
-				<form id="registerform" name="registerform" action="${pageContext.request.contextPath}/maemul"  enctype="multipart/form-data">
+				<form id="registerform" name="registerform" method="POST" action="${pageContext.request.contextPath}/maemul/add_ok"  enctype="multipart/form-data">
 					<!--위치정보-->
 					<table class="info_article_one">
 						<caption class="text-center">위치 정보</caption>
@@ -245,14 +245,14 @@
 								<td>
 									<div class="heat_info" style="width: 110px;">
 										<select class="form-control" id="validselect" name="heatform" required>
-										 <option value="">--선택--</option>
-											<option value="personal1">개별난방</option>
-											<option value="area1">지역난방</option>
-											<option value="center1">중앙난방</option>
-											<option value="personal2">개별냉난방</option>
-											<option value="area2">지역냉난방</option>
-											<option value="personal2">중앙냉난방</option>
-											<option value="nono">없음</option>
+										 <option value="">---선택---</option>
+											<option value="개별난방">개별난방</option>
+											<option value="지역난방">지역난방</option>
+											<option value="중앙난방">중앙난방</option>
+											<option value="개별냉난방">개별냉난방</option>
+											<option value="지역냉난방">지역냉난방</option>
+											<option value="중앙냉난방">중앙냉난방</option>
+											<option value="없음">없음</option>
 										</select>
 									</div>
 								</td>
@@ -260,12 +260,12 @@
 									<td>
 										<div class="toilet_form" style="width: 140px;">
 											<select class="form-control" id="validselect" name="toiletform" required>
-											 <option value="">--선택--</option>
-											<option value="outside1">외부/남녀구분</option>
-											<option value="outside2">외부/남녀혼용</option>
-											<option value="inside1">내부/남녀구분</option>
-											<option value="inside1">내부/남녀혼용</option>
-											<option value="toiletno">없음</option>
+											 <option value="">---선택---</option>
+											<option value="외부/남녀구분">외부/남녀구분</option>
+											<option value="외부/남녀혼용">외부/남녀혼용</option>
+											<option value="내부/남녀구분">내부/남녀구분</option>
+											<option value="내부/남녀혼용">내부/남녀혼용</option>
+											<option value="없음">없음</option>
 										</select>
 									</div>
 								</td>
@@ -275,7 +275,7 @@
 								<td>
 									<div class="year_form" style="display: inline-block; margin: 20px; width: 110px;">
 											<select class="form-control" id="validselect" name="yearform" required>
-											 <option value="">--선택--</option>
+											 <option value="">---선택---</option>
 											<option value="2019">2019년도</option>
 											<option value="2018">2018년도</option>
 											<option value="2017">2017년도</option>
@@ -303,7 +303,7 @@
 										</div>			
 											<div class="month_form" style="display: inline-block; width: 110px;" >
 											<select class="form-control" id="validselect" name="monthform" required>
-											 <option value="">--선택--</option>
+											 <option value="">---선택---</option>
 											<option value="1">1월</option>
 											<option value="2">2월</option>
 											<option value="3">3월</option>
@@ -366,6 +366,7 @@
 							    		 <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="yes"/>&nbsp;가능
 							    		  <input type="radio" class="icheckuse" name="parkchk" id="parkchk" value="no"checked/>&nbsp;불가능
 							    		  <div class="parkuse" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="parkuse" required>
+							    		  <option value="0">-선택하세요-</option>
 							    		  <option value="1">1대</option>
 							    		  <option value="2">2대</option>
 							    		  <option value="3">3대</option>
@@ -396,7 +397,7 @@
 							    		 	<input type="radio" class="icheckuse" name="elevachk" id="elevachk" value="yes"/>&nbsp;있음
 							    		  	<input type="radio" class="icheckuse" name="elevachk" id="elevachk1" value="no"checked/>&nbsp;없음	
 							    		  	 <div class="elevause" hidden=""style="margin-top:10px; width:110px;" ><select class="form-control" id="validselect" name="elevause" required>
-							    		  	 
+							    		  	 <option value="0">-선택하세요-</option>
 							    		  	 <option value="1">1</option>
 							    		  	 <option value="2">2</option>
 							    		  	 <option value="3">3</option>
@@ -732,27 +733,9 @@ function handleImgFileSelect(e) {
 <script>
         $(function(){
      		$('#button_cancel').click(function(){
-     			location.href = 'maemul_ok';
+     			location.href = '${pageContext.request.contextPath}';
      		});
      	});
-        
-        $(function() {
-			// #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다. 
-			$("#registerform").ajaxForm({
-				// 전송 메서드 지정
-				method:"POST",
-				// 서버에서 200 응답을 전달할 경우 실행됨 
-				success: function(json) {
-					console.log(json);
-					
-					// json에 포함된 데이터를 활용하여 상세페이지로 이동한다. 
-					if(json.rt == "OK") {
-						alert("매물 저장이 완료되었습니다.");
-						window.location = "${pageContext.request.contextPath}"
-					}
-				}				
-			});
-		});
         
         
 </script>

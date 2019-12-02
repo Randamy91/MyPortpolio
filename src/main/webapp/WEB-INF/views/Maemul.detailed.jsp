@@ -1,9 +1,13 @@
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -102,6 +106,59 @@ html, body {
 }
 
 /*------------- 복사해서 사용하세요 END --------------------*/
+.M_icon_item1 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+
+}
+.M_icon_item1::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "사무실"
+}
+.M_icon_item2 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+}
+.M_icon_item2::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "${output.all_width}평"
+}
+.M_icon_item3 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+}
+.M_icon_item3::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	content: "${output.floor}/${output.all_floor}층"
+}
+.M_icon_item4 {
+	text-align: center;
+	font-size: 40px;
+	width: 23%;
+}
+.M_icon_item4::after {
+	font-weight: normal;
+	font-size: 12px;
+	display: block;
+	<c:choose>
+		<c:when test="${output.manage_ex == 0}">
+			content: "없음"
+		</c:when>
+		<c:otherwise>
+			content: "${output.manage_ex}"
+		</c:otherwise>
+	</c:choose>
+}
+
 </style>
 
 
@@ -128,28 +185,40 @@ html, body {
 				<!-- 캐러셀 영역 구성 -->
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 				<!-- 현재 위치 표시 -->
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				</ol>
+				<!-- 사진 length 만큼 늘어나게 처리 -->
+				<ol class="carousel-indicators">  
+					<c:forEach var="C_image" items="${fileoutput}" varStatus="status">
+						<c:if test="${C_image.fieldName eq 'maemulinput_imgs'}">
+							<c:choose>
+								<c:when test="${status.index eq 1}">
+									<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+								</c:when>
+								<c:otherwise>
+									<li data-target="#carousel-example-generic" data-slide-to="${status.index}"></li>
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+				 </ol> 
 
 				<!-- 내용 영역 -->
 				<div class="carousel-inner center-block">
-					<!-- 항목 (1) -->
-					<div class="item active">
-						<img src="${pageContext.request.contextPath}/assets/img/office.jpg" alt="슬라이더(1)">
-					</div>
-
-					<!-- 항목 (2) -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/assets/img/office2.jpg" alt="슬라이더(2)">
-					</div>
-
-					<!-- 항목 (3) -->
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/assets/img/office3.jpg" alt="슬라이더(3)">
-					</div>
+					<c:forEach var="Mimg" items="${fileoutput}" varStatus="status">
+						<c:if test="${Mimg.fieldName eq 'maemulinput_imgs'}">
+							<c:choose>
+								<c:when test="${status.index eq 1}">
+                                <div class="item active">
+                                    <img src="${pageContext.request.contextPath}/assets/upload${Mimg.filePath}">
+                                </div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="item">
+                                		<img src="${pageContext.request.contextPath}/assets/upload${Mimg.filePath}">
+                            		</div>
+                            	</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
 				</div>
 				<!-- // 내용영역 구성 -->
 
@@ -170,56 +239,85 @@ html, body {
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">매물번호</span>
-									<span class="value">123123</span>
+									<span class="value">${output.maemul_num}</span>
 								</div>
 								
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">난방종류</span>
-									<span class="value">개별난방</span>
+									<span class="value">${output.heating}</span>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
-									<span class="name">상가 형태</span>
-									<span class="value">빌딩형,근린상가</span>
+									<span class="name">상가이름</span>
+									<span class="value">${output.build_name}</span>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">엘레베이터</span>
-									<span class="value">있음/2대</span>
+									<c:choose>
+										<c:when test="${output.elv == 0}">
+											<span class="value">없음</span>
+										</c:when>
+										<c:otherwise>
+											<span class="value">있음/${output.elv}대</span>
+										</c:otherwise>
+									</c:choose>									
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
-									<span class="name" style="width: 400px;">매매</span>
-									<span class="value">없음</span>
+									<span class="name" style="width: 400px;">주차공간</span>
+									<c:choose>
+										<c:when test="${output.parking == 0}">
+											<span class="value">없음</span>
+										</c:when>
+										<c:otherwise>
+											<span class="value">${output.parking}대</span>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
-									<span class="name">기보증금/기월세</span>
-									<span class="value">0/0</span>
+									<c:choose>
+										<c:when test="${output.select_sale == 'Y'}" >
+											<span class="name">보증금/월세</span>
+											<span class="value">${output.warrenty}만원/${output.monthly}만원</span>
+										</c:when>
+										<c:otherwise>
+											<span class="name">기보증금/기월세</span>
+											<span class="value">${output.pre_war}만원 / ${output.pre_month}만원</span>
+										</c:otherwise>
+									</c:choose>									
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">권리금</span>
-									<span class="value">95만원</span>
+									<c:choose>
+										<c:when test="${output.manage_ex == 0}">
+											<span class="value">없음</span>
+										</c:when>
+										<c:otherwise>
+											<span class="value">${output.manage_ex}만원</span>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">화장실</span>
-									<span class="value">외부/남녀구분</span>
+									<span class="value">${output.toilet}</span>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">해당층/건물층</span>
-									<span class="value">6층/7층</span>
+									<span class="value">${output.floor}층/${output.all_floor}층</span>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
@@ -231,35 +329,58 @@ html, body {
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">계약면적/전용면적</span>
-									<span class="value">910.4</span>
+									<span class="value">${output.all_width}평/${output.pri_width}평</span>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">입주가능일</span>
-									<span class="value">협의가능</span>
+									<c:choose>
+										<c:when test="${output.movein == 'Y'}">
+											<span class="value">즉시입주가능</span>
+										</c:when>
+										<c:otherwise>
+											<span class="value">협의가능</span>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
+							<c:choose>
+								<c:when test="${output.select_sale == 'N'}">
+									<div class="col-sm-12 col-md-6">
+										<div class="text">
+											<span class="name">매매가</span>
+											<span class="value">${output.sale}만원</span>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+							</c:choose>
+							<!--  
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">추천업종</span>
 									<span class="value">종교</span>
 								</div>
 							</div>
+							-->
 							<div class="col-sm-12 col-md-6">
 								<div class="text">
 									<span class="name">준공년도</span>
-									<span class="value">2018년</span>
+									<span class="value">${output.comple_year}년</span>
 								</div>
 							</div>
 						</div> <!-- row end -->
 						<div class="row last-row">
+						<!--  
 							<div class="col-md-12">
 								<div class="Text">
 									<span class="name">옵션</span>
 									<span class="value">#24시간개방</span>
 								</div>
 							</div>
+						-->	
 						</div>
 					</div> <!-- B_info end -->
 					<!-- DB_info -->
@@ -268,35 +389,48 @@ html, body {
 						<div class="row">
 							<div class="col-md-12 index">
 								<div class="Value">
-									<span class="value_detail" style="line-height: 180%;">매물상세 설명란 입니다.
-										<br>주차가능합니다
-									전용 110평 정도 됩니다
-									<br>
-								 	●한일노벨리아부동산 ●
-								  	 답십리역 3번 출구 바로 앞에 있습니다
-								  	 <br>
-								  	  사무실,상가,공장,창고등 물권을 다량 보유하고 있습니다
-								  	<br>
-								  	  사무실,상가,공장,창고등 물권을 다량 보유하고 있습니다
-								  	<br>
-								  	  사무실,상가,공장,창고등 물권을 다량 보유하고 있습니다</span>
+									<span class="value_detail" style="line-height: 180%;">
+									
+									${output.content}
+										
+								  	 </span>
 								</div>
 							</div>
 						</div>
 					</div> <!-- BD_info end -->
 					<div class="info BD_image_info">
 						<div class="title">건물 정보</div>
-
 						<div class="row">
-							<div class="col-md-6 col-sm-12">
-								<div class="image well"></div>
-							</div>
-							<div class="col-md-6 col-sm-12" style="padding-left: 10px;">
-								<div class="Name" style="margin-bottom: 28px;">금산빌딩</div>
-								<div class="address">서울특별시 영등포구 여의도동</div>
-								<div class="floor">총 11층</div>
-								<div class="build">1986년</div>
-							</div>
+							<!-- 시작 -->
+								<c:choose>
+									<c:when test="${output.select_type eq 'N'}">
+										<div class="col-md-6 col-sm-12">
+											<div class="image well">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12" style="padding-left: 10px;">
+											<div class="Name" style="margin-bottom: 28px;">중개인의 요청으로 건물 정보제공을 제한합니다.</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="col-md-6 col-sm-12">
+											<div class="image">
+												<c:forEach var="Bitem" items="${fileoutput}" varStatus="status">
+                                                	<c:if test="${Bitem.fieldName eq 'getfile'}">
+                                                    	<img src="${pageContext.request.contextPath}/assets/upload${Bitem.filePath}" style="width:319px; height:160px;">
+                                                	</c:if>
+                                            	</c:forEach>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12" style="padding-left: 10px;">
+                                			<div class="Name" style="margin-bottom: 28px;">${output.build_name}</div>
+                                			<div class="address">${output.item_addrst}</div>
+                               				<div class="floor">총 ${output.all_floor}층</div>
+                              				<div class="build">${output.comple_year}년</div>
+                            			</div>
+									</c:otherwise>
+								</c:choose>
+							<!-- 끝 -->
 						</div>
 					</div> <!-- DB_image_info end-->
 					<div class="info BD_fee">
@@ -330,25 +464,34 @@ html, body {
 			<!-- 사이드 바 영역 -->
 			<div class="col-xs-4" style="height: 400px;">
 				<div class="affix" data-spy="affix" data-offset-top="0" data-offset-bottom="339">
-					<div class="main_side panel panel-default" style="margin: 0 0;">
+					<div class="main_side panel panel-default" style="margin:0;">
 						<div class="container inside_side">
 							<div class="M_Number">
 								<span class="M_Number_item1">매물번호</span>
-								<span class="M_Number-item2">340034</span>
+								<span class="M_Number-item2">${output.maemul_num}</span>
 							</div>
 							<div class="well" id="well_side">
 								<div class="M_price">
-									<span class="price-kind">월세</span>
-									<span class="price">1000/40</span>
-									<span class="price-level">만원</span>
+									<c:choose>
+										<c:when test="${output.select_sale eq 'Y'}">
+											<span class="price-kind">월세</span>
+											<span class="price">${output.warrenty}/${output.monthly}</span>
+											<span class="price-level">만원</span>
+										</c:when>
+										<c:otherwise>
+											<span class="price-kind">매매</span>
+											<span class="price">${output.sale}</span>
+											<span class="price-level">만원</span>
+										</c:otherwise>
+									</c:choose>
 								</div>							
 							</div> <!-- jumbo end -->
 							<div class="M_location">
 								<div class="location_grid">
-									<span class="M_location_item">부천시 원미구 역곡동</span>
+									<span class="M_location_item">${output.item_addrst}</span>
 								</div>
 								<div class="location_grid2">
-									<span class="M_location_item2">자연광이 환상적인 동네</span>
+									<span class="M_location_item2">${output.title}</span>
 								</div>
 							</div>
 							<div class="M_icon" id="icon_box" style="margin-top: 12px;">
@@ -409,7 +552,7 @@ html, body {
 							<div class="modal_M_Number">
 								<div class="alert alert-info" role="alert">
   									<span class="M_Number_title">매물번호</span>
-  									<span class="M_Number_value">12313</span>
+  									<span class="M_Number_value">${output.maemul_num}</span>
 								</div>
 							</div>
 							<hr />
@@ -439,7 +582,7 @@ html, body {
 	</div>
 	<!-- Footer -->
 	<div class="footer">
-
+	
 	</div>
 	<!-- Footer END -->	
 </div>
@@ -450,8 +593,6 @@ html, body {
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	
-
 
 </script>
 </body>

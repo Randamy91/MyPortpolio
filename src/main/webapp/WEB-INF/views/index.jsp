@@ -262,7 +262,7 @@
 		// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
 		map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-		$.get("${pageContext.request.contextPath}/assets/dummydata.json", function(data) {
+		$.get("${pageContext.request.contextPath}/Mjson", function(data) {
 			// 데이터에서 좌표 값을 가지고 마커를 표시합니다
 			// 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
 			var markers = $(data.positions).map(

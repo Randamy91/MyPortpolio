@@ -36,6 +36,27 @@
   		<result property="co_num" column="co_num"/>
      </resultMap>
      
+     <!-- 단일행 조회를 위한 기능 정의 -->
+     <select id="selectItem"
+     parameterType="kr.co.semo.model.Maemul"
+     resultMap="maemulMap">
+     SELECT maemul_num, item_addrst, item_addrnd, select_type, build_name, floor, all_floor, all_width, pri_width,
+     heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale, monthly, warrenty,
+     sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num     
+     FROM maemul_register WHERE maemul_num = #{maemul_num}     
+     </select>
+     
+     <!--  다중행 조회를 위한 기능 정의 -->
+     <select id="selectList"
+     parameterType="kr.co.semo.model.Maemul"
+     resultMap="maemulMap">
+     	SELECT maemul_num, item_addrst, item_addrnd, select_type, build_name, floor, all_floor, all_width, pri_width,
+     	heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale, monthly, warrenty,
+     	sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num
+     	FROM maemul_register 
+     </select>
+     
+     
      <!-- 데이터 저장을 위한 기능 정의 -->
      <insert id="insertItem"
      parameterType="kr.co.semo.model.Maemul"
@@ -50,7 +71,8 @@
   		 	#{monthly},#{warrenty},#{sale},#{pre_war},#{pre_month},
   		 	#{manage_ex},#{premium},#{latitude},#{longitude},#{co_num}
   		 )            
-        
      </insert>
+     
+     
            
   </mapper>

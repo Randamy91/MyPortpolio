@@ -57,6 +57,8 @@ public class MaemulServiceImpl implements MaemulService{
 
         return result;
     }
+    
+    
 
     @Override
     public int getMaemulCount(Maemul input) throws Exception {
@@ -134,4 +136,6 @@ public class MaemulServiceImpl implements MaemulService{
 
         return result;
     }
+
+	
 }

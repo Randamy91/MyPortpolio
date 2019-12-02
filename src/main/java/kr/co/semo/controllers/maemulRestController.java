@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +44,54 @@ public class maemulRestController {
 	/** 실행된 시간을 저장하기 위한 변수 */
 	@Autowired TimeHelper timeHelper;
 	
+	/** 매물 상세 페이지 */
+	@RequestMapping(value="/maemul/{maemul_num}", method=RequestMethod.GET)
+	public Map<String, Object> get(@PathVariable("maemul_num") int maemul_num) {
+		if(maemul_num == 0) {
+			return webHelper.getJsonWarning("매물번호가 없습니다.");
+		}
+		
+		Maemul input = new Maemul();
+		input.setMaemul_num(maemul_num);
+		
+		// 조회 결과를 저장할 객체 선언 
+		Maemul output = new Maemul();
+		
+		try {
+			output = maemulService.getMaemulItem(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		/** view 처리 */
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("item", output);
+		System.out.println(output);
+		return webHelper.getJsonData(data);
+	}
+	
+	/** 매물 다중 조회를 위한 페이지 */
+	@RequestMapping(value="/maemul", method = RequestMethod.GET)
+	public Map<String, Object> get_list() {
+		
+		/** 조회에 필요한 변수 선언  */
+		Maemul input = new Maemul();
+		List<Maemul> output = null;
+		
+		try {
+			// 데이터 조회 
+			output = maemulService.getMaemulList(input);
+		} catch(Exception e) {
+			webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("maemul", output);
+		return webHelper.getJsonData(data);
+	}
+	
+	
+	
 	/** 매물 등록에 대한 action페이지 */
 	@RequestMapping(value="/maemul", method=RequestMethod.POST)
 	public Map<String, Object> post() {
@@ -70,7 +119,7 @@ public class maemulRestController {
 				int premium;
 				
 				/** 매물이미지 초기변수 선언  */
-				String file_dir= "D:/JSP/upload";
+				String file_dir= "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
 				
 				
 				

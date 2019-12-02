@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Member_fileMapper">
+<mapper namespace="MaemulFileMapper">
      <!-- Beans의 맴버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
      <resultMap type="kr.co.semo.helper.UploadItem" id="maemulFileMap">
         <result property="item_num" column="item_num" />
@@ -16,6 +16,15 @@
  		<result property="edit_date" column="edit_date"/>
  		<result property="maemul_num" column="maemul_num"/>
      </resultMap>
+     
+     <!--다중행 데이터를 조회하기 위한 기능 정의 -->
+     <select id="selectItem"
+     parameterType="kr.co.semo.helper.UploadItem"
+     resultMap="maemulFileMap">
+     SELECT item_num, fieldName, origin_name, file_dir, file_name, content_type, file_size, reg_date, edit_date, maemul_num
+     FROM item_file
+     WHERE maemul_num = #{maemul_num}
+     </select>
      
      <!-- 데이터 저장을 위한 기능 정의 -->
      <insert id="insertItem"

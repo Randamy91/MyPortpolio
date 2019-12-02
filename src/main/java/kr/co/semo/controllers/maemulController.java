@@ -1,5 +1,6 @@
 package kr.co.semo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,9 +17,16 @@ import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.TimeHelper;
 import kr.co.semo.helper.UploadItem;
 import kr.co.semo.helper.WebHelper;
+import kr.co.semo.helper.RetrofitHelper;
+import kr.co.semo.model.Kakao;
 import kr.co.semo.model.Maemul;
+import kr.co.semo.model.Kakao.Documents;
+import kr.co.semo.model.Kakao.Documents.Road_address;
 import kr.co.semo.service.MaemulFileService;
 import kr.co.semo.service.MaemulService;
+import kr.co.semo.service.impl.ApiKakaoService;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
 @Controller
 public class maemulController {
@@ -30,6 +38,9 @@ public class maemulController {
 
 	@Autowired
 	RegexHelper regexHelper;
+	
+	@Autowired
+	RetrofitHelper retrofitHelper;
 	
 	// service 패턴 구현체 주입
 	@Autowired
@@ -44,7 +55,51 @@ public class maemulController {
 	/** 실행된 시간을 저장하기 위한 변수 */
 	@Autowired TimeHelper timeHelper;
 	
-	@RequestMapping(value = "add_ok", method = RequestMethod.POST)
+	@RequestMapping(value="/view.ok", method=RequestMethod.GET)
+	public ModelAndView view_ok(Model model) {
+		
+		int maemul_num = webHelper.getInt("maemul_num");
+		
+		// 조회할 매물에 대한 PK값 
+		if (maemul_num == 0) {
+			webHelper.redirect(null, "매물번호가 없습니다.");
+		}
+		
+		// 데이터 조회하기 
+		// 데이터 조회에 필요한 조건값 Beans에 저장하기 
+		Maemul input = new Maemul();
+		input.setMaemul_num(maemul_num);
+		
+		UploadItem fileinput = new UploadItem();
+		
+		
+		// 데이터 조회 결과를 저장할 객체 선언 
+		Maemul output = new Maemul();
+		List<UploadItem> fileoutput;
+					
+		try {
+			output = maemulService.getMaemulItem(input); 
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		try {
+			fileinput.setMaemul_num(output.getMaemul_num());
+			
+			fileoutput = maemulFileService.getFileItem(fileinput);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		System.out.println(fileoutput + "입니다.");
+		
+		model.addAttribute("output", output);
+		model.addAttribute("fileoutput", fileoutput);
+		return new ModelAndView("Maemul.detailed");
+		
+		
+	}
+	
+	@RequestMapping(value = "/maemul/add_ok", method = RequestMethod.POST)
 	public ModelAndView add_ok(Model model) {
 		// 업로드 시작
 		try {
@@ -52,8 +107,7 @@ public class maemulController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.redirect(null, "매물 업로드에 실패했습니다.");
-		}
-		String time = timeHelper.timeout();
+		}		
 		
 		/** 매물 초기 변수 선언 */
 		int monthly;
@@ -68,12 +122,10 @@ public class maemulController {
 		int pre_month;
 		int manage_ex;
 		int premium;
+		// 시간 등록을 위한 선언 
+		String time = timeHelper.timeout();
 		
-		/** 매물이미지 초기변수 선언  */
-		String file_dir= "D:/JSP/upload";
-		
-		
-		
+				
 		/** 업로드된 정보 추출하기 */
 		// 파일 정보 
 		List<UploadItem> fileList = webHelper.getFileList();
@@ -194,11 +246,41 @@ public class maemulController {
 		} else {
 			premium = Integer.parseInt(Premium);
 		}
+		
+		// 주소에 대한 좌표값을 리턴받기 위한 kakao REST API 요청 
+		Retrofit retrofit = retrofitHelper.getRetrofit(ApiKakaoService.BASE_URL);
+				
+		ApiKakaoService apiKakaoService = retrofit.create(ApiKakaoService.class);
+				
+		String query = paramMap.get("item_addrst");
+		
+		Kakao kakao = null;
+		List<Documents> Location = null;
+		
+		if (!query.equals("")) {
+			Call<Kakao> call = apiKakaoService.getMap(query);
+			
+			try {
+				kakao = call.execute().body();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		Location = kakao.getDocuments();
+		Documents first = Location.get(0);
+		Road_address middle = first.getRoad_address();
 		// 위도
-		double latitude = 12.12313;
+		String Latitude = middle.getY();
 		// 경도 
-		double longitude = 291.123421;
+		String Longitude = middle.getX(); 
+		
+		double latitude = Double.parseDouble(Latitude);
+		double longitude = Double.parseDouble(Longitude); 
+		// 요청 종료 
+		
 		int co_num = 111;
+		
+		
 		
 		//조회결과 저장할 매물객체 선언 
 		Maemul input = new Maemul();
@@ -230,7 +312,10 @@ public class maemulController {
 		input.setLatitude(latitude);
 		input.setLongitude(longitude);
 		input.setCo_num(co_num);
-			
+		
+		/** 매물이미지 초기변수 선언  */
+		String file_dir= "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
+		
 		try {
 			// 데이터 저장 
 			// 데이터 저장 성공하면 파라미터로 전달되는 input객체에 PK값이 저장됨
@@ -250,10 +335,54 @@ public class maemulController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		return webHelper.redirect(ContextPath + "/Maemul.detailed.do", "매물이 저장되었습니다.");
+		String redirectUrl = ContextPath + "/view.ok?maemul_num=" + input.getMaemul_num();
+		return webHelper.redirect(redirectUrl, "매물이 저장되었습니다.");
 
-	
-		
-		
 	}
+	
+	/** 파일 다운로드 및 썸네일을 생성하는 페이지 */
+    // --> 다운로드 ex) /upload/download.do?file=이미지경로&origin=원본파일이름
+    // --> 썸네일 ex) /upload/download.do?file=이미지경로&size=240x320&crop=true
+    @RequestMapping(value = "/upload/download.do", method = RequestMethod.GET)
+    public ModelAndView download(Model model) {
+        // 서버상에 저장되어 있는 파일경로 (필수)
+        String filePath = webHelper.getString("file");
+        // 원본 파일이름 (미필수)
+        String originName = webHelper.getString("origin");
+        // 축소될 이미지 해상도 --> 320x320
+        String size = webHelper.getString("size");
+        // 이미지 크롭 여부 --> 값이 없을 경우 기본값 false
+        String crop = webHelper.getString("crop", "");
+
+        /** 다운로드 스트림 출력하기 */
+        if (filePath != null) {
+            try {
+                // 썸네일 생성을 위해 축소될 이미지의 사이즈가 요청되었다면?
+                if (size != null) {
+                    // x를 기준으로 나눠서 숫자로 변환
+                    String[] temp = size.split("x");
+                    int width = Integer.parseInt(temp[0]);
+                    int height = Integer.parseInt(temp[1]);
+
+                    // 모든 파라미터는 문자열이므로 크롭 여부를 boolean으로 재설정
+                    boolean is_crop = false;
+                    if (crop.equals("true")) {
+                        is_crop = true;
+                    }
+
+                    // 썸네일 생성 후 다운로드 처리
+                    downloadHelper.download(filePath, width, height, is_crop);
+                } else {
+                    // 원본에 대한 다운로드 처리
+                    downloadHelper.download(filePath, originName);
+                }
+            } catch (Exception e) {
+            	
+                e.printStackTrace();
+            }
+        }
+        
+        // View를 사용하지 않고 FileStream을 출력하므로 리턴값은 없다.
+        return null;
+    }
 }
