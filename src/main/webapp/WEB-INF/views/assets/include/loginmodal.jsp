@@ -11,7 +11,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-				<form action="index.do" method="post">
+				<form action="${pageContext.request.contextPath}/Login" id="loginForm">
 					<div class="input-container">
 						<input type="text" class="form-control input-info" id="email"
 							name="email" placeholder="이메일" />

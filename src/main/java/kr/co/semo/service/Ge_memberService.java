@@ -17,4 +17,7 @@ public interface Ge_memberService {
 	public int editGe_member(Ge_member input) throws Exception;
 
 	public int deleteGe_member(Ge_member input) throws Exception;
+	
+	public int getLoginuser_item(Ge_member input) throws Exception;
 }
+

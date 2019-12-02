@@ -28,12 +28,12 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
+	
 	<context:component-scan
 		base-package="kr.co.semo.controllers" />
 	<context:component-scan
 		base-package="kr.co.semo.service.impl" />
-
+	
 	<!-- 인터셉터 등록 -->
 	<interceptors>
 		<interceptor>

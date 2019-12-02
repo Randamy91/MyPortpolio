@@ -210,11 +210,16 @@
 
 
 	<!--------------------------- 복사하여 사용 하세요  END---------------------------->
-
-
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/plugins/icheck/icheck.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script>
 	<script
@@ -222,6 +227,7 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/plugins/nouislider/nouislider.min.js"></script>
 	<script>
+	
 		//매물개수
 
 		var maemulCount = $('.list-item').length;
@@ -391,6 +397,8 @@
 				nodes2[handle].innerHTML = "무제한";
 			}
 		});
+		//로그인 기능
+		
 	</script>
 </body>
 </html>

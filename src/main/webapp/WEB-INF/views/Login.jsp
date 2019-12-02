@@ -34,14 +34,14 @@
 			<div class="content-body">
 				<div class="loginDiv">
 					<div class="emailLogin">이메일 로그인</div>
-					<form action="index.do" method="post">
+					<form action="${pageContext.request.contextPath}/login" id="loginForm">
 						<div class="input-login1">
 							<input type="text" class="form-control input-info email" id="email"
-								name="email" placeholder="이메일" required/>
+								name="userId" placeholder="이메일" required/>
 						</div>
 						<div class="input-login2">
 							<input type="password" class="form-control input-info password"
-								id="password" name="password" placeholder="패스워드" required/>
+								id="password" name="userPw" placeholder="패스워드" required/>
 						</div>
 						<div class="forgot-pw1">
 							<input type="checkbox" />&nbsp;자동 로그인 <span> <a href="Pw_change.do"
@@ -71,7 +71,8 @@
 	<!--------------------------- 복사하여 사용 하세요  END---------------------------->
 
 
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/juery/3.4.1/jquery.min.js"></</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -94,7 +95,16 @@
 				}	
 				
 			});
+			
+			$("#loginForm").ajaxForm({
+				method:'POST',
+				success: function(json){
+					console.log(json);
+				}
+			});
 		});
+		
+		
 	
 
 	

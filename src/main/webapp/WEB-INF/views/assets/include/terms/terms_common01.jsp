@@ -13,8 +13,8 @@
         <section class="sg-main__title">
             <h1>이용약관</h1>
             <div class="select_box">
-                <label for="color">[현행] 2019년 9월 1일 시행안</label>
-                <select id="color" name="select" onchange="if(this.value) location.href=(this.value);">
+                <label for="color1">[현행] 2019년 9월 1일 시행안</label>
+                <select id="color1" class="colors" name="select" onchange="if(this.value) location.href=(this.value);">
                     <option value="/policy/170401/servicePolicy.html?v=637020366704469484">2017년 4월 1일 시행안</option>
                     <option value="/policy/171030/servicePolicy.html?v=637020366704469484">2017년 10월 30일 시행안</option>
                     <option value="/policy/180920/servicePolicy.html?v=637020366704469484">2018년 9월 20일 시행안</option>

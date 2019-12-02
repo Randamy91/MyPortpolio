@@ -28,7 +28,7 @@
         font-size: 14px;
         font-weight: bold;
     }
-    .select_box select#color {
+    .select_box select .colors {
         width: 100%;
         height: 45px;
         min-height: 40px;
