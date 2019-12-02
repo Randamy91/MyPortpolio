@@ -7,131 +7,153 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.semo.model.Co_member;
+import kr.co.semo.model.Ge_member;
 import kr.co.semo.service.Co_memberService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class Co_memberServiceImpl implements Co_memberService{
+public class Co_memberServiceImpl implements Co_memberService {
 
-    @Autowired
-    SqlSession sqlSession;
+	@Autowired
+	SqlSession sqlSession;
 
-    @Override
-    public Co_member getCo_memberItem(Co_member input) throws Exception {
-        Co_member result = null;
+	@Override
+	public Co_member getCo_memberItem(Co_member input) throws Exception {
+		Co_member result = null;
 
-        try {
-            result = sqlSession.selectOne("Co_memberMapper.selectItem", input);
+		try {
+			result = sqlSession.selectOne("Co_memberMapper.selectItem", input);
 
-            if (result == null) {
-                throw new NullPointerException("result=null");
-            }
-        } catch (NullPointerException e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("조회된 데이터가 없습니다.");
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("데이터 조회에 실패했습니다.");
-        }
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    public List<Co_member> getCo_memberList(Co_member input) throws Exception {
-        List<Co_member> result = null;
+	public List<Co_member> getCo_memberList(Co_member input) throws Exception {
+		List<Co_member> result = null;
 
-        try {
-            result = sqlSession.selectList("Co_memberMapper.selectList", input);
+		try {
+			result = sqlSession.selectList("Co_memberMapper.selectList", input);
 
-            if (result == null) {
-                throw new NullPointerException("result=null");
-            }
-        } catch (NullPointerException e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("조회된 데이터가 없습니다.");
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("데이터 조회에 실패했습니다.");
-        }
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    @Override
-    public int getCo_memberCount(Co_member input) throws Exception {
-        int result = 0;
-        
-        try {
-            result = sqlSession.selectOne("Co_memberMapper.selectCountAll", input);
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("데이터 조회에 실패했습니다.");
-        }
-        
-        return result;
-    }
+	@Override
+	public int getCo_memberCount(Co_member input) throws Exception {
+		int result = 0;
 
-    @Override
-    public int addCo_member(Co_member input) throws Exception {
-        int result = 0;
+		try {
+			result = sqlSession.selectOne("Co_memberMapper.selectCountAll", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
 
-        try {
-            result = sqlSession.insert("Co_memberMapper.insertItem", input);
+		return result;
+	}
 
-            if (result == 0) {
-                throw new NullPointerException("result=0");
-            }
-        } catch (NullPointerException e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("저장된 데이터가 없습니다.");
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("데이터 저장에 실패했습니다.");
-        }
+	@Override
+	public int addCo_member(Co_member input) throws Exception {
+		int result = 0;
 
-        return result;
-    }
+		try {
+			result = sqlSession.insert("Co_memberMapper.insertItem", input);
 
-    @Override
-    public int editCo_member(Co_member input) throws Exception {
-        int result = 0;
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
 
-        try {
-            result = sqlSession.update("Co_memberMapper.updateItem", input);
+		return result;
+	}
 
-            if (result == 0) {
-                throw new NullPointerException("result=0");
-            }
-        } catch (NullPointerException e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("수정된 데이터가 없습니다.");
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("데이터 수정에 실패했습니다.");
-        }
+	@Override
+	public int editCo_member(Co_member input) throws Exception {
+		int result = 0;
 
-        return result;
-    }
+		try {
+			result = sqlSession.update("Co_memberMapper.updateItem", input);
 
-    @Override
-    public int deleteCo_member(Co_member input) throws Exception {
-        int result = 0;
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
 
-        try {
-            result = sqlSession.delete("Co_memberMapper.deleteItem", input);
+		return result;
+	}
 
-            if (result == 0) {
-                throw new NullPointerException("result=0");
-            }
-        } catch (NullPointerException e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("삭제된 데이터가 없습니다.");
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage());
-            throw new Exception("데이터 삭제에 실패했습니다.");
-        }
+	@Override
+	public int deleteCo_member(Co_member input) throws Exception {
+		int result = 0;
 
-        return result;
-    }
+		try {
+			result = sqlSession.delete("Co_memberMapper.deleteItem", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	@Override
+	public Co_member getLoginuser_item(Co_member input) throws Exception {
+		Co_member result = null;
+
+		try {
+			result = sqlSession.selectOne("Co_memberMapper.selectLoginUser", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("검색된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 검색에 실패했습니다..");
+		}
+
+		return result;
+	}
 }

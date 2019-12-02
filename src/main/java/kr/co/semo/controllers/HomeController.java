@@ -2,6 +2,9 @@ package kr.co.semo.controllers;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,7 +31,8 @@ public class HomeController {
 	
 	// 인덱스 페이지
 	@RequestMapping(value = "index.do")
-	public String index(Locale locale, Model model) {
+	public String index(Locale locale, Model model, HttpServletRequest request) {
+		
 		
 		return "index";
 	}

@@ -18,6 +18,6 @@ public interface Ge_memberService {
 
 	public int deleteGe_member(Ge_member input) throws Exception;
 	
-	public int getLoginuser_item(Ge_member input) throws Exception;
+	public Ge_member getLoginuser_item(Ge_member input) throws Exception;
 }
 

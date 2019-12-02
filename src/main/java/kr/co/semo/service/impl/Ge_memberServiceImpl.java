@@ -137,15 +137,15 @@ public class Ge_memberServiceImpl implements Ge_memberService{
     
     //login service
     @Override
-    public int getLoginuser_item(Ge_member input) throws Exception {
+    public Ge_member getLoginuser_item(Ge_member input) throws Exception {
     	
-    	int result = 0;
+    	Ge_member result = null;
     	
     	try {
 			result = sqlSession.selectOne("Ge_memberMapper.selectLoginUser", input);
 			
-			if (result == 0) {
-				throw new NullPointerException("result=0");
+			if (result == null) {
+				throw new NullPointerException("result=null");
 			}
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());

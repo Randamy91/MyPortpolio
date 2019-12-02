@@ -34,7 +34,7 @@
 			<div class="content-body">
 				<div class="loginDiv">
 					<div class="emailLogin">이메일 로그인</div>
-					<form action="${pageContext.request.contextPath}/login" id="loginForm">
+					<form action="${pageContext.request.contextPath}/login" id="loginForm" method="POST">
 						<div class="input-login1">
 							<input type="text" class="form-control input-info email" id="email"
 								name="userId" placeholder="이메일" required/>
@@ -71,9 +71,16 @@
 	<!--------------------------- 복사하여 사용 하세요  END---------------------------->
 
 
-	<script src="//ajax.googleapis.com/ajax/libs/juery/3.4.1/jquery.min.js"></</script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/regex/regex.js"></script>
+	<!--   한글 입력 유효성 체크를 위한 regex2 추가 -->
+	<script
+		src="${pageContext.request.contextPath}/assets/js/regex/regex2.js"></script>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			
@@ -95,13 +102,7 @@
 				}	
 				
 			});
-			
-			$("#loginForm").ajaxForm({
-				method:'POST',
-				success: function(json){
-					console.log(json);
-				}
-			});
+		
 		});
 		
 		

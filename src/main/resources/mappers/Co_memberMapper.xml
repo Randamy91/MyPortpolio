@@ -34,4 +34,18 @@
 			)
 		</insert>
 	
+		<!-- 로그인 회원 정보 조회 -->
+		<select id="selectLoginUser" 
+				parameterType="kr.co.semo.model.Co_member"
+				resultMap="co_memberMap">
+			SELECT co_name, email_id, user_pw FROM co_member
+			<where>
+				<if test="email_id != null and email_id != ''">
+					email_id LIKE concat(#{email_id})
+				</if>
+				<if test="user_pw != null and user_pw != ''">
+					AND user_pw LIKE concat(#{user_pw})
+				</if> 
+			</where>
+		</select>
 </mapper>
