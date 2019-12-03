@@ -46,6 +46,7 @@ public class LoginController {
 		Ge_member ge_input = new Ge_member();
 		ge_input.setEmail_id(userId);
 		ge_input.setUser_pw(userPw);
+		int geId;
 		String geName;
 		
 		//중개사회원 저장 beans
@@ -60,20 +61,35 @@ public class LoginController {
 		try {
 			try {
 				ge_output = ge_memberService.getLoginuser_item(ge_input);
+				geId = ge_output.getId();
 				geName = ge_output.getName();
 				HttpSession session = request.getSession();
-				session.setAttribute("usersession", userId);
-				session.setAttribute("userName", geName);
+				session.setMaxInactiveInterval(60*60);
+				System.out.println(geId);
+				System.out.println(userId);
+				if (geId == 1) {
+					session.setAttribute("userType", 0);
+					session.setAttribute("userId", userId);
+					session.setAttribute("userName", geName);
+					System.out.println("-------------- admin ------------");
+				} else {
+					session.setAttribute("userType", 1);
+					session.setAttribute("userId", userId);
+					session.setAttribute("userName", geName);
+					System.out.println("---------	----- user ------------");
+				}
 				return new ModelAndView("index");
 			} catch (Exception e) {
 				e.getLocalizedMessage();
 			}
 			try {
-				co_output = co_memberService.getCo_memberItem(co_input);
+				co_output = co_memberService.getLoginuser_item(co_input);
 				coName = co_output.getCo_name();
 				HttpSession session = request.getSession();
+				session.setMaxInactiveInterval(60*60);
 				session.setAttribute("usersession", userId);
 				session.setAttribute("userName", coName);
+				session.setAttribute("userType", 2);
 				return new ModelAndView("index");
 			} catch (Exception e) {
 				e.getLocalizedMessage();
@@ -85,7 +101,7 @@ public class LoginController {
 			return webHelper.redirect("Login.do", "아이디 및 비밀번호를 확인해 주세요.");			
 		}
 	}
-	
+	/**
 	@RequestMapping(value = "/ModalLogin", method = RequestMethod.POST)
 	public ModelAndView ModalLogin(Model model,HttpServletResponse response, HttpServletRequest request,
 			@RequestParam(value="userId", defaultValue="") String userId,
@@ -135,4 +151,5 @@ public class LoginController {
 			return webHelper.redirect("index.do", "아이디 및 비밀번호를 확인해 주세요.");			
 		}
 	}
+	*/
 }

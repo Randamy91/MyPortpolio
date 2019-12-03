@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	
 %>
@@ -27,52 +29,8 @@
 <body>
 	<div class="content">
 		<!-- 상단 메뉴 바 -->
-		<nav class="navbar menu_navbar bg-white">
-			<!--<div class="navbar-header menu_header">-->
-			<a class="navbar-brand logo" href="index.do"> <img alt="Brand"
-				src="${pageContext.request.contextPath}/assets/img/main_logo.jpg"
-				width="65px" height="40px">
-			</a>
-			<p class="navbar-text navbar-left">
-				<a href="index.do" class="navbar-link" style="text-decoration: none">상가</a>
-			</p>
-			<p class="navbar-text navbar-left">
-				<a href="Bigdata.do" class="navbar-link"
-					style="text-decoration: none">상권분석</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Joinus_select.do" class="navbar-link"
-					style="text-decoration: none">회원가입</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="#myModal" data-toggle="modal" class="navbar-link"
-					style="text-decoration: none">로그인</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Admin.do" class="navbar-link" style="text-decoration: none">관리자
-					페이지</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Maemul.manage.do" class="navbar-link"
-					style="tex1t-decoration: none">매물관리</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Maemul.interest.do" class="navbar-link"
-					style="text-decoration: none">관심매물</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Maemul_register.do" class="navbar-link"
-					style="text-decoration: none">매물등록</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Ge_infochange.do" class="navbar-link"
-					style="text-decoration: none">회원정보수정</a>
-			</p>
-			<p class="navbar-text navbar-right">
-				<a href="Co_infochange.do" class="navbar-link"
-					style="text-decoration: none">중개사회원정보수정</a>
-			</p>
-		</nav>
+		<!-- JSTL : 사용자 타입별 메뉴 변환 구현 191203 : 이재민 -->
+		<%@ include file="assets/include/header.jsp"%>
 		<!--  로그인 Modal -->
 		<%@ include file="assets/include/loginmodal.jsp"%>
 
@@ -227,9 +185,8 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/plugins/nouislider/nouislider.min.js"></script>
 	<script>
-	
 		//매물개수
-
+		
 		var maemulCount = $('.list-item').length;
 		$(".maemulCount").html(maemulCount);
 
@@ -272,11 +229,12 @@
 			// 데이터에서 좌표 값을 가지고 마커를 표시합니다
 			// 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
 			var markers = $(data.positions).map(
-				function(i, position) {
-					return new kakao.maps.CustomOverlay({
-						position : new kakao.maps.LatLng(position.lat, position.lng)
+					function(i, position) {
+						return new kakao.maps.CustomOverlay({
+							position : new kakao.maps.LatLng(position.lat,
+									position.lng)
+						});
 					});
-				});
 			// 클러스터러에 마커들을 추가합니다
 			clusterer.setMinClusterSize(1);
 			clusterer.addMarkers(markers);
@@ -398,7 +356,6 @@
 			}
 		});
 		//로그인 기능
-		
 	</script>
 </body>
 </html>

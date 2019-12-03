@@ -9,7 +9,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h2 class="modal-title loginmodal-title" id="myModalLabel">로그인</h2>
-				<form action="${pageContext.request.contextPath}/ModalLogin" id="loginForm" method="POST">
+				<form action="${pageContext.request.contextPath}/login" id="loginForm" method="POST">
 					<div class="input-container">
 						<input type="text" class="form-control input-info" id="email" name="userId" placeholder="이메일" />
 					</div>
