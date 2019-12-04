@@ -7,7 +7,7 @@
 		<result property="id"			column="id"/>
 		<result property="co_name"		column="co_name"/>
 		<result property="broker_num"	column="broker_num"/>
-		<result property="office_num"	column=""/>
+		<result property="office_num"	column="office_num"/>
 		<result property="office_addr"	column="office_addr"/>
 		<result property="tel_num"		column="tel_num"/>
 		<result property="boss_name"	column="boss_name"/>
@@ -33,12 +33,23 @@
 				#{approval}, #{reg_date}, #{broker_img}, #{recent_date}
 			)
 		</insert>
+		
+		<!-- 단일행 조회 -->
+	    <select id="selectItem"
+	        parameterType="kr.co.semo.model.Co_member"
+	        resultMap="co_memberMap">
+	        SELECT id, co_name, broker_num, office_num, office_addr, tel_num, boss_name,
+				tel, assi_name, position, email_id, user_pw, approval, reg_date,
+				broker_img, recent_date
+	        FROM co_member 
+	        WHERE id=#{id};
+	    </select>
 	
 		<!-- 로그인 회원 정보 조회 -->
 		<select id="selectLoginUser" 
 				parameterType="kr.co.semo.model.Co_member"
 				resultMap="co_memberMap">
-			SELECT co_name, email_id, user_pw FROM co_member
+			SELECT id, co_name, email_id, user_pw FROM co_member
 			<where>
 				<if test="email_id != null and email_id != ''">
 					email_id LIKE concat(#{email_id})

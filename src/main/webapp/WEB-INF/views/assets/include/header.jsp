@@ -43,7 +43,10 @@
 			<c:choose>
 				<c:when test="${userType == 0}">
 					<p class="navbar-text navbar-right">
-						<a href="#" class="navbar-link" style="text-decoration: none; font-size: 12px;">로그아웃</a>
+						<a href="logout.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">로그아웃</a>
+					</p>
+					<p class="navbar-text navbar-right">
+						<a href="ge_infochange.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">정보수정</a>
 					</p>
 					<p class="navbar-text navbar-right">
 						<a href="#" class="navbar-link" style="text-decoration: none">관리자 님</a>
@@ -55,6 +58,12 @@
 				</c:when>
 				<c:when test="${userType == 1}">
 					<p class="navbar-text navbar-right">
+						<a href="logout.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">로그아웃</a>
+					</p>
+					<p class="navbar-text navbar-right">
+						<a href="ge_infochange.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">정보수정</a>
+					</p>
+					<p class="navbar-text navbar-right">
 						<a href="#" class="navbar-link" style="text-decoration: none">${userName} 님</a>
 					</p>
 					<p class="navbar-text navbar-right">
@@ -63,6 +72,12 @@
 					</p>
 				</c:when>
 				<c:when test="${userType == 2}">
+					<p class="navbar-text navbar-right">
+						<a href="logout.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">로그아웃</a>
+					</p>
+					<p class="navbar-text navbar-right">
+						<a href="ge_infochange.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">정보수정</a>
+					</p>
 					<p class="navbar-text navbar-right">
 						<a href="#" class="navbar-link" style="text-decoration: none">${userName}</a>
 					</p>
@@ -84,17 +99,6 @@
 						<a href="#myModal" data-toggle="modal" class="navbar-link"
 							style="text-decoration: none">로그인</a>
 					</p>
-					<!-- 
-					<p class="navbar-text navbar-right">
-						<a href="Ge_infochange.do" class="navbar-link"
-							style="text-decoration: none">회원정보수정</a>
-					</p>
-					<p class="navbar-text navbar-right">
-						<a href="Co_infochange.do" class="navbar-link"
-							style="text-decoration: none">중개사회원정보수정</a>
-					</p>
-					 -->
-			
 		</c:otherwise>
 	</c:choose>
 	<!-- JSTL : 사용자 타입별 메뉴 변환 구현 191203 : 이재민 : END-->

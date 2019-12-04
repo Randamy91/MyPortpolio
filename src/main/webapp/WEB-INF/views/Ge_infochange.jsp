@@ -102,7 +102,7 @@
 	<!-- 상단 메뉴바  -->
 
 <!--  로그인 Modal -->
- 
+ 	
 <!-- 로그인 modal end -->
 
 <!-- 컨텐츠 -->
@@ -115,7 +115,7 @@
 					<p class="text-muted" style="font-size: 15px;">회원 정보와 비밀번호를 변경할 수 있습니다.</p>
 				</div>
 				<div class="main-content">
-					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="#">
+					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="ge_infochange_ok.do">
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -125,34 +125,27 @@
 											<tr>
 												<th class="active"><span class="left-name">이름</span></th>
 												<td>
-													
 													<input type="text" class="form-control"
 													id="user_name"
-													name="user_name"  placeholder="등록인이름공란" style="width: 350px; height: 50px;"/>	
+													name="user_name" value="${userinfo.name}" placeholder="등록인이름공란" style="width: 350px; height: 50px;"/>
 												</td>
 												
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">이메일</span></th>
 												<td>
-													<input type="text" class="form-control sg-form-control-md" id="email-value" name="email-value" style="width: 350px; height: 50px;">
+													<input type="text" value="${userinfo.email_id}" class="form-control sg-form-control-md" id="email-value" name="email-value" style="width: 350px; height: 50px;" disabled >
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">휴대폰 번호</span></th>
 												<td>
 													<div class="PhoneNumber">
-															<select class="form-control" id="phoneNumber1" name="phoneNumber1" style="width: 80px; height: 50px;">
-																<option value="010">010</option>
-																<option value="011">011</option>
-																<option value="016">016</option>
-																<option value="017">017</option>
-																<option value="019">019</option>
-															</select>
+															<input class="form-control" id="phoneNumber1" name="phoneNumber1" style="width: 80px; height: 50px;" value="${numCombi[0]}" disabled>
 															-
-															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4">
+															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[1]}" disabled>
 															-
-															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4">
+															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[2]}" disabled> 
 													</div>
 												</td>
 											</tr>
@@ -166,19 +159,19 @@
 											<tr>
 												<th class="active"><span class="left-name">현재 비밀번호</span></th>
 												<td>
-													<input type="text" class="form-control" id="Rpw" name="Rpw" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="Rpw" name="Rpw" style="width: 350px; height: 50px;">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">새 비밀번호</span></th>
 												<td>
-													<input type="text" class="form-control" id="Npw" name="Npw" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="Npw" name="Npw" style="width: 350px; height: 50px;">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">새 비밀번호 확인</span></th>
 												<td>
-													<input type="text" class="form-control" id="Npw-check" name="Npw-check" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="Npw-check" name="Npw-check" style="width: 350px; height: 50px;">
 												</td>
 											</tr>
 										</tbody>
@@ -194,11 +187,11 @@
 								</li>
 							</ul>							
 						</div> <!-- end panel -->
-						<div class="exit  text-right"><a href="#" class="exit-item" data-toggle="modal" data-target="#myModal2" id="open_modal_btn">탈퇴하기</a></div>						
-					</form>
-					<div class="Go text-center">
+						<div class="exit  text-right"><a href="#" class="exit-item" data-toggle="modal" data-target="#myModal2" id="open_modal_btn">탈퇴하기</a></div>
+						<div class="Go text-center">
 							<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
-					</div>
+						</div>						
+					</form>
 				</div>
 			</div> <!-- end container -->
 		</div>

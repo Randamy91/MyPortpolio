@@ -66,6 +66,7 @@
     <!-- TimeHelper 주입 설정 -->
     <bean id="timeHelper" class="kr.co.semo.helper.TimeHelper">
     </bean>
+  
 
     <!-- RegexHelper 주입 설정 -->
     <bean id="regexHelper" class="kr.co.semo.helper.RegexHelper" />
@@ -96,7 +97,9 @@
     <bean id="mailHelper" class="kr.co.semo.helper.MailHelper">
         <constructor-arg ref="mailSender" />
     </bean>
-
+	
+	
+    
     <!-- ======= DATABASE 연동 설정 ======= -->
     <!-- JDBC 객체 생성 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

@@ -129,29 +129,28 @@
 													
 													<input type="text" class="form-control"
 													id="co_name"
-													name="co_name" style="width: 350px; height: 50px;">
+													name="co_name" style="width: 350px; height: 50px;" value="${userinfo.co_name}">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">중개사 등록번호</span></th>
 												<td>
 													<input type="text" class="form-control sg-form-control-md"
-													id="co_number" name="co_number" style="width: 350px; height: 50px;" >
+													id="co_number" name="co_number" style="width: 350px; height: 50px;" value="${userinfo.broker_num}">
 
 													<input type="file" class="form-control" id="co_image" name="co_image" style="display: none;">
 													<label for="co_image" class="public_image">
-														<span class="btn btn-primary btn-lg">중개 등록증 첨부</span>
+														<span class="btn btn-primary btn-lg">중개등록증 변경</span>
 													</label>
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">사업자 등록번호</span></th>
 												<td>
-													<input type="text" class="form-control sg-form-control-md" id="coe_number" name="coe_number" style="width: 350px; height: 50px;">
-
+													<input type="text" class="form-control sg-form-control-md" id="coe_number" name="coe_number" style="width: 350px; height: 50px;" value="${userinfo.office_num}"/>
 													<input type="file" class="form-control" id="coe_image" name="coe_image" style="display: none;">
 													<label for="coe_image" class="public_image">
-														<span class="btn btn-primary btn-lg" >사업자등록증 첨부</span>
+														<span class="btn btn-primary btn-lg" >사업자등록증 변경</span>
 													</label>
 												</td>
 											</tr>
@@ -162,7 +161,7 @@
 													<div id="kakaomap">
 														<input type="text" id="sample2_postcode" name="sample2_postcode" placeholder="우편번호">
 														<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-														<input type="text" id="sample2_address" name="sample2_address" placeholder="주소"><br>
+														<input type="text" id="sample2_address" name="sample2_address" placeholder="주소" value="${userinfo.office_addr}"><br>
 														<input type="text" id="sample2_detailAddress" name="sample2_detailAddress" placeholder="상세주소">
 														<input type="text" id="sample2_extraAddress" name="sample2_extraAddress" placeholder="참고항목">
 													</div>
@@ -264,22 +263,18 @@
 											<tr>
 												<th class="active"><span class="left-name">중개사 대표명</span></th>
 												<td>
-													<input type="text" class="form-control" id="coe_name" name="coe_name" style="width: 350px; height: 50px;">
+													<input type="text" class="form-control" id="coe_name" name="coe_name" style="width: 350px; height: 50px;" value="${userinfo.boss_name}">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">중개사 대표번호</span></th>
 												<td>
 													<div class="coe_Telephone">
-														<select class="form-control" id="coe_Telephone1" name="coe_Telephone1" style="width: 80px; height: 50px;">
-															<option value="02">02</option>
-															<option value="031">031</option>
-															<option value="032">032</option>
-														</select>
+														<input class="form-control" id="coe_Telephone1" name="coe_Telephone1" style="width: 80px; height: 50px;" value="${telCombi[0]}"/>
 														-
-														<input type="text" class="form-control" id="coe_Telephone2" name="coe_Telephone2" style="width: 80px; height: 50px;"  maxlength="4">
+														<input type="text" class="form-control" id="coe_Telephone2" name="coe_Telephone2" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[1]}">
 														-
-														<input type="text" class="form-control" id="coe_Telephone3" name="coe_Telephone3" style="width: 80px; height: 50px;"  maxlength="4">
+														<input type="text" class="form-control" id="coe_Telephone3" name="coe_Telephone3" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[2]}">
 													</div> <!-- coe Telphone end -->
 												</td>
 											</tr>
@@ -289,7 +284,7 @@
 													<img id="preview" src="${pageContext.request.contextPath}/assets/img/ceo_image.jpg" class="coe_image" alt="이미지 로드후 미리보기 보여질 영역">
 													<input type="file" class="form-control" id="best_image" name="best_image" accept="image/*" style="display: none;">
 													<label for="best_image" class="label_best_image">
-														<span class="btn btn-info btn-lg" style="position: relative; bottom: 175px;">사진 업로드</span>
+														<span class="btn btn-info btn-lg" style="position: relative; bottom: 175px;">사진 변경</span>
 													</label>
 												</td>
 											</tr>	
@@ -303,14 +298,14 @@
 											<tr>
 												<th class="active"><span class="left-name">이름</span></th>
 												<td>
-													<input type="text" class="form-control" id="P_name" name="P_name" style="width: 350px; height: 50px;">
+													<input type="text" class="form-control" id="P_name" name="P_name" style="width: 350px; height: 50px;" value="${userinfo.assi_name}">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">직급/직책</span></th>
 												<td>
 													<select class="form-control" id="position" name="position">
-														<option value="">--------선택하세요-------</option>
+														<option>${userinfo.position}</option>
 														<option value="boss">대표공인중개사</option>
 														<option value="include">소속공인중개사</option>
 														<option value="intern">중개보조원</option>
@@ -321,28 +316,24 @@
 												<th class="active"><span class="left-name">이메일</span></th>
 												<td>
 													<div class="set_email">
-														<input type="text" class="form-control" id="set_email01" name="set_email01" style="width: 175px; height: 50px;">
-														@
-														<input type="text" name="set_email02" id="set_email02" class="form-control" style="width:175px; height: 50px;" disabled value="naver.com">
-														<select class="form-control" id="selectEmail" name="selectEmail" style="height: 50px;">
-															<option value="1">직접입력</option>
-															<option value="navercom"  selected>naver.com</option>
-															<option value="hanmail.net">hanmail.net</option>
-															<option value="nate.com">nate.com</option>
-															<option value="gmail.com">gmail.com</option>
-															<option value="yahoo.com">yahoo.com</option>
-														</select>
+														<input type="text" value="${userinfo.email_id}" class="form-control" id="set_email01" name="set_email01" style="width: 175px; height: 50px;" disabled>
 													</div> <!-- set_email -->													
 												</td>
 											</tr>
 											<tr>
-												<th class="active"><span class="left-name">비밀번호</span></th>
+												<th class="active"><span class="left-name">현재 비밀번호</span></th>
 												<td>
 													<input type="password" class="form-control" id="co_pw" name="co_pw" style="width: 350px; height: 50px;">
 												</td>
 											</tr>
 											<tr>
-												<th class="active"><span class="left-name">비밀번호 확인</span></th>
+												<th class="active"><span class="left-name">새 비밀번호</span></th>
+												<td>
+													<input type="password" class="form-control" id="co_pw" name="co_pw" style="width: 350px; height: 50px;">
+												</td>
+											</tr>
+											<tr>
+												<th class="active"><span class="left-name">새 비밀번호 확인</span></th>
 												<td>
 													<input type="password" class="form-control" id="co_pw_check" name="co_pw_check" style="width: 350px; height: 50px;">
 												</td>
@@ -351,17 +342,11 @@
 												<th class="active"><span class="left-name">휴대폰 번호</span></th>
 												<td>
 													<div class="PhoneNumber">
-															<select class="form-control" id="phoneNumber1" name="phoneNumber1" style="width: 80px; height: 50px;">
-																<option value="010">010</option>
-																<option value="011">011</option>
-																<option value="016">016</option>
-																<option value="017">017</option>
-																<option value="019">019</option>
-															</select>
+															<input class="form-control" id="phoneNumber1" name="phoneNumber1" style="width: 80px; height: 50px;" value="${numCombi[0]}">
 															-
-															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4">
+															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[1]}">
 															-
-															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4">
+															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[2]}">
 													</div>
 												</td>
 											</tr>								

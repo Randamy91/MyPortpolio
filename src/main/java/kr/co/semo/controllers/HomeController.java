@@ -67,20 +67,6 @@ public class HomeController {
 		return "Bigdata";
 	}
 	
-	// Co_infochange 페이지
-	@RequestMapping(value = "Co_infochange.do")
-	public String coInfochange(Locale locale, Model model) {
-		
-		return "Co_infochange";
-	}
-	
-	// Ge_infochange 페이지
-	@RequestMapping(value = "Ge_infochange.do")
-	public String geInfochange(Locale locale, Model model) {
-		
-		return "Ge_infochange";
-	}
-	
 	// Joinus_company 페이지
 	@RequestMapping(value = "Joinus_company.do")
 	public String joinusCompany(Locale locale, Model model) {
