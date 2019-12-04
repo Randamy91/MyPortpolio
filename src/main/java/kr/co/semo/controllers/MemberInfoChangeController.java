@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -73,12 +74,12 @@ public class MemberInfoChangeController {
 			} else {
 				try {
 					coOutput = co_memberService.getCo_memberItem(coInput);
-					telNum = coOutput.getTel();
+					telNum = coOutput.getTel_num();
 					num1 = telNum.substring(0,2);
 					num2 = telNum.substring(2,5);
 					num3 = telNum.substring(6);
 					
-					phoneNum = coOutput.getTel_num();
+					phoneNum = coOutput.getTel();
 					firstNum = phoneNum.substring(0,3);
 					secondNum = phoneNum.substring(3,7);
 					lastNum = phoneNum.substring(7);
@@ -112,14 +113,13 @@ public class MemberInfoChangeController {
 		}
 	}
 	
-	@RequestMapping(value = "/ge_infochange_ok")
+	@RequestMapping(value = "/ge_infochange_ok", method=RequestMethod.POST)
 	public ModelAndView ge_infochange_ok (Model model, HttpServletResponse response, HttpServletRequest request,
 			@RequestParam(value="Npw") String user_pw,
 			@RequestParam(value="user_name") String name  			
 		) throws Exception {
 		HttpSession session = request.getSession();
 		int memberId = (int) session.getAttribute("userNum"); 
-		int userType = (int) session.getAttribute("userType");
 		Ge_member geInput = new Ge_member();
 		
 		geInput.setId(memberId);
@@ -136,21 +136,34 @@ public class MemberInfoChangeController {
 		}
 	}
 	
-	@RequestMapping(value = "/co_infochange_ok")
+	@RequestMapping(value = "/co_infochange_ok", method=RequestMethod.POST)
 	public ModelAndView co_infochange_ok (Model model, HttpServletResponse response, HttpServletRequest request,
-			@RequestParam(value="Npw") String user_pw
-		) throws Exception {
+			
+			@RequestParam(value="co_name") String co_name,
+			@RequestParam(value="broker_num") String broker_num,
+			@RequestParam(value="office_num") String office_num,
+			@RequestParam(value="office_addr") String office_addr,
+			@RequestParam(value="boss_name") String boss_name,
+			@RequestParam(value="tel_num1") String tel_num1,
+			@RequestParam(value="tel_num2") String tel_num2,
+			@RequestParam(value="tel_num3") String tel_num3,
+			@RequestParam(value="nowco_pw") String nowco_pw,
+			@RequestParam(value="newco_pw") String newco_pw,
+			@RequestParam(value="phoneNumber1") String phoneNumber1,
+			@RequestParam(value="phoneNumber2") String phoneNumber2,
+			@RequestParam(value="phoneNumber3") String phoneNumber3
+			
+		) {
+		
+		System.out.println("#################" + co_name + "#############");
 		HttpSession session = request.getSession();
 		int memberId = (int) session.getAttribute("userNum"); 
-		int userType = (int) session.getAttribute("userType");
 		Co_member coInput = new Co_member();
 		
 		coInput.setId(memberId);
-		coInput.setUser_pw(user_pw);
 	
 		
 		try {
-			co_memberService.getCo_memberItem(coInput);
 			return new ModelAndView("index");
 		} catch (Exception e) {
 			e.getLocalizedMessage();

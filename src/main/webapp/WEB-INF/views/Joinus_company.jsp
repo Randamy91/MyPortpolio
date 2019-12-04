@@ -1045,7 +1045,7 @@ html, body {
 									console.log(json);
 								}
 							});
-							
+							/*
 							$.ajax({
 								url : "fileupload",
 								processData : false,
@@ -1057,7 +1057,7 @@ html, body {
 									console.log("업로드성공");
 								}
 							});
-					
+							*/
 							
 							console.log("ajaxform 실행");
 							page02();

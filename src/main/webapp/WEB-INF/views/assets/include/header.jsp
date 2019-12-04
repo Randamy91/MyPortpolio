@@ -46,9 +46,6 @@
 						<a href="logout.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">로그아웃</a>
 					</p>
 					<p class="navbar-text navbar-right">
-						<a href="ge_infochange.do" class="navbar-link" style="text-decoration: none; font-size: 12px;">정보수정</a>
-					</p>
-					<p class="navbar-text navbar-right">
 						<a href="#" class="navbar-link" style="text-decoration: none">관리자 님</a>
 					</p>
 					<p class="navbar-text navbar-right">

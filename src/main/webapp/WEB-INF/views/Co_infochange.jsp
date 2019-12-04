@@ -116,7 +116,7 @@
 					<h2 class="title">공인중개사 회원정보 수정</h2>
 				</div>
 				<div class="main-content">
-					<form id="changeform" name="changeform" class="form-inline" role="form" method="post" action="#" enctype="multipart/form-data">
+					<form id="changeform" class="form-inline" role="form" method="post" action="co_infochange_ok" >
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -127,16 +127,14 @@
 												<th class="active"><span class="left-name">중개사무소명</span></th>
 												<td>
 													
-													<input type="text" class="form-control"
-													id="co_name"
-													name="co_name" style="width: 350px; height: 50px;" value="${userinfo.co_name}">
+													<input type="text" class="form-control"	id="co_name" name="co_name" style="width: 350px; height: 50px;" value="${userinfo.co_name}">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">중개사 등록번호</span></th>
 												<td>
 													<input type="text" class="form-control sg-form-control-md"
-													id="co_number" name="co_number" style="width: 350px; height: 50px;" value="${userinfo.broker_num}">
+													id="co_number" name="broker_num" style="width: 350px; height: 50px;" value="${userinfo.broker_num}">
 
 													<input type="file" class="form-control" id="co_image" name="co_image" style="display: none;">
 													<label for="co_image" class="public_image">
@@ -147,7 +145,7 @@
 											<tr>
 												<th class="active"><span class="left-name">사업자 등록번호</span></th>
 												<td>
-													<input type="text" class="form-control sg-form-control-md" id="coe_number" name="coe_number" style="width: 350px; height: 50px;" value="${userinfo.office_num}"/>
+													<input type="text" class="form-control sg-form-control-md" id="coe_number" name="office_num" style="width: 350px; height: 50px;" value="${userinfo.office_num}"/>
 													<input type="file" class="form-control" id="coe_image" name="coe_image" style="display: none;">
 													<label for="coe_image" class="public_image">
 														<span class="btn btn-primary btn-lg" >사업자등록증 변경</span>
@@ -159,11 +157,11 @@
 												</th>
 												<td>
 													<div id="kakaomap">
-														<input type="text" id="sample2_postcode" name="sample2_postcode" placeholder="우편번호">
+														<input type="text" id="sample2_postcode"  placeholder="우편번호" disabled>
 														<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-														<input type="text" id="sample2_address" name="sample2_address" placeholder="주소" value="${userinfo.office_addr}"><br>
-														<input type="text" id="sample2_detailAddress" name="sample2_detailAddress" placeholder="상세주소">
-														<input type="text" id="sample2_extraAddress" name="sample2_extraAddress" placeholder="참고항목">
+														<input type="text" id="sample2_address" name="office_addr" placeholder="주소" value="${userinfo.office_addr}" ><br>
+														<input type="text" id="sample2_detailAddress"  placeholder="상세주소" >
+														<input type="text" id="sample2_extraAddress"  placeholder="참고항목" >
 													</div>
 															<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 															<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -263,18 +261,18 @@
 											<tr>
 												<th class="active"><span class="left-name">중개사 대표명</span></th>
 												<td>
-													<input type="text" class="form-control" id="coe_name" name="coe_name" style="width: 350px; height: 50px;" value="${userinfo.boss_name}">
+													<input type="text" class="form-control" id="coe_name" name="boss_name" style="width: 350px; height: 50px;" value="${userinfo.boss_name}">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">중개사 대표번호</span></th>
 												<td>
 													<div class="coe_Telephone">
-														<input class="form-control" id="coe_Telephone1" name="coe_Telephone1" style="width: 80px; height: 50px;" value="${telCombi[0]}"/>
+														<input class="form-control" id="coe_Telephone1" name="tel_num1" style="width: 80px; height: 50px;" value="${telCombi[0]}"/>
 														-
-														<input type="text" class="form-control" id="coe_Telephone2" name="coe_Telephone2" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[1]}">
+														<input type="text" class="form-control" id="coe_Telephone2" name="tel_num2" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[1]}">
 														-
-														<input type="text" class="form-control" id="coe_Telephone3" name="coe_Telephone3" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[2]}">
+														<input type="text" class="form-control" id="coe_Telephone3" name="tel_num3" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[2]}">
 													</div> <!-- coe Telphone end -->
 												</td>
 											</tr>
@@ -323,19 +321,19 @@
 											<tr>
 												<th class="active"><span class="left-name">현재 비밀번호</span></th>
 												<td>
-													<input type="password" class="form-control" id="co_pw" name="co_pw" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="co_pw" name="nowco_pw" style="width: 350px; height: 50px;">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">새 비밀번호</span></th>
 												<td>
-													<input type="password" class="form-control" id="co_pw" name="co_pw" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="newco_pw" name="newco_pw" style="width: 350px; height: 50px;" placeholder="비밀변호 변경을 원하시면 입력해주세요.">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">새 비밀번호 확인</span></th>
 												<td>
-													<input type="password" class="form-control" id="co_pw_check" name="co_pw_check" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="co_pw_check" name="co_pw_check" style="width: 350px; height: 50px;" placeholder="비밀변호 변경을 원하시면 입력해주세요.">
 												</td>
 											</tr>
 											<tr>
@@ -354,11 +352,11 @@
 									</table>
 								</li>
 							</ul>							
-						</div> <!-- end panel -->						
+						</div> <!-- end panel -->
+						<div class="Go text-center">
+							<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
+						</div>						
 					</form>
-					<div class="Go text-center">
-						<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
-					</div>
 				</div>
 			</div> <!-- end container -->
 		</div>
@@ -403,7 +401,7 @@
 			};
 		};
 	// 사진 미리보기 end	
-		
+	
 		$("#complete").click(function(e) {
 			e.preventDefault();
 
@@ -422,6 +420,7 @@
 	             return false;
             }
 
+           	/*
             // 중개사 번호 파일체크
             var subject = $("#co_image").val();
             if (!subject) {
@@ -429,6 +428,7 @@
                 $("#co_image").focus();
                 return false;
             }
+            */
 
             // 사업자 등록 번호 숫자 입력 검사
             if (!regex.value('#coe_number', '사업자 등록번호를 입력하세요.')) { return false; }
@@ -439,6 +439,7 @@
                 return false;
             }
 
+            /*
             // 사업자 번호 파일체크
              var subject2 = $("#coe_image").val();
              if (!subject2) {
@@ -446,13 +447,14 @@
                  $("#coe_image").focus();
                   return false;
             }
-
+             */
+			/*
             //주소검사 1
             if (!regex.value('#sample2_postcode', '주소를 입력하세요.')) { return false; }
                         
             //주소검사 2
             if (!regex.value('#sample2_address', '상세주소를 입력하세요.')) { return false; }
-                        
+            */       
 
             // 중개사 대표명
             if (!regex.value('#coe_name', '중개사 대표명을 입력하세요.')) { return false; }
@@ -481,7 +483,7 @@
             }
             if (!regex.min_length('#coe_Telephone3', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
 
-            
+            /*
         	// 대표사진 검사 
              var best = $("#best_image").val();
              if (!best) {
@@ -489,6 +491,7 @@
                  $("#best_image").focus();
                   return false;
             }
+             */
         	
 
 
@@ -501,13 +504,14 @@
             /** 직급/직책 검사 */
             if (!regex.value('#position', '직급/직책을 입력하세요.')) { return false; }
 
+            /*
             // 이메일 검사 
             if(!regex.value('#set_email01', '이메일 앞자리를 입력하세요.')) {return false;}
             if(!regex.eng('#set_email01','이메일은 영문만 입력가능합니다.')) {return false;}
 
             if(!regex.value('#set_email02', '이메일 뒷자리를 입력하세요.')) {return false;}
-            
-            
+            */
+            /*
             // 비밀번호 검사 
         	if (!regex.value('#co_pw', '비밀번호를 입력하세요.')) {return false;}
         	if (!regex.min_length('#co_pw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
@@ -516,7 +520,19 @@
         	if (!regex.min_length('#co_pw_check', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
             if (!regex.max_length('#co_pw_check', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
             if (!regex.compare_to('#co_pw', '#co_pw_check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
-
+			*/
+			
+			//새 비밀번호 검사
+			if ($('#newco_pw').val() != "" || $('#co_pw_check').val() != "") {
+				if (!regex.value('#newco_pw', '비밀번호를 입력하세요.')) {return false;}
+	        	if (!regex.min_length('#newco_pw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+	            if (!regex.max_length('#newco_pw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+				if (!regex.value('#co_pw_check', '비밀번호를 입력하세요.')) {return false;}
+	        	if (!regex.min_length('#co_pw_check', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+	            if (!regex.max_length('#co_pw_check', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+	            if (!regex.compare_to('#newco_pw', '#co_pw_check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+			}
+			
             /**핸드폰 검사1 */
             if (!regex.value('#phoneNumber2', '휴대폰 번호를 입력하세요.')) { return false; }
             if (!pattern2.test($('#phoneNumber2').val())) {
@@ -543,6 +559,7 @@
             // 휴대폰 검사2 end
      		$("#changeform").submit();
 		});	
+		
 	});
 	
 </script>
