@@ -116,7 +116,7 @@
 					<h2 class="title">공인중개사 회원정보 수정</h2>
 				</div>
 				<div class="main-content">
-					<form id="changeform" class="form-inline" role="form" method="post" action="co_infochange_ok" >
+					<form id="changeform" class="form-inline" role="form" method="post" action="co_infochange_ok" enctype="multipart/form-data" >
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">

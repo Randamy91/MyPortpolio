@@ -1,5 +1,8 @@
 package kr.co.semo.controllers;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.semo.helper.UploadItem;
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
 import kr.co.semo.model.Ge_member;
@@ -74,12 +78,12 @@ public class MemberInfoChangeController {
 			} else {
 				try {
 					coOutput = co_memberService.getCo_memberItem(coInput);
-					telNum = coOutput.getTel_num();
+					telNum = coOutput.getTel();
 					num1 = telNum.substring(0,2);
 					num2 = telNum.substring(2,5);
 					num3 = telNum.substring(6);
 					
-					phoneNum = coOutput.getTel();
+					phoneNum = coOutput.getTel_num();
 					firstNum = phoneNum.substring(0,3);
 					secondNum = phoneNum.substring(3,7);
 					lastNum = phoneNum.substring(7);
@@ -137,26 +141,40 @@ public class MemberInfoChangeController {
 	}
 	
 	@RequestMapping(value = "/co_infochange_ok", method=RequestMethod.POST)
-	public ModelAndView co_infochange_ok (Model model, HttpServletResponse response, HttpServletRequest request,
-			
-			@RequestParam(value="co_name") String co_name,
-			@RequestParam(value="broker_num") String broker_num,
-			@RequestParam(value="office_num") String office_num,
-			@RequestParam(value="office_addr") String office_addr,
-			@RequestParam(value="boss_name") String boss_name,
-			@RequestParam(value="tel_num1") String tel_num1,
-			@RequestParam(value="tel_num2") String tel_num2,
-			@RequestParam(value="tel_num3") String tel_num3,
-			@RequestParam(value="nowco_pw") String nowco_pw,
-			@RequestParam(value="newco_pw") String newco_pw,
-			@RequestParam(value="phoneNumber1") String phoneNumber1,
-			@RequestParam(value="phoneNumber2") String phoneNumber2,
-			@RequestParam(value="phoneNumber3") String phoneNumber3
-			
-		) {
+	public ModelAndView co_infochange_ok (Model model, HttpServletResponse response, HttpServletRequest request)
+	{
+		try {
+			webHelper.upload();
+		} catch (Exception e) {
+			e.printStackTrace();
+			webHelper.redirect(null, "업로드에 실패했습니다.");
+		}
+		/** 업로든 된 정보 추출 */
+		// 텍스트 데이터 추출
+		Map<String, String> paramMap = webHelper.getParamMap();
+		String co_name = paramMap.get("co_name");
+		String broker_num = paramMap.get("broker_num");
+		String office_num = paramMap.get("office_num");
+		String office_addr = paramMap.get("office_addr");
+		String boss_name = paramMap.get("boss_name");
+		String tel_num1 = paramMap.get("tel_num1");
+		String tel_num2 = paramMap.get("tel_num2");
+		String tel_num3 = paramMap.get("tel_num3");
+		String nowco_pw = paramMap.get("nowco_pw");
+		String newco_pw = paramMap.get("newco_pw");
+		String phoneNumber1 = paramMap.get("phoneNumber1");
+		String phoneNumber2 = paramMap.get("phoneNumber2");
+		String phoneNumber3 = paramMap.get("phoneNumber3");
+		String phonecombi;
+		String telCombi;
 		
-		System.out.println("#################" + co_name + "#############");
+		
+		//파일 정보 추출
+		List<UploadItem> fileList = webHelper.getFileList();
+		
 		HttpSession session = request.getSession();
+		
+		
 		int memberId = (int) session.getAttribute("userNum"); 
 		Co_member coInput = new Co_member();
 		
