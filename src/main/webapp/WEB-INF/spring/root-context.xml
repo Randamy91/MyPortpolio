@@ -122,5 +122,10 @@
         <!-- 생성자를 통해 SQLSessionFactory 객체 주입 -->
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    
+    <!-- multipart/form-data 사용을 위한  
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	-->
 
 </beans>

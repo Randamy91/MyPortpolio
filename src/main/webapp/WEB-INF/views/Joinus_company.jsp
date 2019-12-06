@@ -200,9 +200,7 @@ html, body {
 						<!-- form 박스 - 1 END -->
 					
 						<!-- ############################## 로그인 FORM ################################# -->
-						<form class="personal_info" method="POST" role="form"
-							id="result02" enctype="multipart/form-data" action="addCo_member"
-							style="display: none;">
+						<form class="personal_info" role="form"	id="result02" style="display: none;"enctype="multipart/form-data" method="post">
 							<!-- 페이지 이동 방지를 위한 iframe -->
 							<iframe name='ifrm' width='0' height='0' ></iframe>
 							<div>
@@ -412,9 +410,9 @@ html, body {
 								</tbody>
 							</table>
 							<div class="general02_btn" style="text-align: center;">
-								<input type="submit" class="btn btn-primary" value="입력완료"
+								<button type="button" class="btn btn-primary" value="입력완료"
 									id="submit_btn"
-									style="height: 50px; width: 100px; margin: 50px">
+									style="height: 50px; width: 100px; margin: 50px">입력완료</button>
 								<!-- button type="submit" 형식으로 하면 페이지 전환이 안먹힘 -->
 							</div>
 						</form>
@@ -989,30 +987,26 @@ html, body {
 				position = "C";
 			}
 
-			//파일 명 가저오기
-			var fileValue = $("#getfile").val().split("\\");
-			var fileName = fileValue[fileValue.length - 1]; //파일명
-			var filePath = "d:/"
-			 
-
 			//ajax parsing 
 			console.log("유효성검사 완료");
 
-			/** ajaxForm */
-			$('#result02').ajaxForm({
-				enctype : "multipart/form-data",
-				method : "POST",
-				success : function(json) {
-					console.log(json);
-				}
-			})
+			var form = new FormData(document.getElementById('result02'));
+
+			
 			/** 일반 ajax */
-			
-			// 파일 업로드
-			var form = $("#result02")[0];
-			var myFormData = new FormData(form);
-			myFormData.append('broker_img',$("#getfile")[0].files[0]);
-			
+			$.ajax({
+				type : "POST",
+				url : "addCo_member",
+				dataType : "text",
+				processData: false, 
+				contentType: false,
+				data : form,
+				success : function(data){
+					console.log("success");
+				}
+			});
+		
+			/*
 			$.ajax({
 				type : "POST",
 				url : "addCo_member",
@@ -1038,18 +1032,8 @@ html, body {
 					console.log(json);
 				}
 			});
-			$.ajax({
-				url : "fileupload",
-				processData : false,
-				contentType: false,
-				enctype: 'multipart/form-data',
-				data : myFormData,
-				type : "POST",
-				success : function(json) {
-					console.log("업로드성공");
-				}
-			});
-			$("#result02").submit();
+			*/
+			//$("#result02").submit();
 			console.log("ajaxform 실행");
 			page02();
 			console.log("페이지변경");

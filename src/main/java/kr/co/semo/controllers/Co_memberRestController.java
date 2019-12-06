@@ -2,11 +2,14 @@ package kr.co.semo.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.ibatis.binding.MapperMethod.ParamMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +26,13 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.co.semo.helper.UploadItem;
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
 import kr.co.semo.model.Ge_member;
+import kr.co.semo.model.Member_file;
 import kr.co.semo.service.Co_memberService;
 import kr.co.semo.service.Ge_memberService;
 
@@ -36,12 +41,139 @@ public class Co_memberRestController {
 	private static final Logger logger = LoggerFactory.getLogger(Co_memberRestController.class);
 	@Autowired WebHelper webHelper;
 	@Autowired Co_memberService co_memberService;
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
 	
-	@RequestMapping(value="/addCo_member", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value="/addCo_member", method=RequestMethod.POST)
 	private String adduser(
-				@RequestParam("getfile") MultipartFile getfile
+				//MultipartHttpServletRequest request
+				//@RequestParam("co_name") String co_neme
+				//@RequestPart("getfile") MultipartFile getfile
 			) throws IOException {
+		/*
+		System.out.println(co_neme);
+		System.out.println(request.getFileNames());
+		MultipartFile broker_img = request.getFile("getfile");
 		
+		System.out.println(broker_img.getContentType());
+		System.out.println(broker_img.getOriginalFilename());
+		System.out.println("파일 존재" + broker_img.isEmpty());
+		*/
+	
+		try {
+			webHelper.upload();
+		} catch (Exception e) {
+			e.printStackTrace();
+			webHelper.redirect(null, "업로드 실패");
+		}
+		//■
+		Map<String, String> paramMap = webHelper.getParamMap();
+		//■■■■■■ 대표번호 조합 ■■■■■■■
+		String telResult = paramMap.get("tel").toString();
+		String[] telpiece = telResult.split(",");
+		String telCombi = null;
+		for (int i = 0; i < telpiece.length; i++) {
+			if(telCombi == null  ) {
+				telCombi = telpiece[i];
+			} else {
+				telCombi += telpiece[i];
+			}
+		}
+		//■■■■■■■■■■■■■ 핸드폰 번호 조합 ■■■■■■■■■■■■■■
+		String phoneResult = paramMap.get("phoneNum");
+		String[] phonePiece = phoneResult.split(",");
+		String phoneCombi = null;
+		for (int i = 0; i < phonePiece.length; i++) {
+			if (phoneCombi == null) {
+				phoneCombi = phonePiece[i];
+			} else {
+				phoneCombi += phonePiece[i];
+			}
+		}
+		
+		//■■■■■■■■■■■■■ Position 분류 ■■■■■■■■■■■■■■
+		String posi = paramMap.get("position2");
+		if (posi == "대표공인중개사") {
+			posi = "A";
+		} else if (posi == "소속공인중개사") {
+			posi = "B";
+		} else {
+			posi = "C";
+		}
+		
+		
+		//■■■■■■■■■■■■■ 현재 시간 ■■■■■■■■■■■■■■
+		SimpleDateFormat nowTime = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		String now = nowTime.format (System.currentTimeMillis());
+		
+		List<UploadItem> fileList = webHelper.getFileList();
+		
+		
+		//■■■■■■■■■■■■■■■■■■■■■■■■■■ 대표 사진 저장 경로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+		String broker_img = contextPath + fileList.get(2).getFilePath();
+		
+		String co_name = paramMap.get("co_name");
+		String broker_num = paramMap.get("coe_number");
+		String office_num = paramMap.get("co_number");
+		String office_addr = paramMap.get("office_addr");
+		String boss_name = paramMap.get("coe_name");
+		String tel = telCombi;
+		String tel_num = phoneCombi;
+		String assi_name = paramMap.get("P_name");
+		String position = posi;
+		String email_id = paramMap.get("user_email");
+		String user_pw = paramMap.get("co_pw");
+		String reg_date = now;
+		String recent_date = now;
+		String approval = "N";
+		
+		Co_member input = new Co_member();
+		input.setCo_name(co_name);
+		input.setBroker_num(broker_num);
+		input.setOffice_num(office_num);  
+		input.setOffice_addr(office_addr);
+		input.setTel_num(tel_num);
+		input.setBoss_name(boss_name);
+		input.setTel(tel);
+		input.setAssi_name(assi_name);
+		input.setPosition(position);
+		input.setEmail_id(email_id);
+		input.setUser_pw(user_pw);
+		input.setApproval(approval);
+		input.setReg_date(reg_date);
+		input.setBroker_img(broker_img);
+		input.setRecent_date(recent_date);
+	
+		try {
+			co_memberService.addCo_member(input);
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+		
+		
+		Member_file member_file = new Member_file();
+		List<Member_file> memFileList = new ArrayList<Member_file>();
+		
+		//■■■■■■■■■■■■■■■■■■■■■■■■ File type 중개사등록증, 사업자등록증 구분 ■■■■■■■■■■■■■■■■■■■■■■■■■
+		
+		
+		System.out.println(fileList + "테스트중입니다.");
+		for (int i = 0; i < fileList.size()-1; i++) {
+			member_file.setOrigin_name(fileList.get(i).getOrginName());
+			member_file.setCo_member_id(input.getId());
+			member_file.setContent_type(fileList.get(i).getContentType());
+			member_file.setEdit_date(now);
+			member_file.setFile_dir(fileList.get(i).getFile_dir());
+			member_file.setFile_size((int) fileList.get(i).getFileSize());
+			member_file.setFile_name(fileList.get(i).getFilePath());
+			member_file.setFile_type(fileList.get(i).getContentType());
+			memFileList.add(member_file);
+			System.out.println(memFileList.get(i));
+		}
+		
+		
+		
+		/*
 		System.out.println("!11111111111111111111111111111111111111121jhfdcljsdhioj23459045948356243512354425345356466346");
 		
 		System.out.println(getfile.getName());
@@ -49,9 +181,9 @@ public class Co_memberRestController {
 		System.out.println(getfile.getOriginalFilename());
 		byte[] data = getfile.getBytes();
 		System.out.println(data);
-		
+		*/
 		/*
-		// 텍스트 데이터 추출
+		
 		Map<String, String> paramMap = webHelper.getParamMap();
 		String co_name = paramMap.get("co_name");
 		String broker_num = paramMap.get("broker_num");
@@ -94,11 +226,7 @@ public class Co_memberRestController {
 		output.put("item", input);
 		*/
 		/*
-		try {
-			co_memberService.addCo_member(input);
-		} catch (Exception e) {
-			System.out.println(e.getLocalizedMessage());
-		}
+		
 		*/
 		return "success";
 	}

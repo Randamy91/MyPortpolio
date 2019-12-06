@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Member_file {
-	private int co_member_id;    
+	    
 	private String content_type; // 파일형식
 	private String edit_date;    // 변경일시
 	private String file_dir;     // 업로드된 파일경로
@@ -14,4 +14,5 @@ public class Member_file {
 	private int id;              
 	private String origin_name;  // 파일 원본 이름
 	private String reg_date;	 // 등록 일시
+	private int co_member_id;
 }
