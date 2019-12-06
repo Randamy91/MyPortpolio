@@ -49,6 +49,7 @@ public class HomeController {
 	@RequestMapping(value = "Admin.do")
 	public String admin(Locale locale, Model model) {
 		
+		
 		return "Admin";
 	}
 	

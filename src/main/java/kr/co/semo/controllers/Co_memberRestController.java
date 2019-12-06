@@ -35,12 +35,14 @@ import kr.co.semo.model.Ge_member;
 import kr.co.semo.model.Member_file;
 import kr.co.semo.service.Co_memberService;
 import kr.co.semo.service.Ge_memberService;
+import kr.co.semo.service.Member_fileService;
 
 @RestController
 public class Co_memberRestController {
 	private static final Logger logger = LoggerFactory.getLogger(Co_memberRestController.class);
 	@Autowired WebHelper webHelper;
 	@Autowired Co_memberService co_memberService;
+	@Autowired Member_fileService member_fileServiceimp;
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
@@ -152,23 +154,30 @@ public class Co_memberRestController {
 		
 		
 		Member_file member_file = new Member_file();
-		List<Member_file> memFileList = new ArrayList<Member_file>();
 		
+		
+		String file_dir= "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
 		//■■■■■■■■■■■■■■■■■■■■■■■■ File type 중개사등록증, 사업자등록증 구분 ■■■■■■■■■■■■■■■■■■■■■■■■■
-		
-		
-		System.out.println(fileList + "테스트중입니다.");
-		for (int i = 0; i < fileList.size()-1; i++) {
+		System.out.println(fileList.size());
+		for (int i = 0; i < fileList.size(); i++) {
 			member_file.setOrigin_name(fileList.get(i).getOrginName());
 			member_file.setCo_member_id(input.getId());
 			member_file.setContent_type(fileList.get(i).getContentType());
 			member_file.setEdit_date(now);
-			member_file.setFile_dir(fileList.get(i).getFile_dir());
+			member_file.setFile_dir(file_dir);
 			member_file.setFile_size((int) fileList.get(i).getFileSize());
 			member_file.setFile_name(fileList.get(i).getFilePath());
-			member_file.setFile_type(fileList.get(i).getContentType());
-			memFileList.add(member_file);
-			System.out.println(memFileList.get(i));
+			if (i==0) {
+				member_file.setFile_type("B");
+			} else {
+				member_file.setFile_type("O");
+			}
+			member_file.setReg_date(now);
+			try {
+				member_fileServiceimp.addMember_file(member_file);
+			} catch (Exception e) {
+				e.getLocalizedMessage();
+			}
 		}
 		
 		

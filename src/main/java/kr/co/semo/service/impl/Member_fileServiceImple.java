@@ -20,7 +20,7 @@ public class Member_fileServiceImple implements Member_fileService{
         Member_file result = null;
 
         try {
-            result = sqlSession.selectOne("Member_fileMapper.selectItem", input);
+            result = sqlSession.selectOne("MemberFileMapper.selectItem", input);
 
             if (result == null) {
                 throw new NullPointerException("result=null");
@@ -40,7 +40,7 @@ public class Member_fileServiceImple implements Member_fileService{
         List<Member_file> result = null;
 
         try {
-            result = sqlSession.selectList("Member_fileMapper.selectList", input);
+            result = sqlSession.selectList("MemberFileMapper.selectList", input);
 
             if (result == null) {
                 throw new NullPointerException("result=null");
@@ -61,7 +61,7 @@ public class Member_fileServiceImple implements Member_fileService{
         int result = 0;
         
         try {
-            result = sqlSession.selectOne("Member_fileMapper.selectCountAll", input);
+            result = sqlSession.selectOne("MemberFileMapper.selectCountAll", input);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
@@ -75,7 +75,7 @@ public class Member_fileServiceImple implements Member_fileService{
         int result = 0;
 
         try {
-            result = sqlSession.insert("Member_fileMapper.insertItem", input);
+            result = sqlSession.insert("MemberFileMapper.insertItem", input);
 
             if (result == 0) {
                 throw new NullPointerException("result=0");
@@ -96,7 +96,7 @@ public class Member_fileServiceImple implements Member_fileService{
         int result = 0;
 
         try {
-            result = sqlSession.update("Member_fileMapper.updateItem", input);
+            result = sqlSession.update("MemberFileMapper.updateItem", input);
 
             if (result == 0) {
                 throw new NullPointerException("result=0");
@@ -117,7 +117,7 @@ public class Member_fileServiceImple implements Member_fileService{
         int result = 0;
 
         try {
-            result = sqlSession.delete("Member_fileMapper.deleteItem", input);
+            result = sqlSession.delete("MemberFileMapper.deleteItem", input);
 
             if (result == 0) {
                 throw new NullPointerException("result=0");
