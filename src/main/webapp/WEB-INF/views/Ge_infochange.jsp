@@ -159,19 +159,19 @@
 											<tr>
 												<th class="active"><span class="left-name">현재 비밀번호</span></th>
 												<td>
-													<input type="password" class="form-control" id="Rpw" name="Rpw" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="Rpw" name="Rpw" style="width: 350px; height: 50px;" placeholder="비밀변호 변경을 원하시면 입력해주세요.">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">새 비밀번호</span></th>
 												<td>
-													<input type="password" class="form-control" id="Npw" name="Npw" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="Npw" name="Npw" style="width: 350px; height: 50px;" placeholder="비밀변호 변경을 원하시면 입력해주세요.">
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">새 비밀번호 확인</span></th>
 												<td>
-													<input type="password" class="form-control" id="Npw-check" name="Npw-check" style="width: 350px; height: 50px;">
+													<input type="password" class="form-control" id="Npw-check" name="Npw-check" style="width: 350px; height: 50px;" placeholder="비밀변호 변경을 원하시면 입력해주세요.">
 												</td>
 											</tr>
 										</tbody>
@@ -217,7 +217,7 @@
 				<img src="${pageContext.request.contextPath}/assets/img/cry.png" style="width: 160px; height: 160px">			
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal" id="exit-right" style="width: 100%;">회원 탈퇴하기</button>
+				<button type="button" class="btn btn-danger"  data-dismiss="modal" id="exit-right" style="width: 100%;">회원 탈퇴하기</button>
 			</div>
 		</div>
 
@@ -232,10 +232,13 @@
 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&libraries=libraries=services,clusterer,drawing"></script> --> 
 <script type="text/javascript">
 
+
+//■■■■■■■■■■■■■■■■■■■■■ 회원 탈퇴 컨트롤러로 이동 ■■■■■■■■■■■■■■■■■■■■
 	function exit() {
 		$("#exit-right").click(function(e) {
+			
 				alert("회원 탈퇴가 완료 되었습니다.\r\n \r\n그동안 세모 서비스를 아끼고 사랑해주셔서 감사합니다. \r\n더욱더 노력하고 발전하는 세모가 되겠습니다.");
-				window.location.href = "./index.jsp"
+				location.href = "ge_delete";
 		});
 	};
 
@@ -273,15 +276,19 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a9ba7245ae5c0929fafa188dbfaf9a&lib
             // 휴대폰 검사2 end 
             
             // 비밀번호 검사 
-            if (!regex.value('#Rpw', '비밀번호를 입력하세요.')) { return false; }
-            if (!regex.value('#Npw', '새로 설정할 비밀번호를 입력하세요.')) { return false; }
-            if (!regex.min_length('#Npw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
-            if (!regex.max_length('#Npw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
-            if (!regex.compare_to('#Npw', '#Npw-check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+	        if ($("#Rpw").val() != null && $("#Rpw").val() != "") {   
+	            if (!regex.value('#Rpw', '비밀번호를 입력하세요.')) { return false; }
+	            if (!regex.value('#Npw', '새로 설정할 비밀번호를 입력하세요.')) { return false; }
+	            if (!regex.min_length('#Npw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+	            if (!regex.max_length('#Npw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+	            if (!regex.compare_to('#Npw', '#Npw-check', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+	        }
             $("#changeform").submit();
 		});	
 		
 	}); 
+	
+	
 	// function end
 </script>
 </body>

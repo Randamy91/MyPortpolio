@@ -4,17 +4,17 @@
 
 <mapper namespace="MemberFileMapper">
 	<!-- Beans 의 멤버변수 (property) 이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-	<resultMap type="kr.co.semo.model.Member_file" id="memberfileMap">
+	<resultMap type="kr.co.semo.model.Member_file" id="memberFileMap">
 		<result property="id"					column="id"/>
-		<result property="origin_name"			column="name"/>
-		<result property="file_dir"				column="email_id"/>
+		<result property="origin_name"			column="origin_name"/>
+		<result property="file_dir"				column="file_dir"/>
 		<result property="file_name"			column="file_name"/>
 		<result property="content_type"			column="content_type"/>
 		<result property="file_size"			column="file_size"/>
 		<result property="reg_date"				column="reg_date"/>
 		<result property="edit_date"			column="edit_date"/>		
 		<result property="file_type"			column="file_type"/>
-		<result property="co_member_id"			column="file_type"/>		
+		<result property="co_member_id"			column="co_member_id"/>		
 	</resultMap>
 
 	<!-- 데이터 저장 -->
@@ -25,7 +25,16 @@
 		INSERT INTO member_file (
 			origin_name, file_dir, file_name, content_type, file_size, reg_date, edit_date, file_type, co_member_id
 		) VALUES (
-			#{name}, #{file_dir}, #{file_name}, #{content_type}, #{file_size}, #{reg_date}, #{edit_date}, #{file_type}, #{co_member_id}
+			#{origin_name}, #{file_dir}, #{file_name}, #{content_type}, #{file_size}, #{reg_date}, #{edit_date}, #{file_type}, #{co_member_id}
 		)
 	</insert>
+	
+	<!-- 중개사 회원정보 수정 매물 정보 수정 -->
+	<update id="updateItem"
+		parameterType="kr.co.semo.model.Member_file">
+		UPDATE member_file
+		SET origin_name=#{origin_name}, file_dir=#{file_dir}, file_name=#{file_name}, content_type=#{content_type}, 
+			file_size=#{file_size}, edit_date=#{edit_date}, file_type=#{file_type}
+		WHERE co_member_id=#{co_member_id}
+	</update>	
 </mapper>

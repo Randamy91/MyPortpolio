@@ -116,7 +116,7 @@
 					<h2 class="title">공인중개사 회원정보 수정</h2>
 				</div>
 				<div class="main-content">
-					<form id="changeform" class="form-inline" role="form" method="post" action="co_infochange_ok" enctype="multipart/form-data" >
+					<form id="changeform" class="form-inline" role="form" method="post"  enctype="multipart/form-data" >
 						<div class="panel panel-default">
 							<ul class="list-group">
 								<li class="list-group-item first-list">
@@ -268,18 +268,18 @@
 												<th class="active"><span class="left-name">중개사 대표번호</span></th>
 												<td>
 													<div class="coe_Telephone">
-														<input class="form-control" id="coe_Telephone1" name="tel_num1" style="width: 80px; height: 50px;" value="${telCombi[0]}"/>
+														<input class="form-control" id="coe_Telephone1" name="tel" style="width: 80px; height: 50px;" value="${telCombi[0]}"/>
 														-
-														<input type="text" class="form-control" id="coe_Telephone2" name="tel_num2" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[1]}">
+														<input type="text" class="form-control" id="coe_Telephone2" name="tel" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[1]}">
 														-
-														<input type="text" class="form-control" id="coe_Telephone3" name="tel_num3" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[2]}">
+														<input type="text" class="form-control" id="coe_Telephone3" name="tel" style="width: 80px; height: 50px;"  maxlength="4" value="${telCombi[2]}">
 													</div> <!-- coe Telphone end -->
 												</td>
 											</tr>
 											<tr>
 												<th class="active"><span class="left-name">대표 사진</span></th>
 												<td>
-													<img id="preview" src="${pageContext.request.contextPath}/assets/img/ceo_image.jpg" class="coe_image" alt="이미지 로드후 미리보기 보여질 영역">
+													<img id="preview" src="assets/upload${userinfo.broker_img}" class="coe_image" alt="이미지 로드후 미리보기 보여질 영역">
 													<input type="file" class="form-control" id="best_image" name="best_image" accept="image/*" style="display: none;">
 													<label for="best_image" class="label_best_image">
 														<span class="btn btn-info btn-lg" style="position: relative; bottom: 175px;">사진 변경</span>
@@ -340,11 +340,11 @@
 												<th class="active"><span class="left-name">휴대폰 번호</span></th>
 												<td>
 													<div class="PhoneNumber">
-															<input class="form-control" id="phoneNumber1" name="phoneNumber1" style="width: 80px; height: 50px;" value="${numCombi[0]}">
+															<input class="form-control" id="phoneNumber1" name="phoneNum" style="width: 80px; height: 50px;" value="${numCombi[0]}">
 															-
-															<input type="text" class="form-control" id="phoneNumber2" name="phoneNumber2" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[1]}">
+															<input type="text" class="form-control" id="phoneNumber2" name="phoneNum" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[1]}">
 															-
-															<input type="text" class="form-control" id="phoneNumber3" name="phoneNumber3" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[2]}">
+															<input type="text" class="form-control" id="phoneNumber3" name="phoneNum" style="width: 80px; height: 50px;" maxlength="4" value="${numCombi[2]}">
 													</div>
 												</td>
 											</tr>								
@@ -353,8 +353,9 @@
 								</li>
 							</ul>							
 						</div> <!-- end panel -->
+						<div class="exit  text-right"><a href="#" class="exit-item" data-toggle="modal" data-target="#myModal2" id="open_modal_btn">탈퇴하기</a></div>
 						<div class="Go text-center">
-							<button type="submit" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">입력완료</button>
+							<button type="button" class="btn btn-primary btn-lg" id="complete" style="width: 200px; height: 80px;">수정완료</button>
 						</div>						
 					</form>
 				</div>
@@ -368,11 +369,38 @@
 
 
 </div>  <!-- end content -->
+<!--modal2 -->
+<div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mysecondModalLabel">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="modal-title" id="mysecondModalLabel" style="text-align: center;">세모 탈퇴하기</h3>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+				<p>탈퇴, 시 네모에 등록하신 매물과 개인정보 등이 모두 삭제되며 <br> 이후 복구가 불가능 합니다. 정말 탈퇴 하시겠습니까?</p>
+				<img src="${pageContext.request.contextPath}/assets/img/cry.png" style="width: 160px; height: 160px">			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger"  data-dismiss="modal" id="exit-right" style="width: 100%;">회원 탈퇴하기</button>
+			</div>
+		</div>
+
+	</div>
+</div> <!-- modal2 end -->
 
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/regex/regex.js"></script>
 <script type="text/javascript">
+
+//■■■■■■■■■■■■■■■■■■■■■ 회원 탈퇴 컨트롤러로 이동 ■■■■■■■■■■■■■■■■■■■■
+		function exit() {
+			$("#exit-right").click(function(e) {
+					location.href = "#";
+			});
+		};
+
 	$("#selectEmail").change(function() {
 		$("#selectEmail option:selected").each(function() {
 			if($(this).val() == '1') {
@@ -481,7 +509,7 @@
                 $('#coe_Telephone3').focus();
                 return false;
             }
-            if (!regex.min_length('#coe_Telephone3', 3, '최소 3자 이상 입력 가능합니다.')) { return false; }
+            if (!regex.min_length('#coe_Telephone3', 4, '최소 4자 이상 입력 가능합니다.')) { return false; }
 
             /*
         	// 대표사진 검사 
@@ -523,7 +551,7 @@
 			*/
 			
 			//새 비밀번호 검사
-			if ($('#newco_pw').val() != "" || $('#co_pw_check').val() != "") {
+			if ($("#co_pw").val() != null && $("#co_pw").val() != "") {
 				if (!regex.value('#newco_pw', '비밀번호를 입력하세요.')) {return false;}
 	        	if (!regex.min_length('#newco_pw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
 	            if (!regex.max_length('#newco_pw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
@@ -557,7 +585,26 @@
             	return false;
             }
             // 휴대폰 검사2 end
-     		$("#changeform").submit();
+            
+            var form = new FormData(document.getElementById('changeform'));
+
+			
+			/** 일반 ajax */
+			$.ajax({
+				type : "POST",
+				url : "co_infochange_ok",
+				dataType : "text",
+				processData: false, 
+				contentType: false,
+				data : form,
+				success : function(data){
+					console.log("success");
+					alert("수정이 완료되었습니다.");
+					location.href = "index.do";
+				}
+			});
+			
+     		//$("#changeform").submit();
 		});	
 		
 	});

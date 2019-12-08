@@ -1,5 +1,7 @@
 package kr.co.semo.controllers;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -40,13 +42,17 @@ public class LoginController {
 			@RequestParam(value="userId", defaultValue="") String userId,
 			@RequestParam(value="userPw", defaultValue="") String userPw
 	) throws Exception {
-		
+		// 현재 시간 
+				SimpleDateFormat nowTime = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+				String now = nowTime.format (System.currentTimeMillis());
 		//일반회원 저장 beans
 		Ge_member ge_input = new Ge_member();
 		ge_input.setEmail_id(userId);
 		ge_input.setUser_pw(userPw);
+		ge_input.setRecent_date(now);
 		int geId;
 		String geName;
+		
 		
 		//중개사회원 저장 beans
 		Co_member co_input = new Co_member();
@@ -63,9 +69,9 @@ public class LoginController {
 				ge_output = ge_memberService.getLoginuser_item(ge_input);
 				geId = ge_output.getId();
 				geName = ge_output.getName();
-				
-				System.out.println(geId);
-				System.out.println(userId);
+				ge_input.setId(geId);
+				// 최근 로그인 시간 변경
+				ge_memberService.editGe_memberRecent(ge_input);
 				if (geId == 1) {
 					HttpSession session = request.getSession();
 					session.setMaxInactiveInterval(60*60);
@@ -90,6 +96,7 @@ public class LoginController {
 				co_output = co_memberService.getLoginuser_item(co_input);
 				coName = co_output.getCo_name();
 				coId = co_output.getId();
+				
 				HttpSession session = request.getSession();
 				session.setMaxInactiveInterval(60*60);
 				session.setAttribute("userNum", coId);

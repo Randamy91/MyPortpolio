@@ -21,42 +21,69 @@
 		<result property="broker_img"	column="broker_img"/>		
 		<result property="recent_date"	column="recent_date"/>
 	</resultMap>	
-		<insert id="insertItem" parameterType="kr.co.semo.model.Co_member" 
-		useGeneratedKeys="true" keyProperty="id">
-			INSERT INTO co_member (
-				co_name, broker_num, office_num, office_addr, tel_num, boss_name,
-				tel, assi_name, position, email_id, user_pw, approval, reg_date,
-				broker_img, recent_date
-			) VALUES (
-				#{co_name}, #{broker_num}, #{office_num}, #{office_addr}, #{tel_num}, 
-				#{boss_name}, #{tel} , #{assi_name},#{position}, #{email_id}, #{user_pw}, 
-				#{approval}, #{reg_date}, #{broker_img}, #{recent_date}
-			)
-		</insert>
-		
-		<!-- 단일행 조회 -->
-	    <select id="selectItem"
-	        parameterType="kr.co.semo.model.Co_member"
-	        resultMap="co_memberMap">
-	        SELECT id, co_name, broker_num, office_num, office_addr, tel_num, boss_name,
-				tel, assi_name, position, email_id, user_pw, approval, reg_date,
-				broker_img, recent_date
-	        FROM co_member 
-	        WHERE id=#{id};
-	    </select>
+	<insert id="insertItem" parameterType="kr.co.semo.model.Co_member" 
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO co_member (
+			co_name, broker_num, office_num, office_addr, tel_num, boss_name,
+			tel, assi_name, position, email_id, user_pw, approval, reg_date,
+			broker_img, recent_date
+		) VALUES (
+			#{co_name}, #{broker_num}, #{office_num}, #{office_addr}, #{tel_num}, 
+			#{boss_name}, #{tel} , #{assi_name},#{position}, #{email_id}, #{user_pw}, 
+			#{approval}, #{reg_date}, #{broker_img}, #{recent_date}
+		)
+	</insert>
 	
-		<!-- 로그인 회원 정보 조회 -->
-		<select id="selectLoginUser" 
-				parameterType="kr.co.semo.model.Co_member"
-				resultMap="co_memberMap">
-			SELECT id, co_name, email_id, user_pw FROM co_member
-			<where>
-				<if test="email_id != null and email_id != ''">
-					email_id LIKE concat(#{email_id})
-				</if>
-				<if test="user_pw != null and user_pw != ''">
-					AND user_pw LIKE concat(#{user_pw})
-				</if> 
-			</where>
-		</select>
+	<!-- 단일행 조회 -->
+    <select id="selectItem"
+        parameterType="kr.co.semo.model.Co_member"
+        resultMap="co_memberMap">
+        SELECT id, co_name, broker_num, office_num, office_addr, tel_num, boss_name,
+			tel, assi_name, position, email_id, user_pw, approval, reg_date,
+			broker_img, recent_date
+        FROM co_member 
+        WHERE id=#{id};
+    </select>
+
+	<!-- 로그인 회원 정보 조회 -->
+	<select id="selectLoginUser" 
+			parameterType="kr.co.semo.model.Co_member"
+			resultMap="co_memberMap">
+		SELECT id, co_name, email_id, user_pw FROM co_member
+		<where>
+			<if test="email_id != null and email_id != ''">
+				email_id LIKE concat(#{email_id})
+			</if>
+			<if test="user_pw != null and user_pw != ''">
+				AND user_pw LIKE concat(#{user_pw})
+			</if> 
+		</where>
+	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="updateItem"
+		parameterType="kr.co.semo.model.Co_member">
+		UPDATE co_member
+		SET co_name=#{co_name}, broker_num=#{broker_num}, office_num=#{office_num}, office_addr=#{office_addr},
+			boss_name=#{boss_name}, tel_num=#{tel_num}, tel=#{tel}, assi_name=#{assi_name}, position=#{position},
+			approval=#{approval}, broker_img=#{broker_img}
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 회원 정보 수정 (패스워드 변경) -->
+	<update id="updateItemPw"
+		parameterType="kr.co.semo.model.Co_member">
+		UPDATE co_member
+		SET co_name=#{co_name}, broker_num=#{broker_num}, office_num=#{office_num}, office_addr=#{office_addr},
+			boss_name=#{boss_name}, tel_num=#{tel_num}, tel=#{tel}, assi_name=#{assi_name}, position=#{position},
+			user_pw=#{user_pw}, approval=#{approval}, broker_img=#{broker_img}
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="deleteItem"
+		parameterType="kr.co.semo.model.Co_member">
+		DELETE FROM co_member 
+		WHERE id = #{id}
+		 
+	</delete>
 </mapper>

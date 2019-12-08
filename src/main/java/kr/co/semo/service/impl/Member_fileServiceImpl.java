@@ -11,7 +11,7 @@ import kr.co.semo.service.Member_fileService;
 import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
-public class Member_fileServiceImple implements Member_fileService{
+public class Member_fileServiceImpl implements Member_fileService{
 	@Autowired
     SqlSession sqlSession;
 

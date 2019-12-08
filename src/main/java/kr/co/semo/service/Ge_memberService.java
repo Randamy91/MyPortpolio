@@ -15,6 +15,10 @@ public interface Ge_memberService {
 	public int addGe_member(Ge_member input) throws Exception;
 
 	public int editGe_member(Ge_member input) throws Exception;
+	
+	public int editGe_memberName(Ge_member input) throws Exception;
+	
+	public int editGe_memberRecent(Ge_member input) throws Exception;
 
 	public int deleteGe_member(Ge_member input) throws Exception;
 	

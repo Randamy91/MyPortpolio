@@ -15,6 +15,8 @@ public interface Co_memberService {
 	public int addCo_member(Co_member input) throws Exception;
 
 	public int editCo_member(Co_member input) throws Exception;
+	
+	public int editCo_memberPw(Co_member input) throws Exception;
 
 	public int deleteCo_member(Co_member input) throws Exception;
 	

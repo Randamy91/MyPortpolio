@@ -42,7 +42,7 @@ public class Co_memberRestController {
 	private static final Logger logger = LoggerFactory.getLogger(Co_memberRestController.class);
 	@Autowired WebHelper webHelper;
 	@Autowired Co_memberService co_memberService;
-	@Autowired Member_fileService member_fileServiceimp;
+	@Autowired Member_fileService member_fileService;
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
@@ -68,8 +68,9 @@ public class Co_memberRestController {
 			e.printStackTrace();
 			webHelper.redirect(null, "업로드 실패");
 		}
-		//■
+
 		Map<String, String> paramMap = webHelper.getParamMap();
+		
 		//■■■■■■ 대표번호 조합 ■■■■■■■
 		String telResult = paramMap.get("tel").toString();
 		String[] telpiece = telResult.split(",");
@@ -81,7 +82,8 @@ public class Co_memberRestController {
 				telCombi += telpiece[i];
 			}
 		}
-		//■■■■■■■■■■■■■ 핸드폰 번호 조합 ■■■■■■■■■■■■■■
+		
+		//■■■■■■■■■■■■■ 핸드폰 번호 조합 ■■■■■■■■■■■■■■■■■■
 		String phoneResult = paramMap.get("phoneNum");
 		String[] phonePiece = phoneResult.split(",");
 		String phoneCombi = null;
@@ -93,6 +95,13 @@ public class Co_memberRestController {
 			}
 		}
 		
+		//■■■■■■■■■■■■■ Email id 조합 ■■■■■■■■■■■■■■■■■■
+		String mailIdResult = paramMap.get("user_email");
+		String[] mailIdPiece = mailIdResult.split(",");
+		String mailIdCombi = null;
+		mailIdCombi = mailIdPiece[0] + "@" + mailIdPiece[1];
+		System.out.println(mailIdCombi);
+		
 		//■■■■■■■■■■■■■ Position 분류 ■■■■■■■■■■■■■■
 		String posi = paramMap.get("position2");
 		if (posi == "대표공인중개사") {
@@ -103,16 +112,14 @@ public class Co_memberRestController {
 			posi = "C";
 		}
 		
-		
 		//■■■■■■■■■■■■■ 현재 시간 ■■■■■■■■■■■■■■
 		SimpleDateFormat nowTime = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 		String now = nowTime.format (System.currentTimeMillis());
 		
 		List<UploadItem> fileList = webHelper.getFileList();
 		
-		
 		//■■■■■■■■■■■■■■■■■■■■■■■■■■ 대표 사진 저장 경로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-		String broker_img = contextPath + fileList.get(2).getFilePath();
+		String broker_img = fileList.get(2).getFilePath();
 		
 		String co_name = paramMap.get("co_name");
 		String broker_num = paramMap.get("coe_number");
@@ -123,7 +130,7 @@ public class Co_memberRestController {
 		String tel_num = phoneCombi;
 		String assi_name = paramMap.get("P_name");
 		String position = posi;
-		String email_id = paramMap.get("user_email");
+		String email_id = mailIdCombi;
 		String user_pw = paramMap.get("co_pw");
 		String reg_date = now;
 		String recent_date = now;
@@ -159,7 +166,7 @@ public class Co_memberRestController {
 		String file_dir= "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
 		//■■■■■■■■■■■■■■■■■■■■■■■■ File type 중개사등록증, 사업자등록증 구분 ■■■■■■■■■■■■■■■■■■■■■■■■■
 		System.out.println(fileList.size());
-		for (int i = 0; i < fileList.size(); i++) {
+		for (int i = 0; i < fileList.size()-1; i++) {
 			member_file.setOrigin_name(fileList.get(i).getOrginName());
 			member_file.setCo_member_id(input.getId());
 			member_file.setContent_type(fileList.get(i).getContentType());
@@ -174,7 +181,7 @@ public class Co_memberRestController {
 			}
 			member_file.setReg_date(now);
 			try {
-				member_fileServiceimp.addMember_file(member_file);
+				member_fileService.addMember_file(member_file);
 			} catch (Exception e) {
 				e.getLocalizedMessage();
 			}
