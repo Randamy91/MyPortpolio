@@ -17,6 +17,14 @@
 		<result property="co_member_id"			column="co_member_id"/>		
 	</resultMap>
 
+	<!--  다중행 조회를 위한 기능 정의 -->
+     <select id="selectList"
+     parameterType="kr.co.semo.model.Member_file"
+     resultMap="memberFileMap">
+     	SELECT origin_name, file_dir, file_name, content_type, file_size, reg_date, edit_date, file_type, co_member_id
+     	FROM co_member_id 
+     </select>
+
 	<!-- 데이터 저장 -->
 	<insert id="insertItem" 
 		parameterType="kr.co.semo.model.Member_file" 
@@ -34,7 +42,7 @@
 		parameterType="kr.co.semo.model.Member_file">
 		UPDATE member_file
 		SET origin_name=#{origin_name}, file_dir=#{file_dir}, file_name=#{file_name}, content_type=#{content_type}, 
-			file_size=#{file_size}, edit_date=#{edit_date}, file_type=#{file_type}
-		WHERE co_member_id=#{co_member_id}
+			file_size=#{file_size}, edit_date=#{edit_date}
+		WHERE co_member_id=#{co_member_id} AND file_type=#{file_type}
 	</update>	
 </mapper>

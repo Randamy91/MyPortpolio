@@ -170,6 +170,20 @@ public class MemberInfoChangeController {
 		HttpSession session = request.getSession();
 		int memberId = (int) session.getAttribute("userNum");
 		
+		//broker_img null 값 일경우 처리를 위한 유저 조회
+		Co_member get_input = new Co_member();
+		Co_member get_output = new Co_member();
+		get_input.setId(memberId);
+		
+		
+		try {
+			get_output = co_memberService.getCo_memberItem(get_input);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		
+		
 		try {
 			webHelper.upload();
 		} catch (Exception e) {
@@ -221,16 +235,19 @@ public class MemberInfoChangeController {
 		List<UploadItem> fileList = webHelper.getFileList();
 		
 		Co_member input = new Co_member();
-		// 대표 사진 저장 경로
 		
+		//broker img null값일 경우 이전 데이터 유지 
 		for (int i = 0; i < fileList.size(); i++) {
-			if (fileList.get(i).getFieldName() == "best_image") {
+			if (fileList.get(i).getFieldName().equals("best_image")) {
+				System.out.println("================" + fileList.get(i).getFieldName() + "====================" + fileList.get(i) + "===================");
 				String broker_img = fileList.get(i).getFilePath();
 				input.setBroker_img(broker_img);
-				System.out.println("asdfsf");
 			}
-			System.out.println( "asdfsfasdfsf"+fileList.size() + "///" + fileList.get(i).getFilePath() + "///" + fileList.get(i).getFieldName());
 		}
+		if (fileList.size() == 0) {
+			input.setBroker_img(get_output.getBroker_img());
+		}
+		
 		String co_name = paramMap.get("co_name");
 		String broker_num = paramMap.get("broker_num");
 		String office_num = paramMap.get("office_num");
@@ -243,7 +260,6 @@ public class MemberInfoChangeController {
 		String user_pw = paramMap.get("newco_pw");
 		String approval = "N";
 		
-		
 		input.setId(memberId);
 		input.setCo_name(co_name);
 		input.setBroker_num(broker_num);
@@ -254,52 +270,87 @@ public class MemberInfoChangeController {
 		input.setTel(tel);
 		input.setAssi_name(assi_name);
 		input.setPosition(position);
-		input.setUser_pw(user_pw);
 		input.setApproval(approval);
 		
-	
-		
-		// 비밀번호 미변경, 변경 구분
-		try {
-			if (input.getUser_pw() == null || input.getUser_pw() == "") {
+		// 비밀번호 null 값일 경우 처리
+		if (user_pw.equals(null) || user_pw.isEmpty() || user_pw == "") {
+			input.setUser_pw(get_output.getUser_pw());
+			try {
 				co_memberService.editCo_member(input);
-				System.out.println(input.getUser_pw());
-				
-			} else {
-				co_memberService.editCo_memberPw(input);
-				System.out.println(input.getUser_pw());
+			} catch (Exception e) {
+				e.getLocalizedMessage();
 			}
+		} else {
+			input.setUser_pw(user_pw);
+			try {
+				co_memberService.editCo_member(input);
+			} catch (Exception e) {
+				e.getLocalizedMessage();
+			}
+		}
+		
+		List<Member_file> output_fileList = null;
+		Member_file member_file = new Member_file();
+		
+		member_file.setCo_member_id(memberId);
+		
+		//중개사 등록증, 사업자등록증 구분을 위한 File List 다중행 조회
+		try {
+			output_fileList = member_fileService.getMember_fileList(member_file);
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}
 		
 		
-		
-		Member_file member_file = new Member_file();
-		
-		
 		String file_dir= "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
 		// File type 중개사등록증, 사업자등록증 구분 
-		if (fileList.size() >= 1);{
-			for (int i = 0; i < fileList.size()-1; i++) {
+		for (int i = 0; i < output_fileList.size(); i++) {
+			if (fileList.get(i).getFieldName().equals("O")) {
+				output_fileList.get(i).setCo_member_id(memberId);
+				output_fileList.get(i).setContent_type(fileList.get(i).getContentType());
+				output_fileList.get(i).setEdit_date(now);
+				output_fileList.get(i).setFile_dir(file_dir);
+				output_fileList.get(i).setFile_name(fileList.get(i).);
+			}
+			
+			/*if (!fileList.get(i).getFieldName().equals("best_image")) {
 				member_file.setOrigin_name(fileList.get(i).getOrginName());
 				member_file.setCo_member_id(input.getId());
 				member_file.setContent_type(fileList.get(i).getContentType());
-				member_file.setEdit_date(now);
+				member_file.setEdit_date(now); 
 				member_file.setFile_dir(file_dir);
 				member_file.setFile_size((int) fileList.get(i).getFileSize());
 				member_file.setFile_name(fileList.get(i).getFilePath());
-				if (i==0) {
+				if (output_fileLIst.get(i).getFile_type().equals("O")) {
+					member_file.setFile_type("O");
+				} else if (output_fileLIst.get(i).getFile_type().equals("B")){
+					member_file.setFile
+				}
+			}
+			*/
+			
+			/*
+			if (!fileList.get(i).getFieldName().equals("best_image"))
+				member_file.setOrigin_name(fileList.get(i).getOrginName());
+				member_file.setCo_member_id(input.getId());
+				member_file.setContent_type(fileList.get(i).getContentType());
+				member_file.setEdit_date(now); 
+				member_file.setFile_dir(file_dir);
+				member_file.setFile_size((int) fileList.get(i).getFileSize());
+				member_file.setFile_name(fileList.get(i).getFilePath());
+				
+				if (fileList.get(i).getFieldName().equals("co_image")) {
 					member_file.setFile_type("B");
-				} else {
+				} else if (fileList.get(i).getFieldName().equals("coe_image")) {
 					member_file.setFile_type("O");
 				}
 				try {
+					
 					member_fileService.editMember_file(member_file);
 				} catch (Exception e) {
 					e.getLocalizedMessage();
 				}
-			}
+				*/
 		}
 			
 		return "index";
