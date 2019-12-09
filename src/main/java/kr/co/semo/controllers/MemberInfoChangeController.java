@@ -289,70 +289,49 @@ public class MemberInfoChangeController {
 			}
 		}
 		
-		List<Member_file> output_fileList = null;
 		Member_file member_file = new Member_file();
 		
 		member_file.setCo_member_id(memberId);
 		
-		//중개사 등록증, 사업자등록증 구분을 위한 File List 다중행 조회
-		try {
-			output_fileList = member_fileService.getMember_fileList(member_file);
-		} catch (Exception e) {
-			e.getLocalizedMessage();
-		}
+		System.out.println("파일 리스트 사이즈 체크 : " + fileList.size());
+		System.out.println("파일 리스트 FieldName 체크 : " + fileList.get(0).getFieldName());
+		System.out.println("파일 리스트 FieldName 체크 : " + fileList.get(1).getFieldName());
 		
 		
 		String file_dir= "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
 		// File type 중개사등록증, 사업자등록증 구분 
-		for (int i = 0; i < output_fileList.size(); i++) {
-			if (fileList.get(i).getFieldName().equals("O")) {
-				output_fileList.get(i).setCo_member_id(memberId);
-				output_fileList.get(i).setContent_type(fileList.get(i).getContentType());
-				output_fileList.get(i).setEdit_date(now);
-				output_fileList.get(i).setFile_dir(file_dir);
-				output_fileList.get(i).setFile_name(fileList.get(i).);
-			}
-			
-			/*if (!fileList.get(i).getFieldName().equals("best_image")) {
-				member_file.setOrigin_name(fileList.get(i).getOrginName());
-				member_file.setCo_member_id(input.getId());
+		for (int i = 0; i < fileList.size(); i++) {
+			if (fileList.get(i).getFieldName().equals("co_image")) {
+				member_file.setCo_member_id(memberId);
 				member_file.setContent_type(fileList.get(i).getContentType());
-				member_file.setEdit_date(now); 
+				member_file.setEdit_date(now);
 				member_file.setFile_dir(file_dir);
-				member_file.setFile_size((int) fileList.get(i).getFileSize());
 				member_file.setFile_name(fileList.get(i).getFilePath());
-				if (output_fileLIst.get(i).getFile_type().equals("O")) {
-					member_file.setFile_type("O");
-				} else if (output_fileLIst.get(i).getFile_type().equals("B")){
-					member_file.setFile
-				}
-			}
-			*/
-			
-			/*
-			if (!fileList.get(i).getFieldName().equals("best_image"))
+				member_file.setFile_type("O");
 				member_file.setOrigin_name(fileList.get(i).getOrginName());
-				member_file.setCo_member_id(input.getId());
-				member_file.setContent_type(fileList.get(i).getContentType());
-				member_file.setEdit_date(now); 
-				member_file.setFile_dir(file_dir);
-				member_file.setFile_size((int) fileList.get(i).getFileSize());
-				member_file.setFile_name(fileList.get(i).getFilePath());
-				
-				if (fileList.get(i).getFieldName().equals("co_image")) {
-					member_file.setFile_type("B");
-				} else if (fileList.get(i).getFieldName().equals("coe_image")) {
-					member_file.setFile_type("O");
-				}
+				member_file.setFile_size((int)fileList.get(i).getFileSize());
 				try {
-					
 					member_fileService.editMember_file(member_file);
 				} catch (Exception e) {
 					e.getLocalizedMessage();
 				}
-				*/
+			} else if (fileList.get(i).getFieldName().equals("coe_image")) {
+				member_file.setCo_member_id(memberId);
+				member_file.setContent_type(fileList.get(i).getContentType());
+				member_file.setEdit_date(now);
+				member_file.setFile_dir(file_dir);
+				member_file.setFile_name(fileList.get(i).getFilePath());
+				member_file.setFile_type("B");
+				member_file.setOrigin_name(fileList.get(i).getOrginName());
+				member_file.setFile_size((int)fileList.get(i).getFileSize());
+				try {
+					member_fileService.editMember_file(member_file);
+				} catch (Exception e) {
+					e.getLocalizedMessage();
+				}
+			}
 		}
-			
+		
 		return "index";
 	}
 	
@@ -379,15 +358,21 @@ public class MemberInfoChangeController {
 	}
 	
 	// ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 중개사 회원 삭제 컨트롤러 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	@RequestMapping(value = "/co_delete", method=RequestMethod.POST)
+	@RequestMapping(value = "/co_delete")
 	public String co_delete (Model model, HttpServletResponse response, HttpServletRequest request)
 	{
 		HttpSession session = request.getSession();
 		int memberId = (int) session.getAttribute("userNum");
+		
+		Member_file member_file = new Member_file();
+		member_file.setCo_member_id(memberId);
+		
 		Co_member input = new Co_member();
 		input.setId(memberId);
 		
+		
 		try {
+			member_fileService.deleteMember_file(member_file);
 			co_memberService.deleteCo_member(input);
 		} catch (Exception e) {
 			e.getLocalizedMessage();

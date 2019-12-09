@@ -395,11 +395,10 @@
 <script type="text/javascript">
 
 //■■■■■■■■■■■■■■■■■■■■■ 회원 탈퇴 컨트롤러로 이동 ■■■■■■■■■■■■■■■■■■■■
-		function exit() {
-			$("#exit-right").click(function(e) {
-					location.href = "#";
-			});
-		};
+	$("#exit-right").click(function() {
+			alert("회원 탈퇴가 완료 되었습니다.\r\n \r\n그동안 세모 서비스를 아끼고 사랑해주셔서 감사합니다. \r\n더욱더 노력하고 발전하는 세모가 되겠습니다.");
+			location.href = "co_delete";
+	});
 
 	$("#selectEmail").change(function() {
 		$("#selectEmail option:selected").each(function() {

@@ -44,5 +44,11 @@
 		SET origin_name=#{origin_name}, file_dir=#{file_dir}, file_name=#{file_name}, content_type=#{content_type}, 
 			file_size=#{file_size}, edit_date=#{edit_date}
 		WHERE co_member_id=#{co_member_id} AND file_type=#{file_type}
-	</update>	
+	</update>
+	
+	<delete id="deleteItem"
+		parameterType="kr.co.semo.model.Co_member">
+		DELETE FROM member_file 
+		WHERE co_member_id = #{co_member_id}
+	</delete>	
 </mapper>
