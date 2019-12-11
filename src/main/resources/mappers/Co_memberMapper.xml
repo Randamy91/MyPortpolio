@@ -60,6 +60,50 @@
 		</where>
 	</select>
 	
+	<!-- 관리자 페이지 중개사 출력  -->
+	<select id="selectList"
+	parameterType="kr.co.semo.model.Co_member"
+	resultMap="co_memberMap">
+			SELECT id,co_name, broker_num, office_num, office_addr, tel_num, boss_name,
+				tel, assi_name, position, email_id, user_pw, approval, reg_date,
+				broker_img, recent_date
+			FROM co_member	
+	</select>	
+	
+	<!-- 관리자페이지 중개사 키워드 검색 Mapper -->
+	<select id="searchList"
+	parameterType="kr.co.semo.model.Co_member"
+	resultMap="co_memberMap">
+			SELECT id,co_name, broker_num, office_num, office_addr, tel_num, boss_name,
+				tel, assi_name, position, email_id, user_pw, approval, reg_date,
+				broker_img, recent_date
+			FROM co_member	
+			
+			<!-- 검색 기능 -->
+			<where>
+				<if test="co_name != null and co_name != ''">
+				co_name LIKE concat('%', #{co_name}, '%')
+				</if>
+			</where>
+			ORDER BY id ASC
+			<!-- 페이지 번호 구현 -->
+			<if test="co_listCount > 0">
+			LIMIT #{offset}, #{co_listCount}
+			</if>
+	</select>
+	
+	<!-- 데이터 수 조회를 위한 기능 -->
+	<select id = "selectCountAll"
+	parameterType="kr.co.semo.model.Co_member" resultType="int">
+		SELECT COUNT(*)
+		FROM co_member
+		<where>
+			<if test="co_name != null || co_name != ' '">
+				co_name LIKE concat('%', #{co_name}, '%')
+			</if>
+		</where>
+	</select>
+	
 	<!-- 회원 정보 수정 -->
 	<update id="updateItem"
 		parameterType="kr.co.semo.model.Co_member">
@@ -76,4 +120,21 @@
 		WHERE id = #{id}
 		 
 	</delete>
+	
+	<!-- 이메일 정보 조회 -->
+   <select id="checkEmail"
+      parameterType="kr.co.semo.model.Co_member" resultMap="co_memberMap">
+      <!-- parameterType 은 들어올 때 값, resultMap은 내보낼 때 값 -->
+      SELECT email_id FROM co_member
+      WHERE email_id=#{email_id};
+   </select>
+
+   <!-- 비밀번호 갱신을 위한 기능 정의 -->
+   <update id="updatePassword"
+      parameterType="kr.co.semo.model.Co_member">
+      UPDATE co_member SET user_pw=#{user_pw}
+      WHERE
+      email_id=#{email_id}
+   </update>
+	
 </mapper>

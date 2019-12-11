@@ -118,7 +118,7 @@ public class Co_memberRestController {
 		
 		List<UploadItem> fileList = webHelper.getFileList();
 		
-		//■■■■■■■■■■■■■■■■■■■■■■■■■■ 대표 사진 저장 경로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+		//■■■■■■■■■■■■■■■■■■■■■■■■■■ 대표 사진 저장 파일 이름 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 		String broker_img = fileList.get(2).getFilePath();
 		
 		String co_name = paramMap.get("co_name");

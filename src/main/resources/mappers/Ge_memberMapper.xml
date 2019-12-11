@@ -35,7 +35,24 @@
         WHERE id=#{id};
     </select>
     
-	
+	<!-- 다중행 조회 -->
+	<select id="selectList"
+	parameterType="kr.co.semo.model.Ge_member"
+	resultMap="ge_memberMap">
+			SELECT id, name, email_id, tel_num, reg_date, recent_date
+			FROM ge_member
+			<!-- 검색기능 -->
+			<where>
+			<if test="name != null and name != ''">
+				name LIKE concat('%',#{name}, '%')
+			</if>
+			</where>
+			ORDER BY id ASC
+			<!-- 페이지 번호 구현 -->
+			<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+			</if>	
+	</select>
 	
 	<!-- 회원정보 수정  (id, pw 변경)-->
 	<update id="updateItem"
@@ -76,6 +93,34 @@
 			</if> 
 		</where>
 	</select>
+	
+	<!-- 전체 페이지 조회 및 검색기능 결과 페이지 조회 -->
+	<select id="selectCountAll"
+	   parameterType="kr.co.semo.model.Ge_member" resultType="int">
+		   SELECT COUNT(*)
+		   FROM ge_member
+		   <where>
+		   <if test="name != null || name != ''">
+		    name LIKE concat('%',#{name}, '%')
+		   </if>
+	   	   </where>
+	</select>
+	
+	<!-- 이메일정보 조회 -->
+   <select id="checkEmail2"
+      parameterType="kr.co.semo.model.Ge_member" resultMap="ge_memberMap">
+      <!-- parameterType 은 들어올 때 값, resultMap은 내보낼 때 값 -->
+      SELECT email_id FROM ge_member
+      WHERE email_id=#{email_id};
+   </select>
+
+   <!-- 비밀번호 갱신을 위한 기능 정의 -->
+   <update id="updatePassword2"
+      parameterType="kr.co.semo.model.Ge_member">
+      UPDATE ge_member SET user_pw=#{user_pw}
+      WHERE
+      email_id=#{email_id}
+   </update>
 	
 	<!-- 회원 삭제 -->
 	<delete id="deleteItem"

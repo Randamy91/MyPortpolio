@@ -199,5 +199,46 @@ public class Ge_memberServiceImpl implements Ge_memberService{
 
         return result;
 	}
+	
+	@Override
+	   public Ge_member getEmail_item2(Ge_member input) throws Exception {
+	      Ge_member result = null;
 
+	      try {
+	         result = sqlSession.selectOne("Ge_memberMapper.checkEmail2", input);
+
+	         if (result == null) {
+	            throw new NullPointerException("result=null");
+	         }
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("가입된 이메일이 아닙니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("이메일 검색에 실패했습니다.");
+	      }
+
+	      return result;
+	   }
+	    
+	    @Override
+	    public int getPassword_item2(Ge_member input2) throws Exception {
+	       int result = 0;
+	       
+	       try {
+	            result = sqlSession.update("Ge_memberMapper.updatePassword2", input2);
+
+	            if (result == 0) {
+	                throw new NullPointerException("result=0");
+	            }
+	        } catch (NullPointerException e) {
+	            log.error(e.getLocalizedMessage());
+	            throw new Exception("수정된 데이터가 없습니다.");
+	        } catch (Exception e) {
+	            log.error(e.getLocalizedMessage());
+	            throw new Exception("데이터 수정에 실패했습니다.");
+	        }
+	       
+	       return result;
+	    }
 }

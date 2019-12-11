@@ -21,4 +21,10 @@ public interface Co_memberService {
 	public int deleteCo_member(Co_member input) throws Exception;
 	
 	public Co_member getLoginuser_item(Co_member input) throws Exception;
+	
+	public List<Co_member> getCo_searchList(Co_member co_input) throws Exception;
+	
+	public Co_member getEmail_item(Co_member input) throws Exception;
+	   
+	public int getPassword_item(Co_member input) throws Exception;
 }

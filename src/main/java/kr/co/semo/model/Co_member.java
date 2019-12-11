@@ -26,7 +26,7 @@ public class Co_member {
 	private static int offset;
 
 	// LIMIT 절에서 사용할 조회할 데이터 수
-	private static int listCount;
+	private static int co_listCount;
 
 	public static int getOffset() {
 		return offset;
@@ -37,10 +37,10 @@ public class Co_member {
 	}
 
 	public static int getListCount() {
-		return listCount;
+		return co_listCount;
 	}
 
 	public static void setListCount(int listCount) {
-		Co_member.listCount = listCount;
+		Co_member.co_listCount = listCount;
 	}
 }

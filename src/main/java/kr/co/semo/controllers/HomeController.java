@@ -37,22 +37,23 @@ public class HomeController {
 		
 		return "index";
 	}
+
 	
-	// Login 페이지
-	@RequestMapping(value = "Login.do")
-	public String login(Locale locale, Model model) {
-		
-		return "Login";
-	}
-	
-	// Admin 페이지
-	@RequestMapping(value = "Admin.do")
-	public String admin(Locale locale, Model model) {
-		
-		
-		return "Admin";
-	}
-	
+	  // Login 페이지
+	  
+	  @RequestMapping(value = "Login.do") public String login(Locale locale, Model
+	  model) {
+	  
+	  return "Login"; }
+	  
+	  // Admin 페이지
+	  
+	  @RequestMapping(value = "Admin.do") public String admin(Locale locale, Model
+	  model) {
+	  
+	  
+	  return "Admin"; }
+	 
 	// Admin_infochange 페이지
 	@RequestMapping(value = "Admin_infochange.do")
 	public String adminInfochange(Locale locale, Model model) {
@@ -114,34 +115,6 @@ public class HomeController {
 	public String maemulManage(Locale locale, Model model) {
 		
 		return "Maemul.manage";
-	}
-	
-	// Pw_change 페이지
-	@RequestMapping(value = "Pw_change.do")
-	public String pwChange(Locale locale, Model model) {
-		
-		return "Pw_change";
-	}
-	
-	// Pw_changeok 페이지
-	@RequestMapping(value = "Pw_changeok.do")
-	public String pwChangeok(Locale locale, Model model) {
-		
-		return "Pw_changeok";
-	}
-	
-	// Pw_reset 페이지
-	@RequestMapping(value = "Pw_reset.do")
-	public String pwReset(Locale locale, Model model) {
-		
-		return "Pw_reset";
-	}
-	
-	// Pw_resetok 페이지
-	@RequestMapping(value = "Pw_resetok.do")
-	public String resetOk(Locale locale, Model model) {
-		
-		return "Pw_resetok";
 	}
 	
 	// Register_change 페이지
