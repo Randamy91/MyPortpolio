@@ -139,54 +139,7 @@
 						<!-- -----중개사 회원------- -->
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="second">
-						<%-- <table class="table" id="table2">
-						<tr>
-							<th>번호</th>
-							<th>중개사무소명</th>
-							<th>대표자</th>
-							<th>연락처</th>
-							<th>가입일</th>
-							<th>최근로그인</th>
-							<th>승인 요청</th>
-						</tr>
-						<tbody id="Admin">
-							<tr>
-								<td align="center">{{id}}</td>
-								<td align="center">
-									<a href="${pageContext.request.contextPath}/Admin_infochange.do?id={{id}}">{{co_name}}</a>
-								</td>
-								<td align="center">{{boss_name}}</td>
-								<td align="center">{{tel_num}}</td>
-								<td align="center">{{reg_date}}</td>
-								<td align="center">{{recent_date}}</td>			
-								<td align="center">{{approval}}</td>
-							</tr>
-						</tbody>
-					</table>
-						<div class="input-group searchBox">
-							<form onsubmit="return false">
-								<div class="input-group">
-								  <input onkeypress="if( event.keyCode == 13 ){searchData();}" type="search" class="form-control search2" placeholder="검색 키워드를 입력하세요!" name="co_keyword" id="co_keyword" value="${co_keyword }"/>
-								  <span class="input-group-btn">
-								    <button class="btn btn-primary" id="cofindBtn" type="button">찾기</button>
-								  </span>
-								</div>
-							</form>
-						</div>
-						<!-- 페이지 구현 -->
-						<div class="paginavi" id="pagenavi">
-							<nav>
-				               <ul class="pagination adminPagi">
-				                  <li class="disabled"><a href="#" aria-label="Previous"><span
-				                        aria-hidden="true">&laquo;</span>
-				                  </a></li>
-				                  <li class="active"><a href="#">1</a></li>
-				                  <li><a href="#" aria-label="Next"> <span
-				                        aria-hidden="true">&raquo;</span>
-				                  </a></li>
-				               </ul>
-							</nav>
-						</div> --%>
+						
 					</div>
 				</div>
 			</div>
@@ -231,7 +184,7 @@
 							<tr>
 								<td align="center">{{id}}</td>
 								<td align="center">
-									<a href="${pageContext.request.contextPath}/Admin_infochange.do?id={{id}}">{{co_name}}</a>
+									<a href="Admin_approval?id={{id}}">{{co_name}}</a>
 								</td>
 								<td align="center">{{boss_name}}</td>
 								<td align="center">{{tel_num}}</td>
@@ -267,6 +220,7 @@
 							</nav>
 						</div>
 	</script>
+
 	<script id="admin-list-tmpl1" type="text/x-handlebars-template">
 		{{#co_userinfo}}
 			<tr>
@@ -295,10 +249,39 @@
 					var result = template(data);
 					$("#second").append(result);
 					console.log(data);
+					
+					$('#cofindBtn').click(function() {
+						
+						$("#Admin").empty();
+						
+						 $.ajax({
+							type : "POST",
+							url : "co_search",
+							dataType : "json",
+							data : {
+								"co_keyword" : $("#co_keyword").val()
+							},
+							success : function(data) {
+								var source = $("#admin-list-tmpl1").html();
+								var template = Handlebars.compile(source);
+								var result = template(data);
+								$("#Admin").append(result);
+								$("#co_keyword").val(data.co_keyword);
+								console.log(data);
+								console.log(data.co_userinfo);
+							}
+						}); 
+					});
 				}
 			});
 		});
-
+		
+		
+		// 검색 데이터 전송
+		
+	</script>
+	
+	<script>
 		// 검색 엔터 적용
 		function searchData() {
 			$("#Admin").empty();
@@ -320,28 +303,8 @@
 				}
 			});
 		}
-
-		// 검색 데이터 전송
-		$('#cofindBtn').click(function() {
-			$("#Admin").empty();
-			$.ajax({
-				type : "POST",
-				url : "co_search",
-				dataType : "json",
-				data : {
-					"co_keyword" : $("#co_keyword").val()
-				},
-				success : function(data) {
-					var source = $("#admin-list-tmpl1").html();
-					var template = Handlebars.compile(source);
-					var result = template(data);
-					$("#Admin").append(result);
-					$("#co_keyword").val(data.co_keyword);
-					console.log(data);
-					console.log(data.co_userinfo);
-				}
-			});
-		});
+	
 	</script>
+	 
 </body>
 </html>

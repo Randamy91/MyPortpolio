@@ -16,6 +16,7 @@ import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.WebHelper;
 /**import kr.co.semo.model.Co_member;*/
 import kr.co.semo.model.Ge_member;
+import kr.co.semo.service.Co_memberService;
 /**import kr.co.semo.service.Co_memberService;*/
 import kr.co.semo.service.Ge_memberService;
 
@@ -23,7 +24,7 @@ import kr.co.semo.service.Ge_memberService;
 public class AdminController {
 	@Autowired WebHelper webHelper;
 	@Autowired RegexHelper regexHelper;
-	/**@Autowired Co_memberService co_memberService;*/
+	@Autowired Co_memberService co_memberService;
 	@Autowired Ge_memberService ge_memberService;
 	
 	@Value("#{servletContext.contextPath}")
@@ -60,5 +61,15 @@ public class AdminController {
 		model.addAttribute("keyword", keyword);
 		
 		return new ModelAndView("Admin");
+	}
+	
+	// 중개사 회원 승인/비승인 페이지 
+	@RequestMapping(value = "Admin_approval")
+	public String adminApproval(Model model) {
+		
+		
+		
+		
+		return "Admin_infochange";
 	}
 }

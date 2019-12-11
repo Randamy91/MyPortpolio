@@ -23,8 +23,29 @@ import net.coobird.thumbnailator.geometry.Positions;
 @Slf4j
 public class DownloadHelper {
     /** 업로드 된 결과물이 저장될 폴더 */
-    private String uploadDir;
+    private String uploadDir = "D:/workspace/semoproject/Fantastic4/src/main/webapp/WEB-INF/views/assets/upload";
 
+ // ----------- 싱글톤 객체 생성 시작 ----------
+    private static DownloadHelper current;
+
+    public static DownloadHelper getInstance() {
+        if (current == null) {
+            current = new DownloadHelper();
+        }
+
+        return current;
+    }
+
+    public static void freeInstance() {
+        current = null;
+    }
+
+    private DownloadHelper() {
+        super();
+    }
+    // ----------- 싱글톤 객체 생성 끝 ----------
+
+    
     public String getUploadDir() {
         return uploadDir;
     }
