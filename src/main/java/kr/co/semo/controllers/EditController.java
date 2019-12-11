@@ -44,6 +44,7 @@ public class EditController {
 	  System.out.println("-------------------------" + mailId + "------------------------");
 	  
 	  model.addAttribute("mailId", mailId);
+	  session.invalidate();
 	   
       return "Pw_reset";
    }

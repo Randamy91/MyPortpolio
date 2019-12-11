@@ -1005,35 +1005,6 @@ html, body {
 					console.log("success");
 				}
 			});
-		
-			/*
-			$.ajax({
-				type : "POST",
-				url : "addCo_member",
-				dataType : "json",
-				data : {
-					"co_name" : $("#co_name").val(),
-					"broker_num" : $("#co_number").val(),
-					"office_num" : $("#coe_number").val(),
-					"office_addr" : $("#sample2_address").val(),
-					"tel_num" : fulltel,
-					"boss_name" : $("#coe_name").val(),
-					"tel" : fullphone,
-					"assi_name" : $("#P_name").val(),
-					"position" : position,
-					"email_id" : fullEmail,
-					"user_pw" : $("#co_pw").val(),
-					"approval" : "N",
-					"reg_date" : s,
-					"broker_img" : "test",
-					"recent_date" : s,
-				},
-				success : function(json) {
-					console.log(json);
-				}
-			});
-			*/
-			//$("#result02").submit();
 			console.log("ajaxform 실행");
 			page02();
 			console.log("페이지변경");

@@ -114,6 +114,22 @@
 		WHERE id=#{id}
 	</update>
 	
+	<!-- 중개사 회원 승인/비승인 -->
+	<update id="updateApproval"
+		parameterType="kr.co.semo.model.Co_member">
+		UPDATE co_member
+		SET approval=#{approval}
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 최근 로그인 시간 변경 -->
+	<update id="updateRecent"
+		parameterType="kr.co.semo.model.Co_member">
+		UPDATE co_member 
+		SET recent_date=#{recent_date}
+		WHERE id=#{id}
+	</update>
+	
 	<delete id="deleteItem"
 		parameterType="kr.co.semo.model.Co_member">
 		DELETE FROM co_member 

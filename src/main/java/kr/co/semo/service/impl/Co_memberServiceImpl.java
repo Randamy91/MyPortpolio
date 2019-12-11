@@ -181,6 +181,48 @@ public class Co_memberServiceImpl implements Co_memberService {
 	}
 	
 	@Override
+	public int editCo_approval(Co_member input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("Co_memberMapper.updateApproval", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	@Override
+	public int editCo_memberRecent(Co_member input) throws Exception {
+		int result = 0;
+
+        try {
+            result = sqlSession.update("Ge_memberMapper.updateRecent", input);
+
+            if (result == 0) {
+                throw new NullPointerException("result=0");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("수정된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 수정에 실패했습니다.");
+        }
+
+        return result;
+	}
+	
+	@Override
 	public List<Co_member> getCo_searchList(Co_member co_input) throws Exception {
         List<Co_member> result = null;
 
@@ -200,6 +242,8 @@ public class Co_memberServiceImpl implements Co_memberService {
 
         return result;
     }
+	
+	
 	
 	@Override
     public Co_member getEmail_item(Co_member input) throws Exception {

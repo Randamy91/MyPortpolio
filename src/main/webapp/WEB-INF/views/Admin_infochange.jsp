@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -123,16 +123,14 @@
 											<tbody>
 												<tr>
 													<th class="active"><span class="left-name">중개사무소명</span></th>
-													<td><input type="text" class="form-control"
-														id="co_name" name="co_name"
-														style="width: 350px; height: 50px;"></td>
+													<td><input type="text" class="form-control" id="co_name" name="co_name"	style="width: 350px; height: 50px;"
+													value="${co_UserInfo.co_name}"></td>
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">중개사
 															등록번호</span></th>
-													<td><input type="text"
-														class="form-control sg-form-control-md" id="co_number"
-														name="co_number" style="width: 350px; height: 50px;">
+													<td><input type="text" class="form-control sg-form-control-md" id="co_number"
+														name="co_number" style="width: 350px; height: 50px;" value="${co_UserInfo.broker_num}">
 
 														<input type="file" class="form-control" id="co_image"
 														name="co_image" style="display: none;"> <label
@@ -145,7 +143,7 @@
 															등록번호</span></th>
 													<td><input type="text"
 														class="form-control sg-form-control-md" id="coe_number"
-														name="coe_number" style="width: 350px; height: 50px;">
+														name="coe_number" style="width: 350px; height: 50px;" value="${co_UserInfo.office_num}">
 
 														<input type="file" class="form-control" id="coe_image"
 														name="coe_image" style="display: none;"> <label
@@ -161,7 +159,7 @@
 															<input type="text" id="sample2_postcode"
 																placeholder="우편번호"> <input type="button"
 																onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-															<input type="text" id="sample2_address" placeholder="주소"><br>
+															<input type="text" id="sample2_address" placeholder="주소" value="${co_UserInfo.office_addr}"><br>
 															<input type="text" id="sample2_detailAddress"
 																placeholder="상세주소"> <input type="text"
 																id="sample2_extraAddress" placeholder="참고항목">
@@ -284,27 +282,18 @@
 													</td>
 												</tr>
 												<tr>
-													<th class="active"><span class="left-name">중개사
-															대표명</span></th>
+													<th class="active"><span class="left-name">중개사	대표명</span></th>
 													<td><input type="text" class="form-control"
 														id="coe_name" name="coe_name"
-														style="width: 350px; height: 50px;"></td>
+														style="width: 350px; height: 50px;" value="${co_UserInfo.boss_name}"></td>
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">중개사
 															대표번호</span></th>
 													<td>
 														<div class="coe_Telephone">
-															<select class="form-control" id="coe_Telephone1"
-																name="coe_Telephone1" style="width: 80px; height: 50px;">
-																<option value="02">02</option>
-																<option value="031">031</option>
-																<option value="032">032</option>
-															</select> - <input type="text" class="form-control"
-																id="coe_Telephone2" name="coe_Telephone2"
-																style="width: 80px; height: 50px;"> - <input
-																type="text" class="form-control" id="coe_Telephone3"
-																name="coe_Telephone3" style="width: 80px; height: 50px;">
+															<input class="form-control" id="coe_Telephone1"
+																name="coe_Telephone1" style="width: 350px; height: 50px;" value="${co_UserInfo.tel}">
 														</div> <!-- coe Telphone end -->
 													</td>
 												</tr>
@@ -313,7 +302,7 @@
 															사진</span></th>
 													<td><img src="./img/ceo_image.jpg" class="coe_image">
 														<input type="file" class="form-control" id="coe_image"
-														name="coe_image" style="display: none;"> <label
+														name="coe_image" style="display: none;" value="${co_UserInfo.broker_img}"> <label
 														for="coe_image" class="label_ceo_image">
 													</label></td>
 												</tr>
@@ -330,69 +319,30 @@
 													<th class="active"><span class="left-name">이름</span></th>
 													<td><input type="text" class="form-control"
 														id="P_name" name="P_name"
-														style="width: 350px; height: 50px;"></td>
+														style="width: 350px; height: 50px;" value="${co_UserInfo.assi_name}"></td>
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">직급/직책</span></th>
-													<td><select class="form-control" id="position"
-														name="position">
-															<option value="">--------선택하세요-------</option>
-															<option value="boss">대표공인중개사</option>
-															<option value="em">소속공인중개사</option>
-															<option value="intern">중개보조원</option>
-													</select></td>
+													<td><input class="form-control" id="position"
+														name="position" style="width: 350px; height: 50px;">
+													</td>	
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">이메일</span></th>
 													<td>
 														<div class="set_email">
 															<input type="text" class="form-control" id="set_email01"
-																name="set_email01" style="width: 175px; height: 50px;">
-															 <input type="text" name="set_email02" id="set_email02"
-																class="form-control" style="width: 175px; height: 50px;"
-																disabled value="naver.com"> <select
-																class="form-control" id="selectEmail" name="selectEmail"
-																style="height: 50px;">
-																<option value="1">직접입력</option>
-																<option value="naver.com" selected>naver.com</option>
-																<option value="hanmail.net">hanmail.net</option>
-																<option value="nate.com">nate.com</option>
-																<option value="gmail.com">gmail.com</option>
-																<option value="yahoo.com">yahoo.com</option>
-															</select>
+																name="set_email01" style="width: 350px; height: 50px;" value="${co_UserInfo.email_id}">
 														</div> <!-- set_email -->
 													</td>
-												</tr>
-												<tr>
-													<th class="active"><span class="left-name">비밀번호</span></th>
-													<td><input type="password" class="form-control"
-														id="co_pw" name="co_pw"
-														style="width: 350px; height: 50px;"></td>
-												</tr>
-												<tr>
-													<th class="active"><span class="left-name">비밀번호
-															확인</span></th>
-													<td><input type="password" class="form-control"
-														id="co_pw_check" name="co_pw_check"
-														style="width: 350px; height: 50px;"></td>
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">휴대폰
 															번호</span></th>
 													<td>
 														<div class="PhoneNumber">
-															<select class="form-control" id="phoneNumber1"
-																name="phoneNumber1" style="width: 80px; height: 50px;">
-																<option value="010">010</option>
-																<option value="011">011</option>
-																<option value="016">016</option>
-																<option value="017">017</option>
-																<option value="019">019</option>
-															</select> - <input type="text" class="form-control"
-																id="phoneNumber2" name="phoneNumber2"
-																style="width: 80px; height: 50px;"> - <input
-																type="text" class="form-control" id="phoneNumber3"
-																name="phoneNumber3" style="width: 80px; height: 50px;">
+															<input class="form-control" id="phoneNumber1"
+																name="phoneNumber1" style="width: 350px; height: 50px;">
 														</div>
 													</td>
 												</tr>
@@ -404,9 +354,9 @@
 							<!-- end panel -->
 							<div class="Go text-center">
 								<button type="button" class="btn btn-primary btn-lg accept"
-									id="accept" style="width: 200px; height: 80px;">승인</button>
+									id="accept" style="width: 150px; height: 60px;">승인</button>
 								<button type="button" class="btn btn-primary btn-lg"
-									id="delete" style="width: 200px; height: 80px;">삭제</button>
+									id="delete" style="width: 150px; height: 60px;">비승인</button>
 							</div>
 						</form>
 					</div>
@@ -422,33 +372,72 @@
 	</div>
 	<!-- end content -->
 
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Google CDN 서버로부터 jquery 참조 -->
+	<script	src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- jquery ajax setup -->
+	<script	src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	<script	src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+	<!-- 핸들바 템플릿 코드 -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
 
 	<script type="text/javascript">
-	
-		$("#selectEmail").change(function() {
-				$("#selectEmail option:selected").each(function() {
-					if ($(this).val() == '1') {
-						$("#set_email02").val('')
-						$("#set_email02").attr("disabled", false);
-					} else {
-						$("#set_email02").val($(this).text());
-						$("#set_email02").attr("disabled", true);
-					}
-				});
-			});
-	
-		$("#accept").click(function() {
-			alert("승인되었습니다.");
-			location.replace('Admin.do');
-		});
-		$("#delete").click(function() {
-			alert("삭제되었습니다.");
-			location.replace('Admin.do');
-		});
-			
 		
+		var id = ${co_UserInfo.id};
+		console.log(id);
+		
+		$("#accept").click(function() {
+			
+			$.ajax({
+				type : "POST",
+				url : "Admin_approval_ok",
+				dataType : "text",
+				data : {
+					"id": id
+				},
+				success : function(data) {
+					alert("공인중개사 권한이 변경되었습니다.");					
+					location.href="Admin.do";
+				}
+			}); 
+		});
+		 $("#delete").click(function() {
+			alert("비승인 되었습니다.");
+			location.href="Admin.do";
+		}); 
+		
+		
+		//핸드폰 번호 형식 변경 xxx-xxxx-xxxx
+		var tel_num = "${co_UserInfo.tel_num}";
+		
+		var tel_num1 = tel_num.substring(0,3);
+		var tel_num2 = tel_num.substring(3,7);
+		var tel_num3 = tel_num.substring(7);
+		var full_telnum = tel_num1 + "-" + tel_num2 + "-" + tel_num3;
+		$("#phoneNumber1").val(full_telnum);
+		
+		//전화번호 형식 변경 xx-xxx-xxxx
+		var tel = "${co_UserInfo.tel}";
+		
+		var tel1 = tel.substring(0,2);
+		var tel2 = tel.substring(2,5);
+		var tel3 = tel.substring(5);
+		var full_tel = tel1 + "-" + tel2 + "-" + tel3;
+		$("#coe_Telephone1").val(full_tel);
+		
+		//position 문자열 변환
+		var position = "${co_UserInfo.position}"
+		if (position == "A"){
+			position = "대표공인중개사";
+		} else if (position == "B") {
+			position = "소속공인중개사";
+		} else {
+			position = "중개보조원";
+		}
+		$("#position").val(position);
+		
+		
+
 		
 	
 	</script>

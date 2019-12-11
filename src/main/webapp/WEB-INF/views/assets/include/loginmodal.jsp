@@ -14,7 +14,7 @@
 						<input type="text" class="form-control input-info" id="email" name="userId" placeholder="이메일" />
 					</div>
 					<div class="input-container">
-						<input type="password" class="form-control input-info" id="password" name="userPw" placeholder="패스워드" />
+						<input onkeypress="if( event.keyCode == 13 ){searchData();}" type="password" class="form-control input-info" id="password" name="userPw" placeholder="패스워드" />
 					</div>
 					<div class="forgot-pw">
 						<input type="checkbox" />&nbsp;자동 로그인 <span> 

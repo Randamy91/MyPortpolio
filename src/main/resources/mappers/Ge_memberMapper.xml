@@ -70,7 +70,7 @@
 		WHERE id=#{id}
 	</update>
 	
-	<!-- 회원정보 수정 (Name만 변경) -->
+	<!-- 최근 로그인 시간 변경 -->
 	<update id="updateRecent"
 		parameterType="kr.co.semo.model.Ge_member">
 		UPDATE ge_member 

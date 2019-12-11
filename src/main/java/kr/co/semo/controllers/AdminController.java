@@ -9,11 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.semo.helper.PageData;
 import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.WebHelper;
+import kr.co.semo.model.Co_member;
 /**import kr.co.semo.model.Co_member;*/
 import kr.co.semo.model.Ge_member;
 import kr.co.semo.service.Co_memberService;
@@ -63,13 +65,42 @@ public class AdminController {
 		return new ModelAndView("Admin");
 	}
 	
-	// 중개사 회원 승인/비승인 페이지 
+	// 중개사 회원 승인/비승인 페이지 정보 출력 컨트롤러
 	@RequestMapping(value = "Admin_approval")
-	public String adminApproval(Model model) {
+	public String adminApproval(Model model,
+		@RequestParam(value="id") int id) {
 		
+		Co_member input = new Co_member();
+		Co_member output = new Co_member();
 		
+		input.setId(id);
 		
+		try {
+			output = co_memberService.getCo_memberItem(input);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		System.out.println(output);
+		
+		model.addAttribute("co_UserInfo", output);
 		
 		return "Admin_infochange";
+	}
+	
+	// 중개사 회원 승인/비승인 기능
+	@RequestMapping(value = "Admin_approval_ok")
+	public String Admin_approval_ok(Model model,
+			@RequestParam(value="id") int id) {
+		Co_member input = new Co_member();
+		input.setId(id);
+		input.setApproval("Y");
+		
+		try {
+			co_memberService.editCo_approval(input);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		return "Admin";
 	}
 }

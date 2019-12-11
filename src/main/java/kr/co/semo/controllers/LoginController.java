@@ -58,6 +58,7 @@ public class LoginController {
 		Co_member co_input = new Co_member();
 		co_input.setEmail_id(userId);
 		co_input.setUser_pw(userPw);
+		co_input.setRecent_date(now);
 		int coId;
 		String coName;
 		
@@ -94,8 +95,11 @@ public class LoginController {
 			}
 			try {
 				co_output = co_memberService.getLoginuser_item(co_input);
+				//최근 로그인 시간 변경
 				coName = co_output.getCo_name();
 				coId = co_output.getId();
+				co_input.setId(coId);
+				co_memberService.editCo_memberRecent(co_input);
 				
 				HttpSession session = request.getSession();
 				session.setMaxInactiveInterval(60*60);

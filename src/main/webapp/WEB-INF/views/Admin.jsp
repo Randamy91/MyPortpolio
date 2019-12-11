@@ -22,7 +22,7 @@
 </head>
 <body>
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="assets/include/loginHeader.jsp"%>
+	<%@ include file="assets/include/header.jsp"%>
 	<!--  로그인 Modal -->
 	<%@ include file="assets/include/loginmodal.jsp"%>
 	<!-- 컨텐츠 -->
@@ -155,18 +155,14 @@
 
 
 	<!-- Google CDN 서버로부터 jquery 참조 -->
-	<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
-	<!-- 핸들바 템플릿 코드 -->
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+	<script	src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<!-- jquery ajax setup -->
+	<script	src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	<script	src="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.js"></script>
+	<!-- 핸들바 템플릿 코드 -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+	
 
 	<script id="admin-list-tmpl" type="text/x-handlebars-template">
 						<table class="table" id="table2">

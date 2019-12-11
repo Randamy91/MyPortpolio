@@ -355,7 +355,12 @@
 				nodes2[handle].innerHTML = "무제한";
 			}
 		});
-		//로그인 기능
+		
+		
+		//엔터로 로그인하기
+		function searchData() {
+			$('#loginForm').submit();
+		}
 	</script>
 </body>
 </html>

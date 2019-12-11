@@ -47,20 +47,7 @@ public class Co_memberRestController {
 	String contextPath;
 	
 	@RequestMapping(value="/addCo_member", method=RequestMethod.POST)
-	private String adduser(
-				//MultipartHttpServletRequest request
-				//@RequestParam("co_name") String co_neme
-				//@RequestPart("getfile") MultipartFile getfile
-			) throws IOException {
-		/*
-		System.out.println(co_neme);
-		System.out.println(request.getFileNames());
-		MultipartFile broker_img = request.getFile("getfile");
-		
-		System.out.println(broker_img.getContentType());
-		System.out.println(broker_img.getOriginalFilename());
-		System.out.println("파일 존재" + broker_img.isEmpty());
-		*/
+	private String adduser() throws IOException {
 	
 		try {
 			webHelper.upload();
