@@ -35,6 +35,28 @@ public class Member_fileServiceImpl implements Member_fileService{
 
         return result;
     }
+    
+    // 파일 명 가져오기
+    @Override
+    public Member_file getMember_filename(Member_file input) throws Exception {
+        Member_file result = null;
+
+        try {
+            result = sqlSession.selectOne("MemberFileMapper.selectFilename", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
 
     public List<Member_file> getMember_fileList(Member_file input) throws Exception {
         List<Member_file> result = null;

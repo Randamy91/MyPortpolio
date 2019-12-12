@@ -117,7 +117,7 @@
 								<ul class="list-group">
 									<li class="list-group-item first-list">
 										<div class="first-title">
-											<strong>공인중개사정보 입력</strong>
+											<strong>공인중개사정보</strong>
 										</div>
 										<table class="table table-1">
 											<tbody>
@@ -131,12 +131,9 @@
 															등록번호</span></th>
 													<td><input type="text" class="form-control sg-form-control-md" id="co_number"
 														name="co_number" style="width: 350px; height: 50px;" value="${co_UserInfo.broker_num}">
-
-														<input type="file" class="form-control" id="co_image"
-														name="co_image" style="display: none;"> <label
-														for="co_image" class="public_image"> <span
-															class="btn btn-primary btn-lg">중개 등록증 다운로드</span>
-													</label></td>
+														<button type="button" class="download_Img btn btn-primary btn-lg" id="download_ceoImg"
+														style="width: 300px; height: 50px">중개사등록증 다운로드</button>
+													</td>
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">사업자
@@ -144,12 +141,12 @@
 													<td><input type="text"
 														class="form-control sg-form-control-md" id="coe_number"
 														name="coe_number" style="width: 350px; height: 50px;" value="${co_UserInfo.office_num}">
-
-														<input type="file" class="form-control" id="coe_image"
-														name="coe_image" style="display: none;"> <label
-														for="coe_image" class="public_image"> <span
-															class="btn btn-primary btn-lg">사업자등록증 다운로드</span>
-													</label></td>
+														<button type="button" class="download_Img btn btn-primary btn-lg" id="download_coImg"
+														style="width: 300px; height: 50px">사업자등록증 다운로드</button>
+														<!-- 
+														<button type="button" class="btn btn-primary btn-lg" id="coe_image"
+														name="coe_image" style="display: none;" value ="사업자등록증 다운로드">ㄴㅁㅇㅁㅇㄴ</button> 
+														</td> -->
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">중개사무소
@@ -311,7 +308,7 @@
 									</li>
 									<li class="list-group-item second-list">
 										<div class="second-title">
-											<strong>개인정보 입력</strong>
+											<strong>개인정보</strong>
 										</div>
 										<table class="table table-2">
 											<tbody>
@@ -385,25 +382,50 @@
 		
 		var id = ${co_UserInfo.id};
 		console.log(id);
-		
-		$("#accept").click(function() {
-			
+				
+		//중개사 등록증 다운로드
+		$("#download_ceoImg").click(function(){
 			$.ajax({
 				type : "POST",
-				url : "Admin_approval_ok",
+				url : "ceoImgDownload",
 				dataType : "text",
 				data : {
 					"id": id
 				},
 				success : function(data) {
-					alert("공인중개사 권한이 변경되었습니다.");					
-					location.href="Admin.do";
+					console.log(data);
 				}
 			}); 
 		});
+		
+		//사업자 등록증 다운로드
+		$("#download_coImg").click(function(){
+			$.ajax({
+				type : "POST",
+				url : "coImgDownload",
+				dataType : "text",
+				data : {
+					"id": id
+				},
+				success : function(data) {
+					console.log(data);
+				}
+			}); 
+		});
+		
 		 $("#delete").click(function() {
-			alert("비승인 되었습니다.");
-			location.href="Admin.do";
+			 $.ajax({
+					type : "POST",
+					url : "Admin_approval_no",
+					dataType : "text",
+					data : {
+						"id": id
+					},
+					success : function(data) {
+						alert("비승인 되었습니다.");
+						location.href="Admin.do";
+					}
+				}); 
 		}); 
 		
 		

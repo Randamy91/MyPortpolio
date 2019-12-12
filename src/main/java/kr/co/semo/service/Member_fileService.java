@@ -16,4 +16,6 @@ public interface Member_fileService {
 	public int editMember_file(Member_file input) throws Exception;
 
 	public int deleteMember_file(Member_file input) throws Exception;
+	
+	public Member_file getMember_filename(Member_file input) throws Exception;
 }

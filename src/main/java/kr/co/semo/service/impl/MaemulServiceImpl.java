@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MaemulServiceImpl implements MaemulService{
 
-	@Autowired
+   @Autowired
     SqlSession sqlSession;
 
     @Override
@@ -57,6 +57,28 @@ public class MaemulServiceImpl implements MaemulService{
 
         return result;
     }
+    /**
+     * 메인에 전달할 매물 데이터를 처리하기 위함 
+     */
+    @Override
+   public List<Maemul> getMain(Maemul input) throws Exception {
+      List<Maemul> output = null;
+      
+      try {
+         output = sqlSession.selectList("MaemulMapper.selectMain", input);
+         
+         if (output == null) {
+            throw new NullPointerException("result == null");
+         }
+      } catch(NullPointerException e) {
+         log.error(e.getLocalizedMessage());
+         throw new Exception("조회된 데이터가 없습니다.");
+      } catch(Exception e) {
+         log.error(e.getLocalizedMessage());
+         throw new Exception("데이터 조회에 실패했습니다.");
+      }
+      return output;
+   }
     
     
 
@@ -137,5 +159,7 @@ public class MaemulServiceImpl implements MaemulService{
         return result;
     }
 
-	
+   
+
+   
 }

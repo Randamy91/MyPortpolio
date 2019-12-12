@@ -31,4 +31,5 @@ public interface Co_memberService {
 	public int editCo_approval(Co_member input) throws Exception;
 	
 	public int editCo_memberRecent(Co_member input) throws Exception;
+	
 }

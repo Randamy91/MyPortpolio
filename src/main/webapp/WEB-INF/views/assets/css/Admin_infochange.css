@@ -31,6 +31,10 @@
  .table-2 th {
  	width: 130px;
  }
+	
+td {
+	position: relative;
+}
 
  td > input {
  	position: relative;
@@ -46,6 +50,12 @@
  }
  .public_image {
     width: 300px;
+ }
+ .download_Img {
+ 	margin-left: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
  }
  label span {
     display: inline-block;

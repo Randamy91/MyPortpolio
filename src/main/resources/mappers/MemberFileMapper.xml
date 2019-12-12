@@ -22,8 +22,18 @@
      parameterType="kr.co.semo.model.Member_file"
      resultMap="memberFileMap">
      	SELECT origin_name, file_dir, file_name, content_type, file_size, reg_date, edit_date, file_type, co_member_id
-     	FROM co_member_id 
+     	FROM member_file
+     	WHERE co_member_id=#{co_member_id}
      </select>
+     
+     <!-- 파일 정보 조회 -->
+   	<select id="selectFilename"
+      parameterType="kr.co.semo.model.Member_file" resultMap="memberFileMap">
+      <!-- parameterType 은 들어올 때 값, resultMap은 내보낼 때 값 -->
+      SELECT file_name, file_dir, origin_name
+      FROM member_file
+      WHERE co_member_id=#{co_member_id} AND file_type=#{file_type};
+   </select>
 
 	<!-- 데이터 저장 -->
 	<insert id="insertItem" 

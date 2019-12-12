@@ -6,34 +6,34 @@
      <!-- Beans의 맴버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
      <resultMap type="kr.co.semo.model.Maemul" id="maemulMap">
         <result property="maemul_num" column="maemul_num"/>
-  		<result property="item_addrst" column="item_addrst"/> 
-  		<result property="item_addrnd" column="item_addrnd"/>
-  		<result property="select_type" column="select_type"/>
-  		<result property="build_name" column="build_name"/>
-  		<result property="floor" column="floor"/>
-  		<result property="all_floor" column="all_floor"/>
-  		<result property="all_width" column="all_width"/>
-  		<result property="pri_width" column="pri_width"/>
-  		<result property="heating" column="heating"/>
-  		<result property="toilet" column="toilet"/>
-  		<result property="comple_year" column="comple_year"/>
-  		<result property="movein" column="movein"/>
-  		<result property="title" column="title"/>
-  		<result property="content" column="content"/>
-  		<result property="hidden" column="hidden"/>
-  		<result property="parking" column="parking"/>
-  		<result property="elv" column="elv"/>
-  		<result property="select_sale" column="select_sale"/>
-  		<result property="monthly" column="monthly"/>
-  		<result property="warrenty" column="warrenty"/>
-  		<result property="sale" column="sale"/>
-  		<result property="pre_war" column="pre_war"/>
-  		<result property="pre_month" column="pre_month"/>
-  		<result property="manage_ex" column="manage_ex"/>
-  		<result property="premium" column="premium"/>
-  		<result property="latitude" column="latitude"/>
-  		<result property="longitude" column="longitude"/>
-  		<result property="co_num" column="co_num"/>
+        <result property="item_addrst" column="item_addrst"/> 
+        <result property="item_addrnd" column="item_addrnd"/>
+        <result property="select_type" column="select_type"/>
+        <result property="build_name" column="build_name"/>
+        <result property="floor" column="floor"/>
+        <result property="all_floor" column="all_floor"/>
+        <result property="all_width" column="all_width"/>
+        <result property="pri_width" column="pri_width"/>
+        <result property="heating" column="heating"/>
+        <result property="toilet" column="toilet"/>
+        <result property="comple_year" column="comple_year"/>
+        <result property="movein" column="movein"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="hidden" column="hidden"/>
+        <result property="parking" column="parking"/>
+        <result property="elv" column="elv"/>
+        <result property="select_sale" column="select_sale"/>
+        <result property="monthly" column="monthly"/>
+        <result property="warrenty" column="warrenty"/>
+        <result property="sale" column="sale"/>
+        <result property="pre_war" column="pre_war"/>
+        <result property="pre_month" column="pre_month"/>
+        <result property="manage_ex" column="manage_ex"/>
+        <result property="premium" column="premium"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="co_num" column="co_num"/>
      </resultMap>
      
      <!-- 단일행 조회를 위한 기능 정의 -->
@@ -50,10 +50,20 @@
      <select id="selectList"
      parameterType="kr.co.semo.model.Maemul"
      resultMap="maemulMap">
-     	SELECT maemul_num, item_addrst, item_addrnd, select_type, build_name, floor, all_floor, all_width, pri_width,
-     	heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale, monthly, warrenty,
-     	sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num
-     	FROM maemul_register 
+        SELECT maemul_num, item_addrst, item_addrnd, select_type, build_name, floor, all_floor, all_width, pri_width,
+        heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale, monthly, warrenty,
+        sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num
+        FROM maemul_register 
+     </select>
+     
+     <!--  다중행 조회를 위한 기능 정의(Main)-->
+     <select id="selectMain"
+     parameterType="kr.co.semo.model.Maemul"
+     resultMap="maemulMap">
+        SELECT maemul_num, item_addrst, item_addrnd, select_type, build_name, floor, all_floor, all_width, pri_width,
+        heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale, monthly, warrenty,
+        sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num
+        FROM maemul_register WHERE maemul_num = #{maemul_num}
      </select>
      
      
@@ -63,14 +73,14 @@
      keyProperty="maemul_num"
      useGeneratedKeys="true">
         INSERT INTO maemul_register (item_addrst, item_addrnd, select_type, build_name, floor, all_floor,
-  		all_width, pri_width, heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale,
-  		monthly, warrenty, sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num
-  		 ) VALUES (
-  		 	#{item_addrst},#{item_addrnd},#{select_type},#{build_name},#{floor},#{all_floor},#{all_width},#{pri_width},
-  		 	#{heating},#{toilet},#{comple_year},#{movein},#{title},#{content},#{hidden},#{parking},#{elv},#{select_sale},
-  		 	#{monthly},#{warrenty},#{sale},#{pre_war},#{pre_month},
-  		 	#{manage_ex},#{premium},#{latitude},#{longitude},#{co_num}
-  		 )            
+        all_width, pri_width, heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale,
+        monthly, warrenty, sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num
+         ) VALUES (
+            #{item_addrst},#{item_addrnd},#{select_type},#{build_name},#{floor},#{all_floor},#{all_width},#{pri_width},
+            #{heating},#{toilet},#{comple_year},#{movein},#{title},#{content},#{hidden},#{parking},#{elv},#{select_sale},
+            #{monthly},#{warrenty},#{sale},#{pre_war},#{pre_month},
+            #{manage_ex},#{premium},#{latitude},#{longitude},#{co_num}
+         )            
      </insert>
      
      

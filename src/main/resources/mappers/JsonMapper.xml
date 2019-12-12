@@ -3,16 +3,41 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="MamulJson">
-	<resultMap type="kr.co.semo.model.MaemulJson" id="MaemulJson">
-		<result property="lat" column="latitude"/>
-		<result property="lng" column="longitude"/>
-	</resultMap>
-	
-	
-	<select id="selectList"
-	parameterType="kr.co.semo.model.MaemulJson"
-	resultMap="MaemulJson">
-		SELECT latitude, longitude
-		FROM maemul_register
-	</select>
+   <resultMap type="kr.co.semo.model.MaemulJson" id="MaemulJson">
+      <result property="lat" column="latitude"/>
+      <result property="lng" column="longitude"/>
+      <result property="maemul_num" column="maemul_num"/>
+      <result property="select_sale" column="select_sale"/>
+      <result property="item_addrst" column="item_addrst"/>
+   </resultMap>
+   
+   
+   <select id="selectList"
+   parameterType="kr.co.semo.model.MaemulJson"
+   resultMap="MaemulJson">
+      SELECT latitude, longitude, maemul_num 
+      FROM maemul_register
+      
+      <where>
+         <if test="select_sale != null and select_sale != '' ">
+            select_sale LIKE concat('%', #{select_sale}, '%')
+         </if>
+         
+         <if test="Fmax != null and Fmax != '' ">
+          <![CDATA[AND ((warrenty >= #{Fmin} AND warrenty <= #{Fmax} OR 
+                             sale >= #{Fmin} AND sale <= #{Fmax}) AND
+                             (monthly >= #{Wmin} AND monthly <= #{Wmax} OR
+                             pre_month >= #{Wmin} AND pre_month <=#{Wmax}) AND 
+                             (all_width >= #{Amin} AND all_width <= #{Amax}))]]> 
+         <!-- AND warrenty BETWEEN #{Fmin} AND #{Fmax} OR sale BETWEEN #{Fmin} AND #{Fmax} -->        
+         </if>
+         <if test="item_addrst != null and item_addrst != '' ">
+            AND item_addrst LIKE concat('%', #{item_addrst},'%');
+         </if>
+         <!-- <if test="Wmax != null and Fmax != '' ">
+         AND monthly BETWEEN #{Wmin} AND #{Wmax} OR pre_month BETWEEN #{Wmin} AND #{Wmax};
+         </if> -->
+      </where>
+   
+   </select>
 </mapper>
