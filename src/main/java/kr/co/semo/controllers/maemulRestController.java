@@ -1,18 +1,24 @@
 package kr.co.semo.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
 
 import kr.co.semo.helper.DownloadHelper;
+import kr.co.semo.helper.PageData;
 import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.TimeHelper;
 import kr.co.semo.helper.UploadItem;
@@ -75,51 +81,62 @@ public class maemulRestController {
    /** 매물 다중 조회를 위한 페이지 */
    
    @RequestMapping(value="/maemul", method = RequestMethod.GET)
-   public Map<String, Object> get_list() {
-      
+   public Map<String, Object> get_list(HttpServletRequest request) {
+               
       /** 1) 필요한 변수값 생성 */
       String log = webHelper.getString("log");
-      System.out.println(log + "log!♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥");
-      //Double Dga = Double.parseDouble(Ga);
-      int Ga = Integer.parseInt(log);
-
+      // 크기 지정안해줬는데왜...?
+      String[] TTest = request.getParameterValues("log");
       
       Maemul input = new Maemul();
-      List<Maemul> output = null;
+      
+      List<Maemul> output = new ArrayList<Maemul>();
       UploadItem uploadItem = new UploadItem();
       List<UploadItem> Fileoutput = null;
-      input.setMaemul_num(Ga);      
+      
+      System.out.println(log + "log!");
+      //Double Dga = Double.parseDouble(Ga);
+      //int Ga = Integer.parseInt(log);
+      List<Integer> TT = new ArrayList<Integer>();
+
+      
+      
+      for(int i = 0; i<TTest.length; i++) {
+         
+         TT.add(Integer.parseInt(TTest[i]));
+         input.setMaemul_num(TT.get(i));
+         
+         try {
+            Maemul middle;
+            middle = maemulService.getMain(input);
+            output.add(middle);
+         } catch(Exception e) {
+            return webHelper.getJsonWarning("해당하는 매물이 없습니다.");
+         }
+
+         uploadItem.setMaemul_num(output.get(i).getMaemul_num());
+         
+         try { 
+              Fileoutput=maemulFileService.getFileItem(uploadItem);
+              // 누적
+              uploadItem = Fileoutput.get(0);
+              output.get(i).setFile_path(uploadItem.getFilePath());
+              // 리스트 초기화 
+              Fileoutput.clear();            
+           } catch(Exception e) { 
+              return webHelper.getJsonWarning("조회에 실패했습니다.");
+                    
+           }
+      } //for end
+      
+      //input.setMaemul_num(Ga);      
       //input.setLongitude(Dga);
       
-      try {
-         output = maemulService.getMain(input);
-      } catch(Exception e) {
-         return webHelper.getJsonWarning("해당하는 매물이 없습니다.");
-      }
-      
-        for (int i=0; i<output.size(); i++) {
-           
-        uploadItem.setMaemul_num(output.get(i).getMaemul_num());
-        
-        try { 
-           Fileoutput=maemulFileService.getFileItem(uploadItem);
-           // 누적
-           uploadItem = Fileoutput.get(0);
-           output.get(i).setFile_path(uploadItem.getFilePath());
-           // 리스트 초기화 
-           Fileoutput.clear();
-            /*
-             * ss.addAll(Fileoutput); System.out.println("===========================" + ss
-             * + "==========================="); UploadItem test = ss.get(i);
-             * output.get(i).setFile_path(test.getFilePath());
-             */
-           
-        } catch(Exception e) { 
-           return webHelper.getJsonWarning("조회에 실패했습니다.");
-                 
-        } 
-       }
-      
+      /*
+       * try { output = maemulService.getMain(input); } catch(Exception e) { return
+       * webHelper.getJsonWarning("해당하는 매물이 없습니다."); }
+       */
+
       Map<String, Object> data = new HashMap<String, Object>();
       data.put("output", output);         
       return data;

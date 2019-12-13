@@ -21,7 +21,7 @@ public interface MaemulService {
     */
    public List<Maemul> getMaemulList(Maemul input) throws Exception;
    
-   public List<Maemul> getMain(Maemul input) throws Exception;
+   public Maemul getMain(Maemul input) throws Exception;
 
    public int getMaemulCount(Maemul input) throws Exception;
    

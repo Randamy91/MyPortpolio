@@ -61,11 +61,11 @@ public class MaemulServiceImpl implements MaemulService{
      * 메인에 전달할 매물 데이터를 처리하기 위함 
      */
     @Override
-   public List<Maemul> getMain(Maemul input) throws Exception {
-      List<Maemul> output = null;
+   public Maemul getMain(Maemul input) throws Exception {
+       Maemul output = null;
       
       try {
-         output = sqlSession.selectList("MaemulMapper.selectMain", input);
+         output = sqlSession.selectOne("MaemulMapper.selectMain", input);
          
          if (output == null) {
             throw new NullPointerException("result == null");

@@ -26,7 +26,7 @@
 
 </head>
 <body>
-	<div class="content">
+   <div class="content">
 		<!-- 상단 메뉴 바 -->
 		<!-- JSTL : 사용자 타입별 메뉴 변환 구현 191203 : 이재민 -->
 		<%@ include file="assets/include/header.jsp"%>
@@ -137,6 +137,7 @@
                </div>
                <!-- pagenation -->
                <div class="pageCount">
+               <a href="http://www.hillstate.co.kr" target="_blank"><img src="${pageContext.request.contextPath}/assets/img/HS.jpg"></a>
                   <!-- <ul class="pagination page">
                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                      <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -313,6 +314,7 @@
       
    // ==========================================처음 셋업시 지도에 마커를 찍습니다.==========================================
       
+      
       $.get("${pageContext.request.contextPath}/Mjson",{}, function(data) {
          // 데이터에서 좌표 값을 가지고 마커를 표시합니다
          // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
@@ -324,7 +326,6 @@
                   content :"" + content
                });
             });
-         
          //console.log(data.positions);
          clusterer.setMinClusterSize(1);
          // 클러스터러에 마커들을 추가합니다
@@ -334,17 +335,16 @@
    //======================================= 처음 셋업시 매물리스트를 뿌립니다. ======================================= 
          var item = markers;
           
+         
           var ga = [];
           var Lon = [];
-          var TTest = [];
+          var TTest = new Array();
           for(var i=0; i<item.length; i++) {
-                          
              var cc = item[i].getPosition();
-             
              //인덱스 지정해서 넣어야 함 
              ga[i] = cc.Ga;
              TTest[i] = item[i].getContent();
-             console.log(TTest[i] + "기모띠!");
+             
              var ha = cc.Ha;
                                        
           }
@@ -352,15 +352,16 @@
           /* $.each(ga,function(i,value){
               if(Lon.indexOf(value) == -1 ) Lon.push(value);
           }); */
-          for(var i=0; i<TTest.length; i++) {
-             
-             var hope = TTest[i];
-             
+          
+             console.log(TTest + "악!");
+             //var hope = TTest;
+             // Ajax 전송시 배열로 넘기면 data[]=&daa2[]=2 이런식으로감 그걸 방지하는 구문 
+             $.ajaxSettings.traditional = true;
              $.ajax({
                  "url": "maemul",
                  "type": "get",
                  //"data": {log : ja},
-                 "data": {log : hope},
+                 "data": {log : TTest},
                  "dataType": "json",
                  "async" : false,
                  "success": function(data) {     
@@ -377,7 +378,7 @@
                        $(".maemulCount").html(maemulCount);
                  }        
              });
-          }
+          
           
       });
       // ==========================================(END)처음 셋업시 지도에 마커를 찍습니다.==========================================
@@ -439,7 +440,8 @@
           
           var ga = [];
           var Lon = [];
-          var TTest = [];
+          var TTest = new Array();
+          //var TTest = [];
           for(var i=0; i<item.length; i++) {                       
              var cc = item[i].getPosition();
              //인덱스 지정해서 넣어야 함 
@@ -451,13 +453,13 @@
           /* $.each(ga,function(i,value){
               if(Lon.indexOf(value) == -1 ) Lon.push(value);
           }); */
-          for(var i=0; i<TTest.length; i++) {             
-             var hope = TTest[i];
+             
+             $.ajaxSettings.traditional = true;
              $.ajax({
                  "url": "maemul",
                  "type": "get",
                  //"data": {log : ja},
-                 "data": {log : hope},
+                 "data": {log : TTest},
                  "dataType": "json",
                  "async" : false,
                  "success": function(data) {                 
@@ -473,7 +475,7 @@
                        $(".maemulCount").html(maemulCount);
                  }        
              });
-          }
+          
           // 조회후 스크롤바를 초기화 해주기 위한 스크립트 
           $(".maemulList").scrollTop(0);
            // 현재 지도 레벨에서 1레벨 확대한 레벨
@@ -499,9 +501,7 @@
       }
       
       setInterval(onchange, 5000);
-      // 배열에서 하나씩 꺼내기?? 
-      
-      
+       
       function onchange() {
          $('.pageCount').empty();
          var ranNum = randomNum(0, 4);
@@ -699,10 +699,10 @@
          center();
       });
       
-		   //엔터로 로그인하기
-		function searchData() {
-			$('#loginForm').submit();
-		}
+      //엔터로 로그인하기
+    function searchData() {
+      $('#loginForm').submit();
+    }
          
    </script>
 </body>
