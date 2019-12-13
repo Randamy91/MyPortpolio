@@ -1,31 +1,41 @@
 package kr.co.semo.controllers;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import kr.co.semo.helper.DownloadHelper;
 import kr.co.semo.helper.PageData;
 import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
-
+import kr.co.semo.model.Member_file;
 import kr.co.semo.service.Co_memberService;
+import kr.co.semo.service.Ge_memberService;
+import kr.co.semo.service.Member_fileService;
 
 
 @RestController
 public class AdminRestControllers {
 	@Autowired WebHelper webHelper;
+	@Autowired DownloadHelper downloadHelper;
 	@Autowired RegexHelper regexHelper;
 	@Autowired Co_memberService co_memberService;
+	@Autowired Ge_memberService ge_memberService;
+	@Autowired Member_fileService member_fileService;
+	
 	
 	/** 증개사 목록 출력 */
 	@RequestMapping(value = "/Co_admin",method = RequestMethod.POST)
@@ -113,6 +123,75 @@ public class AdminRestControllers {
 		
 		return webHelper.getJsonData(data);
 	}
+	/*
+	//사업자등록증 다운로드 기능 구현
+		@RequestMapping(value = "coImgDownload")
+		public String coImgDownload(Model model, HttpServletResponse response, 
+				@RequestParam(value="id") int id) {
+			
+			Member_file input = new Member_file();
+			input.setCo_member_id(id);
+			input.setFile_type("O");
+			
+			Member_file output = new Member_file();
+			
+			try {
+				output = member_fileService.getMember_filename(input);
+			} catch (Exception e) {
+				e.getLocalizedMessage();
+			}
+			
+			String filePath = output.getFile_name();
+			String originName = output.getOrigin_name();
+			
+			if (filePath != null) {
+				try {
+					downloadHelper.download(filePath, originName);
+				} catch (Exception e) {
+					e.getLocalizedMessage();
+				}
+			}
+			
+			return "Admin";
+		}
+		*/
+		/*
+		//중개사등록증 다운로드 기능 구현
+		@RequestMapping(value = "ceoImgDownload")
+		public Map<String, Object> ceoImgDownload(Model model,HttpServletResponse response,
+				@RequestParam(value="id") int id) {
+			
+			Member_file input = new Member_file();
+			input.setCo_member_id(id);
+			input.setFile_type("B");
+			
+			Member_file output = new Member_file();
+			
+			try {
+				output = member_fileService.getMember_filename(input);
+			} catch (Exception e) {
+				e.getLocalizedMessage();
+			}
+			
+			String filePath = output.getFile_name();
+			String originName = output.getOrigin_name();
+			
+			if (filePath != null) {
+				try {
+					downloadHelper.download(filePath, originName);
+				} catch (Exception e) {
+					e.getLocalizedMessage();
+				}
+			}
+			
+			Map<String, Object> downloadList = null;
+			downloadList.put("filePath", filePath);
+			downloadList.put("originName", originName);
+			
+			
+			return downloadList;
+		}
+		*/
 }
 	
 

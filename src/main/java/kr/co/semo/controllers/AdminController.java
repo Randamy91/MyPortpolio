@@ -4,6 +4,8 @@ package kr.co.semo.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,6 @@ import kr.co.semo.service.impl.Member_fileServiceImpl;
 @Controller
 public class AdminController {
 	@Autowired WebHelper webHelper;
-	@Autowired DownloadHelper downloadHelper;
 	@Autowired RegexHelper regexHelper;
 	@Autowired Co_memberService co_memberService;
 	@Autowired Ge_memberService ge_memberService;
@@ -76,7 +77,7 @@ public class AdminController {
 	@RequestMapping(value = "Admin_approval")
 	public String adminApproval(Model model,
 		@RequestParam(value="id") int id) {
-		
+		//정보를 출력하기위한 중개사 회원 정보 select
 		Co_member input = new Co_member();
 		Co_member output = new Co_member();
 		
@@ -87,9 +88,37 @@ public class AdminController {
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}
-		System.out.println(output);
+		
+		
+		// 파일 다운로드에서 사용될 파일 명 출력을
+		String coImgfilepath = null;
+		String ceoImgfilepath = null;
+		
+		Member_file inputcoImg = new Member_file();
+		Member_file inputceoImg = new Member_file();
+		
+		inputcoImg.setCo_member_id(id);
+		inputcoImg.setFile_type("O");
+		
+		inputceoImg.setCo_member_id(id);
+		inputceoImg.setFile_type("B");
+		
+		Member_file outputcoImg = new Member_file();
+		Member_file outputceoImg = new Member_file();
+		
+		try {
+			outputcoImg = member_fileService.getMember_filename(inputcoImg);
+			outputceoImg = member_fileService.getMember_filename(inputceoImg);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		coImgfilepath = outputcoImg.getFile_name();
+		ceoImgfilepath = outputceoImg.getFile_name();
 		
 		model.addAttribute("co_UserInfo", output);
+		model.addAttribute("coImgfilepath", coImgfilepath);
+		model.addAttribute("ceoImgfilepath", ceoImgfilepath);
 		
 		return "Admin_infochange";
 	}
@@ -125,69 +154,5 @@ public class AdminController {
 		}
 		
 		return "Admin";
-	}
-	
-	//사업자등록증 다운로드 기능 구현
-	@RequestMapping(value = "ceoImgDownload")
-	public String ceoImgDownload(Model model,
-			@RequestParam(value="id") int id) {
-		
-		Member_file input = new Member_file();
-		input.setCo_member_id(id);
-		input.setFile_type("B");
-		
-		Member_file output = new Member_file();
-		
-		try {
-			output = member_fileService.getMember_filename(input);
-		} catch (Exception e) {
-			e.getLocalizedMessage();
-		}
-		
-		String filePath = output.getFile_dir() + output.getFile_name();
-		String originName = output.getOrigin_name();
-		
-		if (filePath != null) {
-			try {
-				downloadHelper.download(filePath, originName);
-			} catch (Exception e) {
-				e.getLocalizedMessage();
-			}
-		}
-	
-		
-		
-		return "success";
-	}
-	
-	//사업자등록증 다운로드 기능 구현
-	@RequestMapping(value = "coImgDownload")
-	public String coImgDownload(Model model,
-			@RequestParam(value="id") int id) {
-		
-		Member_file input = new Member_file();
-		input.setCo_member_id(id);
-		input.setFile_type("O");
-		
-		Member_file output = new Member_file();
-		
-		try {
-			output = member_fileService.getMember_filename(input);
-		} catch (Exception e) {
-			e.getLocalizedMessage();
-		}
-		
-		String filePath = output.getFile_dir() + output.getFile_name();
-		String originName = output.getOrigin_name();
-		
-		if (filePath != null) {
-			try {
-				downloadHelper.download(filePath, originName);
-			} catch (Exception e) {
-				e.getLocalizedMessage();
-			}
-		}
-		
-		return "Success";
 	}
 }

@@ -131,8 +131,12 @@
 															등록번호</span></th>
 													<td><input type="text" class="form-control sg-form-control-md" id="co_number"
 														name="co_number" style="width: 350px; height: 50px;" value="${co_UserInfo.broker_num}">
-														<button type="button" class="download_Img btn btn-primary btn-lg" id="download_ceoImg"
-														style="width: 300px; height: 50px">중개사등록증 다운로드</button>
+														<a href="assets/upload${ceoImgfilepath}" download="중개사등록증">
+															<button type="button" class="download_Img btn btn-primary btn-lg" id="download_ceoImg"
+															style="width: 300px; height: 50px">
+															<!--<a href="assets/upload/15760390673420.jpg" download>-->중개사등록증 다운로드
+															</button>
+														</a>
 													</td>
 												</tr>
 												<tr>
@@ -141,12 +145,14 @@
 													<td><input type="text"
 														class="form-control sg-form-control-md" id="coe_number"
 														name="coe_number" style="width: 350px; height: 50px;" value="${co_UserInfo.office_num}">
-														<button type="button" class="download_Img btn btn-primary btn-lg" id="download_coImg"
-														style="width: 300px; height: 50px">사업자등록증 다운로드</button>
+														<a href="assets/upload${coImgfilepath}" download="사업자등록증">	
+															<button type="button" class="download_Img btn btn-primary btn-lg" id="download_coImg"
+															style="width: 300px; height: 50px">사업자등록증 다운로드</button>
 														<!-- 
 														<button type="button" class="btn btn-primary btn-lg" id="coe_image"
 														name="coe_image" style="display: none;" value ="사업자등록증 다운로드">ㄴㅁㅇㅁㅇㄴ</button> 
 														</td> -->
+														</a>
 												</tr>
 												<tr>
 													<th class="active"><span class="left-name">중개사무소
@@ -382,7 +388,7 @@
 		
 		var id = ${co_UserInfo.id};
 		console.log(id);
-				
+		/*	
 		//중개사 등록증 다운로드
 		$("#download_ceoImg").click(function(){
 			$.ajax({
@@ -411,6 +417,21 @@
 					console.log(data);
 				}
 			}); 
+		});
+		*/
+		$("#accept").click(function() {
+			 $.ajax({
+					type : "POST",
+					url : "Admin_approval_ok",
+					dataType : "text",
+					data : {
+						"id": id
+					},
+					success : function(data) {
+						alert("승인 되었습니다.");
+						location.href="Admin.do";
+					}
+				}); 
 		});
 		
 		 $("#delete").click(function() {
