@@ -37,5 +37,8 @@ public interface MaemulService {
 
    public int deleteMaemul(Maemul input) throws Exception;
    
+   // 매물 파일 삭제를 위한 매물 번호 추출
+   public List<Maemul> getMaemulItem_Co(Maemul input) throws Exception;
+   
    
 }

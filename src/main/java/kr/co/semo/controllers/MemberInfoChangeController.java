@@ -1,6 +1,7 @@
 package kr.co.semo.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +21,12 @@ import kr.co.semo.helper.UploadItem;
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
 import kr.co.semo.model.Ge_member;
+import kr.co.semo.model.Maemul;
 import kr.co.semo.model.Member_file;
 import kr.co.semo.service.Co_memberService;
 import kr.co.semo.service.Ge_memberService;
+import kr.co.semo.service.MaemulFileService;
+import kr.co.semo.service.MaemulService;
 import kr.co.semo.service.Member_fileService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,14 +34,12 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class MemberInfoChangeController {
 	
-	@Autowired
-	Ge_memberService ge_memberService;
-	@Autowired
-	Co_memberService co_memberService;
-	@Autowired
-	Member_fileService member_fileService;
-	@Autowired
-	WebHelper webHelper;
+	@Autowired Ge_memberService ge_memberService;
+	@Autowired Co_memberService co_memberService;
+	@Autowired MaemulFileService maemulFileService;
+	@Autowired Member_fileService member_fileService;
+	@Autowired MaemulService maemulservice;
+	@Autowired WebHelper webHelper;
 	
 	
 	//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 기존 정보 페이지에 출력하기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
@@ -364,16 +366,56 @@ public class MemberInfoChangeController {
 		HttpSession session = request.getSession();
 		int memberId = (int) session.getAttribute("userNum");
 		
-		Member_file member_file = new Member_file();
-		member_file.setCo_member_id(memberId);
 		
-		Co_member input = new Co_member();
-		input.setId(memberId);
+		List<Maemul> maemulOutputList = null;
+		UploadItem uploadInput = new UploadItem();
 		
+		//매물삭제를 위한 매물 input co_num 작성
+		Maemul maemulInput = new Maemul();
+		maemulInput.setCo_num(memberId);
+		
+		//멤버 파일 삭제를 위한  맴버 파일 Co_member_id input 작성
+		Member_file memberFileInput = new Member_file();
+		memberFileInput.setCo_member_id(memberId);
 		
 		try {
-			member_fileService.deleteMember_file(member_file);
-			co_memberService.deleteCo_member(input);
+			//매물 파일 삭제를 위한 매물 번호 리스트 조회
+			maemulOutputList = maemulservice.getMaemulItem_Co(maemulInput);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		System.out.println(maemulOutputList.get(0) + "---------------------------------------");
+		//매물파일 삭제
+		for(int i=0; i<maemulOutputList.size(); i++) {
+			try {
+				uploadInput.setMaemul_num(maemulOutputList.get(i).getMaemul_num());
+				maemulFileService.deleteMaemulFile(uploadInput);
+			} catch (Exception e) {
+				e.getLocalizedMessage();
+			}
+		}
+		
+		//매물 삭제
+		try {
+			maemulservice.deleteMaemul(maemulInput);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		//멤버 파일 삭제
+		try {
+			member_fileService.deleteMember_file(memberFileInput);
+		} catch (Exception e) {
+			e.getLocalizedMessage();
+		}
+		
+		//중개사 회원 삭제를 위한 빈즈 준비
+		Co_member coInput = new Co_member();
+		coInput.setId(memberId);
+		
+		try {
+			co_memberService.deleteCo_member(coInput);
 		} catch (Exception e) {
 			e.getLocalizedMessage();
 		}

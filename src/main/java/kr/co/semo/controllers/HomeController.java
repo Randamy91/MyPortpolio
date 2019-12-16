@@ -7,11 +7,19 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mysql.cj.Session;
+
+import kr.co.semo.model.Co_member;
+import kr.co.semo.model.Ge_member;
+import kr.co.semo.service.Co_memberService;
+import kr.co.semo.service.Ge_memberService;
 
 /**
  * Handles requests for the application home page.
@@ -19,13 +27,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 	
+	@Autowired Ge_memberService ge_memberService;
+	@Autowired Co_memberService co_memberService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.setAttribute("userType", 100);
 		
 		return "index";
 	}

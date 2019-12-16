@@ -19,4 +19,7 @@ public interface MaemulFileService {
 	 * @throw Exception
 	 */
 	public int AddFile(UploadItem fileitem) throws Exception;
+	
+	//매물 파일 삭제
+	public int deleteMaemulFile(UploadItem input) throws Exception;
 }

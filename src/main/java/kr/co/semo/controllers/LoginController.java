@@ -71,8 +71,6 @@ public class LoginController {
 				geId = ge_output.getId();
 				geName = ge_output.getName();
 				ge_input.setId(geId);
-				// 최근 로그인 시간 변경
-				ge_memberService.editGe_memberRecent(ge_input);
 				if (geId == 1) {
 					HttpSession session = request.getSession();
 					session.setMaxInactiveInterval(60*60);
@@ -90,6 +88,7 @@ public class LoginController {
 					session.setAttribute("userName", geName);
 					return new ModelAndView("index");
 				}
+				
 			} catch (Exception e) {
 				e.getLocalizedMessage();
 			}
@@ -99,7 +98,6 @@ public class LoginController {
 				coName = co_output.getCo_name();
 				coId = co_output.getId();
 				co_input.setId(coId);
-				co_memberService.editCo_memberRecent(co_input);
 				
 				HttpSession session = request.getSession();
 				session.setMaxInactiveInterval(60*60);

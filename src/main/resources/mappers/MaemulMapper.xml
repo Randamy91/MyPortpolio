@@ -46,6 +46,16 @@
      FROM maemul_register WHERE maemul_num = #{maemul_num}     
      </select>
      
+     <!-- 다중행 조회를 위한 기능 정의 -->
+     <select id="selectItem_Co"
+     parameterType="kr.co.semo.model.Maemul"
+     resultMap="maemulMap">
+     SELECT maemul_num, item_addrst, item_addrnd, select_type, build_name, floor, all_floor, all_width, pri_width,
+        heating, toilet, comple_year, movein, title, content, hidden, parking, elv, select_sale, monthly, warrenty,
+        sale, pre_war, pre_month, manage_ex, premium, latitude, longitude, co_num  
+     FROM maemul_register WHERE co_num = #{co_num}     
+     </select>
+     
      <!--  다중행 조회를 위한 기능 정의 -->
      <select id="selectList"
      parameterType="kr.co.semo.model.Maemul"
@@ -83,6 +93,10 @@
          )            
      </insert>
      
-     
+     <!-- 매물 삭제 -->
+	<delete id="deleteItem"
+		parameterType="kr.co.semo.model.Maemul">
+		DELETE FROM maemul_register WHERE co_num=#{co_num}
+	</delete>
            
   </mapper>

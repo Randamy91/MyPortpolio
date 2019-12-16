@@ -36,5 +36,11 @@
  			#{fieldName},#{orginName},#{file_dir},#{filePath},#{contentType},#{fileSize},#{reg_date},#{edit_date},#{maemul_num}
  		)
      </insert>
+     
+     <!-- 매물 파일 삭제 -->
+	<delete id="deleteItem"
+		parameterType="kr.co.semo.helper.UploadItem">
+		DELETE FROM item_file WHERE maemul_num=#{maemul_num}
+	</delete>
            
   </mapper>
