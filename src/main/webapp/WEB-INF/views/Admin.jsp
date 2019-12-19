@@ -165,6 +165,7 @@
 	
 
 	<script id="admin-list-tmpl" type="text/x-handlebars-template">
+					<div id="co_scroll" style="height:500px; overflow: scroll; overflow-x : hidden;">
 						<table class="table" id="table2">
 						<tr>
 							<th>번호</th>
@@ -191,9 +192,10 @@
 							{{/output}}
 						</tbody>
 					</table>
+				</div>
 						<div class="input-group searchBox">
 							<form onsubmit="return false">
-								<div class="input-group">
+								<div class="input-group" style="padding:20px">
 								  <input onkeypress="if( event.keyCode == 13 ){searchData();}" type="search" class="form-control search2" placeholder="검색 키워드를 입력하세요!" name="co_keyword" id="co_keyword" value="${co_keyword }"/>
 								  <span class="input-group-btn">
 								    <button class="btn btn-primary" id="cofindBtn" type="button">찾기</button>
@@ -201,20 +203,7 @@
 								</div>
 							</form>
 						</div>
-						<!-- 페이지 구현 -->
-						<div class="paginavi" id="pagenavi">
-							<nav>
-				               <ul class="pagination adminPagi">
-				                  <li><a href="#" aria-label="Previous"><span
-				                        aria-hidden="true">&laquo;</span>
-				                  </a></li>
-				                  <li class="active"><a href="#">1</a></li>
-				                  <li><a href="#" aria-label="Next"> <span
-				                        aria-hidden="true">&raquo;</span>
-				                  </a></li>
-				               </ul>
-							</nav>
-						</div>
+						
 	</script>
 
 	<script id="admin-list-tmpl1" type="text/x-handlebars-template">
@@ -222,7 +211,7 @@
 			<tr>
 				<td align="center">{{id}}</td>
 				<td align="center">
-					<a href="${pageContext.request.contextPath}/Admin_infochange.do?id={{id}}">{{co_name}}</a>
+					<a href="Admin_approval?id={{id}}">{{co_name}}</a>
 				</td>
 				<td align="center">{{boss_name}}</td>
 				<td align="center">{{tel_num}}</td>

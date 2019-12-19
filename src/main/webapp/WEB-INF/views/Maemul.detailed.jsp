@@ -532,18 +532,18 @@ html, body {
                      </div>
                      <div class="office">
                         <div class="office_name">
-                           <span class="office_name_item"><strong>대성부동산중개사무소</strong></span>
+                           <span class="office_name_item"><strong>${coOutput.co_name}</strong></span>
                         </div>
                         <div class="office_info">
                            <div class="profile-default">
-                              <span><i class="fas fa-user"></i></span>
+                              <img alt="" src="assets/upload${coOutput.broker_img}">
                            </div>
                            <div class="office_info_item">
                               <div class="office_info_name">
-                                 <span class="office_info_name_item">장상윤 대표</span>
+                                 <span class="office_info_name_item">${coOutput.boss_name}</span>
                               </div>
                               <div class="office_info_address">
-                                 <span class="office_info_address_item">부천시 원미구 역곡동</span>
+                                 <span class="office_info_address_item">${coOutput.office_addr}</span>
                               </div>
                            </div>
                            <div class="office_info_detail">
@@ -567,15 +567,13 @@ html, body {
                      </button>
                   </div>
                   <div class="modal-body" style="text-align: center;">
-                     
                      <div class="modal_profile_default">
-                        <span><i class="fas fa-user"></i></span>
+                        <img class="fa-user" alt="" src="assets/upload${coOutput.broker_img}">
                      </div>   
                      <div class="I_Number">담당자 연락처</div>
                      <div class="I_Title"><STRONG>
-                        <span class="I_Name">박하린</span>
-                        <span class="I_Position">대표</span>
-                        (<span class="I_Tname">대표공인중개사</span>)
+                        <span class="I_Name">${coOutput.assi_name}</span>
+                        (<span class="I_Tname" id="coPosition"></span>)
                      </STRONG></div>
                      <div class="modal_M_Number">
                         <div class="alert alert-info" role="alert">
@@ -591,16 +589,16 @@ html, body {
                   </div> <!-- modal-body end -->
                   <div class="modal-footer bg-info">
                      <div class="Modal_office_Name">
-                        <span class="Modal_office_name_item">대성부동산중개사무소</span>
-                        (<span class="Modal_office_position">대표 <span class="Modal_office_Tname"></span>박하린</span>)
+                        <span class="Modal_office_name_item">${coOutput.boss_name}</span>
+                        (<span class="Modal_office_position">대표 <span class="Modal_office_Tname"></span>${coOutput.boss_name}</span>)
                      </div>
                      <div class="Modal_office_address">
                         <span class="adrress_item">
-                           경기도 부천시 역곡동 삼원연립 108호
+                           	${coOutput.office_addr}
                         </span>
                      </div>
                      <div class="Modal_I_Phone">
-                        대표번호:<span class="Modal_I_Phone_item">032-413-1234</span>
+                        대표번호:<span class="Modal_I_Phone_item">${coOutput.tel}</span>
                      </div>
                   </div> 
                </div>
@@ -622,6 +620,19 @@ html, body {
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
+	$(function(){
+		var position;
+		if (${coOutput.position eq "A"}) {
+			position = "대표공인중개사";
+		} else if (${coOutput.position eq "B"}) {
+			position = "소속공인중개사";
+		} else {
+			position = "중개보조원";
+		}
+		
+		$("#coPosition").html(position);	
+	});
+	
 </script>
 </body>
 </html>

@@ -62,7 +62,7 @@
 							style="tex1t-decoration: none">매물관리</a>
 					</p>
 					<p class="navbar-text navbar-right">
-						<a href="Maemul_register.do" class="navbar-link"
+						<a href="coApproval" class="navbar-link"
 							style="text-decoration: none">매물등록</a>
 					</p>
 				</c:when>

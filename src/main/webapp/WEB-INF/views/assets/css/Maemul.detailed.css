@@ -241,13 +241,12 @@ td {
 }
 
 
-.modal_profile_default .fas {
+.modal_profile_default {
 	width: 96px;
-	height:
+	height: 96px;
 }
 #button {
 	height: 60px;
-
 }
 .modal_profile_default {
 
