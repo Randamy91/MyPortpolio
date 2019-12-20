@@ -3,7 +3,6 @@ package kr.co.semo.service;
 import java.util.List;
 
 import kr.co.semo.model.Co_member;
-import kr.co.semo.model.Ge_member;
 
 public interface Co_memberService {
 	public Co_member getCo_memberItem(Co_member input) throws Exception;

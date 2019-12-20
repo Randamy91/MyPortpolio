@@ -102,11 +102,6 @@
  <%@ include file="./assets/include/co_loginHeader.jsp" %>	
 <!-- 상단 메뉴바 end -->
 
-
-<!--  로그인 Modal -->
-
-<!-- 로그인 modal end -->
-
 <!-- 컨텐츠 -->
 <div class="content">
 		<div class="body-content">

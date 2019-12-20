@@ -4,8 +4,6 @@ package kr.co.semo.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +17,6 @@ import kr.co.semo.model.Ge_member;
 
 @RestController
 public class Ge_memberRestController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(Ge_memberRestController.class);
 	
 	@Autowired WebHelper webHelper;
 	@Autowired Ge_memberService ge_memberService;

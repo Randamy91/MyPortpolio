@@ -1,19 +1,13 @@
 package kr.co.semo.controllers;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.semo.helper.DownloadHelper;
@@ -21,7 +15,6 @@ import kr.co.semo.helper.PageData;
 import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
-import kr.co.semo.model.Member_file;
 import kr.co.semo.service.Co_memberService;
 import kr.co.semo.service.Ge_memberService;
 import kr.co.semo.service.Member_fileService;

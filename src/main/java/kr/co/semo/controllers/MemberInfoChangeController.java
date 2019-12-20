@@ -1,7 +1,6 @@
 package kr.co.semo.controllers;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,9 +27,7 @@ import kr.co.semo.service.Ge_memberService;
 import kr.co.semo.service.MaemulFileService;
 import kr.co.semo.service.MaemulService;
 import kr.co.semo.service.Member_fileService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 public class MemberInfoChangeController {
 	

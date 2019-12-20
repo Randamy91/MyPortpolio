@@ -2,9 +2,6 @@ package kr.co.semo.controllers;
 
 
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.semo.helper.DownloadHelper;
 import kr.co.semo.helper.PageData;
 import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.WebHelper;
@@ -27,7 +23,6 @@ import kr.co.semo.service.Co_memberService;
 /**import kr.co.semo.service.Co_memberService;*/
 import kr.co.semo.service.Ge_memberService;
 import kr.co.semo.service.Member_fileService;
-import kr.co.semo.service.impl.Member_fileServiceImpl;
 
 @Controller
 public class AdminController {

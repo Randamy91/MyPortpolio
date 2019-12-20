@@ -12,13 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-
 import kr.co.semo.helper.DownloadHelper;
-import kr.co.semo.helper.PageData;
 import kr.co.semo.helper.RegexHelper;
 import kr.co.semo.helper.TimeHelper;
 import kr.co.semo.helper.UploadItem;

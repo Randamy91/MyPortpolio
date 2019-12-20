@@ -43,7 +43,7 @@
 						<a href="#" class="navbar-link" style="text-decoration: none">${userName} 님</a>
 					</p>
 					<p class="navbar-text navbar-right">
-						<a href="Maemul.interest.do" class="navbar-link"
+						<a href="geMaemulInterest" class="navbar-link"
 							style="text-decoration: none">관심매물</a>
 					</p>
 				</c:when>

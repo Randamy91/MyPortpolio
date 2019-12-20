@@ -123,19 +123,5 @@ public class MailController {
          return webHelper.redirect(null, e.getLocalizedMessage());
       }
 
-      // 아이디와 비밀번호가 가입된 정보와 일치하는지 검사
-      /*
-       * if (email.equals(output.getEmail_id())) { return webHelper.redirect(null,
-       * "가입된 이메일이  맞습니다."); }
-       */
-
-      /**
-       * 메일 제목 --> null체크도 입력 여부를 확인할 수 있다. if (subject == null) { return
-       * webHelper.redirect(null, "메일 제목을 입력하세요."); }
-       * 
-       * // 메일 내용 --> null체크도 입력 여부를 확인할 수 있다. if (content == null) { return
-       * webHelper.redirect(null, "메일의 내용을 입력하세요."); }
-       */
-
    }
 }

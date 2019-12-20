@@ -332,20 +332,20 @@ html, body {
                         <div class="text">
                            <span class="name">해당층/건물층</span>
                            <span class="value"><c:choose>
-      <c:when test="${output.floor == 300}">
-          지하3/${output.all_floor}층
-      </c:when>
-      <c:when test="${output.floor == 200}">
-          지하2층/${output.all_floor}층
-      </c:when>
-      <c:when test="${output.floor == 100}">
-          지하1층/${output.all_floor}층
-      </c:when>
-      <c:otherwise>
-          ${output.floor}/${output.all_floor}층
-      </c:otherwise>
-      
-   </c:choose></span>
+					      <c:when test="${output.floor == 300}">
+					         	 지하3/${output.all_floor}층
+					      </c:when>
+					      <c:when test="${output.floor == 200}">
+					         	 지하2층/${output.all_floor}층
+					      </c:when>
+					      <c:when test="${output.floor == 100}">
+					        	 지하1층/${output.all_floor}층
+					      </c:when>
+					      <c:otherwise>
+					          ${output.floor}/${output.all_floor}층
+					      </c:otherwise>
+					      
+					   </c:choose></span>
                         </div>
                      </div>
                      <div class="col-sm-12 col-md-6">

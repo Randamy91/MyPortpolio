@@ -1,10 +1,11 @@
 package kr.co.semo.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.mail.iap.Response;
 
 import kr.co.semo.helper.DownloadHelper;
 import kr.co.semo.helper.RegexHelper;
@@ -65,9 +68,61 @@ public class maemulController {
 	TimeHelper timeHelper;
 
 	@RequestMapping(value = "/view.ok", method = RequestMethod.GET)
-	public ModelAndView view_ok(Model model) {
-
+	public ModelAndView view_ok(Model model, HttpServletResponse response,
+			HttpServletRequest request) {
+		
+		Cookie[] getCookie = request.getCookies();
+		Cookie cookie = null;
+		
+		//cookie 매물 번호 중복 체크를 위한 변수
+		int overlab = 0;
+		
+		//URL로 전달받은 매물번호
 		int maemul_num = webHelper.getInt("maemul_num");
+		
+		//일반회원 관심매물 처리를 위한 쿠키 생성
+		//세션에 저장되어있는 userType ==1 (일반회원) 이면 쿠키 생성
+		HttpSession session = request.getSession();
+		int userType = (int) session.getAttribute("userType");
+		if (userType == 1) {
+			String cook_maemulNum = null;
+			String maemulNum = null;
+			maemulNum = Integer.toString(maemul_num) + "A";
+			//JSessionID 는 항상 존재 하기 때문에 index 값을 1로 설정
+			if (getCookie.length == 1) {
+				cookie = new Cookie("maemul_num", maemulNum);
+				response.addCookie(cookie);
+				System.out.println(cookie.getValue() + "oooooooooooooooooooooo");
+				
+			} else {
+				for (int i = 0; i < getCookie.length; i++) {
+					//cookie 의 name 이 maemul_num 일경우 실행
+					if (getCookie[i].getName().equals("maemul_num")){
+						//기존 쿠키 값 도출
+						cook_maemulNum = getCookie[i].getValue();
+						//중복 체크를 위한 로직
+						String[] split = cook_maemulNum.split("A");
+						for (int j = 0; j < split.length; j++) {
+							if (split[j].equals(Integer.toString(maemul_num))){
+								 overlab = 1;
+							}
+						}
+						
+						if (overlab == 1) {
+							cookie = new Cookie("maemul_num", cook_maemulNum);
+						} else {
+							cookie = new Cookie("maemul_num", cook_maemulNum + maemulNum);
+						}
+						
+						response.addCookie(cookie);
+						System.out.println("//cookie 의 name 이 maemul_num 일경우 실행--- getCookie[" + i +"].getName() : " + getCookie[i].getName() + "--- getCookie[" + i + "].getValue() : " + getCookie[i].getValue());
+					}
+				}
+			}
+			System.out.println(cook_maemulNum + " ooooooooooooooooo " + maemulNum + " oooooooooooooooooooooooo");
+		}
+		
+		
 
 		// 조회할 매물에 대한 PK값
 		if (maemul_num == 0) {

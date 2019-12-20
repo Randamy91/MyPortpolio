@@ -1,45 +1,25 @@
 package kr.co.semo.controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
-import org.apache.ibatis.binding.MapperMethod.ParamMap;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.co.semo.helper.UploadItem;
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
-import kr.co.semo.model.Ge_member;
 import kr.co.semo.model.Member_file;
 import kr.co.semo.service.Co_memberService;
-import kr.co.semo.service.Ge_memberService;
 import kr.co.semo.service.Member_fileService;
 
 @RestController
 public class Co_memberRestController {
-	private static final Logger logger = LoggerFactory.getLogger(Co_memberRestController.class);
 	@Autowired WebHelper webHelper;
 	@Autowired Co_memberService co_memberService;
 	@Autowired Member_fileService member_fileService;

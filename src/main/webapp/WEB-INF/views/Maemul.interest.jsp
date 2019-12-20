@@ -20,9 +20,7 @@
 <body>
 	<!--------------------------- 복사하여 사용 하세요 ---------------------------->
 	<!-- 상단 메뉴 바 -->
-	<%@ include file="assets/include/loginHeader.jsp" %>
-	<!--  로그인 Modal -->
-	<%@ include file="assets/include/loginmodal.jsp" %>	
+	<%@ include file="assets/include/header.jsp" %>
 	<!-- 컨텐츠 -->
 	<div class="content">
 		<div class="container content-container">

@@ -1,13 +1,13 @@
 package kr.co.semo.controllers;
 
+import java.net.HttpCookie;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
 import kr.co.semo.helper.WebHelper;
 import kr.co.semo.model.Co_member;
 import kr.co.semo.model.Ge_member;
 import kr.co.semo.service.Co_memberService;
 import kr.co.semo.service.Ge_memberService;
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
 public class LoginController {
@@ -118,8 +115,17 @@ public class LoginController {
 	}
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout (Model model, HttpServletResponse response, HttpServletRequest request) throws Exception {
+		
+		//Cookie 삭제
+		Cookie cookie = new Cookie("maemul_num", null);
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		
+		//session 해제
 		HttpSession session = request.getSession();
 		session.invalidate();
+		
+		
 		
 		return new ModelAndView("index"); 
 	}

@@ -35,6 +35,7 @@
 
 		<!-- 컨텐츠 -->
       <div class="select-menu">
+      
          <!------------------------- 거래 유형 드롭다운 -------------------------------->
          <div class="dropdown trade">
             <button class="btn btn-default dropdown-toggle" type="button"
@@ -132,17 +133,11 @@
                   <div id="listdiv">   
                   <!-- 매물리스트 자리  -->   
                   <!-- 테스트중 -->   
-                                          
                   </div>
                </div>
                <!-- pagenation -->
                <div class="pageCount">
                <a href="http://www.hillstate.co.kr" target="_blank"><img src="${pageContext.request.contextPath}/assets/img/HS.jpg"></a>
-                  <!-- <ul class="pagination page">
-                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                     <li class="page-item"><a class="page-link" href="#">1</a></li>
-                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul> -->
                </div>
             </div>
          </div>
